@@ -1,0 +1,26 @@
+<div class="sidebar">
+    <div class="logo" style="display: grid; place-content: center; margin-top: 1ch;">
+        <!-- <img src="../../../../assets/images/FTS_LOGO_COLOR@3x-8-1024x365-1.png" alt=""> -->
+        <mat-divider class="divider"></mat-divider>
+    </div>
+    <ul class="sidebar-menu" style="list-style: none; margin: 0; padding: 0;">
+        <li class="menu-item" *ngFor="let route of routes" (click)="toggleMenu()" [routerLink]="['/client/'+route.url]" [ngClass]="[currentRoute == route.url? 'selected' : '' ]">
+            <mat-icon class="icon">{{route.icon}}</mat-icon>
+            <span>{{route.name}}</span>
+        </li>
+        <li class="menu-item" (click)="logout()">
+            <mat-icon class="icon">
+                logout
+            </mat-icon>
+            <span>
+                Salir de la sesión
+            </span>
+        </li>
+        <li class="menu-item" (click)="toggleMenu()" [ngStyle]="hideSidebar? {display: 'none'} : {}">
+            <mat-icon class="icon">arrow_back</mat-icon>
+            <span>
+                Regresar
+            </span>
+        </li>
+    </ul>
+</div>
