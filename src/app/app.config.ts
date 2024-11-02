@@ -13,6 +13,19 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes), 
-    provideAnimationsAsync(), provideFirebaseApp(() => initializeApp({"projectId":"fastbites-321c9","appId":"1:325344888930:web:dd366c2c8e745a3c1f293b","storageBucket":"fastbites-321c9.firebasestorage.app","apiKey":"AIzaSyBmD-u1GQpGvTOVdb7LekupmIuHkML1cgw","authDomain":"fastbites-321c9.firebaseapp.com","messagingSenderId":"325344888930","measurementId":"G-P1V0EYXYCW"})), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()), provideFunctions(() => getFunctions()), provideStorage(() => getStorage())
+    provideAnimationsAsync(), 
+    provideFirebaseApp(() => initializeApp({
+      "projectId":"fastbites-321c9",
+      "appId":"1:325344888930:web:dd366c2c8e745a3c1f293b",
+      "storageBucket":"fastbites-321c9.firebasestorage.app",
+      "apiKey":"AIzaSyBmD-u1GQpGvTOVdb7LekupmIuHkML1cgw",
+      "authDomain":"fastbites-321c9.firebaseapp.com",
+      "messagingSenderId":"325344888930",
+      "measurementId":"G-P1V0EYXYCW"
+    })), 
+    provideAuth(() => getAuth()), 
+    provideFirestore(() => getFirestore()), 
+    provideFunctions(() => getFunctions()), 
+    provideStorage(() => getStorage())
   ]
 };
