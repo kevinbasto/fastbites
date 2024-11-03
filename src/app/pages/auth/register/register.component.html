@@ -1,1 +1,35 @@
-<p>register works!</p>
+<div class="header">
+    <h1 style="text-align: center;">
+        Registrarme
+    </h1>
+</div>
+<form action="" [formGroup]="form" (submit)="login()" >
+    <mat-form-field>
+        <mat-label>
+            Email
+        </mat-label>
+        <input type="text" matInput>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>
+            <Canvas></Canvas>ontraseña
+        </mat-label>
+        <input type="password" matInput>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>
+            Confirma tu contraseña
+        </mat-label>
+        <input type="password" matInput>
+    </mat-form-field>
+    <div class="links">
+        <a href="" [routerLink]="'/auth/login'" class="link">
+            Ya tengo cuenta
+        </a>
+    </div>
+    <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit">
+            Registrarme
+        </button>
+    </div>
+</form>
