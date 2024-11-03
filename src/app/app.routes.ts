@@ -7,11 +7,11 @@ export const routes: Routes = [
         pathMatch: "full"
     },
     {
-        path: "auth",
-        loadChildren: () => import("./layouts/auth/auth.module").then(m => m.AuthModule)
+        path: "client",
+        loadChildren: () => import("./layouts/client-layout/client-layout.module").then(m => m.ClientLayoutModule)
     },
     {
-        path: "client",
-        loadChildren: () => import("./layouts/client/client.module").then(m => m.ClientModule)
-    }
+        path: "auth",
+        loadChildren: () => import("./layouts/auth-layout/auth-layout.module").then(m => m.AuthLayoutModule)
+    },
 ];
