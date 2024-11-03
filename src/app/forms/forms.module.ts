@@ -10,6 +10,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { RecoverFormComponent } from './recover-form/recover-form.component';
+import { FormActionsComponent } from './form-actions/form-actions.component';
 
 export const forms = [
   LoginFormComponent,
@@ -19,7 +20,8 @@ export const forms = [
 
 @NgModule({
   declarations: [
-    ...forms
+    ...forms,
+    FormActionsComponent
   ],
   imports: [
     CommonModule,
