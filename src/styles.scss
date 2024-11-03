@@ -24,6 +24,9 @@ form{
     a{
         text-decoration: none;
         color: #3f51b5;
+        &:hover{
+            filter: brightness(.6);
+        }
     }
 }
 
