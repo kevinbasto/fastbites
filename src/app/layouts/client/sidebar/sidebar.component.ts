@@ -1,6 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { NavigationMenu } from '../../../../environments/menu';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit, AfterViewInit {
-  public routes: Array<any> = [];
+  public routes: Array<any> = NavigationMenu;
   public currentRoute?: string;
   @Output() public toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
   public hideSidebar?: boolean;
