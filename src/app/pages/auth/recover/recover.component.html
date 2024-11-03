@@ -1,1 +1,18 @@
-<p>recover works!</p>
+<div class="header">
+    <h1 style="text-align: center;">
+        Recupera tu cuenta
+    </h1>
+</div>
+<form action="" [formGroup]="form" (submit)="login()" >
+    <mat-form-field>
+        <mat-label>
+            Correo electrónico
+        </mat-label>
+        <input type="text" matInput>
+    </mat-form-field>
+    <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit">
+            iniciar-sesión
+        </button>
+    </div>
+</form>
