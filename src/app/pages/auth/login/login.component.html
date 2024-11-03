@@ -6,19 +6,22 @@
 <form action="" [formGroup]="form" (submit)="login()" >
     <mat-form-field>
         <mat-label>
-            Email
+            Correo electrónico
         </mat-label>
         <input type="text" matInput>
     </mat-form-field>
     <mat-form-field>
         <mat-label>
-            Password
+            Contraseña
         </mat-label>
         <input type="password" matInput>
     </mat-form-field>
     <div class="links">
         <a href="" [routerLink]="'/auth/register'" class="link">
             Registrarse
+        </a>
+        <a href="" [routerLink]="'/auth/recover'" class="link">
+            Recuperar mi cuenta
         </a>
     </div>
     <div class="form-actions">
