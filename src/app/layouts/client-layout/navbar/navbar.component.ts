@@ -1,7 +1,8 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-// import { environment } from 'src/environments/environment';
+import { NavigationMenuItem } from '../../../core/entities/Navigation-menu-item';
+import { NavigationMenu } from '../../../../environments/menu';
 
 @Component({
   selector: 'app-navbar',
@@ -12,6 +13,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   public hide : boolean = true;
   @Output() toggle : EventEmitter<boolean> = new EventEmitter<boolean>();
   public route! : string;
+  menu : Array<NavigationMenuItem> = NavigationMenu;
 
   constructor(
     private breakpoint : BreakpointObserver,
@@ -26,13 +28,13 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         } else {
           this.hide = true;
         }
-      })
+      });
     }, 0);
   }
 
   ngOnInit(): void {
     let subRoute = this.router.url.split("/")
-    // environment.menu.forEach(element => {if(element.url == subRoute[2]) this.route = element.name});
+    this.menu.forEach(element => {if(element.url == subRoute[2]) this.route = element.name});
     this.trackNavigation();
   }
 
@@ -40,7 +42,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.router.events.subscribe(event => {
       if(event instanceof NavigationEnd){
         let subRoute = this.router.url.split("/")
-        // environment.menu.forEach(element => {if(element.url == subRoute[2]) this.route = element.name});
+        this.menu.forEach(element => {if(element.url == subRoute[2]) this.route = element.name});
       }
     })
   }
