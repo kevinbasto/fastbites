@@ -44,7 +44,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
         let subRoute = this.router.url.split("/")
         this.menu.forEach(element => {if(element.url == subRoute[2]) this.route = element.name});
       }
-    })
+    });
   }
 
   toggleSidebar(){
