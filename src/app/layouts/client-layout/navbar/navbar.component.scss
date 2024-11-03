@@ -1,0 +1,36 @@
+.navbar{
+  padding: 1rem;
+}
+
+div{
+    cursor: pointer;
+    .menu-icon {
+        font-size: 2rem;
+        width: auto;
+        height: auto;
+    }
+}
+
+.page-header{
+  h1{
+    font-weight: 300;
+    margin: 0;
+  }
+}
+
+@media (min-width: "801px") {
+  .menu-icon {
+    display: none;
+  }
+}
+
+@media (max-width: "800px") {
+
+  .navbar {
+    display: flex;
+    padding: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    height: 2rem;
+  }
+}
