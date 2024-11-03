@@ -5,7 +5,13 @@ import { ClientLayoutComponent } from './client-layout.component';
 const routes: Routes = [
   {
     path: "",
-    component: ClientLayoutComponent
+    component: ClientLayoutComponent,
+    children: [
+      {
+        path: "",
+        loadChildren: () => import('../../pages/client/client.module').then(m => m.ClientModule)
+      }
+    ]
   }
 ];
 
