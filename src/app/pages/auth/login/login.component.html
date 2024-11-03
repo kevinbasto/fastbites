@@ -1,1 +1,29 @@
-<login-form></login-form>
+<div class="header">
+    <h1 style="text-align: center;">
+        Iniciar sesión
+    </h1>
+</div>
+<form action="" [formGroup]="form" (submit)="login()" >
+    <mat-form-field>
+        <mat-label>
+            Email
+        </mat-label>
+        <input type="text" matInput>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>
+            Password
+        </mat-label>
+        <input type="password" matInput>
+    </mat-form-field>
+    <div class="links">
+        <a href="" [routerLink]="'/auth/register'" class="link">
+            Registrarse
+        </a>
+    </div>
+    <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit">
+            iniciar-sesión
+        </button>
+    </div>
+</form>
