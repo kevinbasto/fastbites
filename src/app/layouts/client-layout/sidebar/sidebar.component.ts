@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { NavigationMenuItem } from '../../../core/entities/Navigation-menu-item';
 import { NavigationEnd, Router } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { NavigationMenu } from '../../../../environments/menu';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +10,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
-  public routes: Array<NavigationMenuItem> = [] // environment.menu;
+  public routes: Array<NavigationMenuItem> = NavigationMenu;
   public currentRoute! : string;
   @Output() public toggle : EventEmitter<boolean> = new EventEmitter<boolean>();
   public hideSidebar! : boolean;
