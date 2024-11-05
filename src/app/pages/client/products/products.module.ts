@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from "@angular/material/table";
 import { MatButtonModule } from "@angular/material/button";
 import { MatDialogModule } from "@angular/material/dialog";
+import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
 
 
 
@@ -18,6 +19,7 @@ import { MatDialogModule } from "@angular/material/dialog";
   imports: [
     CommonModule,
     ProductsRoutingModule,
+    SharedComponentsModule,
     MatCardModule,
     MatTableModule,
     MatButtonModule,
