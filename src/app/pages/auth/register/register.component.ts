@@ -15,11 +15,11 @@ export class RegisterComponent {
   matcher : ErrorStateMatcher;
 
   @Input() uploading: boolean = false;
-  @Output() submitRegister : EventEmitter<any> = new EventEmitter<any>();
   
 
   constructor(
-    private builder : FormBuilder
+    private builder : FormBuilder,
+    private registerService : RegisterService
   ) {
     
     this.form = this.builder.group({
@@ -45,6 +45,6 @@ export class RegisterComponent {
 
   submit() {
     let {email, password, terms} = this.form.value as any;
-    this.submitRegister.emit({email, password, terms, firstLogin: true});
+    this.registerService.registerWithEmailAndPassword(email, password, terms)
   }
 }

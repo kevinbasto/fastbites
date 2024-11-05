@@ -27,5 +27,5 @@ export const appConfig: ApplicationConfig = {
     provideFirestore(() => getFirestore()), 
     provideFunctions(() => getFunctions()), 
     provideStorage(() => getStorage())
-  ]
+  ],
 };
