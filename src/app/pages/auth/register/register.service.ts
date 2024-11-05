@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, sendEmailVerification } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, deleteUser, sendEmailVerification } from '@angular/fire/auth';
 import { doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
@@ -16,16 +16,26 @@ export class RegisterService {
     private snackbar: SnackbarService
   ) { }
 
-  registerWithEmailAndPassword(email: string, password: string, terms: boolean) {
-    createUserWithEmailAndPassword(this.auth, email, password)
-    .then(async (result) => {
-      let uid = result.user.uid;
-      let docref = await doc(this.firestore, `/users/${uid}`);
-      await sendEmailVerification(result.user);
-      await setDoc(docref, {email, uid, terms });
-      this.snackbar.openMessage("Registro completado con éxito");
-    }).catch((err) => {
-      this.snackbar.openMessage("No se pudo completar el registro");
-    });
+  async registerWithEmailAndPassword(email: string, password: string, terms: boolean) {
+    let givenUser : any;
+    try {
+      let userRef = (await createUserWithEmailAndPassword(this.auth, email, password)).user;
+      let user = {
+        email,
+        terms,
+        uid: userRef.uid,
+        verified: false,
+        creationDate: Date.now(),
+      };
+      await sendEmailVerification(userRef)
+      .catch(err => { givenUser = userRef; throw err;});
+      let docRef = doc(this.firestore, `/users/${userRef.uid}`);
+      await setDoc(docRef, user);
+      this.snackbar.openMessage("Usuario creado, verifica tu correo");
+      this.router.navigate(['/auth/login']);
+    } catch (error) {
+      await deleteUser(givenUser);
+      this.snackbar.openMessage("No se pudo concretar el proceso de registro de tu cuenta");
+    }
   }
 }
