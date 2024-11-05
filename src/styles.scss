@@ -107,5 +107,11 @@ form{
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
+    align-items: center;
     gap: 1rem
+}
+
+.form-actions{
+    display: flex;
+    flex-direction: column;
 }

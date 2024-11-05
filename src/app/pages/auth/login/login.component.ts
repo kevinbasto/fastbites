@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 
 @Component({
@@ -10,19 +10,30 @@ import { LoginService } from './login.service';
 export class LoginComponent {
 
   form: FormGroup;
+  uploading : boolean = false;
+  hide: boolean = true;
 
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService
   ) {
     this.form = this.fb.group({
-      email: [""],
-      password: [""]
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", [Validators.required]]
     });
   }
 
   login() {
     let data = this.form.value;
     this.loginService.signWithEmailAndPassword(data.email, data.password);
+  }
+
+  
+  get email() {
+    return this.form.get("email") as FormControl;
+  }
+
+  get password() {
+    return this.form.get("password") as FormControl;
   }
 }

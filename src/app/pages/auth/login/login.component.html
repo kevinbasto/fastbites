@@ -3,30 +3,52 @@
         Iniciar sesión
     </h1>
 </div>
-<form action="" [formGroup]="form" (submit)="login()" >
+<form action="" [formGroup]="form" (submit)="login()">
     <mat-form-field>
         <mat-label>
             Correo electrónico
         </mat-label>
-        <input type="text" matInput>
+        <input type="email" matInput formControlName="email">
+        <mat-error *ngIf="email.hasError('required')">
+            ¡Introduce tu correo electrónico!
+        </mat-error>
+        <mat-error *ngIf="email.hasError('email')">
+            Revisa tu campo de correo electrónico
+        </mat-error>
     </mat-form-field>
     <mat-form-field>
         <mat-label>
             Contraseña
         </mat-label>
-        <input type="password" matInput>
+        <input  [type]="hide ? 'password' : 'text'" matInput formControlName="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" tabindex="-1" type="button">
+            <mat-icon>{{hide ? 'visibility_off' :  'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="password.hasError('minlength')">
+            La contraseña es muy corta
+        </mat-error>
+        <mat-error *ngIf="password.hasError('required')">
+            Introduce tu contraseña
+        </mat-error>
     </mat-form-field>
-    <div class="links">
-        <a href="" [routerLink]="'/auth/register'" class="link">
-            Registrarse
-        </a>
-        <a href="" [routerLink]="'/auth/recover'" class="link">
-            Recuperar mi cuenta
-        </a>
+    <div class="links" style="display: flex; flex-direction: column; gap: 2ch; align-items: center; margin-top: 1rem;">
+        <span>
+            <a class="link" href="" [routerLink]="['/auth/recover']">
+                He olvidado mi contraseña
+            </a>
+        </span>
+        <span>
+            <a class="link" href="" [routerLink]="['/auth/register']">
+                No tengo cuenta
+            </a>
+        </span>
     </div>
-    <div class="form-actions">
-        <button mat-raised-button color="primary" type="submit">
-            iniciar-sesión
+    <div class="actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || uploading">
+            <span *ngIf="!uploading">
+                iniciar sesión
+            </span>
+            <mat-spinner *ngIf="uploading" diameter="35"></mat-spinner>
         </button>
     </div>
 </form>

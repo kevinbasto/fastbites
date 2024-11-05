@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegisterService } from './register.service';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { checkPasswords, PasswordErrorStateMatcher } from './password-validation';
 
 @Component({
   templateUrl: './register.component.html',
@@ -8,21 +10,41 @@ import { RegisterService } from './register.service';
 })
 export class RegisterComponent {
 
-  form: FormGroup;
+  form : FormGroup;
+  hide: boolean = true;
+  matcher : ErrorStateMatcher;
+
+  @Input() uploading: boolean = false;
+  @Output() submitRegister : EventEmitter<any> = new EventEmitter<any>();
+  
 
   constructor(
-    private fb: FormBuilder,
-    private register: RegisterService
+    private builder : FormBuilder
   ) {
-    this.form = this.fb.group({
-      email: [""],
-      password: [""],
-      confirmPassword: [""]
-    });
+    
+    this.form = this.builder.group({
+      email : ["", [Validators.required, Validators.email]],
+      password : ["", [Validators.required, /**Validators.pattern(passwordRegex) */]],
+      confirmPassword : ["", [Validators.required]],
+      terms : [false, [Validators.requiredTrue]],
+    },  { validators : checkPasswords })
+    this.matcher  = new PasswordErrorStateMatcher();
   }
 
-  login() {
-    let data = this.form.value;
-    // this.register.signWithEmailAndPassword(data.email, data.password);
+  get email() {
+    return this.form.get("email") as FormControl;
+  }
+
+  get password() {
+    return this.form.get("password") as FormControl;
+  }
+
+  get confirmPassword() {
+    return this.form.get("confirmPassword") as FormControl
+  }
+
+  submit() {
+    let {email, password, terms} = this.form.value as any;
+    this.submitRegister.emit({email, password, terms, firstLogin: true});
   }
 }

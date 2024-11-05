@@ -3,33 +3,62 @@
         Registrarme
     </h1>
 </div>
-<form action="" [formGroup]="form" (submit)="login()" >
+<form action="" [formGroup]="form" (submit)="submit()" >
     <mat-form-field>
         <mat-label>
             Correo electrónico
         </mat-label>
-        <input type="text" matInput>
+        <input type="email" matInput formControlName="email" >
+        <mat-error *ngIf="email.hasError('required')">
+            ¡Introduce el correo electrónico!
+        </mat-error>
+        <mat-error *ngIf="email.hasError('email')">
+            ¡El correo electrónico introducido no es válido!
+        </mat-error>
     </mat-form-field>
     <mat-form-field>
         <mat-label>
             Contraseña
         </mat-label>
-        <input type="password" matInput>
+        <input  [type]="hide ? 'password' : 'text'" matInput formControlName="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" tabindex="-1" type="button">
+            <mat-icon>{{hide ? 'visibility_off' :  'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="password.hasError('required')" ></mat-error>
     </mat-form-field>
     <mat-form-field>
         <mat-label>
-            Confirma tu contraseña
+            Confirmar contraseña
         </mat-label>
-        <input type="password" matInput>
+        <input type="{{hide ? 'password' : 'text'}}" matInput formControlName="confirmPassword" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="password.value != confirmPassword.value">
+            ¡Las contraseñas no coinciden!
+        </mat-error>
     </mat-form-field>
-    <div class="links">
-        <a href="" [routerLink]="'/auth/login'" class="link">
-            Ya tengo cuenta
+    <!-- es necesario buscar una forma de aplicar i18n -->
+    <mat-checkbox  formControlName="terms" >
+        acepto los 
+        <a href="" class="link" [routerLink]="['/public/terms']">
+            Términos y condiciones
+        </a>
+        y he leído el
+        <a href="" class="link" [routerLink]="['/public/privacy']" style="margin-top: .5rem; ">
+            Aviso de privacidad
+        </a>
+    </mat-checkbox>
+
+    <div style=" display: flex; justify-content: center;">
+        <a href="" routerLink="/auth/login" class="link" style="text-align: center;">
+            Iniciar sesión
         </a>
     </div>
-    <div class="form-actions">
-        <button mat-raised-button color="primary" type="submit">
-            Registrarme
+    
+    <div class="actions" style="margin-top: 1rem;">
+        <button mat-raised-button color="primary" type="submit" [disabled]="uploading || form.invalid">
+            <span *ngIf="!uploading">
+                Crear cuenta
+            </span>
+            <mat-spinner *ngIf="uploading" diameter="35"></mat-spinner>
         </button>
     </div>
 </form>
