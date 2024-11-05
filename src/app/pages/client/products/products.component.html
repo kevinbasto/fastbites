@@ -1,7 +1,8 @@
 <mat-card class="card">
-    <div class="card-header">
-        <h1>
-            Listado de productos
-        </h1>
-    </div>
+    <app-table
+        [title]="title"
+        [data]="data"
+        [headers]="headers"
+        [setSize]="size"
+    ></app-table>
 </mat-card>

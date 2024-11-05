@@ -21,6 +21,9 @@ import { MatPaginatorModule } from "@angular/material/paginator";
     MatButtonModule,
     MatMenuModule,
     MatPaginatorModule
+  ],
+  exports: [
+    TableComponent
   ]
 })
 export class SharedComponentsModule { }
