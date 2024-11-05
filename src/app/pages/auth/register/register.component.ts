@@ -44,7 +44,9 @@ export class RegisterComponent {
   }
 
   submit() {
+    this.uploading = true;
     let {email, password, terms} = this.form.value as any;
     this.registerService.registerWithEmailAndPassword(email, password, terms)
+    .finally(() => this.uploading = false);
   }
 }
