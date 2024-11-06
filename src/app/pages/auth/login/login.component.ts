@@ -25,7 +25,9 @@ export class LoginComponent {
 
   login() {
     let data = this.form.value;
-    this.loginService.signWithEmailAndPassword(data.email, data.password);
+    this.uploading = true;
+    this.loginService.signWithEmailAndPassword(data.email, data.password)
+    .finally(() => this.uploading = false);
   }
 
   
