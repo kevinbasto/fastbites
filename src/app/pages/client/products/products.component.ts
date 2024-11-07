@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '../../../core/entities/table-column';
 import { ProductsService } from './products.service';
 import { productTableHeaders } from './products-table.headers';
@@ -7,7 +7,7 @@ import { productTableHeaders } from './products-table.headers';
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
 
   title : string = "Listado de productos";
   data : Array<any> = [];
@@ -16,6 +16,9 @@ export class ProductsComponent {
 
   constructor(
     private productsService: ProductsService
-  ) {}
+  ) { }
 
+  ngOnInit(): void {
+    
+  }
 }

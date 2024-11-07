@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
 import { Firestore } from '@angular/fire/firestore';
+import { AuthService } from '../../../core/services/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
+  uid! : string;
+
   constructor(
     private firestore : Firestore,
-    private auth: Auth
+    private auth: AuthService
   ) {
-    this.auth.onAuthStateChanged(change => {
-      console.log(change?.uid);
-    })
+    this.setup()
   }
 
-  searchProduct() {}
+  setup() {
+    this.auth.getUid()
+    .then((result) => this.uid = result)
+    .catch((err) => {throw new Error("No se pudo cargar el user Id")});
+  }
 }
