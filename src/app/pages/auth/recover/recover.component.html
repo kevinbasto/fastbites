@@ -1,18 +1,32 @@
-<div class="header">
-    <h1 style="text-align: center;">
-        Recupera tu cuenta
-    </h1>
-</div>
-<form action="" [formGroup]="form" (submit)="login()" >
-    <mat-form-field>
-        <mat-label>
-            Correo electrónico
-        </mat-label>
-        <input type="text" matInput>
-    </mat-form-field>
-    <div class="form-actions">
-        <button mat-raised-button color="primary" type="submit">
-            iniciar-sesión
-        </button>
+<div *ngIf="!message">
+    <div>
+        <h1 style="text-align: center;">
+            Recupera tu cuenta
+        </h1>
+        <p>Te enviaremos un correo para que puedas recuperar tu cuenta</p>
     </div>
-</form>
+    <form action="" [formGroup]="recoverForm" (submit)="submit()" >
+        <mat-form-field>
+            <mat-label>
+                Correo electrónico
+            </mat-label>
+            <input type="email" matInput formControlName="email">
+        </mat-form-field>
+        <div class="actions">
+            <button mat-raised-button color="primary" type="submit" [disabled]="recoverForm.invalid || uploading">
+                <span *ngIf="!uploading">
+                    Envíar correo de recuperación
+                </span>
+                <mat-spinner diameter="35" *ngIf="uploading"></mat-spinner>
+            </button>
+        </div>
+    </form>
+</div>
+<div class="message" *ngIf="message">
+    <h1>
+        {{message.name}}
+    </h1>
+    <p>
+        {{message.message}}
+    </p>
+</div>
