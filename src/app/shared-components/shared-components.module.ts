@@ -7,12 +7,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from "@angular/material/menu";
 import { MatPaginatorModule } from "@angular/material/paginator";
+import { NgxImageCompressService } from 'ngx-image-compress';
+import { ImageCropperComponent } from 'ngx-image-cropper';
+import { AppImageCropperComponent } from './image-cropper/image-cropper.component';
 
 
 
 @NgModule({
   declarations: [
-    TableComponent
+    TableComponent,
+    AppImageCropperComponent
   ],
   imports: [
     CommonModule,
@@ -20,10 +24,15 @@ import { MatPaginatorModule } from "@angular/material/paginator";
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ImageCropperComponent,
   ],
   exports: [
-    TableComponent
+    TableComponent,
+    AppImageCropperComponent
+  ],
+  providers: [
+    NgxImageCompressService
   ]
 })
 export class SharedComponentsModule { }

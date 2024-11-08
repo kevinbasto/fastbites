@@ -12,18 +12,18 @@ export class CreateProductComponent {
 
   constructor(
     private createProductServ: CreateProductService
-  ) {}
+  ) { }
 
   cancel() {
     this.createProductServ.goBack();
   }
 
-  createProduct(product : Product) {
+  createProduct(product: Product) {
     this.uploading = !this.uploading;
     this.createProductServ.createProduct(product)
-    .finally(() => {
-      this.uploading = !this.uploading;
-    })
+      .finally(() => {
+        this.uploading = !this.uploading;
+      })
   }
-  
+
 }

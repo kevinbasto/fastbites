@@ -2,9 +2,13 @@
     <h1>
         Crear Producto
     </h1>
-    <product-form
-        (cancel)="cancel()"
-        (submitProduct)="createProduct($event)"
-        [uploading]="uploading"
-    ></product-form>
+    <div class="grid-container">
+        <product-form
+            (cancel)="cancel()"
+            (submitProduct)="createProduct($event)"
+            [uploading]="uploading"
+        ></product-form>
+        <app-image-cropper></app-image-cropper>
+    </div>
+    
 </mat-card>
