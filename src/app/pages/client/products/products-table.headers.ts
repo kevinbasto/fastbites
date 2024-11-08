@@ -4,11 +4,15 @@ export const productTableHeaders = [
       displayName: "Nombre"
     },
     {
-      name: "description",
-      displayName: "Descripción"
+      name: "cost",
+      displayName: "Costo"
     },
     {
       name: "price",
-      displayName: "Precio"
+      displayName: "Precio de venta"
+    },
+    {
+      name: "available",
+      displayName: "Disponible"
     },
   ]

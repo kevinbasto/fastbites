@@ -28,9 +28,13 @@ export class ProductsComponent implements OnInit {
     .catch((err) => {});
   }
 
-  create() {}
+  create() {
+    this.productsService.createNewProduct();
+  }
 
-  edit() {}
+  edit() {
+    
+  }
 
   deleteItem() {}
 
