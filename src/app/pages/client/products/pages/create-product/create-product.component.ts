@@ -8,10 +8,12 @@ import { CreateProductService } from './create-product.service';
 export class CreateProductComponent {
 
   constructor(
-    createProductServ: CreateProductService
+    private createProductServ: CreateProductService
   ) {}
 
-  cancel() {}
+  cancel() {
+    this.createProductServ.goBack();
+  }
 
   createProduct() {}
   
