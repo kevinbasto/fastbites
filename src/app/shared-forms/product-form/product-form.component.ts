@@ -26,8 +26,11 @@ export class ProductFormComponent {
       cost: [0],
       price: [0],
       available: [false]
-    })
+    });
   }
 
-  submitProd(){}
+  submitProd(){
+    let product: Product = this.form.value;
+    this.submitProduct.emit(product);
+  }
 }
