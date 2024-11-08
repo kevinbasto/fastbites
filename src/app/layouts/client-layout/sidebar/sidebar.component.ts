@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { NavigationMenuItem } from '../../../core/entities/Navigation-menu-item';
+import { NavigationMenuItem } from '../../../core/generics/Navigation-menu-item';
 import { NavigationEnd, Router } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { NavigationMenu } from '../../../../environments/menu';

@@ -1,7 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { NavigationMenuItem } from '../../../core/entities/Navigation-menu-item';
+import { NavigationMenuItem } from '../../../core/generics/Navigation-menu-item';
 import { NavigationMenu } from '../../../../environments/menu';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Message } from '../../../core/entities/message';
+import { Message } from '../../../core/generics/message';
 import { Auth, sendPasswordResetEmail } from '@angular/fire/auth';
 
 @Injectable({

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RecoverService } from './recover.service';
-import { Message } from '../../../core/entities/message';
+import { Message } from '../../../core/generics/message';
 import { Router } from '@angular/router';
 
 @Component({

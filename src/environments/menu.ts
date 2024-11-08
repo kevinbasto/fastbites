@@ -1,4 +1,4 @@
-import { NavigationMenuItem } from "../app/core/entities/Navigation-menu-item"
+import { NavigationMenuItem } from "../app/core/generics/Navigation-menu-item"
 
 export const NavigationMenu : Array<NavigationMenuItem> = [
     {

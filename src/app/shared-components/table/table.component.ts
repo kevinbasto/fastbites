@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { TableColumn } from '../../core/entities/table-column';
+import { TableColumn } from '../../core/generics/table-column';
 
 @Component({
   selector: 'app-table',

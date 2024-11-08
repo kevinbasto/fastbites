@@ -10,12 +10,13 @@ export class AuthService {
     private auth : Auth
   ) { }
 
-  getUid(){
-    return new Promise<string>((resolve, reject) => {
-      this.auth.onAuthStateChanged(auth => {
-        auth? resolve(auth?.uid?? "") : reject(new Error("not logged in"));
-      });
-    });
+  async getUID() : Promise<string | null>{
+    try {
+      await this.auth.authStateReady()
+      return this.auth.currentUser? this.auth.currentUser.uid : null;
+    } catch (error) {
+      throw error;
+    }
   }
 
 }
