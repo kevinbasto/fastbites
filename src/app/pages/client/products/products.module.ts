@@ -11,6 +11,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
 import { CreateProductComponent } from './pages/create-product/create-product.component';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
+import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 
 
 
@@ -24,6 +25,7 @@ import { EditProductComponent } from './pages/edit-product/edit-product.componen
     CommonModule,
     ProductsRoutingModule,
     SharedComponentsModule,
+    SharedFormsModule,
     MatCardModule,
     MatTableModule,
     MatButtonModule,

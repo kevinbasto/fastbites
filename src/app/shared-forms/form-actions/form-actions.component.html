@@ -1,0 +1,17 @@
+<div class="actions">
+    <button type="button" mat-raised-button (click)="cancel.emit()">
+        <mat-icon>
+            cancel
+        </mat-icon>
+        Cancelar
+    </button>
+    <button type="submit" mat-raised-button color="primary" [disabled]="disabled || uploading">
+        <div style="display: flex; align-items: center; gap: 1ch;" *ngIf="!uploading">
+            <mat-icon>
+                save
+            </mat-icon>
+            Guardar
+        </div>
+        <mat-spinner diameter="35" *ngIf="uploading"></mat-spinner>
+    </button>
+</div>
