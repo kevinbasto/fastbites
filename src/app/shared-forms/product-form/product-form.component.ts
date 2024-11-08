@@ -31,6 +31,7 @@ export class ProductFormComponent {
 
   submitProd(){
     let product: Product = this.form.value;
+    console.log(product);
     this.submitProduct.emit(product);
   }
 }

@@ -8,6 +8,8 @@ import { Product } from '../../../../../core/entities/product';
 })
 export class CreateProductComponent {
 
+  uploading: boolean = false;
+
   constructor(
     private createProductServ: CreateProductService
   ) {}
@@ -16,6 +18,12 @@ export class CreateProductComponent {
     this.createProductServ.goBack();
   }
 
-  createProduct(product : Product) {}
+  createProduct(product : Product) {
+    this.uploading = !this.uploading;
+    this.createProductServ.createProduct(product)
+    .finally(() => {
+      this.uploading = !this.uploading;
+    })
+  }
   
 }
