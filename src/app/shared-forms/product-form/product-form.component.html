@@ -1,7 +1,36 @@
 <form action="" [formGroup]="form" (submit)="submitProd()">
+    <mat-form-field>
+        <mat-label>
+            Nombre
+        </mat-label>
+        <input type="text" matInput formControlName="name" placeholder="Cual es el nombre de tu producto">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>
+            Descripción
+        </mat-label>
+        <textarea rows="5" formControlName="description" matInput placeholder="describe un poco mas a detalle tu producto"></textarea>
+    </mat-form-field>
+    <div class="grid-container">
+        <mat-form-field>
+            <mat-label>
+                Costo
+            </mat-label>
+            <input type="text" matInput formControlName="cost">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                Precio
+            </mat-label>
+            <input type="text" matInput formControlName="price">
+        </mat-form-field>
+    </div>
+    <mat-slide-toggle formControlName="available">
+        Disponible
+    </mat-slide-toggle>
     <form-actions 
         (cancel)="cancel.emit()"
-        [uploading]="" 
-        [disabled]=""
+        [uploading]="uploading" 
+        [disabled]="form.invalid"
     ></form-actions>
 </form>

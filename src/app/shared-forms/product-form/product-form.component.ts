@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../core/entities/product';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -12,13 +12,20 @@ export class ProductFormComponent {
   @Output() cancel: EventEmitter<null> = new EventEmitter()
   @Output() submitProduct : EventEmitter<Product> = new EventEmitter();
 
+  @Input() uploading?: boolean;
+  
+
   form : FormGroup
 
   constructor(
     private fb: FormBuilder
   ) {
     this.form = this.fb.group({
-      
+      name: [""],
+      description: [""],
+      cost: [0],
+      price: [0],
+      available: [false]
     })
   }
 
