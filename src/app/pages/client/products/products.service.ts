@@ -15,7 +15,6 @@ export class ProductsService {
   async fetchProducts() : Promise<Array<any>> {
     try {
       let uid  = await this.authServ.getUID();
-      console.log(uid);
       let docRef = doc(this.firestore, `/users/${uid}/data/products`);
       let products = (await getDoc(docRef)).data()
       return products as any? (products as any).products : [];
