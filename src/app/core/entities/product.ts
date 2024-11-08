@@ -5,5 +5,6 @@ export interface Product {
     cost: number;
     price: number;
     available: boolean;
-    imageUrl: string;
+    rawImage: string;
+    croppedImage: string;
 }

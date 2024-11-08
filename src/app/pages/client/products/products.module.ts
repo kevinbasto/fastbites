@@ -13,7 +13,7 @@ import { CreateProductComponent } from './pages/create-product/create-product.co
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 
-
+import { ImageCropperComponent } from "ngx-image-cropper";
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
     MatCardModule,
     MatTableModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    ImageCropperComponent,
   ]
 })
 export class ProductsModule { }

@@ -22,6 +22,16 @@ export class CreateProductService {
     this.router.navigate([`/client/products`]);
   }
 
+  /**
+   * algoritmo de creacion:
+   * 1. se crea el uuid del producto
+   * 2. al subir la imagen del producto:
+   * 2.1 se guardará el raw del producto con uuid-raw
+   * 2.2 se guardará el cropped del producto con uuid-cropped
+   * 2.3 se retornan los download links de ambos
+   * 2.4 se almacenan las coordenadas de cropping de la imagen original
+   * 3. se actualiza el producto para incluir los raw y cropped
+   */
   async createProduct(product: Product) {
     try {
       product.uuid = uuid();
