@@ -16,13 +16,13 @@
             <mat-label>
                 Costo
             </mat-label>
-            <input type="text" matInput formControlName="cost">
+            <input type="text" matInput formControlName="cost" currencyMask [options]="{prefix: 'MXN$', thousands: ',', decimals: '.'}">
         </mat-form-field>
         <mat-form-field>
             <mat-label>
                 Precio
             </mat-label>
-            <input type="text" matInput formControlName="price">
+            <input type="text" matInput formControlName="price" currencyMask [options]="{prefix: 'MXN$', thousands: ',', decimals: '.'}" >
         </mat-form-field>
     </div>
     <mat-slide-toggle formControlName="available">
