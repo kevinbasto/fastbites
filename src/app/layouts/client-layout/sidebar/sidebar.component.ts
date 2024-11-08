@@ -38,10 +38,10 @@ export class SidebarComponent {
   }
 
   ngOnInit(): void {
-    this.currentRoute = this.router.url.split("/")[this.router.url.split("/").length - 1]
+    this.currentRoute = this.router.url.split("/")[2]
     this.router.events.subscribe(event => {
       if(event instanceof NavigationEnd)
-        this.currentRoute = this.router.url.split("/")[this.router.url.split("/").length - 1]
+        this.currentRoute = this.router.url.split("/")[2]
     })
   }
 
