@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { doc, Firestore, getDoc } from '@angular/fire/firestore';
 import { AuthService } from '../../../core/services/auth/auth.service';
+import { Router } from '@angular/router';
+import { Product } from '../../../core/entities/product';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,8 @@ export class ProductsService {
 
   constructor(
     private firestore : Firestore,
-    private authServ: AuthService
+    private authServ: AuthService,
+    private router: Router
   ) {}
 
   async fetchProducts() : Promise<Array<any>> {
@@ -21,6 +24,19 @@ export class ProductsService {
     } catch (error) {
       throw error;
     }
+  }
+
+  createNewProduct() {
+    this.router.navigate(['/client/products/create']);
+  }
+
+  editProduct(product: Product) {
+    window.localStorage.setItem('editProduct', JSON.stringify(product));
+    this.router.navigate(['/client/products/edit']);
+  }
+
+  deleteProduct(product: Product) {
+    
   }
 
 }
