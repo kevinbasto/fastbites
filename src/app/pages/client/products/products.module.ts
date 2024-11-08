@@ -14,6 +14,7 @@ import { EditProductComponent } from './pages/edit-product/edit-product.componen
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 
 import { ImageCropperComponent } from "ngx-image-cropper";
+import { NgxImageCompressService } from "ngx-image-compress";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,9 @@ import { ImageCropperComponent } from "ngx-image-cropper";
     MatButtonModule,
     MatDialogModule,
     ImageCropperComponent,
+  ],
+  providers: [
+    NgxImageCompressService
   ]
 })
 export class ProductsModule { }
