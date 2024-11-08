@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CreateProductService } from './create-product.service';
+import { Product } from '../../../../../core/entities/product';
 
 @Component({
   templateUrl: './create-product.component.html',
@@ -15,6 +16,6 @@ export class CreateProductComponent {
     this.createProductServ.goBack();
   }
 
-  createProduct() {}
+  createProduct(product : Product) {}
   
 }
