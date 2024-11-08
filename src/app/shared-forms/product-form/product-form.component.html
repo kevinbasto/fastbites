@@ -1,4 +1,4 @@
-<form action="">
+<form action="" [formGroup]="form" (submit)="submitProd()">
     <form-actions 
         (cancel)="cancel.emit()"
         [uploading]="" 
