@@ -9,12 +9,16 @@ import { MatTableModule } from "@angular/material/table";
 import { MatButtonModule } from "@angular/material/button";
 import { MatDialogModule } from "@angular/material/dialog";
 import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
+import { CreateProductComponent } from './pages/create-product/create-product.component';
+import { EditProductComponent } from './pages/edit-product/edit-product.component';
 
 
 
 @NgModule({
   declarations: [
-    ProductsComponent
+    ProductsComponent,
+    CreateProductComponent,
+    EditProductComponent
   ],
   imports: [
     CommonModule,
