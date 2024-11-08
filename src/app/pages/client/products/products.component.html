@@ -4,5 +4,9 @@
         [data]="data"
         [headers]="headers"
         [setSize]="size"
+        (create)="create()"
+        (edit)="edit()"
+        (deleteItem)="deleteItem()"
+        (pageEvent)="changePage($event)"
     ></app-table>
 </mat-card>

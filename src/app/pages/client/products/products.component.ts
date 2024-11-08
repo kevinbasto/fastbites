@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '../../../core/generics/table-column';
 import { ProductsService } from './products.service';
 import { productTableHeaders } from './products-table.headers';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   templateUrl: './products.component.html',
@@ -26,4 +27,12 @@ export class ProductsComponent implements OnInit {
     })
     .catch((err) => {});
   }
+
+  create() {}
+
+  edit() {}
+
+  deleteItem() {}
+
+  changePage(page: PageEvent) {}
 }
