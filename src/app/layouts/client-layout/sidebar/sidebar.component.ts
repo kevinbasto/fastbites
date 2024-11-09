@@ -3,6 +3,7 @@ import { NavigationMenuItem } from '../../../core/generics/Navigation-menu-item'
 import { NavigationEnd, Router } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { NavigationMenu } from '../../../../environments/menu';
+import { AuthService } from '../../../core/services/auth/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,6 +20,7 @@ export class SidebarComponent {
   constructor(
     private router: Router,
     public breakpoint : BreakpointObserver,
+    private authServ: AuthService
   ) {
     
   }
@@ -52,7 +54,8 @@ export class SidebarComponent {
   }
 
   logout(){
-    // this.authServ.signOut()
+    this.authServ.signOut()
+    this.router.navigate(['/auth/login'])
   }
 
 }
