@@ -57,20 +57,6 @@ export class CreateProductService {
       console.log(error);
       throw error;
     }
-    // try {
-    //   product.uuid = uuid();
-    //   let uid = await this.auth.getUID();
-    //   let docRef = doc(this.firestore, `/users/${uid}/data/products`);
-    //   let raw = ((await getDoc(docRef)).data() as  {products : Array<Product>});
-    //   let products: Array<Product> = raw? raw.products : []
-    //   products = products? [...products, product] : [product];
-    //   await setDoc(docRef, {products});
-    //   this.snackbar.openMessage("Producto creada con éxito");
-    //   this.router.navigate(["/client/products"]);
-    // } catch (error) {
-    //   console.error(error);
-    //   this.snackbar.openMessage("No se pudo crear el producto");
-    // }
   }
 
   private async prepareImage(name: string, file: File) {
