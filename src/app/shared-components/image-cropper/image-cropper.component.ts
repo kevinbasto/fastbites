@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CropperOptions, CropperPosition, ImageCroppedEvent } from 'ngx-image-cropper';
-import { CroppedImage } from '../../core/generics/cropped-images';
+import { CroppedImage } from '../../core/generics/cropped-image';
 
 @Component({
   selector: 'app-image-cropper',

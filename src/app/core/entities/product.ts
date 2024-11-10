@@ -1,3 +1,5 @@
+import { CropperPosition } from "ngx-image-cropper";
+
 export interface Product {
     uuid: string;
     name: string;
@@ -7,4 +9,5 @@ export interface Product {
     available: boolean;
     rawImage: string;
     croppedImage: string;
+    croppedPosition: CropperPosition
 }

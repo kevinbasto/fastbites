@@ -13,6 +13,7 @@
         </div>
         <app-image-cropper
             [image]="file"
+            (croppedImage)="this.cropped = $event"
         ></app-image-cropper>
     </div>
     
