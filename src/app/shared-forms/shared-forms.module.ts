@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { SharedComponentsModule } from '../shared-components/shared-components.module';
 
 
 
@@ -22,6 +23,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    SharedComponentsModule,
     
     CurrencyMaskModule,
 

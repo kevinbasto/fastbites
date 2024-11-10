@@ -1,3 +1,14 @@
-<div class="dropper-zone" style="height: 50px; border: 5px dashed #afafaf; margin-top: 1ch;" dropzone>
-
+<div class="dropzone" dropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event)" [class.hovering]="isHovering" >
+    <h3>Arrastra aquí la imagen</h3>
+    <p>o</p>
+    <button mat-raised-button color="primary">
+        <mat-icon>
+            add_photo_alternate
+        </mat-icon>
+        Agregar imagen al producto
+    </button>
+    <!-- <input type="file" (change)="uploadFromButton($event)" id="fileLoader" style="display: none;">
+    <label for="fileLoader" class="fileButton" >
+        <p style="text-align: center;">Haz click aquí para subir la imagen</p>
+    </label> -->
 </div>
