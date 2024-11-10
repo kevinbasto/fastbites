@@ -1,12 +1,23 @@
-
-<input type="file" (change)="fileChangeEvent($event)" />
-<image-cropper
-    [imageChangedEvent]="imageChangedEvent"
-    [maintainAspectRatio]="true"
-    [aspectRatio]="4 / 3"
-    format="png"
-    (imageCropped)="imageCropped($event)"
-    (imageLoaded)="imageLoaded($event)"
-    (cropperReady)="cropperReady()"
-    (loadImageFailed)="loadImageFailed()"
-></image-cropper>
+<div class="placeholder" *ngIf="!image && !url">
+    <mat-icon class="placeholder-icon">
+      image
+    </mat-icon>
+    Aqui van tus imagen
+  </div>
+  <image-cropper
+        [maintainAspectRatio]="true"
+        [aspectRatio]="3 / 3"
+        [imageFile]="$any(image)"
+        format="jpeg"
+        (imageCropped)="handleCroppedImage($event)"
+        *ngIf="image"
+      ></image-cropper>
+    <image-cropper
+      *ngIf="url"
+      [maintainAspectRatio]="true"
+      [aspectRatio]="3 / 3"
+      [imageURL]="$any(url)"
+      format="jpeg"
+      (imageCropped)="handleCroppedImage($event)"
+    ></image-cropper>
+  

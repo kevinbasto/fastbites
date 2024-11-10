@@ -8,9 +8,12 @@
                 (cancel)="cancel()"
                 (submitProduct)="createProduct($event)"
                 [uploading]="uploading"
+                (file)="file = $event"
             ></product-form>
         </div>
-        <app-image-cropper></app-image-cropper>
+        <app-image-cropper
+            [image]="file"
+        ></app-image-cropper>
     </div>
     
 </mat-card>

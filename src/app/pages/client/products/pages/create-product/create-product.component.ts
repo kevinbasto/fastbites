@@ -9,6 +9,7 @@ import { Product } from '../../../../../core/entities/product';
 export class CreateProductComponent {
 
   uploading: boolean = false;
+  file?: File;
 
   constructor(
     private createProductServ: CreateProductService

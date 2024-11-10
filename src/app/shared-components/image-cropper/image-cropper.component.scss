@@ -1,0 +1,21 @@
+.placeholder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 98%;
+    border: 5px dashed #afafaf;
+    border-radius: 15px;
+    .placeholder-icon{
+      font-size: 5rem;
+      width: 5rem;
+      height: 5rem;
+      color: #afafaf;
+    }
+  }
+  
+  .cropper{
+    max-height: 100%;
+    max-width: 100%;
+  }
+  

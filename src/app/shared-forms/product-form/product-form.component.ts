@@ -11,6 +11,7 @@ export class ProductFormComponent {
 
   @Output() cancel: EventEmitter<null> = new EventEmitter()
   @Output() submitProduct : EventEmitter<Product> = new EventEmitter();
+  @Output() file: EventEmitter<File> = new EventEmitter();
 
   @Input() uploading?: boolean;
   

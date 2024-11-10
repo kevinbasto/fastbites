@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 
@@ -9,27 +9,28 @@ import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 })
 export class AppImageCropperComponent {
 
-  constructor(
-    private sanitizer: DomSanitizer
-  ) {}
+  @Input() image? : File | string
+  @Input() url? : string;
+  @Output() croppedImage : EventEmitter<string> = new EventEmitter()
 
-  imageChangedEvent: Event | null = null;
-  croppedImage: SafeUrl = '';
+  async handleCroppedImage(cropped : ImageCroppedEvent) {
+    console.log(cropped);
+    // let file = new File([image.blob], this.image.name)
+    // console.log(cropped);
+    // let file = cropped.base64;
+    // this.croppedImage.emit(file)
+    const reader = new FileReader();
 
-  fileChangeEvent(event: Event): void {
-    this.imageChangedEvent = event;
+    reader.onloadend = () => {
+      const cropped = reader.result;
+      this.croppedImage.emit(cropped as string)
+    };
+
+    // reader.onerror = () => {
+
+    // };
+
+    reader.readAsDataURL(cropped.blob!);
   }
-  imageCropped(event: ImageCroppedEvent) {
-    this.croppedImage = this.sanitizer.bypassSecurityTrustUrl(event.objectUrl as any);
-    // event.blob can be used to upload the cropped image
-  }
-  imageLoaded(image: LoadedImage) {
-    // show cropper
-  }
-  cropperReady() {
-    // cropper ready
-  }
-  loadImageFailed() {
-    // show message
-  }
+
 }
