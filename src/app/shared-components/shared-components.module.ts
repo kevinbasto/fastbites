@@ -10,13 +10,16 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { ImageCropperComponent } from 'ngx-image-cropper';
 import { AppImageCropperComponent } from './image-cropper/image-cropper.component';
+import { ImageDropperComponent } from './image-dropper/image-dropper.component';
+import { DirectivesModule } from '../core/directives/directives.module';
 
 
 
 @NgModule({
   declarations: [
     TableComponent,
-    AppImageCropperComponent
+    AppImageCropperComponent,
+    ImageDropperComponent
   ],
   imports: [
     CommonModule,
@@ -26,10 +29,12 @@ import { AppImageCropperComponent } from './image-cropper/image-cropper.componen
     MatMenuModule,
     MatPaginatorModule,
     ImageCropperComponent,
+    DirectivesModule
   ],
   exports: [
     TableComponent,
-    AppImageCropperComponent
+    AppImageCropperComponent,
+    ImageDropperComponent
   ],
   providers: [
     NgxImageCompressService

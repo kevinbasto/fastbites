@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-image-dropper',
-  standalone: true,
-  imports: [],
+  selector: 'image-dropper',
   templateUrl: './image-dropper.component.html',
   styleUrl: './image-dropper.component.scss'
 })
