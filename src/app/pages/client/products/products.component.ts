@@ -3,6 +3,7 @@ import { TableColumn } from '../../../core/generics/table-column';
 import { ProductsService } from './products.service';
 import { productTableHeaders } from './products-table.headers';
 import { PageEvent } from '@angular/material/paginator';
+import { Product } from '../../../core/entities/product';
 
 @Component({
   templateUrl: './products.component.html',
@@ -32,8 +33,8 @@ export class ProductsComponent implements OnInit {
     this.productsService.createNewProduct();
   }
 
-  edit() {
-    
+  edit(product: Product) {
+    this.productsService.editProduct(product);
   }
 
   deleteItem() {}

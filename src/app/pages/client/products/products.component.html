@@ -5,7 +5,7 @@
         [headers]="headers"
         [setSize]="size"
         (create)="create()"
-        (edit)="edit()"
+        (edit)="edit($event)"
         (deleteItem)="deleteItem()"
         (pageEvent)="changePage($event)"
     ></app-table>
