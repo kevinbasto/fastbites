@@ -2,4 +2,19 @@
     <h1>
         Editar producto
     </h1>
+    {{rawUrl}}
+    <div class="grid-container">
+        <product-form
+            (cancel)="cancel()"
+            (submitProduct)="createProduct($event)"
+            [uploading]="uploading"
+            (file)="file = $event"
+        ></product-form>
+        <app-image-cropper
+            *ngIf="rawUrl"
+            [image]="file"
+            (croppedImage)="this.cropped = $event"
+            [url]="rawUrl"
+        ></app-image-cropper>
+    </div>
 </mat-card>
