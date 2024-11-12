@@ -5,15 +5,14 @@
     Aqui van tus imagen
   </div>
   <image-cropper
-        [maintainAspectRatio]="true"
-        [aspectRatio]="3 / 3"
-        [imageFile]="$any(image)"
-        [imageURL]="url"
-        [cropper]="cropper"
-        format="jpeg"
-        (imageCropped)="handleCroppedImage($event)"
-        *ngIf="image || url"
-        [cropper]="cropperPos"
-        (cropperReady)="setPos()"
-      ></image-cropper>
-  {{cropper | json}}
+    [maintainAspectRatio]="true"
+    [aspectRatio]="3 / 3"
+    [imageFile]="$any(image)"
+    [imageURL]="url"
+    [cropper]="cropper"
+    format="jpeg"
+    (imageCropped)="handleCroppedImage($event)"
+    *ngIf="image || url"
+    [cropper]="cropperPos"
+    (cropperReady)="setPos()"
+  ></image-cropper>
