@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Firestore, doc, getDoc } from '@angular/fire/firestore';
+import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
 import { AuthService } from '../../../../../core/services/auth/auth.service';
 import { Storage, getBytes, getDownloadURL, ref, uploadBytes } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.service';
 import { NgxImageCompressService } from 'ngx-image-compress';
+import { Product } from '../../../../../core/entities/product';
+import { CroppedImage } from '../../../../../core/generics/cropped-image';
 
 @Injectable({
   providedIn: 'root'
@@ -24,13 +26,49 @@ export class EditProductService {
     this.router.navigate([`/client/products`]);
   }
 
-  async updateProduct(){
+  /**
+   * la idea basica con la edicion del producto es:
+   * se revisa si existe un nuevo Archivo, si lo hay se sube y se sube el nuevo cropped
+   * si solo el cropped se ve modificado, entonces se cargaran solo el cropped y se actualizara el
+   * cropped en el producto final. Una vez realizada la actualización de imágenes, se actualizaran las
+   * urls en producto y de ahi se procedera a actualizar el array de productos en el producto que tiene el mismo uuid
+   * y de ahi procedera a guardar los cambios.
+   * @param product - el producto a actualizar
+   * @param image - el archivo
+   * @param cropped - el nuevo recorte
+   */
+  async updateProduct(product: Product, image?: File, cropped?: CroppedImage){
     try {
-      
+      let uid = await this.auth.getUID();
+      let { uuid } = product;
+      if(image){
+        let newRaw = await this.prepareImage(`${uuid}-raw`, image);
+        let fileUrl = await this.storeImage(uid!, uuid, newRaw);
+        product.rawImage = fileUrl;
+      }
+      if(cropped){
+        let newCropped = await this.prepareImage(`${uuid}-cropped`, cropped!.image);
+        newCropped = await this.compressImage(newCropped);
+        let croppedUrl = await this.storeImage(uid!, uuid, newCropped);
+        product.croppedImage = croppedUrl;
+        product.croppedPosition = cropped!.position;
+      }
+      let products : Array<Product> = await this.getProducts(uid!);
+      products = products.map(prod => {
+        if(product.uuid == uuid)
+          return {...prod, ...product};
+        else
+          return prod;
+      }) as any;
+      await this.updateProducts(uid!, products);
+      this.snackbar.openMessage("Productos actualizados");
+      this.router.navigate([`/client/products`]);
     } catch (error) {
       throw error;
     }
   }
+
+  
 
   private async prepareImage(name: string, file: File) {
     try {
@@ -65,6 +103,14 @@ export class EditProductService {
     }
   }
 
+  private async updateProducts(uid: string, products: Array<Product>) {
+    try {
+      let docRef = doc(this.firestore, `/users/${uid}/data/products`);
+      await setDoc(docRef, {products});
+    } catch (error) {
+      throw error;
+    }
+  }
 
   private async compressImage(file: File) {
     try {

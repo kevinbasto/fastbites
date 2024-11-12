@@ -57,6 +57,7 @@ export class CreateProductService {
       products.push(product);
       await this.updateProducts(uid!, products);
       this.snackbar.openMessage("Productos actualizados con éxito");
+      this.router.navigate([`/client/products`]);
       return;
     } catch (error) {
       console.log(error);
