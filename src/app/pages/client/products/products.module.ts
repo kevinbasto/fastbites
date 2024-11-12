@@ -12,7 +12,6 @@ import { SharedComponentsModule } from '../../../shared-components/shared-compon
 import { CreateProductComponent } from './pages/create-product/create-product.component';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
-import { ImageCropperComponent } from 'ngx-image-cropper';
 
 
 @NgModule({
@@ -30,7 +29,6 @@ import { ImageCropperComponent } from 'ngx-image-cropper';
     MatTableModule,
     MatButtonModule,
     MatDialogModule,
-    ImageCropperComponent
   ],
   providers: [
     
