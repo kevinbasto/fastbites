@@ -2,12 +2,12 @@
     <h1>
         Editar producto
     </h1>
-    {{rawUrl}}
     <div class="grid-container">
         <product-form
             (cancel)="cancel()"
             (submitProduct)="createProduct($event)"
             [uploading]="uploading"
+            [product]="product"
             (file)="file = $event"
         ></product-form>
         <app-image-cropper
@@ -15,6 +15,7 @@
             [image]="file"
             (croppedImage)="this.cropped = $event"
             [url]="rawUrl"
+            [cropper]="position"
         ></app-image-cropper>
     </div>
 </mat-card>

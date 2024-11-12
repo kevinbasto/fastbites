@@ -8,17 +8,12 @@
         [maintainAspectRatio]="true"
         [aspectRatio]="3 / 3"
         [imageFile]="$any(image)"
+        [imageURL]="url"
+        [cropper]="cropper"
         format="jpeg"
         (imageCropped)="handleCroppedImage($event)"
-        *ngIf="image"
+        *ngIf="image || url"
+        [cropper]="cropperPos"
+        (cropperReady)="setPos()"
       ></image-cropper>
-    <image-cropper
-      *ngIf="url"
-      [maintainAspectRatio]="true"
-      [aspectRatio]="3 / 3"
-      [imageURL]="$any(url)"
-      format="jpeg"
-      [cropper]="cropper"
-      (imageCropped)="handleCroppedImage($event)"
-    ></image-cropper>
-  
+  {{cropper | json}}

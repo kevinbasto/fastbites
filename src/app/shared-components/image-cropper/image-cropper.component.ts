@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { CropperOptions, CropperPosition, ImageCroppedEvent } from 'ngx-image-cropper';
 import { CroppedImage } from '../../core/generics/cropped-image';
 
@@ -9,10 +9,25 @@ import { CroppedImage } from '../../core/generics/cropped-image';
 })
 export class AppImageCropperComponent {
 
+  
   @Input() image? : File
   @Input() url? : string;
   @Output() croppedImage : EventEmitter<CroppedImage> = new EventEmitter()
-  cropper?: CropperPosition
+  @Input() cropper?: CropperPosition
+
+  cropperPos?: CropperPosition;
+
+  ngOnChanges(changes: SimpleChanges): void {
+      
+  }
+
+  async setPos() { 
+    try {
+      this.cropperPos = this.cropper;
+    } catch (error) {
+      
+    }
+  }
 
   async handleCroppedImage(cropped : ImageCroppedEvent) {
     let cropperPosition = cropped.cropperPosition;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EditProductService } from './edit-product.service';
 import { CroppedImage } from '../../../../../core/generics/cropped-image';
 import { Product } from '../../../../../core/entities/product';
+import { CropperPosition } from 'ngx-image-cropper';
 
 @Component({
   templateUrl: './edit-product.component.html',
@@ -13,6 +14,8 @@ export class EditProductComponent implements OnInit{
   file?: File;
   cropped?: CroppedImage;
   rawUrl?: string = '';
+  position?: CropperPosition;
+  product!: Product;
 
   constructor(
     private editProductServ: EditProductService
@@ -20,7 +23,10 @@ export class EditProductComponent implements OnInit{
 
   ngOnInit(): void {
     let data : Product = JSON.parse(window.localStorage.getItem("editProduct")!);
-    // this.rawUrl = data.rawImage;
+    this.rawUrl = data.rawImage;
+    this.position = data.croppedPosition;
+    this.product = data;
+    console.log(this.product);
   }
 
   cancel() {

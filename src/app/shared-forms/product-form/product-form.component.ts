@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Product } from '../../core/entities/product';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -7,13 +7,14 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.scss'
 })
-export class ProductFormComponent {
+export class ProductFormComponent implements OnChanges {
 
   @Output() cancel: EventEmitter<null> = new EventEmitter()
   @Output() submitProduct : EventEmitter<Product> = new EventEmitter();
   @Output() file: EventEmitter<File> = new EventEmitter();
 
   @Input() uploading?: boolean;
+  @Input() product?: Product;
   
 
   form : FormGroup
@@ -28,6 +29,13 @@ export class ProductFormComponent {
       price: [0],
       available: [false]
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['product'] && this.product){
+      let {name, description, cost, price, available } = this.product;
+      this.form.setValue({ name, description, cost, price, available });
+    }
   }
 
   submitProd(){
