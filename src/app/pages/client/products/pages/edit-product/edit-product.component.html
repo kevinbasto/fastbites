@@ -11,7 +11,6 @@
             (file)="file = $event"
         ></product-form>
         <app-image-cropper
-            *ngIf="rawUrl"
             [image]="file"
             (croppedImage)="this.cropped = $event"
             [url]="rawUrl"

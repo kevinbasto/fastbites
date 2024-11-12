@@ -26,7 +26,7 @@ export class EditProductComponent implements OnInit{
     this.rawUrl = data.rawImage;
     this.position = data.croppedPosition;
     this.product = data;
-    console.log(this.product);
+    
   }
 
   cancel() {

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Product } from '../../core/entities/product';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: "product-form",
@@ -23,10 +23,10 @@ export class ProductFormComponent implements OnChanges {
     private fb: FormBuilder
   ) {
     this.form = this.fb.group({
-      name: [""],
-      description: [""],
-      cost: [0],
-      price: [0],
+      name: ["", [Validators.required]],
+      description: ["", [Validators.required]],
+      cost: [0, [Validators.required, Validators.min(0)]],
+      price: [0, [Validators.required, Validators.min(1)]],
       available: [false]
     });
   }
