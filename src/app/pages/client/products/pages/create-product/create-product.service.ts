@@ -7,6 +7,7 @@ import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.
 import { v6 as uuid } from "uuid";
 import { CroppedImage } from '../../../../../core/generics/cropped-image';
 import { getDownloadURL, ref, Storage, uploadBytes } from '@angular/fire/storage';
+import { NgxImageCompressService } from 'ngx-image-compress';
 
 
 @Injectable({
@@ -19,7 +20,8 @@ export class CreateProductService {
     private auth: AuthService,
     private storage: Storage,
     private router : Router,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
+    private imageCompressServ: NgxImageCompressService
   ) { }
 
   goBack(){
@@ -44,6 +46,9 @@ export class CreateProductService {
       product.croppedPosition = cropped.position;
       let newRaw = await this.prepareImage(`${product.uuid}-raw`, image);
       let newCropped = await this.prepareImage(`${product.uuid}-cropped`, cropped.image);
+      console.log(newCropped.size);
+      newCropped = await this.compressImage(newCropped);
+      console.log(newCropped.size);
       let rawUrl = await this.storeImage(uid!, product.uuid, newRaw);
       let croppedUrl = await this.storeImage(uid!, product.uuid, newCropped);
       product.rawImage = rawUrl;
@@ -100,4 +105,46 @@ export class CreateProductService {
       throw error;
     }
   }
+
+  private async compressImage(file: File) {
+    try {
+      let base64 = await this.fileToBase64(file);
+      let compressed = await this.imageCompressServ.compressFile(base64, 1, 50, 50, 50, 50);
+      let blob = (await ((await fetch(compressed)).blob()))
+      let compressedFile = new File([blob], file.name, {type: file.type});
+      return compressedFile;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  private fileToBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        
+        reader.onloadend = () => {
+            if (reader.result) {
+                resolve(reader.result.toString());
+            } else {
+                reject(new Error('Failed to convert file to Base64'));
+            }
+        };
+        
+        reader.onerror = () => {
+            reject(new Error('Error reading file'));
+        };
+        
+        reader.readAsDataURL(file);
+    });
+  }
+
+  private base64ToArrayBuffer(base64: string): ArrayBuffer {
+    const binaryString = atob(base64);
+    const bytes = new Uint8Array(binaryString.length);
+    for (let i = 0; i < binaryString.length; i++) {
+      bytes[i] = binaryString.charCodeAt(i);
+    }
+    return bytes.buffer;
+  }
+
 }

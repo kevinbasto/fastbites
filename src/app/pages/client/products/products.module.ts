@@ -12,6 +12,7 @@ import { SharedComponentsModule } from '../../../shared-components/shared-compon
 import { CreateProductComponent } from './pages/create-product/create-product.component';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
+import { NgxImageCompressService } from 'ngx-image-compress';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
     MatDialogModule,
   ],
   providers: [
-    
+    NgxImageCompressService
   ]
 })
 export class ProductsModule { }

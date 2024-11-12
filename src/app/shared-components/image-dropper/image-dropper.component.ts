@@ -32,4 +32,8 @@ export class ImageDropperComponent {
     this.file.emit(file);
   }
 
+  clickButton(){
+    let item = document.getElementById("fileLoader");
+    item?.click()
+  }
 }
