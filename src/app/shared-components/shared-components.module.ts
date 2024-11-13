@@ -12,6 +12,7 @@ import { ImageCropperComponent } from 'ngx-image-cropper';
 import { AppImageCropperComponent } from './image-cropper/image-cropper.component';
 import { ImageDropperComponent } from './image-dropper/image-dropper.component';
 import { DirectivesModule } from '../core/directives/directives.module';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 
 
@@ -19,7 +20,8 @@ import { DirectivesModule } from '../core/directives/directives.module';
   declarations: [
     TableComponent,
     AppImageCropperComponent,
-    ImageDropperComponent
+    ImageDropperComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,

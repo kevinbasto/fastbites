@@ -1,1 +1,22 @@
-<p>confirm-dialog works!</p>
+<div class="message">
+    <h1 class="title">
+        {{message.title}}
+    </h1>
+    <p>
+        {{message.message}}
+    </p>
+    <div class="actions">
+        <button mat-raised-button >
+            <mat-icon>
+                cancel
+            </mat-icon>
+            Cancelar
+        </button>
+        <button mat-raised-button color="primary">
+            <mat-icon>
+                done
+            </mat-icon>
+            Guardar
+        </button>
+    </div>
+</div>
