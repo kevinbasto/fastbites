@@ -57,8 +57,9 @@ export class ProductsService {
     dialog.afterClosed().subscribe(async (confirmation : boolean) => {
       if(!confirmation)
         return;
-      products = products.filter(prod => prod.uuid == product.uuid);
+      products = products.filter(prod => prod.uuid != product.uuid);
       let uid = await this.authServ.getUID() as string;
+      console.log(products);
       this.updateProducts(uid, products);
     });
   }
