@@ -1,4 +1,6 @@
-export const productTableHeaders = [
+import { TableColumn } from "../../../core/generics/table-column";
+
+export const productTableHeaders : Array<TableColumn> = [
     {
       name: "name",
       displayName: "Nombre"
@@ -13,6 +15,7 @@ export const productTableHeaders = [
     },
     {
       name: "available",
-      displayName: "Disponible"
+      displayName: "Disponible",
+      toggable: true
     },
   ]
