@@ -36,7 +36,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
   exports: [
     TableComponent,
     AppImageCropperComponent,
-    ImageDropperComponent
+    ImageDropperComponent,
+    ConfirmDialogComponent
   ],
   providers: [
     NgxImageCompressService

@@ -9,6 +9,6 @@ export class ConfirmDialogComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public message: {title: string, message: string},
-    dialogRef: MatDialogRef<ConfirmDialogComponent>
+    public dialogRef: MatDialogRef<ConfirmDialogComponent>
   ) {}
 }

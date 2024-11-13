@@ -1,4 +1,4 @@
-<div class="message">
+<div class="dialog">
     <h1 class="title">
         {{message.title}}
     </h1>
@@ -6,13 +6,13 @@
         {{message.message}}
     </p>
     <div class="actions">
-        <button mat-raised-button >
+        <button mat-raised-button (click)="dialogRef.close(false)" >
             <mat-icon>
                 cancel
             </mat-icon>
             Cancelar
         </button>
-        <button mat-raised-button color="primary">
+        <button mat-raised-button color="primary" (click)="dialogRef.close(true)">
             <mat-icon>
                 done
             </mat-icon>
