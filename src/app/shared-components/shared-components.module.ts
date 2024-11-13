@@ -13,6 +13,7 @@ import { AppImageCropperComponent } from './image-cropper/image-cropper.componen
 import { ImageDropperComponent } from './image-dropper/image-dropper.component';
 import { DirectivesModule } from '../core/directives/directives.module';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 
@@ -30,6 +31,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatButtonModule,
     MatMenuModule,
     MatPaginatorModule,
+    MatSlideToggleModule,
     ImageCropperComponent,
     DirectivesModule
   ],

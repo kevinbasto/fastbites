@@ -7,11 +7,13 @@ export const productTableHeaders : Array<TableColumn> = [
     },
     {
       name: "cost",
-      displayName: "Costo"
+      displayName: "Costo",
+      type: "currency"
     },
     {
       name: "price",
-      displayName: "Precio de venta"
+      displayName: "Precio de venta",
+      type: "currency"
     },
     {
       name: "available",
