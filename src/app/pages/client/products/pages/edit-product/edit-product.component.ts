@@ -33,12 +33,12 @@ export class EditProductComponent implements OnInit{
     this.editProductServ.goBack();
   }
 
-  createProduct(product: Product) {
+  editProduct(product: Product) {
     this.uploading = !this.uploading;
-    // this.editProductServ.createProduct(product, this.file!, this.cropped!)
-    //   .finally(() => {
-    //     this.uploading = !this.uploading;
-    //   })
+    this.editProductServ.updateProduct({...this.product, ...product}, this.file!, this.cropped!)
+      .finally(() => {
+        this.uploading = !this.uploading;
+      })
   }
 
 }

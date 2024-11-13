@@ -54,12 +54,17 @@ export class EditProductService {
         product.croppedPosition = cropped!.position;
       }
       let products : Array<Product> = await this.getProducts(uid!);
-      products = products.map(prod => {
-        if(product.uuid == uuid)
-          return {...prod, ...product};
-        else
-          return prod;
-      }) as any;
+      for(let prod of products){
+        console.log(prod.uuid);
+        console.log(uuid);
+        if(prod.uuid == uuid){
+          let index = products.findIndex(newprod => newprod.uuid == prod.uuid);
+          console.log(index);
+          prod = {...prod, ...product};
+          products[index] = prod;
+        }
+      }
+      console.log(products);
       await this.updateProducts(uid!, products);
       this.snackbar.openMessage("Productos actualizados");
       this.router.navigate([`/client/products`]);

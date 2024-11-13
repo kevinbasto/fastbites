@@ -46,9 +46,7 @@ export class CreateProductService {
       product.croppedPosition = cropped.position;
       let newRaw = await this.prepareImage(`${product.uuid}-raw`, image);
       let newCropped = await this.prepareImage(`${product.uuid}-cropped`, cropped.image);
-      console.log(newCropped.size);
       newCropped = await this.compressImage(newCropped);
-      console.log(newCropped.size);
       let rawUrl = await this.storeImage(uid!, product.uuid, newRaw);
       let croppedUrl = await this.storeImage(uid!, product.uuid, newCropped);
       product.rawImage = rawUrl;
@@ -58,7 +56,6 @@ export class CreateProductService {
       await this.updateProducts(uid!, products);
       this.snackbar.openMessage("Productos actualizados con éxito");
       this.router.navigate([`/client/products`]);
-      return;
     } catch (error) {
       console.log(error);
       throw error;
@@ -92,7 +89,7 @@ export class CreateProductService {
     try {
       let docRef = doc(this.firestore, `/users/${uid}/data/products`);
       let products : any = (await getDoc(docRef)).data();
-      return products.products;
+      return products? products.products : [];
     } catch (error) {
       throw error;
     }

@@ -5,7 +5,7 @@
     <div class="grid-container">
         <product-form
             (cancel)="cancel()"
-            (submitProduct)="createProduct($event)"
+            (submitProduct)="editProduct($event)"
             [uploading]="uploading"
             [product]="product"
             (file)="file = $event"
