@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { doc, Firestore, getDoc } from '@angular/fire/firestore';
+import { doc, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { Product } from '../../../core/entities/product';
@@ -41,12 +41,22 @@ export class ProductsService {
   deleteProduct(product: Product, products: Array<Product>) {
     console.log(product.uuid);
     const dialog = this.dialog.open(ConfirmDialogComponent, { data: {title: "¿Borrar producto?", message: "Una Vez hecha esta acción, no se puede deshacer"}})
-    dialog.afterClosed().subscribe((confirmation : boolean) => {
+    dialog.afterClosed().subscribe(async (confirmation : boolean) => {
       if(!confirmation)
         return;
-      
-      
+      products = products.filter(prod => prod.uuid == product.uuid);
+      let uid = await this.authServ.getUID() as string;
+      this.updateProducts(uid, products);
     });
+  }
+
+  private async updateProducts(uid: string, products: Array<Product>) {
+    try {
+      let docRef = doc(this.firestore, `/users/${uid}/data/products`);
+      await setDoc(docRef, {products});
+    } catch (error) {
+      throw error;
+    }
   }
 
 }
