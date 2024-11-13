@@ -22,11 +22,9 @@ export class ProductsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.productsService.fetchProducts()
-    .then((result) => {
-      this.data = result;
-    })
-    .catch((err) => {});
+    this.productsService.products!.subscribe(products => {
+      this.data = products;
+    });
   }
 
   create() {

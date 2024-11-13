@@ -1,15 +1,27 @@
 import { Injectable } from '@angular/core';
-import { doc, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
+import { doc, docData, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { Product } from '../../../core/entities/product';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../shared-components/confirm-dialog/confirm-dialog.component';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
+
+  products : Observable<Array<Product>> = new Observable<Array<Product>>((observer ) => {
+    this.authServ.getUID()
+    .then((uid) => {
+      let docRef = doc(this.firestore, `/users/${uid}/data/products`); 
+      let prods$ : Observable<any> = docData(docRef);
+      prods$.subscribe(prods => observer.next(prods.products));
+    }).catch((err) => {
+      observer.error("No se pudo cargar los datos del usuario");
+    });
+  });
 
   constructor(
     private firestore : Firestore,
@@ -22,7 +34,8 @@ export class ProductsService {
     try {
       let uid  = await this.authServ.getUID();
       let docRef = doc(this.firestore, `/users/${uid}/data/products`);
-      let products = (await getDoc(docRef)).data()
+      let products = (await getDoc(docRef)).data();
+      
       return products as any? (products as any).products : [];
     } catch (error) {
       throw error;
