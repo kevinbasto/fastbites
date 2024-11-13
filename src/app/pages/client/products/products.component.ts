@@ -38,7 +38,7 @@ export class ProductsComponent implements OnInit {
   }
 
   deleteItem(product: Product) {
-    this.productsService.deleteProduct(product);
+    this.productsService.deleteProduct(product, this.data);
   }
 
   changePage(page: PageEvent) {}

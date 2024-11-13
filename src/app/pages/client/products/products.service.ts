@@ -38,7 +38,7 @@ export class ProductsService {
     this.router.navigate(['/client/products/edit']);
   }
 
-  deleteProduct(product: Product) {
+  deleteProduct(product: Product, products: Array<Product>) {
     console.log(product.uuid);
     const dialog = this.dialog.open(ConfirmDialogComponent, { data: {title: "¿Borrar producto?", message: "Una Vez hecha esta acción, no se puede deshacer"}})
     dialog.afterClosed().subscribe((confirmation : boolean) => {
