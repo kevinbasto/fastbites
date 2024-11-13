@@ -6,6 +6,8 @@ import { Product } from '../../../core/entities/product';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../shared-components/confirm-dialog/confirm-dialog.component';
 import { Observable } from 'rxjs';
+import { deleteObject, list, ref, Storage } from '@angular/fire/storage';
+import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +28,10 @@ export class ProductsService {
   constructor(
     private firestore : Firestore,
     private authServ: AuthService,
+    private storage: Storage,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackbar: SnackbarService
   ) {}
 
   async fetchProducts() : Promise<Array<any>> {
@@ -51,17 +55,35 @@ export class ProductsService {
     this.router.navigate(['/client/products/edit']);
   }
 
-  deleteProduct(product: Product, products: Array<Product>) {
-    console.log(product.uuid);
+  async deleteProduct(product: Product, products: Array<Product>) {
+    let { uuid } = product;
+    let uid = await this.authServ.getUID();
+    
     const dialog = this.dialog.open(ConfirmDialogComponent, { data: {title: "¿Borrar producto?", message: "Una Vez hecha esta acción, no se puede deshacer"}})
     dialog.afterClosed().subscribe(async (confirmation : boolean) => {
       if(!confirmation)
         return;
       products = products.filter(prod => prod.uuid != product.uuid);
       let uid = await this.authServ.getUID() as string;
-      console.log(products);
-      this.updateProducts(uid, products);
+      await this.updateProducts(uid, products);
+      await this.removeFromStorage(uid, uuid);
+      await this.snackbar.openMessage("Producto borrado con éxito!");
     });
+  }
+
+  async removeFromStorage(uid: string, uuid: string) {
+    try {
+      let folderRef = ref(this.storage, `${uid}/${uuid}`);
+      await list(folderRef)
+      .then(async (result) => {
+        for(let item of result.items)
+          await deleteObject(item);
+      }).catch((err) => {
+        
+      });
+    } catch (error) {
+      throw error;
+    }
   }
 
   private async updateProducts(uid: string, products: Array<Product>) {
