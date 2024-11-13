@@ -22,6 +22,7 @@ export class TableComponent {
   @Output() edit : EventEmitter<any> = new EventEmitter();
   @Output() deleteItem : EventEmitter<any> = new EventEmitter();
   @Output() pageEvent : EventEmitter<PageEvent> = new EventEmitter();
+  @Output() toggle: EventEmitter<any> = new EventEmitter();
 
   displayedColumns: string[] = [];
   dataSource : Array<any> = [];

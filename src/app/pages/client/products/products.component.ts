@@ -39,5 +39,10 @@ export class ProductsComponent implements OnInit {
     this.productsService.deleteProduct(product, this.data);
   }
 
+  toggleProduct(product: Product) {
+    product.available = !product.available;
+    this.productsService.updateProduct(product, this.data);
+  }
+
   changePage(page: PageEvent) {}
 }

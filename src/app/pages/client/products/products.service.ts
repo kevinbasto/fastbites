@@ -95,4 +95,19 @@ export class ProductsService {
     }
   }
 
+  async updateProduct(product: Product, products: Array<Product>) {
+    try {
+      products = products.map(prod => {
+        if(prod.uuid != product.uuid)
+          return prod;
+        else
+          return { ...prod, ...product };
+      });
+      let uid = await this.authServ.getUID();
+      await this.updateProducts(uid!, products);
+      this.snackbar.openMessage("¡Producto actualizado con éxito!");
+    } catch (error) {
+      this.snackbar.openMessage("No se pudo actualizar el producto");
+    }
+  }
 }

@@ -26,7 +26,7 @@
         <span *ngIf="header.type == 'date'">
           {{element[header.name] | date }}
         </span>
-        <mat-slide-toggle *ngIf="header.toggable" [checked]="element[header.name]">
+        <mat-slide-toggle *ngIf="header.toggable" [checked]="element[header.name]" (toggleChange)="toggle.emit(element)">
           {{element[header.name]? 'Activo' : 'Inactivo'}}
         </mat-slide-toggle>
       </td>
