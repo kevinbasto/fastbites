@@ -22,7 +22,7 @@ export class ProductsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.productsService.products!.subscribe(products => {
+    this.productsService.products$!.subscribe(products => {
       this.data = products;
     });
   }

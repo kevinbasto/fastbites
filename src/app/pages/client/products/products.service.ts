@@ -15,15 +15,8 @@ import { ProductCrudServiceService } from '../../../core/services/products-crud-
 })
 export class ProductsService {
 
-  products : Observable<Array<Product>> = new Observable<Array<Product>>((observer ) => {
-    this.authServ.getUID()
-    .then((uid) => {
-      let docRef = doc(this.firestore, `/users/${uid}/data/products`); 
-      let prods$ : Observable<any> = docData(docRef);
-      prods$.subscribe(prods => observer.next(prods.products));
-    }).catch((err) => {
-      observer.error("No se pudo cargar los datos del usuario");
-    });
+  products$ : Observable<Array<Product>> = new Observable<Array<Product>>((observer ) => {
+    this.productsService.products$.subscribe(prods => observer.next(prods));
   });
 
   constructor(
@@ -34,23 +27,7 @@ export class ProductsService {
     private dialog: MatDialog,
     private snackbar: SnackbarService,
     private productsService: ProductCrudServiceService
-  ) {
-    this.productsService.products$.subscribe(prods => {
-      console.log(prods);
-    })
-  }
-
-  async fetchProducts() : Promise<Array<any>> {
-    try {
-      let uid  = await this.authServ.getUID();
-      let docRef = doc(this.firestore, `/users/${uid}/data/products`);
-      let products = (await getDoc(docRef)).data();
-      
-      return products as any? (products as any).products : [];
-    } catch (error) {
-      throw error;
-    }
-  }
+  ) { }
 
   createNewProduct() {
     this.router.navigate(['/client/products/create']);

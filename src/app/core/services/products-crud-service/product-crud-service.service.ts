@@ -43,7 +43,14 @@ export class ProductCrudServiceService {
 
   updateProduct() {}
 
-  deleteProduct() {}
+  async deleteProduct(product: Product) {
+    try {
+      this.products = this.products!.filter(prod => prod.uuid != product.uuid);
+      await this.updateProducts();
+    } catch (error) {
+      throw error;
+    }
+  }
 
   private async updateProducts() {
     try {
