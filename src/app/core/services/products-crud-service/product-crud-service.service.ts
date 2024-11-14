@@ -3,7 +3,7 @@ import { Firestore, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Product } from '../../entities/product';
 import { AuthService } from '../auth/auth.service';
-import { doc } from '@firebase/firestore';
+import { doc, updateDoc } from '@firebase/firestore';
 import { v6 } from "uuid";
 
 @Injectable({
@@ -45,5 +45,13 @@ export class ProductCrudServiceService {
 
   deleteProduct() {}
 
-  private updateProducts() {}
+  private async updateProducts() {
+    try {
+      let uid = await this.authService.getUID() as string;
+      let docRef = doc(this.firestore, `/users/${uid}/data/products`);
+      await updateDoc(docRef, {products: this.products!})
+    } catch (error) {
+      throw error;
+    }
+  }
 }
