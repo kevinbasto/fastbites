@@ -1,14 +1,31 @@
 import { Injectable } from '@angular/core';
+import { ref } from '@angular/fire/storage';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImageServiceService {
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
-  uploadImage(route: string, file: File) {}
+  async uploadImage(route: string, file: File) {
+    try {
+      
+    } catch (error) {
+      throw error;
+    }
+  }
 
-  removeImages(path: string) {}
+  async removeImages(path: string) {
+    try {
+      let uid = await this.authService.getUID();
+      // let folderRef = ref()
+    } catch (error) {
+      throw error;
+    }
+  }
 
 }

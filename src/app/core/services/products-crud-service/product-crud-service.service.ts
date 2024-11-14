@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Product } from '../../entities/product';
 import { AuthService } from '../auth/auth.service';
 import { doc } from '@firebase/firestore';
+import { v6 } from "uuid";
 
 @Injectable({
   providedIn: 'root'
