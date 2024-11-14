@@ -8,6 +8,7 @@ import { ConfirmDialogComponent } from '../../../shared-components/confirm-dialo
 import { Observable } from 'rxjs';
 import { deleteObject, list, ref, Storage } from '@angular/fire/storage';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
+import { ProductCrudServiceService } from '../../../core/services/products-crud-service/product-crud-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +32,13 @@ export class ProductsService {
     private storage: Storage,
     private router: Router,
     private dialog: MatDialog,
-    private snackbar: SnackbarService
-  ) {}
+    private snackbar: SnackbarService,
+    private productsService: ProductCrudServiceService
+  ) {
+    this.productsService.products$.subscribe(prods => {
+      console.log(prods);
+    })
+  }
 
   async fetchProducts() : Promise<Array<any>> {
     try {

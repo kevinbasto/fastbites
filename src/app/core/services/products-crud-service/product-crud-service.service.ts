@@ -11,6 +11,7 @@ import { doc } from '@firebase/firestore';
 export class ProductCrudServiceService {
 
   products$ : Observable<Array<Product>>
+  private products?: Array<Product>
 
   constructor(
     private firestore: Firestore,
@@ -22,6 +23,7 @@ export class ProductCrudServiceService {
         uid = uid as string;
         let docRef = doc(this.firestore, `/users/${uid}/data/products`);
         (docData(docRef) as Observable<{products: Array<Product>}>).subscribe(products => {
+          this.products = products.products;
           observer.next(products.products);
         });
       }).catch((err) => {
@@ -30,9 +32,17 @@ export class ProductCrudServiceService {
     });
   }
 
-  createProduct() {}
+  createProduct(product: Product) {
+    try {
+      
+    } catch (error) {
+      throw error;
+    }
+  }
 
   updateProduct() {}
 
   deleteProduct() {}
+
+  private updateProducts() {}
 }
