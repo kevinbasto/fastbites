@@ -1,0 +1,38 @@
+import { Injectable } from '@angular/core';
+import { Firestore, docData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { Product } from '../../entities/product';
+import { AuthService } from '../auth/auth.service';
+import { doc } from '@firebase/firestore';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProductCrudServiceService {
+
+  products$ : Observable<Array<Product>>
+
+  constructor(
+    private firestore: Firestore,
+    private authService: AuthService
+  ) {
+    this.products$ = new Observable<Array<Product>>((observer) => {
+      this.authService.getUID()
+      .then((uid : string | null) => {
+        uid = uid as string;
+        let docRef = doc(this.firestore, `/users/${uid}/data/products`);
+        (docData(docRef) as Observable<{products: Array<Product>}>).subscribe(products => {
+          observer.next(products.products);
+        });
+      }).catch((err) => {
+        observer.error("No se pudo obtener la lista de productos");
+      });
+    });
+  }
+
+  createProduct() {}
+
+  updateProduct() {}
+
+  deleteProduct() {}
+}
