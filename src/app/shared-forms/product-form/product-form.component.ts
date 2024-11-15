@@ -40,7 +40,6 @@ export class ProductFormComponent implements OnChanges {
 
   submitProd(){
     let product: Product = this.form.value;
-    console.log(product);
     this.submitProduct.emit(product);
   }
 }

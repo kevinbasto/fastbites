@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { deleteObject, list, ref, Storage } from '@angular/fire/storage';
+import { deleteObject, getDownloadURL, list, ref, Storage, uploadBytes } from '@angular/fire/storage';
 import { AuthService } from '../auth/auth.service';
 import { NgxImageCompressService } from 'ngx-image-compress';
 
@@ -13,9 +13,21 @@ export class ImagesService {
     private imageCompressServ: NgxImageCompressService
   ) { }
 
-  async uploadImage(route: string, file: File) {
+  async prepareImage(name: string, file: File) {
     try {
-      
+      let format = file.name.split(".")[file.name.split(".").length - 1];
+      let buffer = await file.arrayBuffer();
+      return new File([buffer], `${name}.${format}`, {type: file.type});
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async uploadImage(route: string, file: File) : Promise<string> {
+    try {
+      let fileRef = await ref(this.storage, `/${route}/${file.name}`);
+      await uploadBytes(fileRef, file);
+      return await getDownloadURL(fileRef);
     } catch (error) {
       throw error;
     }

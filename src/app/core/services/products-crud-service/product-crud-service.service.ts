@@ -35,7 +35,10 @@ export class ProductCrudServiceService {
 
   createProduct(product: Product) {
     try {
-      
+      console.log(product);
+      this.products?.push(product);
+      console.log(this.products);
+      this.updateProducts();
     } catch (error) {
       throw error;
     }

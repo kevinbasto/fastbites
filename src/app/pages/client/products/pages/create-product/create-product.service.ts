@@ -4,10 +4,12 @@ import { AuthService } from '../../../../../core/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { Product } from '../../../../../core/entities/product';
 import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.service';
-import { v6 as uuid } from "uuid";
+import { v6 as uuid, v6 } from "uuid";
 import { CroppedImage } from '../../../../../core/generics/cropped-image';
 import { getDownloadURL, ref, Storage, uploadBytes } from '@angular/fire/storage';
 import { NgxImageCompressService } from 'ngx-image-compress';
+import { ImagesService } from '../../../../../core/services/images/images.service';
+import { ProductCrudServiceService } from '../../../../../core/services/products-crud-service/product-crud-service.service';
 
 
 @Injectable({
@@ -21,7 +23,8 @@ export class CreateProductService {
     private storage: Storage,
     private router : Router,
     private snackbar: SnackbarService,
-    private imageCompressServ: NgxImageCompressService
+    private imagesService: ImagesService,
+    private productsServ : ProductCrudServiceService
   ) { }
 
   goBack(){
@@ -41,98 +44,37 @@ export class CreateProductService {
    */
   async createProduct(product: Product, image: File, cropped: CroppedImage) {
     try {
-      let uid = await this.auth.getUID();
-      product.uuid = uuid();
+      let uid = await this.auth.getUID() as string;
+      let uuid = v6()
+      let urls = await this.processImage(uid, uuid, image, cropped);
       product.croppedPosition = cropped.position;
-      let newRaw = await this.prepareImage(`${product.uuid}-raw`, image);
-      let newCropped = await this.prepareImage(`${product.uuid}-cropped`, cropped.image);
-      newCropped = await this.compressImage(newCropped);
-      let rawUrl = await this.storeImage(uid!, product.uuid, newRaw);
-      let croppedUrl = await this.storeImage(uid!, product.uuid, newCropped);
-      product.rawImage = rawUrl;
-      product.croppedImage = croppedUrl;
-      let products : Array<Product> = await this.getProducts(uid!);
-      products.push(product);
-      await this.updateProducts(uid!, products);
-      this.snackbar.openMessage("Productos actualizados con éxito");
-      this.router.navigate([`/client/products`]);
+      product.croppedImage = urls.croppedUrl;
+      product.rawImage = urls.rawUrl;
+      product.uuid = uuid;
+      await this.productsServ.createProduct(product);
+      this.snackbar.openMessage("Producto creado con éxito!");
+      this.goBack()
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
 
-  private async prepareImage(name: string, file: File) {
+  /**
+   * comprimir el cropped, subir ambas imágenes
+   */
+  async processImage(uid: string, uuid: string, image: File, cropped: CroppedImage) : Promise<{rawUrl: string, croppedUrl: string}> {
     try {
-      let format = file.name.split(".")[file.name.split(".").length - 1];
-      let buffer = await file.arrayBuffer();
-      return new File([buffer], `${name}.${format}`, {type: file.type});
+      let urls = { rawUrl: "", croppedUrl: "" }
+      let rawFile = await this.imagesService.prepareImage(uuid, image);
+      let croppedFile = await this.imagesService.prepareImage(uuid, cropped.image);
+      croppedFile = await this.imagesService.compressImage(croppedFile);
+      urls.rawUrl = await this.imagesService.uploadImage(`/${uid}/${uuid}`, rawFile);
+      urls.croppedUrl = await this.imagesService.uploadImage(`/${uid}/${uuid}`, croppedFile);
+      return urls;
     } catch (error) {
+      this.snackbar.openMessage("No se pudo crear el producto solicitado");
       throw error;
     }
   }
 
-  private async storeImage(uid: string, prodUuid: string, file: File) : Promise<string> {
-    try {
-      
-      let url : string = "";
-      let fileRef = ref(this.storage, `/${uid}/${prodUuid}/${file.name}`);
-      await uploadBytes(fileRef, file);
-      url = await getDownloadURL(fileRef);
-      return url;
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  private async getProducts(uid: string){
-    try {
-      let docRef = doc(this.firestore, `/users/${uid}/data/products`);
-      let products : any = (await getDoc(docRef)).data();
-      return products? products.products : [];
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  private async updateProducts(uid: string, products: Array<Product>) {
-    try {
-      let docRef = doc(this.firestore, `/users/${uid}/data/products`);
-      await setDoc(docRef, {products});
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  private async compressImage(file: File) {
-    try {
-      let base64 = await this.fileToBase64(file);
-      let compressed = await this.imageCompressServ.compressFile(base64, 1, 50, 50, 75, 75);
-      let blob = (await ((await fetch(compressed)).blob()))
-      let compressedFile = new File([blob], file.name, {type: file.type});
-      return compressedFile;
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  private fileToBase64(file: File): Promise<string> {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        
-        reader.onloadend = () => {
-            if (reader.result) {
-                resolve(reader.result.toString());
-            } else {
-                reject(new Error('Failed to convert file to Base64'));
-            }
-        };
-        
-        reader.onerror = () => {
-            reject(new Error('Error reading file'));
-        };
-        
-        reader.readAsDataURL(file);
-    });
-  }
 }
