@@ -44,7 +44,13 @@ export class ProductCrudServiceService {
     }
   }
 
-  updateProduct() {}
+  async updateProduct(product: Product) {
+    try {
+      
+    } catch (error) {
+      throw error;
+    }
+  }
 
   async deleteProduct(product: Product) {
     try {
