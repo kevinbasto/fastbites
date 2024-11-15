@@ -6,7 +6,7 @@ import { NgxImageCompressService } from 'ngx-image-compress';
 @Injectable({
   providedIn: 'root'
 })
-export class ImageServiceService {
+export class ImagesService {
 
   constructor(
     private storage: Storage,
