@@ -44,9 +44,14 @@ export class ProductCrudServiceService {
     }
   }
 
-  async updateProduct(product: Product) {
+  async updateProduct(product: Product, uid: string, uuid: string) {
     try {
-      
+      this.products = this.products!.map(prod => {
+        if(prod.uuid == uuid)
+          return {...prod, ...product};
+        return prod;
+      });
+      await this.updateProducts();
     } catch (error) {
       throw error;
     }
