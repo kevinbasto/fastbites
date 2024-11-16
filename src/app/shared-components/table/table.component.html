@@ -66,6 +66,7 @@
                 [pageSizeOptions]="[5, 10, 25, 100]"
                 (page)="pageEvent.emit($event)"
                 showFirstLastButtons
-                aria-label="Select page">
+                aria-label="Select page"
+                *ngIf="config?.pagination">
   </mat-paginator>
   

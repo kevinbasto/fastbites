@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { TableColumn } from '../../core/generics/table-column';
+import { TableConfig } from '../../core/generics/table-config';
 
 @Component({
   selector: 'app-table',
@@ -14,6 +15,7 @@ export class TableComponent {
   @Input() data? : Array<any>;
   @Input() headers? : Array<TableColumn>;
   @Input() setSize : number = 0;
+  @Input() config? : TableConfig
 
   pageSize = 10
 
