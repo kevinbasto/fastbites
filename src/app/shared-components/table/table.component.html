@@ -8,7 +8,12 @@
       </mat-icon>
       Agregar elemento
     </button>
-    <button mat-raised-button color="primary" *ngIf="config?.ordersButton">
+    <button 
+      mat-raised-button 
+      color="primary" 
+      *ngIf="config?.ordersButton" 
+      (click)="order.emit()"
+    >
       <mat-icon>
         point_of_sale
       </mat-icon>
