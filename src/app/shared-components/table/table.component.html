@@ -2,23 +2,24 @@
     <h1>
       {{title? title : "Lista de elementos"}}
     </h1>
-    <button mat-raised-button color="primary" (click)="create.emit()">
-      <mat-icon>
-        add
-      </mat-icon>
-      Agregar elemento
-    </button>
-    <button 
-      mat-raised-button 
-      color="primary" 
-      *ngIf="config?.ordersButton" 
-      (click)="order.emit()"
-    >
-      <mat-icon>
-        point_of_sale
-      </mat-icon>
-      Ir al menu de venta
-    </button>
+    <div style="display: flex; gap: 1rem;">
+      <button mat-raised-button color="primary" (click)="create.emit()">
+        <mat-icon>
+          add
+        </mat-icon>
+        Agregar elemento
+      </button>
+      <button 
+        mat-raised-button 
+        color="primary" 
+        *ngIf="config?.ordersButton" 
+        (click)="order.emit()">
+        <mat-icon>
+          point_of_sale
+        </mat-icon>
+        Ir al menu de venta
+      </button>
+    </div>
   </div>
   
   <table mat-table [dataSource]="dataSource">\
