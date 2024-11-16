@@ -1,1 +1,28 @@
 <mat-spinner diameter="100" *ngIf="!products.length"></mat-spinner>
+<div class="menu">
+    <mat-card class="card" *ngFor="let product of products">
+        <div class="body">
+            <div class="header">
+                <h1>
+                    {{product.name}}
+                </h1>
+            </div>
+            <p>
+                {{product.description}}
+            </p>
+            {{product.croppedImage}}
+            <div class="actions">
+                
+                <button mat-raised-button color="primary">
+                    <mat-icon>
+                        add_shopping_cart
+                    </mat-icon>
+                    Agregar producto
+                </button>
+            </div>
+        </div>
+        <div class="image">
+            <img src="{{product.croppedImage}}" alt="">
+        </div>
+    </mat-card>
+</div>
