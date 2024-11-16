@@ -10,7 +10,7 @@ import { Product } from '../../../core/entities/product';
 })
 export class OrderingMenuComponent implements OnInit {
 
-  products?: Array<Product>
+  products!: Array<Product>
   id?: string;
 
   constructor(
