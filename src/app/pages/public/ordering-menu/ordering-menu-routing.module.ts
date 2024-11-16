@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { OrderingMenuComponent } from './ordering-menu.component';
 
 const routes: Routes = [
   {
-    path: "menu",
-    loadChildren: () => import("./ordering-menu/ordering-menu.module").then(m => m.OrderingMenuModule)
+    path: "",
+    component: OrderingMenuComponent
   }
 ];
 
@@ -12,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PublicRoutingModule { }
+export class OrderingMenuRoutingModule { }

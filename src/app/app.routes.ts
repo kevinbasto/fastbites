@@ -16,4 +16,8 @@ export const routes: Routes = [
         path: "auth",
         loadChildren: () => import("./layouts/auth-layout/auth-layout.module").then(m => m.AuthLayoutModule)
     },
+    {
+        path: "public",
+        loadChildren: () => import("./pages/public/public.module").then(m => m.PublicModule)
+    }
 ];

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OrderingMenuComponent } from './ordering-menu.component';
 
+import { OrderingMenuRoutingModule } from './ordering-menu-routing.module';
+import { OrderingMenuComponent } from './ordering-menu.component';
 
 
 @NgModule({
@@ -9,7 +10,8 @@ import { OrderingMenuComponent } from './ordering-menu.component';
     OrderingMenuComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    OrderingMenuRoutingModule
   ]
 })
 export class OrderingMenuModule { }
