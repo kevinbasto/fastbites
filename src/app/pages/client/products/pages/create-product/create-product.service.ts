@@ -9,7 +9,7 @@ import { CroppedImage } from '../../../../../core/generics/cropped-image';
 import { getDownloadURL, ref, Storage, uploadBytes } from '@angular/fire/storage';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { ImagesService } from '../../../../../core/services/images/images.service';
-import { ProductCrudServiceService } from '../../../../../core/repos/products-crud-service/product-crud-service.service';
+import { ProductsRepoService } from '../../../../../core/repos/products-repo/products-repo.service';
 
 
 @Injectable({
@@ -24,7 +24,7 @@ export class CreateProductService {
     private router : Router,
     private snackbar: SnackbarService,
     private imagesService: ImagesService,
-    private productsServ : ProductCrudServiceService
+    private productsServ : ProductsRepoService
   ) { }
 
   goBack(){

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.service';
 import { Product } from '../../../../../core/entities/product';
 import { CroppedImage } from '../../../../../core/generics/cropped-image';
-import { ProductCrudServiceService } from '../../../../../core/repos/products-crud-service/product-crud-service.service';
+import { ProductsRepoService } from '../../../../../core/repos/products-repo/products-repo.service';
 import { ImagesService } from '../../../../../core/services/images/images.service';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class EditProductService {
     private auth: AuthService,
     private router : Router,
     private snackbar: SnackbarService,
-    private productCrud: ProductCrudServiceService,
+    private productCrud: ProductsRepoService,
     private imagesServ: ImagesService
   ) { }
 

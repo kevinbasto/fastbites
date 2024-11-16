@@ -8,7 +8,7 @@ import { ConfirmDialogComponent } from '../../../shared-components/confirm-dialo
 import { Observable } from 'rxjs';
 import { deleteObject, list, ref, Storage } from '@angular/fire/storage';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
-import { ProductCrudServiceService } from '../../../core/repos/products-crud-service/product-crud-service.service';
+import { ProductsRepoService } from '../../../core/repos/products-repo/products-repo.service';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class ProductsService {
     private router: Router,
     private dialog: MatDialog,
     private snackbar: SnackbarService,
-    private productsService: ProductCrudServiceService
+    private productsService: ProductsRepoService
   ) { }
 
   createNewProduct() {

@@ -9,7 +9,7 @@ import { v6 } from "uuid";
 @Injectable({
   providedIn: 'root'
 })
-export class ProductCrudServiceService {
+export class ProductsRepoService {
 
   products$ : Observable<Array<Product>>
   private products?: Array<Product>
