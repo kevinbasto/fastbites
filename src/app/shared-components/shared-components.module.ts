@@ -7,13 +7,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from "@angular/material/menu";
 import { MatPaginatorModule } from "@angular/material/paginator";
-import { NgxImageCompressService } from 'ngx-image-compress';
 import { ImageCropperComponent } from 'ngx-image-cropper';
 import { AppImageCropperComponent } from './image-cropper/image-cropper.component';
 import { ImageDropperComponent } from './image-dropper/image-dropper.component';
 import { DirectivesModule } from '../core/directives/directives.module';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 
 
 
@@ -22,7 +22,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     TableComponent,
     AppImageCropperComponent,
     ImageDropperComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    QrScannerComponent
   ],
   imports: [
     CommonModule,
@@ -39,10 +40,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     TableComponent,
     AppImageCropperComponent,
     ImageDropperComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    QrScannerComponent
   ],
   providers: [
-    NgxImageCompressService
+    
   ]
 })
 export class SharedComponentsModule { }
