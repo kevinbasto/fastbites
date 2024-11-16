@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OrderingMenuService } from './ordering-menu.service';
+import { Product } from '../../../core/entities/product';
 
 @Component({
   selector: 'app-ordering-menu',
@@ -9,6 +10,7 @@ import { OrderingMenuService } from './ordering-menu.service';
 })
 export class OrderingMenuComponent implements OnInit {
 
+  products?: Array<Product>
   id?: string;
 
   constructor(
@@ -17,12 +19,15 @@ export class OrderingMenuComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.orderingMenuServ.products$.subscribe(products => this.products = products);
     this.route.queryParamMap.subscribe((queryParams) => {
       this.id = queryParams.get("id")?? "";
       if(this.id) this.fetchMenu()
     });
   }
 
-  fetchMenu() {}
+  fetchMenu() {
+    this.orderingMenuServ.setMenuId(this.id!);
+  }
   
 }
