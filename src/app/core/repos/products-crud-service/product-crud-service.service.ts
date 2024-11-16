@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Firestore, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Product } from '../../entities/product';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { doc, updateDoc } from '@firebase/firestore';
 import { v6 } from "uuid";
 

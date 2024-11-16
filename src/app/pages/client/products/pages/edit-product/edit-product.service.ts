@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.service';
 import { Product } from '../../../../../core/entities/product';
 import { CroppedImage } from '../../../../../core/generics/cropped-image';
-import { ProductCrudServiceService } from '../../../../../core/services/products-crud-service/product-crud-service.service';
+import { ProductCrudServiceService } from '../../../../../core/repos/products-crud-service/product-crud-service.service';
 import { ImagesService } from '../../../../../core/services/images/images.service';
 
 @Injectable({

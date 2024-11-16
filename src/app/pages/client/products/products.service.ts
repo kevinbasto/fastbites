@@ -8,7 +8,7 @@ import { ConfirmDialogComponent } from '../../../shared-components/confirm-dialo
 import { Observable } from 'rxjs';
 import { deleteObject, list, ref, Storage } from '@angular/fire/storage';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
-import { ProductCrudServiceService } from '../../../core/services/products-crud-service/product-crud-service.service';
+import { ProductCrudServiceService } from '../../../core/repos/products-crud-service/product-crud-service.service';
 
 @Injectable({
   providedIn: 'root'
