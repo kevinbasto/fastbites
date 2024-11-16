@@ -8,6 +8,12 @@
       </mat-icon>
       Agregar elemento
     </button>
+    <button mat-raised-button color="primary" *ngIf="config?.ordersButton">
+      <mat-icon>
+        point_of_sale
+      </mat-icon>
+      Ir al menu de venta
+    </button>
   </div>
   
   <table mat-table [dataSource]="dataSource">\

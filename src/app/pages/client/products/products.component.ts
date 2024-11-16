@@ -4,6 +4,7 @@ import { ProductsService } from './products.service';
 import { productTableHeaders } from './products-table.headers';
 import { PageEvent } from '@angular/material/paginator';
 import { Product } from '../../../core/entities/product';
+import { TableConfig } from '../../../core/generics/table-config';
 
 @Component({
   templateUrl: './products.component.html',
@@ -15,6 +16,10 @@ export class ProductsComponent implements OnInit {
   data : Array<any> = [];
   headers : Array<TableColumn> = productTableHeaders;
   size: number = 0;
+  tableConfig: TableConfig = {
+    pagination: false,
+    ordersButton: true
+  }
   
 
   constructor(
