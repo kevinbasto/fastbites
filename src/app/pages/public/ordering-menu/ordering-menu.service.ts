@@ -4,6 +4,7 @@ import { Product } from '../../../core/entities/product';
 import { ProductsRepoService } from '../../../core/repos/products-repo/products-repo.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CheckoutComponent } from '../../../shared-components/checkout/checkout.component';
+import { CheckoutItem } from '../../../core/entities/checkout-item';
 
 
 @Injectable({
@@ -28,6 +29,11 @@ export class OrderingMenuService {
   }
 
   loadCheckoutMenu(cart: Array<Product>) {
-    this.dialog.open(CheckoutComponent, { data: {cart} })
+    const dialog = this.dialog.open(CheckoutComponent, { data: {cart} })
+    dialog.afterClosed().subscribe((cart: Array<CheckoutItem> | null) => {
+      if(!cart)
+        return;
+      
+    });
   }
 }
