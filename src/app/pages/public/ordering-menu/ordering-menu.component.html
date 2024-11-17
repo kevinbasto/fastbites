@@ -1,28 +1,45 @@
-<mat-spinner diameter="100" *ngIf="!products.length"></mat-spinner>
+<div class="spinner-container" *ngIf="!products.length">
+    <mat-spinner diameter="100" ></mat-spinner>
+</div>
 <div class="menu">
-    <mat-card class="card" *ngFor="let product of products">
-        <div class="body">
-            <div class="header">
-                <h1>
-                    {{product.name}}
-                </h1>
+    <h1 style="margin-top: 1rem; text-align: center; margin-bottom: 0;">
+        Menu para ordenar
+    </h1>
+    <div *ngFor="let product of products">
+        <mat-card class="card mat-elevation-z8" *ngIf="product.available">
+            <div class="content">
+                <div class="body">
+                    <div class="header">
+                        <h2>
+                            {{product.name}}
+                        </h2>
+                        <h2>
+                            {{product.price | currency}}
+                        </h2>
+                    </div>
+                    <p>
+                        {{product.description}}
+                    </p>
+                    
+                </div>
+                <div class="image">
+                    <img src="{{product.croppedImage}}" alt="">
+                </div>
             </div>
-            <p>
-                {{product.description}}
-            </p>
-            {{product.croppedImage}}
             <div class="actions">
-                
-                <button mat-raised-button color="primary">
+                <button mat-raised-button color="primary" (click)="cart.push(product)">
                     <mat-icon>
                         add_shopping_cart
                     </mat-icon>
                     Agregar producto
                 </button>
             </div>
-        </div>
-        <div class="image">
-            <img src="{{product.croppedImage}}" alt="">
-        </div>
-    </mat-card>
+        </mat-card>
+    </div>
+    <button mat-raised-button color="primary" class="cart-button">
+        <mat-icon class="icon">
+            shopping_cart
+        </mat-icon>
+    </button>
+    <span class="cart-counter">{{ cart.length }} items</span>
 </div>

@@ -10,6 +10,7 @@ import { Product } from '../../../core/entities/product';
 })
 export class OrderingMenuComponent implements OnInit {
 
+  cart: Array<any> = [];
   products!: Array<Product>
   id?: string;
 
@@ -29,5 +30,6 @@ export class OrderingMenuComponent implements OnInit {
   fetchMenu() {
     this.orderingMenuServ.setMenuId(this.id!);
   }
-  
+ 
+  checkout() {}
 }
