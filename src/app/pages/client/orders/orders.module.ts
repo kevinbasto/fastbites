@@ -5,6 +5,8 @@ import { OrdersRoutingModule } from './orders-routing.module';
 import { OrdersComponent } from './orders.component';
 
 import { MatCardModule } from '@angular/material/card';
+import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
+import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { MatCardModule } from '@angular/material/card';
   imports: [
     CommonModule,
     OrdersRoutingModule,
-    MatCardModule
+    MatCardModule,
+    SharedComponentsModule,
+    SharedFormsModule
   ]
 })
 export class OrdersModule { }

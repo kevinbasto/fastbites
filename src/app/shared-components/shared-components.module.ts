@@ -16,6 +16,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { MatCardModule } from '@angular/material/card';
+import { OrdersTableComponent } from './orders-table/orders-table.component';
 
 
 
@@ -26,7 +27,8 @@ import { MatCardModule } from '@angular/material/card';
     ImageDropperComponent,
     ConfirmDialogComponent,
     QrScannerComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    OrdersTableComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ import { MatCardModule } from '@angular/material/card';
     ImageDropperComponent,
     ConfirmDialogComponent,
     QrScannerComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    OrdersTableComponent
   ],
   providers: [
     
