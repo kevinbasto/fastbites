@@ -15,7 +15,7 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: { cart: Array<Product>},
-    private dialogRef: MatDialogRef<CheckoutComponent>
+    private dialogRef: MatDialogRef<CheckoutComponent>,
   ) {}
 
   ngOnInit(): void {
@@ -36,8 +36,32 @@ export class CheckoutComponent implements OnInit {
       }
     });
   
+    this.calculateTotal()
+  }
+
+  calculateTotal() {
+    this.total = 0;
     for(let item of this.orderResume){
       this.total += item.quantity * item.product.price;
     }
+  }
+
+  addItem(index: number) {
+    this.orderResume[index].quantity++
+    this.calculateTotal();
+  }
+
+  substractItem(index: number) {
+    if (this.orderResume[index].quantity - 1 >= 0) {
+        this.orderResume[index].quantity--;
+    }
+    if (this.orderResume[index].quantity === 0) {
+        this.orderResume.splice(index, 1);
+    }
+    this.calculateTotal();
+  }
+
+  confirmOrder() {
+    this.dialogRef.close(this.orderResume);
   }
 }

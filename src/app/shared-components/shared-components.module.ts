@@ -15,6 +15,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 
@@ -33,6 +34,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
+    MatCardModule,
     MatPaginatorModule,
     MatSlideToggleModule,
     ImageCropperComponent,
