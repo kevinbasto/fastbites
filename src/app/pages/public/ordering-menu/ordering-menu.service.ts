@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Product } from '../../../core/entities/product';
 import { ProductsRepoService } from '../../../core/repos/products-repo/products-repo.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CheckoutComponent } from '../../../shared-components/checkout/checkout.component';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +15,8 @@ export class OrderingMenuService {
   private id?: string;
 
   constructor(
-    private productsRepo : ProductsRepoService
+    private productsRepo : ProductsRepoService,
+    private dialog: MatDialog
   ) { }
 
   setMenuId(uid: string) {
@@ -23,7 +27,7 @@ export class OrderingMenuService {
     })
   }
 
-  loadCheckoutMenu() {
-    
+  loadCheckoutMenu(cart: Array<Product>) {
+    this.dialog.open(CheckoutComponent, { data: {cart} })
   }
 }

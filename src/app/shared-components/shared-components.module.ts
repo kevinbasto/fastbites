@@ -14,6 +14,7 @@ import { DirectivesModule } from '../core/directives/directives.module';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 
@@ -23,7 +24,8 @@ import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
     AppImageCropperComponent,
     ImageDropperComponent,
     ConfirmDialogComponent,
-    QrScannerComponent
+    QrScannerComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
     AppImageCropperComponent,
     ImageDropperComponent,
     ConfirmDialogComponent,
-    QrScannerComponent
+    QrScannerComponent,
+    CheckoutComponent
   ],
   providers: [
     

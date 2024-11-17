@@ -32,6 +32,6 @@ export class OrderingMenuComponent implements OnInit {
   }
  
   checkout() {
-    this.orderingMenuServ
+    this.orderingMenuServ.loadCheckoutMenu(this.cart)
   }
 }
