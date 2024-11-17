@@ -31,5 +31,7 @@ export class OrderingMenuComponent implements OnInit {
     this.orderingMenuServ.setMenuId(this.id!);
   }
  
-  checkout() {}
+  checkout() {
+    this.orderingMenuServ
+  }
 }

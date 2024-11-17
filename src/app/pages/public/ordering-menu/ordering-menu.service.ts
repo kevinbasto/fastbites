@@ -22,4 +22,8 @@ export class OrderingMenuService {
       this.products$.next(products);
     })
   }
+
+  loadCheckoutMenu() {
+    
+  }
 }
