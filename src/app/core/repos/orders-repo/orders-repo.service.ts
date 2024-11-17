@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Firestore, Query, addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from '@angular/fire/firestore';
+import { Firestore, query, addDoc, collection, deleteDoc, doc, getDocs, updateDoc, where, orderBy, getDoc } from '@angular/fire/firestore';
 import { Order } from '../../entities/order';
 import { AuthService } from '../../services/auth/auth.service';
-import { query } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +26,14 @@ export class OrdersRepoService {
 
   async find() {
     try {
+      
       let uid = await this.auth.getUID();
       let colRef = collection(this.firestore, `/users/${uid}/orders`);
+      let refq = query(colRef, where('completed', '==', 'false'), orderBy('date', 'desc'))
+      // getDocs(refq)
       let docs = (await getDocs(colRef)).docs;
       let orders = [];
+
       for(let doc of docs)
         orders.push(doc.data());
       return orders;
