@@ -1,0 +1,19 @@
+.item{
+    display: flex;
+    gap: 1ch;
+    .content{
+        width: 80%;        
+        .header{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    .img{
+        width: 20%;
+    }
+}
+
+.actions{
+    display: flex;
+    flex-direction: column;
+}

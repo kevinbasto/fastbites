@@ -42,7 +42,7 @@ export class ProductsService {
     let { uuid } = product;
     let uid = await this.authServ.getUID();
     
-    const dialog = this.dialog.open(ConfirmDialogComponent, { data: {title: "¿Borrar producto?", message: "Una Vez hecha esta acción, no se puede deshacer"}})
+    const dialog = this.dialog.open(ConfirmDialogComponent, { data: {name: "¿Borrar producto?", message: "Una Vez hecha esta acción, no se puede deshacer"}})
     dialog.afterClosed().subscribe(async (confirmation : boolean) => {
       if(!confirmation)
         return;

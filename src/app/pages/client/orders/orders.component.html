@@ -2,5 +2,8 @@
     <app-orders-table
         [headers]="headers"
         [orders]="data"
+        (details)="detailOrder($event)"
+        (closeOrder)="closeOrder($event)"
+        (cancelOrder)="cancelOrder($event)"
     ></app-orders-table>
 </mat-card>

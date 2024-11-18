@@ -4,30 +4,46 @@ import { TableConfig } from '../../../core/generics/table-config';
 import { OrdersTableHeaders } from './orders-table.headers';
 import { OrdersService } from './orders.service';
 import { Timestamp } from '@angular/fire/firestore';
+import { Order } from '../../../core/entities/order';
 
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss'
 })
-export class OrdersComponent implements OnInit{
-  title : string = "Listado de productos";
-  data : Array<any> = [];
-  headers : Array<TableColumn> = OrdersTableHeaders;
+export class OrdersComponent implements OnInit {
+  title: string = "Listado de productos";
+  data: Array<any> = [];
+  headers: Array<TableColumn> = OrdersTableHeaders;
   size: number = 0;
 
   constructor(
     private ordersService: OrdersService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.ordersService.orders$.subscribe(orders => {
-      orders.map(order => {
-        let timestamp : Timestamp = order.date as any;
-        order.date = timestamp.toDate();
-      });
+      orders
+        .map(order => {
+          let timestamp: Timestamp = order.date as any;
+          order.date = timestamp.toDate();
+          return order;
+        })
+      orders.sort((a: Order, b:Order) => b.date.getTime() - a.date.getTime())
       console.log(orders);
       this.data = orders;
     })
+  }
+
+  detailOrder(order: Order) {
+    this.ordersService.detailOrder(order);
+  }
+
+  closeOrder(order: Order) {
+    this.ordersService.closeOrder(order);
+  }
+
+  cancelOrder(order: Order) {
+    this.ordersService.cancelOrder(order);
   }
 }

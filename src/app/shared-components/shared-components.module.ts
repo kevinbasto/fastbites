@@ -22,6 +22,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { OrdersTableComponent } from './orders-table/orders-table.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { OrderVisualizerComponent } from './order-visualizer/order-visualizer.component';
 
 
 
@@ -33,7 +34,8 @@ import { MatInputModule } from '@angular/material/input';
     ConfirmDialogComponent,
     QrScannerComponent,
     CheckoutComponent,
-    OrdersTableComponent
+    OrdersTableComponent,
+    OrderVisualizerComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +59,8 @@ import { MatInputModule } from '@angular/material/input';
     ConfirmDialogComponent,
     QrScannerComponent,
     CheckoutComponent,
-    OrdersTableComponent
+    OrdersTableComponent,
+    OrderVisualizerComponent
   ],
   providers: [
     
