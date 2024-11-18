@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Product } from '../../core/entities/product';
 import { CheckoutItem } from '../../core/entities/checkout-item';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -13,10 +14,18 @@ export class CheckoutComponent implements OnInit {
   orderResume: Array<CheckoutItem> = []
   total : number = 0;
 
+  form: FormGroup
+
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: { cart: Array<Product>},
     private dialogRef: MatDialogRef<CheckoutComponent>,
-  ) {}
+    private builder: FormBuilder
+  ) {
+    this.form = this.builder.group({
+      name: ["", [Validators.required]],
+      details: [""]
+    })
+  }
 
   ngOnInit(): void {
     this.buildCheckout()
@@ -62,6 +71,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   confirmOrder() {
-    this.dialogRef.close(this.orderResume);
+    // this.dialogRef.close(this.orderResume);
   }
 }

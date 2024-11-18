@@ -1,61 +1,97 @@
 <div class="card">
-    <h1 style="text-align: center;">
-        Resumen de orden
-    </h1>
-    <div class="body">
-        <div class="item" *ngFor="let item of orderResume; let i = index">
-            <div class="info">
-                <div class="header">
-                    <h3>
-                        {{item.product.name}}
-                    </h3>
-                    <h3>
-                        {{item.product.price | currency}}
-                    </h3>
+    <mat-stepper #stepper>
+        <mat-step>
+            <ng-template matStepLabel>Confirma la orden</ng-template>
+            <h1 style="text-align: center;">
+                Resumen de orden
+            </h1>
+            <div class="body">
+                <div class="item" *ngFor="let item of orderResume; let i = index">
+                    <div class="info">
+                        <div class="header">
+                            <h3>
+                                {{item.product.name}}
+                            </h3>
+                            <h3>
+                                {{item.product.price | currency}}
+                            </h3>
+                        </div>
+                        <div class="item-body">
+                            <button mat-icon-button color="primary" (click)="substractItem(i)">
+                                <mat-icon>
+                                    chevron_left
+                                </mat-icon>
+                            </button>
+                            <span>
+                                {{item.quantity}}
+                            </span>
+                            <button mat-icon-button color="primary" (click)="addItem(i)">
+                                <mat-icon>
+                                    chevron_right
+                                </mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="img">
+                        <img src="{{item.product.croppedImage}}" alt="">
+                    </div>
                 </div>
-                <div class="item-body">
-                    <button mat-icon-button color="primary" (click)="substractItem(i)">
-                        <mat-icon>
-                            chevron_left
-                        </mat-icon>
-                    </button>
-                    <span>
-                        {{item.quantity}}
-                    </span>
-                    <button mat-icon-button color="primary" (click)="addItem(i)">
-                        <mat-icon>
-                            chevron_right
-                        </mat-icon>
-                    </button>
+                <div class="footer">
+                    <div class="amount" style="display: flex; justify-content: flex-end;">
+                        <b>
+                            subtotal:
+                        </b>
+                        <p>
+                            {{total | currency}}
+                        </p>
+                    </div>
+                    <div class="actions">
+                        <button mat-raised-button (click)="cancel()">
+                            <mat-icon>
+                                cancel
+                            </mat-icon>
+                            Cancelar
+                        </button>
+                        <button mat-raised-button color="primary" matStepperNext  >
+                            <mat-icon>
+                                arrow_forward
+                            </mat-icon>
+                            Continuar
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="img">
-                <img src="{{item.product.croppedImage}}" alt="">
-            </div>
-        </div>
-        <div class="footer">
-            <div class="amount" style="display: flex; justify-content: flex-end;">
-                <b>
-                    subtotal:
-                </b>
-                <p>
-                    {{total | currency}}
-                </p>
-            </div>
-            <div class="actions">
-                <button mat-raised-button (click)="cancel()">
-                    <mat-icon>
-                        cancel
-                    </mat-icon>
-                    Cancelar
-                </button>
-                <button mat-raised-button color="primary" (click)="confirmOrder()">
-                    <mat-icon>
-                        done
-                    </mat-icon>
-                    Guardar
-                </button>
-            </div>
-        </div>
-    </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Detalles extra</ng-template>
+            <form action="" [formGroup]="form" style="margin-top: 1rem;">
+                <mat-form-field>
+                    <mat-label>
+                        Nombre
+                    </mat-label>
+                    <input type="text" matInput formControlName="name">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>
+                        Detalles
+                    </mat-label>
+                    <textarea matInput rows="10" formControlName="details" ></textarea>
+                </mat-form-field>
+                <div class="form-actions">
+                    <button mat-raised-button matStepperPrevious >
+                        <mat-icon>
+                            arrow_back
+                        </mat-icon>
+                        Regresar
+                    </button>
+                    <button mat-raised-button color="primary" (click)="confirmOrder()" >
+                        <mat-icon>
+                            done
+                        </mat-icon>
+                        Confirmar
+                    </button>
+                </div>
+            </form>
+        </mat-step>
+    </mat-stepper>
 </div>
