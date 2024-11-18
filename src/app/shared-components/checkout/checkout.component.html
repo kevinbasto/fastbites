@@ -84,7 +84,7 @@
                         </mat-icon>
                         Regresar
                     </button>
-                    <button mat-raised-button color="primary" (click)="confirmOrder()" >
+                    <button mat-raised-button color="primary" (click)="confirmOrder()" [disabled]="form.invalid" >
                         <mat-icon>
                             done
                         </mat-icon>

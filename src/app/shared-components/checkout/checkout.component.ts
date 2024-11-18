@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Product } from '../../core/entities/product';
 import { CheckoutItem } from '../../core/entities/checkout-item';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Order } from '../../core/entities/order';
 
 
 @Component({
@@ -71,6 +72,14 @@ export class CheckoutComponent implements OnInit {
   }
 
   confirmOrder() {
-    // this.dialogRef.close(this.orderResume);
+    let order: Order = {
+      items: this.orderResume,
+      date: new Date(),
+      active: true,
+      status: 'PROCESSING',
+      name: this.form.value.name,
+      details: this.form.value.details
+    }
+    this.dialogRef.close(order);
   }
 }
