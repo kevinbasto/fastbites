@@ -6,6 +6,10 @@ export const OrdersTableHeaders : Array<TableColumn> = [
         displayName: "Nombre"
     },
     {
+        name: "details",
+        displayName: "Detalles",
+    },
+    {
         name: "date",
         displayName: "Date",
         type: "date"

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { TableColumn } from '../../core/generics/table-column';
 import { TableConfig } from '../../core/generics/table-config';
@@ -8,7 +8,7 @@ import { TableConfig } from '../../core/generics/table-config';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent {
+export class TableComponent implements OnChanges{
 
   //table inputs
   @Input() title? : string;

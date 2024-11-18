@@ -3,5 +3,32 @@
         Listado de ordenes
     </h1>
 </div>
-<!-- <table mat-table [dataSource]="orders">
-</table> -->
+<table mat-table [dataSource]="dataSource">
+  
+    <ng-container *ngFor="let header of headers" matColumnDef="{{header.name}}">
+      <th mat-header-cell *matHeaderCellDef>
+        {{header.displayName}}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <span *ngIf="!header.type && !header.toggable">
+            {{element[header.name]}}
+          </span>
+          <span *ngIf="header.type == 'currency'">
+            {{element[header.name] | currency }}
+          </span>
+          <span *ngIf="header.type == 'date'">
+            {{element[header.name] | date: 'dd/MM/YYYY HH:MM' }}
+          </span>
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="options">
+      <th mat-header-cell *matHeaderCellDef> Opciones </th>
+      <td mat-cell *matCellDef="let element">
+        
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
