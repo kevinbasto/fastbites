@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, query, addDoc, collection, deleteDoc, doc, getDocs, updateDoc, where, orderBy, getDoc } from '@angular/fire/firestore';
+import { Firestore, query, addDoc, collection, deleteDoc, doc, getDocs, updateDoc, where, orderBy, getDoc, collectionData } from '@angular/fire/firestore';
 import { Order } from '../../entities/order';
 import { AuthService } from '../../services/auth/auth.service';
 
@@ -29,12 +29,8 @@ export class OrdersRepoService {
       
       let uid = await this.auth.getUID();
       let colRef = collection(this.firestore, `/users/${uid}/orders`);
-      let refq = query(colRef, where('active', '==', true), orderBy('date', 'desc'))
-      let docs = (await getDocs(refq)).docs;
-      let orders = [];
-      for(let doc of docs)
-        orders.push(doc.data());
-      return orders;
+      let refq = query(colRef, where('active', '==', true))
+      return collectionData(refq)
     } catch (error) {
       throw error;
     }
