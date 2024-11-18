@@ -45,7 +45,18 @@ export class OrdersService {
     }
     const dialog = this.dialog.open(ConfirmDialogComponent, {data: {...message}})
     dialog.afterClosed().subscribe((confirmation : boolean) => {
-
+      if(!confirmation)
+        return;
+      this.ordersRepo.update({...order, active: false, status: "COMPLETED"})
+      .catch((err) => {
+        throw err;
+      });
+      this.salesrepo.create({
+        date: order.date,
+        name: order.name!,
+        total: order.total,
+        orderId: order.id!
+      });
     });
   }
 
@@ -56,6 +67,8 @@ export class OrdersService {
     }
     const dialog = this.dialog.open(ConfirmDialogComponent, {data: {...message}})
     dialog.afterClosed().subscribe((confirmation : boolean) => {
+      if(!confirmation)
+        return;
       this.ordersRepo.update({...order, active: false, status: "CANCELLED"})
       .then((result) => {
         this.snackbar.openMessage("Orden cancelada con éxito");
