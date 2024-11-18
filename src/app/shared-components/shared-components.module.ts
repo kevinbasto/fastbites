@@ -20,6 +20,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { OrdersTableComponent } from './orders-table/orders-table.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -43,8 +45,10 @@ import { OrdersTableComponent } from './orders-table/orders-table.component';
     MatPaginatorModule,
     MatSlideToggleModule,
     MatStepperModule,
+    MatInputModule,
     ImageCropperComponent,
-    DirectivesModule
+    DirectivesModule,
+    ReactiveFormsModule
   ],
   exports: [
     TableComponent,

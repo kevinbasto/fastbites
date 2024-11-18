@@ -33,5 +33,8 @@ export class OrderingMenuComponent implements OnInit {
  
   checkout() {
     this.orderingMenuServ.loadCheckoutMenu(this.cart)
+    .then(() => {
+      this.cart = [];
+    })
   }
 }
