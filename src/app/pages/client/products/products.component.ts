@@ -18,8 +18,10 @@ export class ProductsComponent implements OnInit {
   headers : Array<TableColumn> = productTableHeaders;
   size: number = 0;
   tableConfig: TableConfig = {
+    create: true,
     pagination: false,
-    ordersButton: true
+    ordersButton: true,
+    options: true
   }
   
 

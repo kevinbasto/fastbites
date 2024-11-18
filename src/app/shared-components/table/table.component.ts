@@ -42,7 +42,8 @@ export class TableComponent implements OnChanges{
     this.displayedColumns = [];
     for(let header of this.headers!)
       this.displayedColumns.push(header.name);
-    this.displayedColumns.push('options')
+    if(this.config?.options)
+      this.displayedColumns.push('options')
   }
 
 

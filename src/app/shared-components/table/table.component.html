@@ -3,7 +3,7 @@
       {{title? title : "Lista de elementos"}}
     </h1>
     <div style="display: flex; gap: 1rem;">
-      <button mat-raised-button color="primary" (click)="create.emit()">
+      <button mat-raised-button color="primary" (click)="create.emit()" *ngIf="config?.create">
         <mat-icon>
           add
         </mat-icon>
@@ -22,7 +22,7 @@
     </div>
   </div>
   
-  <table mat-table [dataSource]="dataSource">\
+  <table mat-table [dataSource]="dataSource">
   
     <ng-container *ngFor="let header of headers" matColumnDef="{{header.name}}">
       <th mat-header-cell *matHeaderCellDef>
