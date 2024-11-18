@@ -36,7 +36,15 @@ export class OrdersRepoService {
     }
   }
 
-  update() {}
+  async update(order: Order) {
+    try {
+      let uid = await this.auth.getUID();
+      let docRef = doc(this.firestore, `/users/${uid}/orders/${order.id!}`);
+      await updateDoc(docRef, {...order});
+    } catch (error) {
+      throw error;
+    }
+  }
 
   async delete(id: string) {
     try {

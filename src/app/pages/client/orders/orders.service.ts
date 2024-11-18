@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { OrderVisualizerComponent } from '../../../shared-components/order-visualizer/order-visualizer.component';
 import { Message } from '../../../core/generics/message';
 import { ConfirmDialogComponent } from '../../../shared-components/confirm-dialog/confirm-dialog.component';
+import { SalesRepoService } from '../../../core/repos/sales-repo/sales-repo.service';
+import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +18,8 @@ export class OrdersService {
 
   constructor(
     private ordersRepo: OrdersRepoService,
+    private salesrepo: SalesRepoService,
+    private snackbar: SnackbarService,
     private dialog: MatDialog
   ) {
     this.orders$ = new Observable<Array<Order>>((observer) => {
@@ -40,6 +44,9 @@ export class OrdersService {
       message: 'Una vez se confirme esta acción, la orden se cerrara y se guardara como venta'
     }
     const dialog = this.dialog.open(ConfirmDialogComponent, {data: {...message}})
+    dialog.afterClosed().subscribe((confirmation : boolean) => {
+
+    });
   }
 
   cancelOrder(order:Order) {
@@ -48,6 +55,14 @@ export class OrdersService {
       message: 'Si presionas en cancelar orden, la orden será anotada como pérdida'
     }
     const dialog = this.dialog.open(ConfirmDialogComponent, {data: {...message}})
+    dialog.afterClosed().subscribe((confirmation : boolean) => {
+      this.ordersRepo.update({...order, active: false, status: "CANCELLED"})
+      .then((result) => {
+        this.snackbar.openMessage("Orden cancelada con éxito");
+      }).catch((err) => {
+        this.snackbar.openMessage("Hubo un error al procesar la operación");
+      });
+    });
   }
   
 }
