@@ -29,11 +29,9 @@ export class OrdersRepoService {
       
       let uid = await this.auth.getUID();
       let colRef = collection(this.firestore, `/users/${uid}/orders`);
-      let refq = query(colRef, where('completed', '==', 'false'), orderBy('date', 'desc'))
-      // getDocs(refq)
-      let docs = (await getDocs(colRef)).docs;
+      let refq = query(colRef, where('active', '==', true), orderBy('date', 'desc'))
+      let docs = (await getDocs(refq)).docs;
       let orders = [];
-
       for(let doc of docs)
         orders.push(doc.data());
       return orders;

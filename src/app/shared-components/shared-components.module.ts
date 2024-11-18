@@ -2,20 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from './table/table.component';
 
+import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from "@angular/material/menu";
 import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatStepperModule } from "@angular/material/stepper";
+
 import { ImageCropperComponent } from 'ngx-image-cropper';
 import { AppImageCropperComponent } from './image-cropper/image-cropper.component';
 import { ImageDropperComponent } from './image-dropper/image-dropper.component';
 import { DirectivesModule } from '../core/directives/directives.module';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { MatCardModule } from '@angular/material/card';
 import { OrdersTableComponent } from './orders-table/orders-table.component';
 
 
@@ -39,6 +42,7 @@ import { OrdersTableComponent } from './orders-table/orders-table.component';
     MatCardModule,
     MatPaginatorModule,
     MatSlideToggleModule,
+    MatStepperModule,
     ImageCropperComponent,
     DirectivesModule
   ],

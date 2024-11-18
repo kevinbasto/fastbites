@@ -5,6 +5,6 @@ export interface Order {
     name?: string;
     items: Array<CheckoutItem>;
     date: Date;
-    completed: boolean;
-    status: "PROCESS" |"CANCELLED" | "COMPLETED"
+    active: boolean;
+    status: "PROCESSING" |"CANCELLED" | "COMPLETED"
 }
