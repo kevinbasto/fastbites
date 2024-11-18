@@ -7,5 +7,6 @@ export interface Order {
     items: Array<CheckoutItem>;
     date: Date;
     active: boolean;
+    total: number;
     status: "PROCESSING" |"CANCELLED" | "COMPLETED"
 }

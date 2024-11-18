@@ -78,7 +78,8 @@ export class CheckoutComponent implements OnInit {
       active: true,
       status: 'PROCESSING',
       name: this.form.value.name,
-      details: this.form.value.details
+      details: this.form.value.details,
+      total: this.total
     }
     this.dialogRef.close(order);
   }
