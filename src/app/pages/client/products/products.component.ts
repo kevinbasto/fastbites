@@ -5,6 +5,7 @@ import { productTableHeaders } from './products-table.headers';
 import { PageEvent } from '@angular/material/paginator';
 import { Product } from '../../../core/entities/product';
 import { TableConfig } from '../../../core/generics/table-config';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './products.component.html',
@@ -23,7 +24,8 @@ export class ProductsComponent implements OnInit {
   
 
   constructor(
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -49,5 +51,7 @@ export class ProductsComponent implements OnInit {
     this.productsService.updateProduct(product, this.data);
   }
 
-  goToOrderingPage() {}
+  goToOrderingPage() {
+    this.productsService.goToProducts()
+  }
 }

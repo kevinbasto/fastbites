@@ -93,4 +93,14 @@ export class ProductsService {
       this.snackbar.openMessage("No se pudo actualizar el producto");
     }
   }
+
+  async goToProducts() {
+    try {
+      let uid = await this.authServ.getUID();
+      let url = this.router.createUrlTree([`/public/menu`], {queryParams: {id: uid}, })
+      window.open(url.toString(), '_blank')
+    } catch (error) {
+      this.snackbar.openMessage("Hubo un problema al redirigirte al menu");
+    }
+  }
 }
