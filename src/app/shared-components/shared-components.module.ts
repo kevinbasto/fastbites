@@ -23,6 +23,7 @@ import { OrdersTableComponent } from './orders-table/orders-table.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { OrderVisualizerComponent } from './order-visualizer/order-visualizer.component';
+import { MenuUrlDisplayerComponent } from './menu-url-displayer/menu-url-displayer.component';
 
 
 
@@ -35,7 +36,8 @@ import { OrderVisualizerComponent } from './order-visualizer/order-visualizer.co
     QrScannerComponent,
     CheckoutComponent,
     OrdersTableComponent,
-    OrderVisualizerComponent
+    OrderVisualizerComponent,
+    MenuUrlDisplayerComponent
   ],
   imports: [
     CommonModule,

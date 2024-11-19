@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { deleteObject, list, ref, Storage } from '@angular/fire/storage';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 import { ProductsRepoService } from '../../../core/repos/products-repo/products-repo.service';
+import * as qrcode from "qrcode";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class ProductsService {
     private router: Router,
     private dialog: MatDialog,
     private snackbar: SnackbarService,
-    private productsService: ProductsRepoService
+    private productsService: ProductsRepoService,
   ) { }
 
   createNewProduct() {
@@ -98,8 +99,12 @@ export class ProductsService {
     try {
       let uid = await this.authServ.getUID();
       let url = this.router.createUrlTree([`/public/menu`], {queryParams: {id: uid}, })
-      window.open(url.toString(), '_blank')
+      let finurl = `${window.location.origin}/${url}`;
+      let qr = await qrcode.toDataURL(finurl);
+      console.log(qr);
+      // window.open(url.toString(), '_blank')
     } catch (error) {
+      console.log(error);
       this.snackbar.openMessage("Hubo un problema al redirigirte al menu");
     }
   }
