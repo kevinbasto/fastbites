@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: "settings",
     loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
+  },
+  {
+    path: "ordering-menu",
+    loadChildren: () => import('./client-menu/client-menu.module').then(m => m.ClientMenuModule)
   }
 ];
 
