@@ -20,19 +20,18 @@
                     <p>
                         {{product.description}}
                     </p>
-                    
+                    <div class="actions">
+                        <button mat-raised-button color="primary" (click)="addItemTocheckout(product)">
+                            <mat-icon>
+                                add_shopping_cart
+                            </mat-icon>
+                            Agregar producto
+                        </button>
+                    </div>
                 </div>
                 <div class="image">
                     <img src="{{product.croppedImage}}" alt="">
                 </div>
-            </div>
-            <div class="actions">
-                <button mat-raised-button color="primary" (click)="cart.push(product)">
-                    <mat-icon>
-                        add_shopping_cart
-                    </mat-icon>
-                    Agregar producto
-                </button>
             </div>
         </mat-card>
     </div>
@@ -40,6 +39,7 @@
         <mat-icon class="icon">
             shopping_cart
         </mat-icon>
+        <span >{{ cart.length }}</span>
     </button>
-    <span class="cart-counter">{{ cart.length }} items</span>
+    
 </div>

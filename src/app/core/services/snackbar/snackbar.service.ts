@@ -10,9 +10,9 @@ export class SnackbarService {
     private snackbar : MatSnackBar
   ) { }
 
-  openMessage(message: string){
+  openMessage(message: string, time?: number){
     this.snackbar.open(message, "ok", {
-      duration: 1000
+      duration: time?? 1000
     })
   }
 }

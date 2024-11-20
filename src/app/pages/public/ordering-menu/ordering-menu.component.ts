@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OrderingMenuService } from './ordering-menu.service';
 import { Product } from '../../../core/entities/product';
+import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-ordering-menu',
@@ -16,7 +17,8 @@ export class OrderingMenuComponent implements OnInit {
 
   constructor(
     private orderingMenuServ: OrderingMenuService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackServ: SnackbarService
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +31,11 @@ export class OrderingMenuComponent implements OnInit {
 
   fetchMenu() {
     this.orderingMenuServ.setMenuId(this.id!);
+  }
+
+  addItemTocheckout(item : Product){
+    this.cart.push(item);
+    this.snackServ.openMessage("Item agregado al carrito", 100);
   }
  
   checkout() {

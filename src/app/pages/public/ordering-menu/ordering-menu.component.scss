@@ -28,8 +28,8 @@
                 display: grid;
                 place-content: center;
                 img{
-                    width: 75px;
-                    height: 75px;
+                    width: 100px;
+                    height: 100px;
                 }
             }
         }
@@ -51,9 +51,9 @@
     bottom: 10px;
     right: 10px;
     .icon {
-        font-size: 45px;
+        font-size: 25px;
         width: auto;
-        height: 50px;
+        height: 30px;
         margin: 0;
     }
 }
