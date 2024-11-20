@@ -64,7 +64,8 @@ import { OrderingMenuComponent } from './ordering-menu/ordering-menu.component';
     QrScannerComponent,
     CheckoutComponent,
     OrdersTableComponent,
-    OrderVisualizerComponent
+    OrderVisualizerComponent,
+    OrderingMenuComponent
   ],
   providers: [
     
