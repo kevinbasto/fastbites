@@ -1,18 +1,18 @@
-.navbar{
+.navbar {
   padding: 1rem;
 }
 
-div{
+div {
+  .menu-icon {
     cursor: pointer;
-    .menu-icon {
-        font-size: 2rem;
-        width: auto;
-        height: auto;
-    }
+    font-size: 2rem;
+    width: auto;
+    height: auto;
+  }
 }
 
-.page-header{
-  h1{
+.page-header {
+  h1 {
     font-weight: 300;
     margin: 0;
   }
