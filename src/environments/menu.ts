@@ -15,5 +15,10 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         name: "Ordenes",
         url: "orders",
         icon: "point_of_sale",
-    }
+    },
+    {
+        name: "Configuraciones",
+        url: "settings",
+        icon: "settings",
+    },
 ]
