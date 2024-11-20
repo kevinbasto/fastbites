@@ -7,8 +7,19 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class MenuUrlDisplayerComponent {
 
+  url: string;
+  qr: string
+
   constructor(
-    private dialogRef: MatDialogRef<MenuUrlDisplayerComponent>,
-    @Inject(MAT_DIALOG_DATA) data: { url : string, qr: any}
-  ) {}
+    public dialogRef: MatDialogRef<MenuUrlDisplayerComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: { url : string, qr: string }
+  ) {
+    this.url = this.data.url;
+    this.qr = this.data.qr
+  }
+
+  navigateToMenu() {
+    window.open(this.url, '_blank')
+  }
+
 }

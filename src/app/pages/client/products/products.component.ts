@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '../../../core/generics/table-column';
 import { ProductsService } from './products.service';
 import { productTableHeaders } from './products-table.headers';
-import { PageEvent } from '@angular/material/paginator';
 import { Product } from '../../../core/entities/product';
 import { TableConfig } from '../../../core/generics/table-config';
-import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './products.component.html',
@@ -27,7 +25,6 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
-    private router: Router
   ) { }
 
   ngOnInit(): void {

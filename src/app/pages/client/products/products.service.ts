@@ -10,6 +10,7 @@ import { deleteObject, list, ref, Storage } from '@angular/fire/storage';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 import { ProductsRepoService } from '../../../core/repos/products-repo/products-repo.service';
 import * as qrcode from "qrcode";
+import { MenuUrlDisplayerComponent } from '../../../shared-components/menu-url-displayer/menu-url-displayer.component';
 
 @Injectable({
   providedIn: 'root'
@@ -98,11 +99,10 @@ export class ProductsService {
   async goToProducts() {
     try {
       let uid = await this.authServ.getUID();
-      let url = this.router.createUrlTree([`/public/menu`], {queryParams: {id: uid}, })
-      let finurl = `${window.location.origin}/${url}`;
-      let qr = await qrcode.toDataURL(finurl);
-      console.log(qr);
-      // window.open(url.toString(), '_blank')
+      let urlTree = this.router.createUrlTree([`/public/menu`], {queryParams: {id: uid}, })
+      let url = `${window.location.origin}/${urlTree}`;
+      let qr = await qrcode.toDataURL(url);
+      const dialog = this.dialog.open(MenuUrlDisplayerComponent, {data: {url, qr}})
     } catch (error) {
       console.log(error);
       this.snackbar.openMessage("Hubo un problema al redirigirte al menu");
