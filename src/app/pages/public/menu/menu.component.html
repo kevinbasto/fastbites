@@ -11,6 +11,6 @@
         </p>
     </div>
 </div>
-<div class="grid-container">
-    <qr-scanner *ngIf="scannerMode"></qr-scanner>
+<div class="grid-container" *ngIf="scannerMode">
+    <qr-scanner ></qr-scanner>
 </div>
