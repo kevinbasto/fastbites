@@ -4,21 +4,23 @@
             Url de menu
         </h1>
     </div>
-    <div class="qr">
+    <div class="qr" style="display: flex; flex-direction: column;">
         <img src="{{qr}}" alt="" style="width: 250px; height: 250px;">
+        <div href=""  class="link" (click)="navigateToMenu()" style="text-align: center; display: flex; justify-content: center; cursor: pointer;">
+            <p>
+                Ir al menu
+            </p>
+            <mat-icon>
+                exit_to_app
+            </mat-icon>
+        </div>
     </div>
     <div class="form-actions">
-        <button mat-raised-button (click)="dialogRef.close()">
+        <button mat-raised-button (click)="dialogRef.close()" color="primary">
             <mat-icon>
                 done
             </mat-icon>
             aceptar
-        </button>
-        <button mat-raised-button color="primary" (click)="navigateToMenu()" >
-            <mat-icon>
-                exit_to_app
-            </mat-icon>
-            Ir al menu
         </button>
     </div>
 </div>
