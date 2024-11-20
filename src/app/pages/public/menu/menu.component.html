@@ -1,1 +1,13 @@
-<ordering-menu></ordering-menu>
+<div class="grid-container loading-screen" *ngIf="!scannerMode && !products">
+    <div>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <mat-spinner></mat-spinner>
+        </div>
+        <h1 style="text-align: center; font-weight: bold;">
+            powered by Fastbites
+        </h1>
+        <p style="text-align: center;">
+            estamos cargando tu menú
+        </p>
+    </div>
+</div>

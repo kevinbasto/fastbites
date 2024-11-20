@@ -18,7 +18,7 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
     },
     {
         name: "Comanda",
-        url: "ordering-menu",
+        url: "menu",
         icon: "point_of_sale",
     },
     {
