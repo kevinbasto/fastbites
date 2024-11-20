@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClientMenuComponent } from './client-menu.component';
+import { MenuComponent } from './menu.component';
 
 const routes: Routes = [
   {
     path: "",
-    component: ClientMenuComponent
+    component: MenuComponent
   }
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ClientMenuRoutingModule { }
+export class MenuRoutingModule { }
