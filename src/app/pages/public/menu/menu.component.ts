@@ -24,8 +24,12 @@ export class MenuComponent implements OnInit{
   ngOnInit(): void {
     this.route.queryParamMap.subscribe(queryParams => {
       let id = queryParams.get("id");
-      if(id)
+      if(id){
         this.id = id;
+        this.scannerMode = false;
+      }else[
+        this.scannerMode = true
+      ]
     });
   }
 }
