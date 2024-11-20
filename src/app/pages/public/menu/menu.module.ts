@@ -6,6 +6,7 @@ import { MenuComponent } from './menu.component';
 import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MenuRoutingModule,
     MatProgressSpinnerModule,
     SharedComponentsModule,
-    SharedFormsModule
+    SharedFormsModule,
+    MatCardModule
   ]
 })
 export class MenuModule { }

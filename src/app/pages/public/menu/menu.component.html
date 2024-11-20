@@ -12,5 +12,21 @@
     </div>
 </div>
 <div class="grid-container" *ngIf="scannerMode">
-    <qr-scanner ></qr-scanner>
+    <div class="mat-elevation-z8">
+        <mat-card class="card">
+            <h1 style="text-align: center;">
+                ¡Hola!
+            </h1>
+            <p style="text-align: center;">
+                ¡scanea un QR de fastbites para cargar el menú!
+            </p>
+            <qr-scanner
+                (scan)="processScan($event)"
+                [stop]="stop"
+            ></qr-scanner>        
+        </mat-card>
+    </div>
+</div>
+<div class="grid-container" *ngIf="message">
+    
 </div>
