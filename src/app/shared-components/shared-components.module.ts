@@ -24,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { OrderVisualizerComponent } from './order-visualizer/order-visualizer.component';
 import { MenuUrlDisplayerComponent } from './menu-url-displayer/menu-url-displayer.component';
+import { OrderingMenuComponent } from './ordering-menu/ordering-menu.component';
 
 
 
@@ -37,7 +38,8 @@ import { MenuUrlDisplayerComponent } from './menu-url-displayer/menu-url-display
     CheckoutComponent,
     OrdersTableComponent,
     OrderVisualizerComponent,
-    MenuUrlDisplayerComponent
+    MenuUrlDisplayerComponent,
+    OrderingMenuComponent
   ],
   imports: [
     CommonModule,

@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: "menu",
-    loadChildren: () => import("./ordering-menu/ordering-menu.module").then(m => m.OrderingMenuModule)
+    loadChildren: () => import("./menu/menu.module").then(m => m.MenuModule)
   }
 ];
 
