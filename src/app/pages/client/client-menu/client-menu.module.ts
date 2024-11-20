@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { ClientMenuRoutingModule } from './client-menu-routing.module';
 import { ClientMenuComponent } from './client-menu.component';
+import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
+import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { ClientMenuComponent } from './client-menu.component';
   ],
   imports: [
     CommonModule,
-    ClientMenuRoutingModule
+    ClientMenuRoutingModule,
+    SharedComponentsModule,
+    SharedFormsModule
   ]
 })
 export class ClientMenuModule { }
