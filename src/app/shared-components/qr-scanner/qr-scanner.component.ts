@@ -19,7 +19,7 @@ export class QrScannerComponent implements OnInit{
       (result : any) => console.log('decoded qr code:', result),
       {
         highlightScanRegion: true,
-        highlightCodeOutline: true
+        highlightCodeOutline: true,
       },
     );
     this.qrScanner.start()
