@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { MatInputModule } from '@angular/material/input';
     MatCheckboxModule,
     MatDialogModule,
     MatInputModule,
+    MatSlideToggle,
     SharedComponentsModule,
     SharedFormsModule
   ]
