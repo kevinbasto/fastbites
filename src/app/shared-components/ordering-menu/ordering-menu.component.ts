@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Product } from '../../core/entities/product';
 
 @Component({
   selector: 'ordering-menu',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class OrderingMenuComponent {
 
+  @Input() products?: Array<Product>;
+
+  constructor() {}
 }

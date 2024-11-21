@@ -10,11 +10,11 @@ import { Message } from '../../../core/generics/message';
   styleUrl: './menu.component.scss'
 })
 export class MenuComponent implements OnInit {
-  activeScan: boolean = false;
-  scannerMode: boolean = false;
-  stop: boolean = false;
-  message?: Message;
+
   id?: string;
+  scannerMode: boolean = false;
+  activeFetch: boolean = false;
+  stop: boolean = false;
   products?: Array<Product>;
 
   constructor(
@@ -28,6 +28,8 @@ export class MenuComponent implements OnInit {
       if (id) {
         this.id = id;
         this.scannerMode = false;
+        this.menuService.fetchMenu(this.id!)
+        .subscribe((products) => this.setProducts(products));
       } else {
         this.scannerMode = true
       }
@@ -35,21 +37,31 @@ export class MenuComponent implements OnInit {
   }
 
   processScan(scan: string) {
-    if(!this.activeScan){
-      this.activeScan = true;
+    if (!this.activeFetch) {
+      this.activeFetch = true;
       this.menuService.processScan(scan)
-      .then((result) => {
-        this.stop = true;
-        this.scannerMode = false;
-      }).catch((err) => {
-        setTimeout(() => {
-          this.activeScan = false;
-        }, 500);
-        this.scannerMode = true;
-        this.stop = false;
-      });
+        .then((id) => {
+          this.id = id;
+          this.stop = true;
+          this.scannerMode = false;
+          this.menuService.fetchMenu(this.id!)
+          .subscribe((products) => this.setProducts(products));
+        })
+        .catch((err) => {
+          this.stop = false;
+        })
+        .finally(() => {
+          this.activeFetch = false;
+        });
     }
   }
 
-  
+  setProducts(products : Array<Product>){
+    if(products.length === 0){
+      this.scannerMode = true;
+      this.stop = false;
+      return;
+    }
+    this.products = products;
+  }
 }

@@ -8,10 +8,10 @@ import QrScanner from 'qr-scanner';
 })
 export class QrScannerComponent implements OnInit, OnChanges{
 
-  qrScanner!: QrScanner
+  qrScanner!: QrScanner;
   
   @Output() scan : EventEmitter<string> = new EventEmitter(); 
-  @Input() stop? : boolean;
+  @Input() stop?: boolean;
 
   constructor() {}
 
@@ -29,21 +29,18 @@ export class QrScannerComponent implements OnInit, OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes['stop'])
-      this.alternateScanner()
+    if(changes['stop'] && this.stop)
+      this.alternateScanner();
   }
 
   processScan(data: string){
     this.scan.emit(data);
-    const button = document.getElementById("shutter");
-      button?.click()
+    // const button = document.getElementById("shutter");
+    //   button?.click()
   }
 
   alternateScanner() {
-    if(!this.qrScanner) return;
-    if(this.stop)
-      this.qrScanner.stop();
-    else 
-      this.qrScanner.start();
+    this.qrScanner.stop()
+    // this.qrScanner.pause()
   }
 }

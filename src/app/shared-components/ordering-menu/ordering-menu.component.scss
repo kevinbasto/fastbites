@@ -1,0 +1,30 @@
+div{
+    gap: 0;
+    .card{
+        display: flex;
+        flex-direction: row;
+        .body{
+            width: 70%;
+            .info{
+                .header{
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+            .actions{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        .img{
+            width: 30%;
+            display: grid;
+            place-content: center;
+            img{
+                width: 90px;
+                height: 90px;
+                border-radius: 5px;
+            }
+        }
+    }
+}

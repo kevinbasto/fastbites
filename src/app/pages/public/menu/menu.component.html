@@ -27,6 +27,12 @@
         </mat-card>
     </div>
 </div>
-<div class="grid-container" *ngIf="message">
-    
+<div *ngIf="products && products.length > 0">
+    <h1 style="text-align: center;">
+        Listado de productos
+    </h1>
+    <mat-divider></mat-divider>
+    <ordering-menu
+        [products]="products"
+    ></ordering-menu>
 </div>

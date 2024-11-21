@@ -25,6 +25,7 @@ import { MatInputModule } from '@angular/material/input';
 import { OrderVisualizerComponent } from './order-visualizer/order-visualizer.component';
 import { MenuUrlDisplayerComponent } from './menu-url-displayer/menu-url-displayer.component';
 import { OrderingMenuComponent } from './ordering-menu/ordering-menu.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 
@@ -54,7 +55,8 @@ import { OrderingMenuComponent } from './ordering-menu/ordering-menu.component';
     MatInputModule,
     ImageCropperComponent,
     DirectivesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDividerModule
   ],
   exports: [
     TableComponent,

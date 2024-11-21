@@ -1,1 +1,33 @@
-<p>ordering-menu works!</p>
+<div class="grid-container">
+    <div  *ngFor="let product of products" >
+        <div class="card">
+            <div class="body">
+                <div class="info">
+                    <div class="header">
+                        <p>
+                            <b>{{product.name}}</b>
+                        </p>
+                        <p>
+                            {{product.price | currency}}
+                        </p>
+                    </div>
+                    <div class="body">
+                        {{product.description}}
+                    </div>
+                </div>
+                <div class="actions">
+                    <button mat-raised-button color="primary">
+                        <mat-icon>
+                            add_shopping_cart
+                        </mat-icon>
+                        Agregar
+                    </button>
+                </div>
+            </div>
+            <div class="img">
+                <img src="{{product.croppedImage}}" alt="" >
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+</div>

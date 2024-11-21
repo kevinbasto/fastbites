@@ -80,7 +80,10 @@ export class ProductsRepoService {
     return new Observable<Array<Product>>((observer) => {
       let docRef = doc(this.firestore, `/users/${uid}/data/products`);
       (docData(docRef) as Observable<{products: Array<Product>}>).subscribe(doc => {
-        observer.next(doc.products);
+        if(!doc)
+          observer.next([]);
+        else
+          observer.next(doc.products);
       });
     });
   }
