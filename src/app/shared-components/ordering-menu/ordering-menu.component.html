@@ -1,7 +1,7 @@
-<div class="grid-container">
-    <div  *ngFor="let product of products" >
-        <div class="card">
-            <div class="body">
+<div class="grid-container" style="gap: 1ch;">
+    <div  *ngFor="let product of products">
+        <div class="card" style="height: 100%;">
+            <div class="body" style="display: flex; justify-content: space-between; flex-direction: column;">
                 <div class="info">
                     <div class="header">
                         <p>
@@ -28,6 +28,6 @@
                 <img src="{{product.croppedImage}}" alt="" >
             </div>
         </div>
-        <mat-divider></mat-divider>
+        <!-- <mat-divider></mat-divider> -->
     </div>
 </div>
