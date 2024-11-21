@@ -10,6 +10,14 @@ export class MenuService {
     private snackbar : SnackbarService
   ) { }
 
+  async fetchMenu(id: string) {
+    try {
+      
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async processScan(scan: string){
     let {isValidURL, hasQueryParams } = this.isURLWithQueryParams(scan);
     if(!(isValidURL && hasQueryParams)){
@@ -23,8 +31,11 @@ export class MenuService {
     paramsMap.forEach((value, key) => {
       if(key%2 == 0) tmp = value; else params[tmp] = value; 
     });
-    console.log(params);
-
+    if(!params['id']){
+      this.snackbar.openMessage("El QR provisto no es valido");
+      throw new Error("INVALID QR")
+    }
+    let id = params['id'];
   }
 
   isURLWithQueryParams(data: string) {
