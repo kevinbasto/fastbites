@@ -1,18 +1,27 @@
 import { Injectable } from '@angular/core';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
+import { ProductsRepoService } from '../../../core/repos/products-repo/products-repo.service';
+import { BehaviorSubject } from 'rxjs';
+import { Product } from '../../../core/entities/product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
 
+  products$ : BehaviorSubject<Array<Product>> = new BehaviorSubject<Array<Product>>(null as any);
+  
   constructor(
-    private snackbar : SnackbarService
+    private snackbar : SnackbarService,
+    private productsRepo: ProductsRepoService
   ) { }
 
   async fetchMenu(id: string) {
     try {
-      
+      this.productsRepo.fetchProducts(id)
+      .subscribe((products : Array<Product>) => {
+        this.products$.next(products);
+      });
     } catch (error) {
       throw error;
     }
@@ -36,6 +45,7 @@ export class MenuService {
       throw new Error("INVALID QR")
     }
     let id = params['id'];
+    
   }
 
   isURLWithQueryParams(data: string) {
