@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../core/entities/product';
 
 @Component({
@@ -9,6 +9,7 @@ import { Product } from '../../core/entities/product';
 export class OrderingMenuComponent {
 
   @Input() products?: Array<Product>;
+  @Output() prod: EventEmitter<Product> = new EventEmitter();
 
   constructor() {}
 }
