@@ -9,6 +9,8 @@ import { Product } from '../../../core/entities/product';
 })
 export class MenuComponent implements OnInit{
 
+  items: Array<any> = [];
+
   products?: Array<Product>;
 
   constructor(
@@ -22,4 +24,5 @@ export class MenuComponent implements OnInit{
     })
   }
 
+  addProduct(product: Product){}
 }

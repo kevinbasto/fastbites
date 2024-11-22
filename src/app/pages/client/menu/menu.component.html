@@ -11,6 +11,9 @@
         </button>
     </div>
     <div class="card">
-        <ordering-menu [products]="products"></ordering-menu>
+        <ordering-menu 
+            [products]="products"
+            (prod)="addProduct($event)"
+        ></ordering-menu>
     </div>
 </mat-card>
