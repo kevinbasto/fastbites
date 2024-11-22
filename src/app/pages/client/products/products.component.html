@@ -1,14 +1,20 @@
-<mat-card class="card">
-    <app-table
-        [title]="title"
-        [data]="data"
-        [headers]="headers"
-        [setSize]="size"
-        [config]="tableConfig"
-        (create)="create()"
-        (edit)="edit($event)"
-        (deleteItem)="deleteItem($event)"
-        (toggle)="toggleProduct($event)"
-        (order)="goToOrderingPage()"
-    ></app-table>
-</mat-card>
+<div class="mat-elevation-z8">
+    <mat-card class="card">
+        <div *ngIf="data.length == 0" style="display: flex; justify-content: center; align-items: center;">
+            <mat-spinner></mat-spinner>
+        </div>
+        <app-table
+            *ngIf="data.length > 0"
+            [title]="title"
+            [data]="data"
+            [headers]="headers"
+            [setSize]="size"
+            [config]="tableConfig"
+            (create)="create()"
+            (edit)="edit($event)"
+            (deleteItem)="deleteItem($event)"
+            (toggle)="toggleProduct($event)"
+            (order)="goToOrderingPage()"
+        ></app-table>
+    </mat-card>
+</div>

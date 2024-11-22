@@ -13,6 +13,7 @@ import { CreateProductComponent } from './pages/create-product/create-product.co
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 import { NgxImageCompressService } from 'ngx-image-compress';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { NgxImageCompressService } from 'ngx-image-compress';
     ProductsRoutingModule,
     SharedComponentsModule,
     SharedFormsModule,
+    MatProgressSpinnerModule,
     MatCardModule,
     MatTableModule,
     MatButtonModule,
