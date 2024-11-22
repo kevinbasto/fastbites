@@ -27,7 +27,7 @@ export class SidebarComponent {
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      this.breakpoint.observe(['(max-width: 800px)']).subscribe((res) => {
+      this.breakpoint.observe(['(max-width: 1200px)']).subscribe((res) => {
         if (res.matches) {
           this.hideSidebar = false;
           this.mode = "over"

@@ -22,7 +22,7 @@ export class ClientLayoutComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      this.breakpoint.observe(['(max-width: 800px)']).subscribe((res) => {
+      this.breakpoint.observe(['(max-width: 1200px)']).subscribe((res) => {
         if (res.matches) {
           this.sidenav.mode = 'over';
           this.sidenav.close();
