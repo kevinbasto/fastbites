@@ -1,14 +1,14 @@
 <div class="mat-elevation-z8">
     <mat-card class="card">
-        <div *ngIf="data.length == 0" style="display: flex; justify-content: center; align-items: center;">
+        <div *ngIf="!data" style="display: flex; justify-content: center; align-items: center;">
             <mat-spinner></mat-spinner>
         </div>
         <app-table
-            *ngIf="data.length > 0"
+            *ngIf="data"
             [title]="title"
             [data]="data"
             [headers]="headers"
-            [setSize]="size"
+            [setSize]="data.length"
             [config]="tableConfig"
             (create)="create()"
             (edit)="edit($event)"

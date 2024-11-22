@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '../../../core/generics/table-column';
 import { ProductsService } from './products.service';
-import { productTableHeaders } from './products-table.headers';
+import { productTableConfig, productTableHeaders } from './products-table.headers';
 import { Product } from '../../../core/entities/product';
 import { TableConfig } from '../../../core/generics/table-config';
 
@@ -14,13 +14,8 @@ export class ProductsComponent implements OnInit {
   title : string = "Listado de productos";
   data : Array<any> = [];
   headers : Array<TableColumn> = productTableHeaders;
-  size: number = 0;
-  tableConfig: TableConfig = {
-    create: true,
-    pagination: false,
-    ordersButton: true,
-    options: true
-  }
+  tableConfig: TableConfig = productTableConfig;
+  
   
 
   constructor(
