@@ -36,7 +36,7 @@
           {{element[header.name] | currency }}
         </span>
         <span *ngIf="header.type == 'date'">
-          {{element[header.name] | date }}
+          {{element[header.name] | date: 'dd/MM/YYYY HH:mm' }}
         </span>
         <mat-slide-toggle *ngIf="header.toggable" [checked]="element[header.name]" (toggleChange)="toggle.emit(element)">
           {{element[header.name]? 'Activo' : 'Inactivo'}}
@@ -72,6 +72,12 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+
+  <div *ngIf="!data || data?.length == 0" style="display: grid; place-content: center;">
+    <mat-icon style="width: 5rem; height: 5rem; font-size: 5rem;">
+      sentiment_dissatisfied
+    </mat-icon>
+  </div>
   
   <mat-paginator [length]="setSize"
                 [pageSize]="pageSize"
