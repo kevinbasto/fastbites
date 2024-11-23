@@ -1,30 +1,5 @@
-div{
-    gap: 1ch;
-    .prodcard{
-        display: flex;
-        flex-direction: row;
-        .body{
-            width: 70%;
-            .info{
-                .header{
-                    display: flex;
-                    justify-content: space-between;
-                }
-            }
-            .actions{
-                display: flex;
-                flex-direction: column;
-            }
-        }
-        .img{
-            width: 30%;
-            display: grid;
-            place-content: center;
-            img{
-                width: 90px;
-                height: 90px;
-                border-radius: 5px;
-            }
-        }
-    }
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
 }

@@ -10,10 +10,8 @@
             Confirmar Orden
         </button>
     </div>
-    <div class="card">
-        <ordering-menu 
-            [products]="products"
-            (prod)="addProduct($event)"
-        ></ordering-menu>
-    </div>
+    <ordering-menu 
+        [products]="products"
+        (prod)="addProduct($event)"
+    ></ordering-menu>
 </mat-card>

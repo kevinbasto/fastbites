@@ -3,6 +3,9 @@ import { SnackbarService } from '../../../core/services/snackbar/snackbar.servic
 import { ProductsRepoService } from '../../../core/repos/products-repo/products-repo.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../../../core/entities/product';
+import { MatDialog } from '@angular/material/dialog';
+import { CheckoutComponent } from '../../../shared-components/checkout/checkout.component';
+import { OrdersRepoService } from '../../../core/repos/orders-repo/orders-repo.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +14,9 @@ export class MenuService {
   
   constructor(
     private snackbar : SnackbarService,
-    private productsRepo: ProductsRepoService
+    private productsRepo: ProductsRepoService,
+    private dialog : MatDialog,
+    private ordersRepo : OrdersRepoService
   ) { }
 
   fetchMenu(id: string) {
@@ -50,6 +55,24 @@ export class MenuService {
       isValidURL,
       hasQueryParams,
     };
+  }
+
+  goToCheckout(cart: Product[], id : string) : Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      const dialog = this.dialog.open(CheckoutComponent, {data: {cart} });
+      dialog.afterClosed().subscribe(order => {
+        if(!order)
+          return;
+        this.ordersRepo.create(order, id)
+        .then((result) => {
+          this.snackbar.openMessage("Orden creada con éxito");
+          resolve(null);
+        }).catch((err) => {
+          this.snackbar.openMessage("No se pudo crear la orden");
+          reject(err);
+        });
+      });
+    });
   }
 }
 

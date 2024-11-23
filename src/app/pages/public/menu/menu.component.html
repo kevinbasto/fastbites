@@ -20,19 +20,25 @@
             <p style="text-align: center;">
                 ¡scanea un QR de fastbites para cargar el menú!
             </p>
-            <qr-scanner
-                (scan)="processScan($event)"
-                [stop]="stop"
-            ></qr-scanner>        
+            <qr-scanner (scan)="processScan($event)" [stop]="stop"></qr-scanner>
         </mat-card>
     </div>
 </div>
-<div *ngIf="products && products.length > 0">
+<div *ngIf="products && products.length > 0" >
     <h1 style="text-align: center;">
         Listado de productos
     </h1>
     <mat-divider></mat-divider>
-    <ordering-menu
-        [products]="products"
-    ></ordering-menu>
+    <div style="padding: 1rem;">
+        <ordering-menu (prod)="addProductToCard($event)" [products]="products"></ordering-menu>
+    </div>
+    <div class="cart-button" style="display: flex; flex-direction: column;">
+        <button mat-raised-button color="primary" (click)="goToCheckout()" style="display: flex; justify-content: center; align-items: center;" >
+            Ir a la caja:
+            <mat-icon>
+                shopping_cart
+            </mat-icon>
+            {{cart.length}} Items
+        </button>
+    </div>
 </div>

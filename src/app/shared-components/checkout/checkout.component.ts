@@ -24,7 +24,8 @@ export class CheckoutComponent implements OnInit {
   ) {
     this.form = this.builder.group({
       name: ["", [Validators.required]],
-      details: [""]
+      details: [""],
+      type: [""]
     })
   }
 

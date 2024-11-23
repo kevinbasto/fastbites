@@ -26,6 +26,8 @@ import { OrderVisualizerComponent } from './order-visualizer/order-visualizer.co
 import { MenuUrlDisplayerComponent } from './menu-url-displayer/menu-url-displayer.component';
 import { OrderingMenuComponent } from './ordering-menu/ordering-menu.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { MenuItemComponent } from './menu-item/menu-item.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -40,7 +42,8 @@ import { MatDividerModule } from '@angular/material/divider';
     OrdersTableComponent,
     OrderVisualizerComponent,
     MenuUrlDisplayerComponent,
-    OrderingMenuComponent
+    OrderingMenuComponent,
+    MenuItemComponent
   ],
   imports: [
     CommonModule,
@@ -56,7 +59,8 @@ import { MatDividerModule } from '@angular/material/divider';
     ImageCropperComponent,
     DirectivesModule,
     ReactiveFormsModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSelectModule
   ],
   exports: [
     TableComponent,

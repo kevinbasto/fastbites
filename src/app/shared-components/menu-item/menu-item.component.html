@@ -1,0 +1,22 @@
+<mat-card class="item">
+    <img src="{{product.croppedImage}}" alt="">
+    <div class="card">
+        <div>
+            <h4>
+                {{product.name}}
+            </h4>
+            <p>
+                {{product.description}}
+            </p>
+            <p>
+                {{product.price | currency}}
+            </p>
+        </div>
+        <button mat-raised-button color="primary" (click)="itemSelected.emit()">
+            <mat-icon>
+                add_shopping_cart
+            </mat-icon>
+            Agregar
+        </button>
+    </div>
+</mat-card>

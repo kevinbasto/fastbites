@@ -1,33 +1,8 @@
-<div class="grid-container" style="gap: 1ch;">
-    <div  *ngFor="let product of products">
-        <div class="prodcard" style="height: 100%;">
-            <div class="body" style="display: flex; justify-content: space-between; flex-direction: column;">
-                <div class="info">
-                    <div class="header">
-                        <p>
-                            <b>{{product.name}}</b>
-                        </p>
-                        <p>
-                            {{product.price | currency}}
-                        </p>
-                    </div>
-                    <div class="body">
-                        {{product.description}}
-                    </div>
-                </div>
-                <div class="actions">
-                    <button mat-raised-button color="primary" (click)="prod.emit(product)">
-                        <mat-icon>
-                            add_shopping_cart
-                        </mat-icon>
-                        Agregar
-                    </button>
-                </div>
-            </div>
-            <div class="img">
-                <img src="{{product.croppedImage}}" alt="" >
-            </div>
-            <mat-divider></mat-divider>
-        </div>
+<div class="grid-container" >
+    <div  *ngFor="let product of products" class="mat-elevation-z8">
+        <menu-item
+            [product]="product"
+            (itemSelected)="prod.emit(product)"
+        ></menu-item>
     </div>
 </div>

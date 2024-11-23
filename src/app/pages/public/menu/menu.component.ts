@@ -16,6 +16,7 @@ export class MenuComponent implements OnInit {
   activeFetch: boolean = false;
   stop: boolean = false;
   products?: Array<Product>;
+  cart: Array<Product> = []
 
   constructor(
     public menuService: MenuService,
@@ -63,5 +64,18 @@ export class MenuComponent implements OnInit {
       return;
     }
     this.products = products;
+  }
+
+  addProductToCard(prod: Product) {
+    this.cart.push(prod)
+  }
+
+  goToCheckout() {
+    this.menuService.goToCheckout(this.cart, this.id!)
+    .then((result) => {
+      this.cart = []
+    }).catch((err) => {
+      
+    });
   }
 }

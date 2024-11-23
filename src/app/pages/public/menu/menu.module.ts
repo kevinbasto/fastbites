@@ -8,6 +8,8 @@ import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { MatDividerModule } from '@angular/material/divider';
     SharedComponentsModule,
     SharedFormsModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatIconModule,
+    MatButtonModule
   ]
 })
 export class MenuModule { }
