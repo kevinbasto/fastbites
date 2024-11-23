@@ -75,23 +75,3 @@ export class MenuService {
     });
   }
 }
-
-
-// let {isValidURL, hasQueryParams } = this.isURLWithQueryParams(scan);
-//     if(!(isValidURL && hasQueryParams)){
-//       this.snackbar.openMessage("El QR provisto no es valido");
-//       throw new Error("INVALID QR")
-//     }
-//     let paramsRaw = scan.split("?")[1];
-//     let params : any = {}
-//     let paramsMap = paramsRaw.split("=");
-//     let tmp : string = "";
-//     paramsMap.forEach((value, key) => {
-//       if(key%2 == 0) tmp = value; else params[tmp] = value; 
-//     });
-//     if(!params['id']){
-//       this.snackbar.openMessage("El QR provisto no es valido");
-//       throw new Error("INVALID QR")
-//     }
-//     let id = params['id'];
-//     return id;
