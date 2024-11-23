@@ -12,7 +12,7 @@ import { TableConfig } from '../../../core/generics/table-config';
 export class ProductsComponent implements OnInit {
 
   title : string = "Listado de productos";
-  data : Array<any> = [];
+  data? : Array<any>;
   headers : Array<TableColumn> = productTableHeaders;
   tableConfig: TableConfig = productTableConfig;
   
@@ -37,12 +37,12 @@ export class ProductsComponent implements OnInit {
   }
 
   deleteItem(product: Product) {
-    this.productsService.deleteProduct(product, this.data);
+    this.productsService.deleteProduct(product, this.data!);
   }
 
   toggleProduct(product: Product) {
     product.available = !product.available;
-    this.productsService.updateProduct(product, this.data);
+    this.productsService.updateProduct(product, this.data!);
   }
 
   goToOrderingPage() {
