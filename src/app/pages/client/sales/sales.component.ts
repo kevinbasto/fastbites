@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '../../../core/generics/table-column';
 import { salesTableHeaders } from './sales-table.headers';
 import { TableConfig } from '../../../core/generics/table-config';
 import { SalesService } from './sales.service';
+import { Sale } from '../../../core/entities/sale';
 
 @Component({
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.scss'
 })
-export class SalesComponent {
+export class SalesComponent implements OnInit {
   title : string = "Listado de ventas del Día";
   data : Array<any> = [];
   headers : Array<TableColumn> = salesTableHeaders;
@@ -48,4 +49,19 @@ export class SalesComponent {
     });
   }
   
+  salesTitle : string = "Listado de ventas del Mes";
+  sales : Array<any> = [];
+  salesHeaders : Array<TableColumn> = salesTableHeaders;
+  MonthTotal = 0
+  
+  ngOnInit(): void {
+    this.MonthTotal = 0;
+    this.salesServ.fetchFromMonth()
+    .then((sales : Array<Sale>) => {
+      this.sales = sales;
+      sales.map(sale => this.MonthTotal += sale.total );
+    }).catch((err) => {
+      
+    });
+  }
 }

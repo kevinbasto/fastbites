@@ -23,13 +23,36 @@
             </p>
         </div>
     </mat-card>
+    <mat-card>
+        <div class="header">
+            <h2 style="text-align: center;">
+                Ventas del mes
+            </h2>
+            <p style="text-align: center;">
+                <b>
+                    {{MonthTotal | currency}}
+                </b>
+            </p>
+        </div>
+    </mat-card>
 </div>
-<mat-card class="card">
-    <app-table
-        [title]="title"
-        [data]="data"
-        [headers]="headers"
-        [setSize]="size"
-        [config]="tableConfig"
-    ></app-table>
-</mat-card>
+<div style="display: flex; flex-direction: column; gap: 1rem;">
+    <mat-card class="card">
+        <app-table
+            [title]="title"
+            [data]="data"
+            [headers]="headers"
+            [setSize]="size"
+            [config]="tableConfig"
+        ></app-table>
+    </mat-card>
+    <mat-card class="card">
+        <app-table
+            [title]="salesTitle"
+            [data]="sales"
+            [headers]="salesHeaders"
+            [setSize]="size"
+            [config]="tableConfig"
+        ></app-table>
+    </mat-card>
+</div>

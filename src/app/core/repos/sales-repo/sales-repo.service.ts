@@ -49,6 +49,20 @@ export class SalesRepoService {
     }
   }
 
+  async fetchFromDate(date: string) {
+    try {
+      let uid = await this.auth.getUID();
+      let docRef = doc(this.firestore, `/users/${uid}/sales/${date}`);
+      let data = (await getDoc(docRef)).data() as any
+      if(data)
+        return data.sales
+      else
+        return []
+    } catch (error) {
+      throw error;
+    }
+  }
+
   update() {}
 
   remove() {}
