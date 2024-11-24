@@ -28,6 +28,38 @@
         <h1>
             Configuraciones de subscripción
         </h1>
+        <div class="grid-container" style="margin-bottom: 1rem;">
+            <div class="mat-elevation-z8">
+                <mat-card class="card">
+                    <h3>
+                        Estatus de subscripción
+                    </h3>
+                    <p>
+                        activo
+                    </p>
+                </mat-card>
+            </div>
+            <div class="mat-elevation-z8">
+                <mat-card class="card">
+                    <h3>
+                        Proxima Renovación
+                    </h3>
+                    <p>
+                        31-12-2024
+                    </p>
+                </mat-card>
+            </div>
+            <div class="mat-elevation-z8">
+                <mat-card class="card">
+                    <h3>
+                        Siguiente cargo
+                    </h3>
+                    <p>
+                        {{400 | currency}}
+                    </p>
+                </mat-card>
+            </div>
+        </div>
         <div class="section">
             <app-table
             [title]="title"
