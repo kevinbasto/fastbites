@@ -74,9 +74,14 @@
   </table>
 
   <div *ngIf="!data || data?.length == 0" style="display: grid; place-content: center;">
-    <mat-icon style="width: 5rem; height: 5rem; font-size: 5rem;">
-      sentiment_dissatisfied
-    </mat-icon>
+    <div style="display: grid; place-content: center;">
+      <mat-icon style="width: 5rem; height: 5rem; font-size: 5rem;">
+        sentiment_dissatisfied
+      </mat-icon>
+    </div>
+    <p>
+      No hay información para mostrar
+    </p>
   </div>
   
   <mat-paginator [length]="setSize"

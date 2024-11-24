@@ -3,7 +3,7 @@ import { Firestore, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Product } from '../../entities/product';
 import { AuthService } from '../../services/auth/auth.service';
-import { doc, updateDoc } from '@firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc } from '@firebase/firestore';
 import { v6 } from "uuid";
 
 @Injectable({
@@ -24,6 +24,10 @@ export class ProductsRepoService {
         uid = uid as string;
         let docRef = doc(this.firestore, `/users/${uid}/data/products`);
         (docData(docRef) as Observable<{products: Array<Product>}>).subscribe(products => {
+          if(!products){
+            observer.next([])
+            return;
+          }
           this.products = products.products;
           observer.next(products.products);
         });
@@ -33,12 +37,16 @@ export class ProductsRepoService {
     });
   }
 
-  createProduct(product: Product) {
+  async createProduct(product: Product) {
     try {
-      console.log(product);
-      this.products?.push(product);
-      console.log(this.products);
-      this.updateProducts();
+      let uid = await this.authService.getUID();
+      let docRef = doc(this.firestore, `/users/${uid}/data/products`);
+      let menu : any = (await getDoc(docRef)).data();
+      if(!menu)
+        menu = {products: [product]}
+      else
+        menu.products.push(product);
+      await setDoc(docRef, menu);
     } catch (error) {
       throw error;
     }

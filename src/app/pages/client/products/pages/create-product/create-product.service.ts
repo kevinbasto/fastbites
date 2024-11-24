@@ -55,6 +55,8 @@ export class CreateProductService {
       this.snackbar.openMessage("Producto creado con éxito!");
       this.goBack()
     } catch (error) {
+      console.log(error);
+      this.snackbar.openMessage("No se pudo crear el producto")
       throw error;
     }
   }
@@ -65,8 +67,8 @@ export class CreateProductService {
   async processImage(uid: string, uuid: string, image: File, cropped: CroppedImage) : Promise<{rawUrl: string, croppedUrl: string}> {
     try {
       let urls = { rawUrl: "", croppedUrl: "" }
-      let rawFile = await this.imagesService.prepareImage(uuid, image);
-      let croppedFile = await this.imagesService.prepareImage(uuid, cropped.image);
+      let rawFile = await this.imagesService.prepareImage(`${uuid}-raw`, image);
+      let croppedFile = await this.imagesService.prepareImage(`${uuid}-cropped`, cropped.image);
       croppedFile = await this.imagesService.compressImage(croppedFile);
       urls.rawUrl = await this.imagesService.uploadImage(`/${uid}/${uuid}`, rawFile);
       urls.croppedUrl = await this.imagesService.uploadImage(`/${uid}/${uuid}`, croppedFile);

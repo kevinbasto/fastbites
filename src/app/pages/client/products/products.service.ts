@@ -18,7 +18,12 @@ import { MenuUrlDisplayerComponent } from '../../../shared-components/menu-url-d
 export class ProductsService {
 
   products$ : Observable<Array<Product>> = new Observable<Array<Product>>((observer ) => {
-    this.productsService.products$.subscribe(prods => observer.next(prods));
+    this.productsService.products$.subscribe(prods => {
+      if(prods)
+        observer.next(prods)
+      else
+        observer.next([])
+    });
   });
 
   constructor(
