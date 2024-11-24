@@ -29,9 +29,9 @@ export class EditProductService {
       let uid = await this.auth.getUID() as string;
       let { uuid } = product;
       if(image)
-        product.rawImage = await this.uploadImage(image, uid, uuid);
+        product.rawImage = await this.uploadImage(image, uid, `${uuid}-raw`);
       if(cropped){
-        product.croppedImage = await this.uploadImage(cropped.image, uid, uuid);
+        product.croppedImage = await this.uploadCroppedImage(cropped, uid, uuid);
         product.croppedPosition = cropped.position;
       }
       await this.productCrud.updateProduct(product, uid, uuid);
@@ -55,7 +55,7 @@ export class EditProductService {
 
   async uploadCroppedImage(cropped: CroppedImage, uid: string, uuid: string) : Promise<string> {
     try {
-      cropped.image = await this.imagesServ.prepareImage(uuid, cropped.image);
+      cropped.image = await this.imagesServ.prepareImage(`${uuid}-cropped`, cropped.image);
       cropped.image = await this.imagesServ.compressImage(cropped.image);
       let url = await this.imagesServ.uploadImage(`/${uid}/${uuid}`, cropped.image);
       return url;
