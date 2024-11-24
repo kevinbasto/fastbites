@@ -3,11 +3,11 @@
         <h1>
             Comanda en admin
         </h1>
-        <button mat-raised-button color="primary">
+        <button mat-raised-button color="primary" (click)="goToCheckout()">
             <mat-icon>
                 shopping_cart
             </mat-icon>
-            Confirmar Orden
+            Confirmar Orden: {{cart.length}} Items
         </button>
     </div>
     <ordering-menu 

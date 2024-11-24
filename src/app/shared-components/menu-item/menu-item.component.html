@@ -9,7 +9,9 @@
                 {{product.description}}
             </p>
             <p>
-                {{product.price | currency}}
+                <b>
+                    {{product.price | currency}}
+                </b>
             </p>
         </div>
         <button mat-raised-button color="primary" (click)="itemSelected.emit()">

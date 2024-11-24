@@ -30,7 +30,6 @@ export class OrdersComponent implements OnInit {
           return order;
         })
       orders.sort((a: Order, b:Order) => b.date.getTime() - a.date.getTime())
-      console.log(orders);
       this.data = orders;
     })
   }
