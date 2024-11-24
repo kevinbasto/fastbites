@@ -22,7 +22,7 @@ export class SalesRepoService {
         if(!uid)
           observer.error(new Error("Problem loading the uid"));
         let date = new Date();
-        let docId = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+        let docId = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate() > 10? date.getDate() : `0${date.getDate()}`}`
         let docRef = doc(this.firestore,`/users/${uid}/sales/${docId}`);
         (docData(docRef) as Observable<{sales: Array<Sale>}>).subscribe(sales => {
           observer.next(sales.sales);
