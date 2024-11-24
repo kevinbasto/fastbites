@@ -11,6 +11,9 @@ import { SharedComponentsModule } from '../../../shared-components/shared-compon
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,9 +28,12 @@ import { MatSlideToggle } from '@angular/material/slide-toggle';
     MatCheckboxModule,
     MatDialogModule,
     MatInputModule,
+    MatButtonModule,
+    MatIconModule,
     MatSlideToggle,
     SharedComponentsModule,
-    SharedFormsModule
+    SharedFormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SettingsModule { }

@@ -1,22 +1,44 @@
 <mat-card class="card">
     <div class="section">
-        <h1>
-            Configuraciones de calculo de precio
-        </h1>
-        <mat-slide-toggle>
-            Calcular Iva dentro de las ordenes
-        </mat-slide-toggle>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="section">
-        <h1>
-            Configuraciones de visualización de menu
-        </h1>
+        <div class="card-header">
+            <h1>
+                Configuraciones de visualización de menu
+            </h1>
+            <button mat-raised-button color="primary" (click)="alternateEdit()">
+                <mat-icon>
+                    edit
+                </mat-icon>
+                Editar
+            </button>
+        </div>
+        <form class="fields" [formGroup]="editMenuForm">
+            <mat-form-field>
+                <mat-label>
+                    Nombre que debe aparecer en el menu
+                </mat-label>
+                <input type="text" matInput formControlName="name">
+            </mat-form-field>
+            <mat-slide-toggle formControlName="iva">
+                Calcular Iva dentro de las ordenes
+            </mat-slide-toggle>
+        </form>
     </div>
     <mat-divider></mat-divider>
     <div class="section">
         <h1>
             Configuraciones de subscripción
         </h1>
+        <div class="section">
+            <app-table
+            [title]="title"
+            [data]="data"
+            [headers]="headers"
+            [setSize]="data? data.length : 0"
+            [config]="tableConfig"
+            (create)="create()"
+            (edit)="edit($event)"
+            (deleteItem)="deleteItem($event)"
+        ></app-table>
+        </div>
     </div>
 </mat-card>
