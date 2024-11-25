@@ -5,13 +5,13 @@
     flex-direction: column;
 
     .logo {
-        h1{
-            width: 17rem;
-            max-width: 17rem;
-            text-align: center;
-            padding-top: 1rem;
-            margin: 0;
-        }
+        // h1{
+        //     width: 17rem;
+        //     max-width: 17rem;
+        //     text-align: center;
+        //     padding-top: 1rem;
+        //     margin: 0;
+        // }
         span{
             display: flex;
             justify-content: center;
@@ -63,5 +63,21 @@
         .icon{
             color: white !important;
         }
+    }
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    gap: 1ch;
+    img{
+        width: 2rem;
+        height: 2rem;
+    }
+    h1{
+        margin: 0;
+        padding: 0;
     }
 }
