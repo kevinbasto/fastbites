@@ -3,6 +3,30 @@
         Registrarme
     </h1>
 </div>
+
+<div class="alternative-login">
+    <button mat-raised-button class="mat-elevation-z8 google-button"  >
+        <span class="oauth-button">
+            <img src="../../../../assets/google.svg" alt="">
+           Acceder con Google 
+        </span>
+    </button>
+    <mat-hint style="margin-top: 1rem;">
+        Al iniciar con google aceptas nuestro 
+        <a href="" class="link" [routerLink]="['/public/terms']">
+            Términos y condiciones
+        </a>
+    </mat-hint>
+</div>
+
+<div class="alternatives">
+    <hr>
+    <p style="text-align: center;">
+        O
+    </p>
+    <hr>
+</div>
+
 <form action="" [formGroup]="form" (submit)="submit()" >
     <mat-form-field>
         <mat-label>

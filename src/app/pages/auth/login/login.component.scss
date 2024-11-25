@@ -11,3 +11,34 @@ form{
         flex-direction: column;
     }
 }
+
+.google-button{
+    display: flex;
+    width: 70%;
+}
+.alternative-login{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    align-items: center;
+    .oauth-button{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        img{
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+}
+.alternatives{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    p{
+        margin: 0;
+    }
+    hr{
+        width: 40%;
+    }
+}
