@@ -14,6 +14,7 @@ import { EditProductComponent } from './pages/edit-product/edit-product.componen
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatTableModule,
     MatButtonModule,
     MatDialogModule,
+    MatIconModule
   ],
   providers: [
     NgxImageCompressService

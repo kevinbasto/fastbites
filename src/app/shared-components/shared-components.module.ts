@@ -28,6 +28,7 @@ import { OrderingMenuComponent } from './ordering-menu/ordering-menu.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -60,7 +61,8 @@ import { MatSelectModule } from '@angular/material/select';
     DirectivesModule,
     ReactiveFormsModule,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     TableComponent,

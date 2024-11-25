@@ -1,14 +1,29 @@
 <div class="mat-elevation-z8">
     <mat-card class="card">
-        <div *ngIf="!data" style="display: flex; justify-content: center; align-items: center;">
-            <mat-spinner></mat-spinner>
-        </div>
+        <div class="table-header card-header">
+            <h1>
+              {{title? title : "Lista de elementos"}}
+            </h1>
+            <div style="display: flex; gap: 1rem;">
+              <button mat-raised-button color="primary" >
+                <mat-icon>
+                  add
+                </mat-icon>
+                Agregar elemento
+              </button>
+              <button mat-raised-button color="primary" (click)="create()">
+                <mat-icon>
+                  point_of_sale
+                </mat-icon>
+                Ir al menu de venta
+              </button>
+            </div>
+          </div>
         <app-table
-            *ngIf="data"
             [title]="title"
             [data]="data"
             [headers]="headers"
-            [setSize]="data.length"
+            [setSize]="data? data.length : 0"
             [config]="tableConfig"
             (create)="create()"
             (edit)="edit($event)"
