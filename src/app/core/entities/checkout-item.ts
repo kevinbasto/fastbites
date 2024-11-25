@@ -1,7 +1,7 @@
 import { Product } from "./product";
 
 export interface CheckoutItem {
-    product: Product;
+    product: Partial<Product>;
     quantity: number;
 }
   
