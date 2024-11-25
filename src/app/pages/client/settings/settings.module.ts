@@ -10,7 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 import { MatInputModule } from '@angular/material/input';
-import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -31,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatIconModule,
     MatSlideToggle,
+    MatSlideToggleModule,
     SharedComponentsModule,
     SharedFormsModule,
     ReactiveFormsModule
