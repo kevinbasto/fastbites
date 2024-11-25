@@ -23,7 +23,8 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.menuServ.fetchProducts()
       .subscribe(products => {
-        this.products = products;
+        
+        this.products = products.filter(product => product.available);
       })
   }
 

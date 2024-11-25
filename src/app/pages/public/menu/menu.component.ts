@@ -64,6 +64,7 @@ export class MenuComponent implements OnInit {
       return;
     }
     this.products = products;
+    this.products = this.products.filter(product => product.available);
   }
 
   addProductToCard(prod: Product) {
