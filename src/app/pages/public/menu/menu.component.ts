@@ -73,8 +73,11 @@ export class MenuComponent implements OnInit {
 
   goToCheckout() {
     this.menuService.goToCheckout(this.cart, this.id!)
-    .then((result) => {
-      this.cart = []
+    .then((result : "COMPLETED" | "CANCELED" | "DELETE") => {
+      if(result == "COMPLETED")
+        this.cart = [];
+      else if(result == 'DELETE')
+        this.cart = [];
     }).catch((err) => {
       
     });

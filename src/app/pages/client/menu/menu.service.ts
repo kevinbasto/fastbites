@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CheckoutComponent } from '../../../shared-components/checkout/checkout.component';
 import { OrdersRepoService } from '../../../core/repos/orders-repo/orders-repo.service';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
+import { Order } from '../../../core/entities/order';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class MenuService {
   constructor(
     private auth: AuthService,
     private productsRepo: ProductsRepoService,
-    private dialog : MatDialog,
+    private dialog: MatDialog,
     private ordersRepo: OrdersRepoService,
     private snackbar: SnackbarService
   ) { }
@@ -24,38 +25,43 @@ export class MenuService {
   fetchProducts() {
     return new Observable<Array<Product>>((obs) => {
       this.auth.getUID()
-      .then((uid) => {
-        this.productsRepo.fetchProducts(uid!)
-        .subscribe(products => {
-          if(!products)            
-            obs.next([])
-          else
-            obs.next(products)
-        })
-      }).catch((err) => {
-        obs.error("error")
-      });
+        .then((uid) => {
+          this.productsRepo.fetchProducts(uid!)
+            .subscribe(products => {
+              if (!products)
+                obs.next([])
+              else
+                obs.next(products)
+            })
+        }).catch((err) => {
+          obs.error("error")
+        });
     });
   }
 
-  goToCheckout(cart: Product[], id : string) : Promise<any> {
+  goToCheckout(cart: Product[], id: string): Promise<any> {
     return new Promise<any>((resolve, reject) => {
-      if(cart.length == 0){
+      if (cart.length == 0) {
         this.snackbar.openMessage("Tu carrito está Vacío");
         return;
       }
-      const dialog = this.dialog.open(CheckoutComponent, {data: {cart} });
-      dialog.afterClosed().subscribe(order => {
-        if(!order)
+      const dialog = this.dialog.open(CheckoutComponent, { data: { cart } });
+      dialog.afterClosed().subscribe((order: Order | "DELETE" | null) => {
+        if (!order)
           return;
-        this.ordersRepo.create(order, id)
-        .then((result) => {
-          this.snackbar.openMessage("Orden creada con éxito");
-          resolve(null);
-        }).catch((err) => {
-          this.snackbar.openMessage("No se pudo crear la orden");
-          reject(err);
-        });
+        if (order == "DELETE") {
+          resolve(null)
+        } else {
+          this.ordersRepo.create(order, id)
+            .then((result) => {
+              this.snackbar.openMessage("Orden creada con éxito");
+              resolve(null);
+            }).catch((err) => {
+              this.snackbar.openMessage("No se pudo crear la orden");
+              reject(err);
+            });
+        }
+
       });
     });
   }

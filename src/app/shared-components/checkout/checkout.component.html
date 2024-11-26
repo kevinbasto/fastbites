@@ -39,13 +39,22 @@
                     </div>
                 </div>
                 <div class="footer">
-                    <div class="amount" style="display: flex; justify-content: flex-end; margin: 1rem;">
-                        <b>
-                            subtotal:
-                        </b>
-                        <p>
-                            {{total | currency}}
-                        </p>
+                    
+                    <div style="display: flex; justify-content: space-between; margin: 1rem;">
+                        <button mat-raised-button style="background: red; color: white;" (click)="clearCart()">
+                            <mat-icon>
+                                delete
+                            </mat-icon>
+                            Vaciar
+                        </button>
+                        <div class="amount" >
+                            <b>
+                                subtotal:
+                            </b>
+                            <p>
+                                {{total | currency}}
+                            </p>
+                        </div>
                     </div>
                     <div class="actions">
                         <button mat-raised-button (click)="cancel()">

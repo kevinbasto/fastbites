@@ -6,40 +6,41 @@ import { Product } from '../../../core/entities/product';
 import { MatDialog } from '@angular/material/dialog';
 import { CheckoutComponent } from '../../../shared-components/checkout/checkout.component';
 import { OrdersRepoService } from '../../../core/repos/orders-repo/orders-repo.service';
+import { Order } from '../../../core/entities/order';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
-  
+
   constructor(
-    private snackbar : SnackbarService,
+    private snackbar: SnackbarService,
     private productsRepo: ProductsRepoService,
-    private dialog : MatDialog,
-    private ordersRepo : OrdersRepoService
+    private dialog: MatDialog,
+    private ordersRepo: OrdersRepoService
   ) { }
 
   fetchMenu(id: string) {
     return new Observable<Array<Product>>((obs) => {
       this.productsRepo.fetchProducts(id)
-      .subscribe(products => obs.next(products));
+        .subscribe(products => obs.next(products));
     });
   }
 
-  async processScan(scan: string){
-    let {isValidURL, hasQueryParams } = this.isURLWithQueryParams(scan);
-    if(!(isValidURL && hasQueryParams)){
+  async processScan(scan: string) {
+    let { isValidURL, hasQueryParams } = this.isURLWithQueryParams(scan);
+    if (!(isValidURL && hasQueryParams)) {
       this.snackbar.openMessage("El QR provisto no es valido");
       throw new Error("INVALID QR")
     }
     let paramsRaw = scan.split("?")[1];
-    let params : any = {}
+    let params: any = {}
     let paramsMap = paramsRaw.split("=");
-    let tmp : string = "";
+    let tmp: string = "";
     paramsMap.forEach((value, key) => {
-      if(key%2 == 0) tmp = value; else params[tmp] = value; 
+      if (key % 2 == 0) tmp = value; else params[tmp] = value;
     });
-    if(!params['id']){
+    if (!params['id']) {
       this.snackbar.openMessage("El QR provisto no es valido");
       throw new Error("INVALID QR")
     }
@@ -48,7 +49,7 @@ export class MenuService {
   }
 
   isURLWithQueryParams(data: string) {
-    const urlRegex =  /^https?:\/\/(localhost|([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,})(:\d+)?(\/[^\s?#]*)?(\?([^#\s]*))?(#.*)?$/;
+    const urlRegex = /^https?:\/\/(localhost|([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,})(:\d+)?(\/[^\s?#]*)?(\?([^#\s]*))?(#.*)?$/;
     const isValidURL = urlRegex.test(data);
     const hasQueryParams = /\?.+=.+/.test(data);
     return {
@@ -57,25 +58,32 @@ export class MenuService {
     };
   }
 
-  goToCheckout(cart: Product[], id : string) : Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      if(cart.length == 0){
+  goToCheckout(cart: Product[], id: string): Promise<any> {
+    return new Promise<string>((resolve, reject) => {
+      if (cart.length == 0) {
         this.snackbar.openMessage("Tu carrito está Vacío");
         return;
       }
-      const dialog = this.dialog.open(CheckoutComponent, {data: {cart} });
-      dialog.afterClosed().subscribe(order => {
-        if(!order)
+      const dialog = this.dialog.open(CheckoutComponent, { data: { cart } });
+      dialog.afterClosed().subscribe((order: Order | "DELETE" | null) => {
+        if (!order){
+          resolve("CANCELED");
           return;
-        this.ordersRepo.create(order, id)
-        .then((result) => {
-          this.snackbar.openMessage("Orden creada con éxito");
-          resolve(null);
-        }).catch((err) => {
-          this.snackbar.openMessage("No se pudo crear la orden");
-          reject(err);
-        });
+        }
+        if (order == "DELETE") {
+          this.snackbar.openMessage("Tu carrito ha sido vacíado");
+          resolve("DELETE");
+        } else {
+          this.ordersRepo.create(order, id)
+          .then((result) => {
+            this.snackbar.openMessage("Orden creada con éxito");
+            resolve("COMPLETED");
+          }).catch((err) => {
+            this.snackbar.openMessage("No se pudo crear la orden");
+            reject(err);
+          });
+        }
       });
     });
-  }
+  };
 }

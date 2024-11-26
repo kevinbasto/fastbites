@@ -84,4 +84,8 @@ export class CheckoutComponent implements OnInit {
     }
     this.dialogRef.close(order);
   }
+
+  clearCart(){
+    this.dialogRef.close("DELETE")
+  }
 }
