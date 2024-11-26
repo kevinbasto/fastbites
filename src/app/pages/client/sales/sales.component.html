@@ -1,40 +1,18 @@
 <div class="grid-container" style="margin-bottom: 1rem;">
-    <mat-card>
-        <div class="header">
-            <h2 style="text-align: center;">
-                Ventas totales de hoy
-            </h2>
-            <p style="text-align: center;">
-                <b>
-                    {{total | currency}}
-                </b>
-            </p>
-        </div>
-    </mat-card>
-    <mat-card>
-        <div class="header">
-            <h2 style="text-align: center;">
-                Fecha de hoy
-            </h2>
-            <p style="text-align: center;">
-                <b>
-                    {{date}}
-                </b>
-            </p>
-        </div>
-    </mat-card>
-    <mat-card>
-        <div class="header">
-            <h2 style="text-align: center;">
-                Ventas del mes
-            </h2>
-            <p style="text-align: center;">
-                <b>
-                    {{MonthTotal | currency}}
-                </b>
-            </p>
-        </div>
-    </mat-card>
+    <app-info-card
+        [title]="'Fecha de hoy'"
+        [message]="date"
+    ></app-info-card>
+    <app-info-card
+        [title]="'Ventas del día'"
+        [message]="total"
+        [type]="'CURRENCY'"
+    ></app-info-card>
+    <app-info-card
+        [title]="'Ventas del mes'"
+        [message]="MonthTotal"
+        [type]="'CURRENCY'"
+    ></app-info-card>
 </div>
 <div style="display: flex; flex-direction: column; gap: 1rem;">
     <mat-card class="card">

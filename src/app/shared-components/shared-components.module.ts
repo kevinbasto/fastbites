@@ -29,6 +29,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { InfoCardComponent } from './info-card/info-card.component';
 
 
 
@@ -44,7 +45,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     OrderVisualizerComponent,
     MenuUrlDisplayerComponent,
     OrderingMenuComponent,
-    MenuItemComponent
+    MenuItemComponent,
+    InfoCardComponent
   ],
   imports: [
     CommonModule,
@@ -73,7 +75,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     CheckoutComponent,
     OrdersTableComponent,
     OrderVisualizerComponent,
-    OrderingMenuComponent
+    OrderingMenuComponent,
+    InfoCardComponent
   ],
   providers: [
     

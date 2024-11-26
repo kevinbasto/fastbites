@@ -1,0 +1,17 @@
+<mat-card>
+    <div class="header">
+        <h2 style="text-align: center;">
+            {{title}}
+        </h2>
+    </div>
+    <p style="text-align: center;" *ngIf="type == 'CURRENCY'">
+        <b>
+            {{message | currency}}
+        </b>
+    </p>
+    <p style="text-align: center;" *ngIf="!type">
+        <b>
+            {{message}}
+        </b>
+    </p>
+</mat-card>
