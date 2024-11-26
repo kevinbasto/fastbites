@@ -188,4 +188,9 @@ export class SalesComponent implements OnInit {
     });
     return total;
   }
+
+  exportToExcel() {
+    this.salesServ.exportToExcel(this.sales!);
+  }
+
 }

@@ -56,6 +56,12 @@
             <h1>
                 Ventas del mes
             </h1>
+            <button mat-raised-button color="primary" (click)="exportToExcel()" >
+                <mat-icon>
+                    download
+                </mat-icon>
+                Exportar ventas
+            </button>
         </div>
         <app-table
             [title]="salesTitle"
