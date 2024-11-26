@@ -6,5 +6,5 @@ export interface Sale {
     name: string;
     total: number;
     orderId: string;
-    // items: Array<CheckoutItem>;
+    items: Array<Partial<CheckoutItem>>;
 }

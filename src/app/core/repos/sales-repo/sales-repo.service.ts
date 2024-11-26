@@ -44,7 +44,7 @@ export class SalesRepoService {
         let docRef = doc(this.firestore, `/users/${uid}/sales/${docId}`);
         let sales : {sales: Array<Sale>} = (await getDoc(docRef)).data() as any;
         if(!sales)
-          await setDoc(docRef, {sales: [sale]});
+          await setDoc(docRef, {sales: [sale], date: new Date() });
         else
           await setDoc(docRef, {sales: [...sales.sales, sale]});
     } catch (error) {

@@ -8,6 +8,7 @@ import { Message } from '../../../core/generics/message';
 import { ConfirmDialogComponent } from '../../../shared-components/confirm-dialog/confirm-dialog.component';
 import { SalesRepoService } from '../../../core/repos/sales-repo/sales-repo.service';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
+import { CheckoutItem } from '../../../core/entities/checkout-item';
 
 @Injectable({
   providedIn: 'root'
@@ -51,11 +52,18 @@ export class OrdersService {
       .catch((err) => {
         throw err;
       });
+      let items : Array<Partial<CheckoutItem>> = []
+      for(let item of order.items){
+        let { uuid, name, price, cost } = item.product;
+        let quantity = item.quantity;
+        items.push({ quantity, product: {uuid, name, price, cost} });
+      }
       this.salesrepo.create({
         date: order.date,
         name: order.name!,
         total: order.total,
-        orderId: order.id!
+        orderId: order.id!,
+        items
       });
     });
   }
