@@ -30,7 +30,8 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { InfoCardComponent } from './info-card/info-card.component';
-
+import {provideCharts, withDefaultRegisterables, BaseChartDirective  } from "ng2-charts";
+import { BarChartComponent } from './bar-chart/bar-chart.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { InfoCardComponent } from './info-card/info-card.component';
     MenuUrlDisplayerComponent,
     OrderingMenuComponent,
     MenuItemComponent,
-    InfoCardComponent
+    InfoCardComponent,
+    BarChartComponent
   ],
   imports: [
     CommonModule,
@@ -64,7 +66,8 @@ import { InfoCardComponent } from './info-card/info-card.component';
     ReactiveFormsModule,
     MatDividerModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    BaseChartDirective
   ],
   exports: [
     TableComponent,
@@ -76,10 +79,11 @@ import { InfoCardComponent } from './info-card/info-card.component';
     OrdersTableComponent,
     OrderVisualizerComponent,
     OrderingMenuComponent,
-    InfoCardComponent
+    InfoCardComponent,
+    BarChartComponent
   ],
   providers: [
-    
+    provideCharts(withDefaultRegisterables()),
   ]
 })
 export class SharedComponentsModule { }

@@ -15,7 +15,7 @@ import { SalesComponent } from './sales.component';
     CommonModule,
     SalesRoutingModule,
     SharedComponentsModule,
-    MatCardModule
+    MatCardModule,
   ]
 })
 export class SalesModule { }

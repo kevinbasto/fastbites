@@ -38,7 +38,7 @@ export class SalesComponent implements OnInit {
   date: string = "";
   total: number = 0
   earnings: number = 0;
-  trendProduct : string = "";
+  trendProduct: string = "";
 
   constructor(
     private salesServ: SalesService
@@ -65,6 +65,9 @@ export class SalesComponent implements OnInit {
         this.calculateMonthTotal(sales);
         this.CalculateEarnings(sales);
         this.calculateTrendProduct(sales);
+
+        this.setDates()
+        this.calculateDailySales(sales);
       }).catch((err) => {
 
       });
@@ -76,7 +79,7 @@ export class SalesComponent implements OnInit {
     });
   }
 
-  private calculateTrendProduct(sales: Array<Sale>){
+  private calculateTrendProduct(sales: Array<Sale>) {
     const productSalesMap: Map<string, { product: Partial<Product>; quantity: number }> = new Map();
     sales.forEach((sale) => {
       sale.items.forEach((item) => {
@@ -122,5 +125,67 @@ export class SalesComponent implements OnInit {
     });
 
     this.earnings = totalEarnings;
+  }
+
+  labels: Array<string> = []
+
+  setDates() {
+    let year = (new Date()).getFullYear();
+    let month: number = (new Date()).getMonth();
+    let dates: Array<string> = []
+    for (let day = 1; day <= 32; day++) {
+      let date = new Date(year, month, day);
+      let newmonth = date.getMonth()
+      if (isNaN(date.getTime()))
+        break;
+      else if (newmonth == month)
+        dates.push(`${year}-${month + 1}-${day}`);
+    }
+    this.labels = dates;
+  }
+
+  dailySales: Array<number> = []
+
+  calculateDailySales(sales: Array<Sale>) {
+    const dailySales: Array<Array<Sale>> = [];
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+
+    // Iterate through all the days of the month
+    for (let day = 1; day <= 31; day++) {
+      const date = new Date(currentYear, currentMonth, day);
+
+      // Stop if the date is invalid (e.g., Feb 30, Apr 31)
+      if (isNaN(date.getTime()) || date.getMonth() !== currentMonth) {
+        break;
+      }
+
+      // Filter sales that match the current day
+      const salesForDay = sales.filter((sale) => {
+        const saleDate = new Date(sale.date as Date);
+        return (
+          saleDate.getFullYear() === currentYear &&
+          saleDate.getMonth() === currentMonth &&
+          saleDate.getDate() === day
+        );
+      });
+
+      // Add to daily sales array
+      dailySales.push(salesForDay);
+    }
+    let dailyCalculation : Array<number> = []
+    for(let sale of dailySales) {
+      let calculation = this.calculateDayTotal(sale);
+      dailyCalculation.push(calculation)
+    }
+    this.dailySales = dailyCalculation;
+  }
+
+  private calculateDayTotal(sales: Array<Sale>) {
+    let total = 0
+    sales.map(sale => {
+      total += sale.total
+    });
+    return total;
   }
 }
