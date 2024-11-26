@@ -4,15 +4,16 @@ import { salesTableHeaders } from './sales-table.headers';
 import { TableConfig } from '../../../core/generics/table-config';
 import { SalesService } from './sales.service';
 import { Sale } from '../../../core/entities/sale';
+import { Product } from '../../../core/entities/product';
 
 @Component({
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.scss'
 })
 export class SalesComponent implements OnInit {
-  title : string = "Listado de ventas del Día";
-  data : Array<any> = [];
-  headers : Array<TableColumn> = salesTableHeaders;
+  title: string = "Listado de ventas del Día";
+  data: Array<any> = [];
+  headers: Array<TableColumn> = salesTableHeaders;
   size: number = 0;
   tableConfig: TableConfig = {
     create: false,
@@ -20,8 +21,6 @@ export class SalesComponent implements OnInit {
     ordersButton: false,
     options: false
   }
-  date : string = "";
-  total : number = 0
   months = [
     'Enero',
     'Febrero',
@@ -36,6 +35,10 @@ export class SalesComponent implements OnInit {
     'Noviembre',
     'Diciembre'
   ]
+  date: string = "";
+  total: number = 0
+  earnings: number = 0;
+  trendProduct : string = "";
 
   constructor(
     private salesServ: SalesService
@@ -48,22 +51,76 @@ export class SalesComponent implements OnInit {
       sales.forEach(sale => this.total += sale.total)
     });
   }
-  
-  salesTitle : string = "Listado de ventas del Mes";
-  sales : Array<any> = [];
-  salesHeaders : Array<TableColumn> = salesTableHeaders;
+
+  salesTitle: string = "Listado de ventas del Mes";
+  sales?: Array<any>;
+  salesHeaders: Array<TableColumn> = salesTableHeaders;
   MonthTotal = 0
-  
+
   ngOnInit(): void {
     this.MonthTotal = 0;
     this.salesServ.fetchFromMonth()
-    .then((sales : Array<Sale>) => {
-      this.sales = sales;
-      sales.map(sale => {
-        this.MonthTotal += sale.total
+      .then((sales: Array<Sale>) => {
+        this.sales = sales;
+        this.calculateMonthTotal(sales);
+        this.CalculateEarnings(sales);
+        this.calculateTrendProduct(sales);
+      }).catch((err) => {
+
       });
-    }).catch((err) => {
-      
+  }
+
+  private calculateMonthTotal(sales: Array<Sale>) {
+    sales.map(sale => {
+      this.MonthTotal += sale.total
     });
+  }
+
+  private calculateTrendProduct(sales: Array<Sale>){
+    const productSalesMap: Map<string, { product: Partial<Product>; quantity: number }> = new Map();
+    sales.forEach((sale) => {
+      sale.items.forEach((item) => {
+        const product = item.product;
+        const quantity = item.quantity || 0;
+
+        if (product && product.uuid) {
+          if (productSalesMap.has(product.uuid)) {
+            const existing = productSalesMap.get(product.uuid)!;
+            existing.quantity += quantity;
+          } else {
+            productSalesMap.set(product.uuid, { product, quantity });
+          }
+        }
+      });
+    });
+    let trendProduct: Partial<Product> | null = null;
+    let maxQuantity = 0;
+
+    productSalesMap.forEach((value) => {
+      if (value.quantity > maxQuantity) {
+        maxQuantity = value.quantity;
+        trendProduct = value.product;
+      }
+    });
+
+    this.trendProduct = trendProduct!.name!;
+  }
+
+  private CalculateEarnings(sales: Array<Sale>) {
+    let totalEarnings = 0;
+
+    sales.forEach((sale) => {
+      sale.items.forEach((item) => {
+        const product = item.product;
+        const quantity = item.quantity || 0;
+
+        if (product && product.cost !== undefined && product.price !== undefined) {
+          const profitPerItem = product.price - product.cost;
+          totalEarnings += profitPerItem * quantity;
+        }
+      });
+    });
+
+    this.earnings = totalEarnings;
   }
 }
