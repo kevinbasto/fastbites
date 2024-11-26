@@ -59,7 +59,9 @@ export class SalesComponent implements OnInit {
     this.salesServ.fetchFromMonth()
     .then((sales : Array<Sale>) => {
       this.sales = sales;
-      sales.map(sale => this.MonthTotal += sale.total );
+      sales.map(sale => {
+        this.MonthTotal += sale.total
+      });
     }).catch((err) => {
       
     });

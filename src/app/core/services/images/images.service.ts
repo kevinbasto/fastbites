@@ -51,7 +51,7 @@ export class ImagesService {
   async compressImage(file: File) {
     try {
       let base64 = await this.fileToBase64(file);
-      let compressed = await this.imageCompressServ.compressFile(base64, 1, 50, 50, 75, 75);
+      let compressed = await this.imageCompressServ.compressFile(base64, 1, 75, 75, 100, 100);
       let blob = (await ((await fetch(compressed)).blob()))
       let compressedFile = new File([blob], file.name, {type: file.type});
       return compressedFile;
