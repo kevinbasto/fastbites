@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { Auth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
@@ -29,6 +29,24 @@ export class LoginService {
       this.router.navigate(["/client/products"]);
     } catch (error) {
       this.snackbar.openMessage("no se pudo iniciar sesión, revisa tus credenciales y reintenta de nuevo mas tarde");
+    }
+  }
+
+  async signInWithGoogle() : Promise<any> {
+    try {
+      let email : string = "";
+      let uid : string = "";
+      const signRef = await signInWithPopup(this.auth, new GoogleAuthProvider());
+      email = signRef.user.email?? "";
+      uid = signRef.user.uid;
+      let docRef = doc(this.firestore, `/users/${uid}`);
+      let data = (await getDoc(docRef)).data()
+      if(!data)
+        await setDoc(docRef, {email, uid, terms: true, verified: true});
+      this.router.navigate(['/client/products']);
+    } catch (error) {
+      this.snackbar.openMessage("No se pudo iniciar sesión con Google");
+      throw error;
     }
   }
 }

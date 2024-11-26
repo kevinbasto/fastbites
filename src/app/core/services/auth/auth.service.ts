@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, signOut } from '@angular/fire/auth';
+import { Auth, GoogleAuthProvider, signInWithPopup, signOut } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +7,13 @@ import { Auth, signOut } from '@angular/fire/auth';
 export class AuthService {
 
   constructor(
-    private auth : Auth
+    private auth : Auth,
   ) { }
 
-  async getUID() : Promise<string | null>{
+  async getUID() : Promise<string>{
     try {
       await this.auth.authStateReady()
-      return this.auth.currentUser? this.auth.currentUser.uid : null;
+      return this.auth.currentUser? this.auth.currentUser.uid : "";
     } catch (error) {
       throw error;
     }
