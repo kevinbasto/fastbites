@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, deleteUser, sendEmailVerification } from '@angular/fire/auth';
-import { doc, Firestore, setDoc } from '@angular/fire/firestore';
+import { Auth, createUserWithEmailAndPassword, deleteUser, GoogleAuthProvider, sendEmailVerification, signInWithPopup } from '@angular/fire/auth';
+import { doc, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 
@@ -36,6 +36,24 @@ export class RegisterService {
     } catch (error) {
       await deleteUser(givenUser);
       this.snackbar.openMessage("No se pudo concretar el proceso de registro de tu cuenta");
+    }
+  }
+
+  async signInWithGoogle() : Promise<any> {
+    try {
+      let email : string = "";
+      let uid : string = "";
+      const signRef = await signInWithPopup(this.auth, new GoogleAuthProvider());
+      email = signRef.user.email?? "";
+      uid = signRef.user.uid;
+      let docRef = doc(this.firestore, `/users/${uid}`);
+      let data = (await getDoc(docRef)).data()
+      if(!data)
+        await setDoc(docRef, {email, uid, terms: true, verified: true});
+      this.router.navigate(['/client/products']);
+    } catch (error) {
+      this.snackbar.openMessage("No se pudo iniciar sesión con Google");
+      throw error;
     }
   }
 }

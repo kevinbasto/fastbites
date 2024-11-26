@@ -49,4 +49,8 @@ export class RegisterComponent {
     this.registerService.registerWithEmailAndPassword(email, password, terms)
     .finally(() => this.uploading = false);
   }
+
+  signInWithGoogle() {
+    this.registerService.signInWithGoogle();
+  }
 }
