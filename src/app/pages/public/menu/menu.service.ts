@@ -59,6 +59,10 @@ export class MenuService {
 
   goToCheckout(cart: Product[], id : string) : Promise<any> {
     return new Promise<any>((resolve, reject) => {
+      if(cart.length == 0){
+        this.snackbar.openMessage("Tu carrito está Vacío");
+        return;
+      }
       const dialog = this.dialog.open(CheckoutComponent, {data: {cart} });
       dialog.afterClosed().subscribe(order => {
         if(!order)
