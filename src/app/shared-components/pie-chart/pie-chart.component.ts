@@ -3,11 +3,11 @@ import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
-  selector: 'donut-component',
-  templateUrl: './donut-component.component.html',
-  styleUrl: './donut-component.component.scss'
+  selector: 'pie-chart',
+  templateUrl: './pie-chart.component.html',
+  styleUrl: './pie-chart.component.scss'
 })
-export class DonutComponentComponent {
+export class PieChartComponent {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   // Pie

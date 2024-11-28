@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, timestamp } from 'rxjs';
 import { Sale } from '../../../core/entities/sale';
 import { SalesRepoService } from '../../../core/repos/sales-repo/sales-repo.service';
-import { Timestamp } from '@angular/fire/firestore';
+import { collection, Timestamp } from '@angular/fire/firestore';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 import * as xlsx from 'xlsx';
 import { CheckoutItem } from '../../../core/entities/checkout-item';

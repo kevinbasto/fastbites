@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { doc, docData, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
+import { collection, doc, docData, Firestore, getDoc, query, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Sale } from '../../entities/sale';
 import { AuthService } from '../../services/auth/auth.service';
@@ -9,8 +9,7 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class SalesRepoService {
 
-  sales$: Observable<Array<Sale>>
-  
+  sales$: Observable<Array<Sale>>;
 
   constructor(
     private firestore: Firestore,
@@ -69,4 +68,5 @@ export class SalesRepoService {
   update() {}
 
   remove() {}
+
 }
