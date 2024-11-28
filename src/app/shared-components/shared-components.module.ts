@@ -32,6 +32,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { InfoCardComponent } from './info-card/info-card.component';
 import {provideCharts, withDefaultRegisterables, BaseChartDirective  } from "ng2-charts";
 import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { DonutComponentComponent } from './donut-component/donut-component.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
     OrderingMenuComponent,
     MenuItemComponent,
     InfoCardComponent,
-    BarChartComponent
+    BarChartComponent,
+    DonutComponentComponent
   ],
   imports: [
     CommonModule,
@@ -80,7 +82,8 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
     OrderVisualizerComponent,
     OrderingMenuComponent,
     InfoCardComponent,
-    BarChartComponent
+    BarChartComponent,
+    DonutComponentComponent
   ],
   providers: [
     provideCharts(withDefaultRegisterables()),
