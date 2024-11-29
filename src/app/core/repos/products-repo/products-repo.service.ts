@@ -5,6 +5,7 @@ import { Product } from '../../entities/product';
 import { AuthService } from '../../services/auth/auth.service';
 import { doc, getDoc, setDoc, updateDoc } from '@firebase/firestore';
 import { v6 } from "uuid";
+import { Menu } from '../../wrappers/menu';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class ProductsRepoService {
       .then((uid : string | null) => {
         uid = uid as string;
         let docRef = doc(this.firestore, `/users/${uid}/data/products`);
-        (docData(docRef) as Observable<{products: Array<Product>}>).subscribe(products => {
+        (docData(docRef) as Observable<{products: Array<Product>}>).subscribe((products : Menu) => {
           if(!products){
             observer.next([])
             return;
