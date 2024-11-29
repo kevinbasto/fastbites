@@ -41,7 +41,7 @@ export class TableComponent implements OnInit, OnChanges{
   ) {}
 
   ngOnInit(): void {
-    this.breakpointObserver.observe(['(max-width: 1200px)']).subscribe((res: BreakpointState) => {
+    this.breakpointObserver.observe(['(max-width: 600px)']).subscribe((res: BreakpointState) => {
       if(res.matches){
         let first = this.displayedColumns[0];
         let last = this.displayedColumns[this.displayedColumns.length - 1];

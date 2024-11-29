@@ -5,22 +5,34 @@
               {{title? title : "Lista de elementos"}}
             </h1>
             <div style="display: flex; gap: 1rem;">
-              <button mat-icon-button >
-                <mat-icon [ngClass]="filtersOpened? ['expand'] : ['collapse']" (click)="filtersOpened = !filtersOpened" >
-                  keyboard_arrow_down
-                </mat-icon>
-              </button>
               <button mat-raised-button color="primary" (click)="create()" >
                 <mat-icon >
                   add
                 </mat-icon>
-                Agregar elemento
+                Agregar
               </button>
               <button mat-raised-button color="primary" (click)="goToOrderingPage()" >
                 <mat-icon>
                   point_of_sale
                 </mat-icon>
-                Ir al menu de venta
+                Ver menu
+              </button>
+            </div>
+          </div>
+          <div class="responsive-card-header">
+            <h1>
+              Productos
+            </h1>
+            <div style="display: flex; gap: 1rem;">
+              <button mat-icon-button color="primary" (click)="create()" >
+                <mat-icon >
+                  add
+                </mat-icon>
+              </button>
+              <button mat-icon-button color="primary" (click)="goToOrderingPage()" >
+                <mat-icon>
+                  point_of_sale
+                </mat-icon>
               </button>
             </div>
           </div>

@@ -1,0 +1,19 @@
+@media(max-width: 1200px){
+    .card-header{
+        display: none;
+    }
+    .responsive-card-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h1{
+            margin: 0;
+        }
+    }
+}
+
+@media(min-width: 1200px){
+    .responsive-card-header{
+        display: none;
+    }
+}
