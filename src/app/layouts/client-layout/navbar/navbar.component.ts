@@ -10,15 +10,16 @@ import { NavigationMenu } from '../../../../environments/menu';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit, AfterViewInit {
-  public hide : boolean = true;
-  @Output() toggle : EventEmitter<boolean> = new EventEmitter<boolean>();
-  public route! : string;
-  menu : Array<NavigationMenuItem> = NavigationMenu;
+  public hide: boolean = true;
+  @Output() toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
+  public route!: string;
+  menu: Array<NavigationMenuItem> = NavigationMenu;
 
   constructor(
-    private breakpoint : BreakpointObserver,
-    private router : Router
-  ) { }
+    private breakpoint: BreakpointObserver,
+    private router: Router
+  ) {
+  }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -34,20 +35,20 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     let subRoute = this.router.url.split("/")
-    this.menu.forEach(element => {if(element.url == subRoute[2]) this.route = element.name});
+    this.menu.forEach(element => { if (element.url == subRoute[2]) this.route = element.name });
     this.trackNavigation();
   }
 
-  trackNavigation(){
+  trackNavigation() {
     this.router.events.subscribe(event => {
-      if(event instanceof NavigationEnd){
+      if (event instanceof NavigationEnd) {
         let subRoute = this.router.url.split("/")
-        this.menu.forEach(element => {if(element.url == subRoute[2]) this.route = element.name});
+        this.menu.forEach(element => { if (element.url == subRoute[2]) this.route = element.name });
       }
     });
   }
 
-  toggleSidebar(){
+  toggleSidebar() {
     this.toggle.emit(true);
   }
 }
