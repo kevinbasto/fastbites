@@ -33,7 +33,25 @@
                 Activar subscripción
             </mat-slide-toggle>
         </div>
-        <div class="grid-container" style="margin-bottom: 1rem;">
+        <div class="responsive-info-holder">
+            <mat-card class="card">
+                <div class="field">
+                    <b>Estatus de la subscripción:</b>
+                    <span> Activa </span>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="field">
+                    <b>Siguiente renovación:</b>
+                    <span> 30-dec-2024 </span>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="field">
+                    <b>Siguiente cargo:</b>
+                    <span> {{ 500 | currency}} </span>
+                </div>
+            </mat-card>
+        </div>
+        <div class="grid-container cards-holder" style="margin-bottom: 1rem;">
             <div class="mat-elevation-z8">
                 <mat-card class="card">
                     <h3>

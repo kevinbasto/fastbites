@@ -18,3 +18,43 @@
     justify-content: space-between;
     margin-top: 1ch;
 }
+
+@media(max-width: 600px){
+    .cards-holder{
+        display: none;
+    }
+
+    .card-header{
+        display: none;
+    }
+
+    .responsive-card-header{
+        display: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h1{
+            margin: 0;
+        }
+    }
+
+    .responsive-info-holder{
+        margin-bottom: 1rem;
+    }
+}
+
+@media(min-width: 601px){
+    .responsive-info-holder{
+        display: none;
+    }
+
+    .responsive-card-header{
+        display: none;
+    }
+}
+
+.field{
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
