@@ -4,8 +4,8 @@
     <th mat-header-cell *matHeaderCellDef>
       {{header.displayName}}
     </th>
-    <td mat-cell *matCellDef="let element">
-      <span *ngIf="!header.type && !header.toggable">
+    <td mat-cell *matCellDef="let element" (click)="!(header.toggable)? selection.emit(element) : null">
+      <span *ngIf="!header.type && !header.toggable" >
         {{element[header.name]}}
       </span>
       <span *ngIf="header.type == 'currency'">

@@ -36,6 +36,10 @@ export class ProductsComponent implements OnInit {
     this.productsService.editProduct(product);
   }
 
+  openSelectedProduct(product: Product) {
+    this.productsService.VisualizeProduct(product);
+  }
+
   deleteItem(product: Product) {
     this.productsService.deleteProduct(product, this.data!);
   }

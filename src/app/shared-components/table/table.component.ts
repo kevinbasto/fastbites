@@ -30,7 +30,7 @@ export class TableComponent implements OnInit, OnChanges{
   @Output() deleteItem : EventEmitter<any> = new EventEmitter();
   @Output() pageEvent : EventEmitter<PageEvent> = new EventEmitter();
   @Output() toggle: EventEmitter<any> = new EventEmitter();
-  @Output() order: EventEmitter<null> = new EventEmitter();
+  @Output() selection: EventEmitter<any> = new EventEmitter();
 
   privDisplayColumns: string[] = [];
   displayedColumns: string[] = [];

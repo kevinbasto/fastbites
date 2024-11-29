@@ -11,6 +11,7 @@ import { SnackbarService } from '../../../core/services/snackbar/snackbar.servic
 import { ProductsRepoService } from '../../../core/repos/products-repo/products-repo.service';
 import * as qrcode from "qrcode";
 import { MenuUrlDisplayerComponent } from '../../../shared-components/menu-url-displayer/menu-url-displayer.component';
+import { ProductVisualizerComponent } from '../../../shared-components/product-visualizer/product-visualizer.component';
 
 @Injectable({
   providedIn: 'root'
@@ -112,5 +113,9 @@ export class ProductsService {
       console.log(error);
       this.snackbar.openMessage("Hubo un problema al redirigirte al menu");
     }
+  }
+
+  VisualizeProduct(product: Product) {
+    const dialog = this.dialog.open(ProductVisualizerComponent, { data: {product} });
   }
 }

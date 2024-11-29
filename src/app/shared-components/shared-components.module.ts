@@ -33,6 +33,7 @@ import { InfoCardComponent } from './info-card/info-card.component';
 import {provideCharts, withDefaultRegisterables, BaseChartDirective  } from "ng2-charts";
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { ProductVisualizerComponent } from './product-visualizer/product-visualizer.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     MenuItemComponent,
     InfoCardComponent,
     BarChartComponent,
-    PieChartComponent
+    PieChartComponent,
+    ProductVisualizerComponent
   ],
   imports: [
     CommonModule,
@@ -83,7 +85,8 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     OrderingMenuComponent,
     InfoCardComponent,
     BarChartComponent,
-    PieChartComponent
+    PieChartComponent,
+    ProductVisualizerComponent
   ],
   providers: [
     provideCharts(withDefaultRegisterables()),
