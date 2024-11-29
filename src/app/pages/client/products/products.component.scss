@@ -17,3 +17,14 @@
         display: none;
     }
 }
+
+@media(max-width: 600px){
+    .card{
+        padding: 0;
+    }
+
+    .grid-container{
+        padding: 0;
+    }
+
+}

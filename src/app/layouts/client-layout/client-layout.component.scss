@@ -2,3 +2,17 @@
     width: 100vw;
     height: 100vh;
 }
+
+.content-container{
+    padding-left: 1rem; 
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+}
+
+@media(max-width: 600px){
+
+    .content-container{
+        padding: 0;
+    }
+
+}
