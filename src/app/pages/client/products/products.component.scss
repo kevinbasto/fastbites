@@ -1,0 +1,9 @@
+.expand{
+    transform: rotate(180deg);
+    transition: 100ms ease-in-out;
+}
+
+.collapse{
+    transform: rotate(0deg);
+    transition: 100ms ease-in-out;
+}

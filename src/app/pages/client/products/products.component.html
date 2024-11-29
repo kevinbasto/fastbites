@@ -5,8 +5,13 @@
               {{title? title : "Lista de elementos"}}
             </h1>
             <div style="display: flex; gap: 1rem;">
+              <button mat-icon-button >
+                <mat-icon [ngClass]="filtersOpened? ['expand'] : ['collapse']" (click)="filtersOpened = !filtersOpened" >
+                  arrow_drop_down
+                </mat-icon>
+              </button>
               <button mat-raised-button color="primary" (click)="create()" >
-                <mat-icon>
+                <mat-icon >
                   add
                 </mat-icon>
                 Agregar elemento

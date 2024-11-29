@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   data? : Array<any>;
   headers : Array<TableColumn> = productTableHeaders;
   tableConfig: TableConfig = productTableConfig;
-  
+  filtersOpened: boolean = false;
   
 
   constructor(
