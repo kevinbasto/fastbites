@@ -19,7 +19,8 @@ export const productTableHeaders: Array<TableColumn> = [
   {
     name: "available",
     displayName: "Disponible",
-    toggable: true
+    toggable: true,
+    displayOnMobile: true
   },
 ]
 

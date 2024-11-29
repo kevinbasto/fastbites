@@ -45,7 +45,14 @@ export class TableComponent implements OnInit, OnChanges{
       if(res.matches){
         let first = this.displayedColumns[0];
         let last = this.displayedColumns[this.displayedColumns.length - 1];
-        this.displayedColumns = [first, last];
+        let columns : Array<string> = [];
+        for(let column of this.displayedColumns){
+          let foundColumn : TableColumn = this.headers!.find(col => col.name == column)!;
+          
+          if(foundColumn && foundColumn.displayOnMobile)
+            columns.push(foundColumn.name);
+        }
+        this.displayedColumns = [first, ...columns, last];
       }else{
         this.displayedColumns = this.privDisplayColumns;
       }

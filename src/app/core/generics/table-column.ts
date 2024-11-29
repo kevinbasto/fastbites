@@ -3,4 +3,5 @@ export interface TableColumn {
     displayName: string;
     type?: "currency" | "date"
     toggable? : boolean;
+    displayOnMobile? : boolean;
 }

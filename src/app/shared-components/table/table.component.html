@@ -15,7 +15,7 @@
         {{element[header.name] | date: 'dd/MM/YYYY HH:mm' }}
       </span>
       <mat-slide-toggle *ngIf="header.toggable" [checked]="element[header.name]" (toggleChange)="toggle.emit(element)">
-        {{element[header.name]? 'Activo' : 'Inactivo'}}
+        <!-- {{element[header.name]? 'Activo' : 'Inactivo'}} -->
       </mat-slide-toggle>
     </td>
   </ng-container>
