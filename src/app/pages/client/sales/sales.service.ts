@@ -73,13 +73,12 @@ export class SalesService {
         });
       }
     }
-    
     const prodsws = xlsx.utils.json_to_sheet(items);
     const ws = xlsx.utils.json_to_sheet(sales);
     const wb = xlsx.utils.book_new();
     xlsx.utils.book_append_sheet(wb, ws, 'Ventas');
     xlsx.utils.book_append_sheet(wb, prodsws, 'Productos');
-
     xlsx.writeFile(wb, 'ventas.xlsx');
   }
+
 }
