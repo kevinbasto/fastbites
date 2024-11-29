@@ -26,4 +26,9 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         url: "settings",
         icon: "settings",
     },
+    {
+        name: "Personalizar",
+        url: "personalization",
+        icon: "palette",
+    }
 ]

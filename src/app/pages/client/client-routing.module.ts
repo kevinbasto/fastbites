@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: "menu",
     loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule)
+  },
+  {
+    path: "personalization",
+    loadChildren: () => import('./personalization/personalization.module').then(m => m.PersonalizationModule)
   }
 ];
 
