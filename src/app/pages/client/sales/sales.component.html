@@ -1,4 +1,32 @@
-<div class="grid-container" style="margin-bottom: 1rem;">
+<div class="responsive-info-holder">
+    <mat-card class="card">
+        <div class="field">
+            <b>Fecha de hoy:</b>
+            <span> {{date}} </span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="field">
+            <b>Ventas del día:</b>
+            <span> {{total}} </span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="field">
+            <b>Ventas del mes:</b>
+            <span> {{MonthTotal}} </span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="field">
+            <b>Ganancia neta del mes:</b>
+            <span> {{earnings}} </span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="field">
+            <b>Producto popular del mes:</b>
+            <span> {{trendProduct}} </span>
+        </div>
+    </mat-card>
+</div>
+<div class="grid-container cards-holder" style="margin-bottom: 1rem;">
     <app-info-card
         [title]="'Fecha de hoy'"
         [message]="date"
@@ -68,7 +96,17 @@
                 <mat-icon>
                     download
                 </mat-icon>
-                Exportar ventas
+                Exportar
+            </button>
+        </div>
+        <div class="responsive-card-header">
+            <h1>
+                Ventas del mes
+            </h1>
+            <button mat-icon-button color="primary" (click)="exportToExcel()" >
+                <mat-icon>
+                    download
+                </mat-icon>
             </button>
         </div>
         <app-table

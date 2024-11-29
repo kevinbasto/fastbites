@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
-import { ChartConfiguration, ChartData, ChartEvent } from 'chart.js';
+import { ChartConfiguration, ChartData, ChartEvent, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
@@ -32,8 +32,12 @@ export class BarChartComponent implements OnChanges{
 
   setdata() {}
 
-
+  options : ChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false
+  }
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
+    ...this.options,
     // We use these empty structures as placeholders for dynamic theming.
     scales: {
       x: {},
