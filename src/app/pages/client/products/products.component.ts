@@ -4,6 +4,7 @@ import { ProductsService } from './products.service';
 import { productTableConfig, productTableHeaders } from './products-table.headers';
 import { Product } from '../../../core/entities/product';
 import { TableConfig } from '../../../core/generics/table-config';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
   templateUrl: './products.component.html',
@@ -16,11 +17,16 @@ export class ProductsComponent implements OnInit {
   headers : Array<TableColumn> = productTableHeaders;
   tableConfig: TableConfig = productTableConfig;
   filtersOpened: boolean = false;
-  
+  shadow: boolean = false;
 
   constructor(
     private productsService: ProductsService,
-  ) { }
+    private breakpoint: BreakpointObserver
+  ) {
+    this.breakpoint.observe(['(max-width: 600px)']).subscribe((matcher: BreakpointState) => {
+      this.shadow = matcher.matches;
+    });
+  }
 
   ngOnInit(): void {
     this.productsService.products$!.subscribe(products => {
