@@ -1,15 +1,18 @@
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { Product } from '../../core/entities/product';
 
 @Component({
   selector: 'pie-chart',
   templateUrl: './pie-chart.component.html',
   styleUrl: './pie-chart.component.scss'
 })
-export class PieChartComponent {
+export class PieChartComponent implements OnChanges{
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+
+  @Input() brief? : Array<{product: Product, quantity: number}>
 
   constructor(
     private breakpointObserver: BreakpointObserver
@@ -17,6 +20,21 @@ export class PieChartComponent {
     this.breakpointObserver.observe(['(max-width: 600px)']).subscribe((res: BreakpointState) => {
       this.chart?.chart?.render()
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['brief'] && this.brief){
+      let labels :string[] = [];
+      let data: number[] = [];
+      for(let item of this.brief){
+        labels.push(item.product.name);
+        data.push(item.quantity);
+      }
+      this.pieChartData.labels = labels;
+      this.pieChartData.datasets[0].data = data;
+      this.chart?.update()
+      console.log("object");
+    }
   }
 
   config : ChartOptions = {

@@ -5,6 +5,7 @@ import { TableConfig } from '../../../core/generics/table-config';
 import { SalesService } from './sales.service';
 import { Sale } from '../../../core/entities/sale';
 import { Product } from '../../../core/entities/product';
+import { CheckoutItem } from '../../../core/entities/checkout-item';
 
 @Component({
   templateUrl: './sales.component.html',
@@ -22,18 +23,18 @@ export class SalesComponent implements OnInit {
     options: false
   }
   months = [
-    'Enero',
-    'Febrero',
-    'Marzo',
-    'Abril',
-    'Mayo',
-    'Junio',
-    'Julio',
-    'Agosto',
-    'Septiembre',
-    'Octubre',
-    'Noviembre',
-    'Diciembre'
+    'Ene',
+    'Feb',
+    'Mar',
+    'Abr',
+    'May',
+    'Jun',
+    'Jul',
+    'Ago',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dic'
   ]
   date: string = "";
   total: number = 0
@@ -66,7 +67,7 @@ export class SalesComponent implements OnInit {
         this.calculateMonthTotal(sales);
         this.CalculateEarnings(sales);
         this.calculateTrendProduct(sales);
-
+        this.debriefSales(sales);
         this.setDates()
         this.calculateDailySales(sales);
       }).catch((err) => {
@@ -189,6 +190,32 @@ export class SalesComponent implements OnInit {
     });
     return total;
   }
+
+  brief?: Array<{product: Product, quantity: number}>;
+
+  private debriefSales(sales: Array<Sale>) {
+    let items: Array<Partial<CheckoutItem>> = [];
+    
+    for (let sale of sales) {
+        items = [...items, ...sale.items];
+    }
+    
+    const productTotals = new Map<string, { product: Partial<Product>, quantity: number }>();
+
+    for (let item of items) {
+        const productId = item.product?.uuid;
+        if (productId) {
+            if (!productTotals.has(productId)) {
+                productTotals.set(productId, { product: item.product!, quantity: 0 });
+            }
+            const current = productTotals.get(productId)!;
+            current.quantity += item.quantity ?? 0;
+        }
+    }
+
+  let brief = Array.from(productTotals.values());
+  this.brief = brief as any;
+}
 
   exportToExcel() {
     this.salesServ.exportToExcel(this.sales!);
