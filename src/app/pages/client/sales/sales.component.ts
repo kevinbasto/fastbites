@@ -39,6 +39,7 @@ export class SalesComponent implements OnInit {
   total: number = 0
   earnings: number = 0;
   trendProduct: string = "";
+  salesHistoryMode : "week" | "month" | "year" = "week"
 
   constructor(
     private salesServ: SalesService
