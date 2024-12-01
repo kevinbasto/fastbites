@@ -15,6 +15,8 @@ import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatTableModule,
     MatButtonModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule,
+    MatInputModule
   ],
   providers: [
     NgxImageCompressService

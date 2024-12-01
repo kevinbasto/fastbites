@@ -1,26 +1,15 @@
 <div class="grid-container" [ngClass]="shadow? ['']: ['mat-elevation-z8']">
     <mat-card class="card">
-        <div class="table-header card-header">
-            <h1> {{title? title : "Lista de elementos"}} </h1>
-            <div style="display: flex; gap: 1rem;">
-              <button mat-raised-button color="primary" (click)="create()" >
-                <mat-icon > add </mat-icon>
-                Agregar
-              </button>
-              <button mat-raised-button color="primary" (click)="goToOrderingPage()" >
-                <mat-icon> point_of_sale </mat-icon>
-                Ver menu
-              </button>
-            </div>
-          </div>
-          <div class="responsive-card-header">
-            <h1> Productos </h1>
+          <div class="card-header">
+            <mat-form-field>
+              <mat-label>
+                Buscar
+              </mat-label>
+              <input type="text" matInput>
+            </mat-form-field>
             <div style="display: flex; gap: 1rem;">
               <button mat-icon-button color="primary" (click)="create()" >
                 <mat-icon > add </mat-icon>
-              </button>
-              <button mat-icon-button color="primary" (click)="goToOrderingPage()" >
-                <mat-icon> point_of_sale </mat-icon>
               </button>
             </div>
           </div>
@@ -36,5 +25,11 @@
             (toggle)="toggleProduct($event)"
             (selection)="openSelectedProduct($event)"
         ></app-table>
+        <mat-paginator
+          [pageSize]="10"
+          [pageSizeOptions]="[10, 50, 100]"
+          [length]="100"
+          (page)="changePage($event)"
+        ></mat-paginator>
     </mat-card>
 </div>

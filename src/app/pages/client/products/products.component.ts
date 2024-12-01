@@ -5,6 +5,7 @@ import { productTableConfig, productTableHeaders } from './products-table.header
 import { Product } from '../../../core/entities/product';
 import { TableConfig } from '../../../core/generics/table-config';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   templateUrl: './products.component.html',
@@ -57,5 +58,9 @@ export class ProductsComponent implements OnInit {
 
   goToOrderingPage() {
     this.productsService.goToProducts()
+  }
+
+  changePage(page: PageEvent) {
+    
   }
 }
