@@ -1,18 +1,18 @@
 <div class="placeholder" *ngIf="!image && !url">
-    <mat-icon class="placeholder-icon">
-      image
-    </mat-icon>
-    Aqui van tus imagen
-  </div>
-  <image-cropper
-  [maintainAspectRatio]="false"
-    [imageFile]="$any(image)"
-    [imageURL]="url"
-    [cropper]="cropper"
-    [aspectRatio]="3 / 3"
-    [maintainAspectRatio]="true"
-    [cropper]="cropperPos"
-    (cropperReady)="setPos()"
-    (imageCropped)="handleCroppedImage($event)"
-    format="png"
-  ></image-cropper>
+  <mat-icon class="placeholder-icon">
+    image
+  </mat-icon>
+  Aqui van tus imagen
+</div>
+<image-cropper 
+  [maintainAspectRatio]="false" 
+  [imageFile]="$any(image)" 
+  [imageURL]="url" [cropper]="cropper"
+  [aspectRatio]="3 / 3" 
+  [maintainAspectRatio]="true" 
+  [cropper]="cropperPos" 
+  (cropperReady)="setPos()"
+  (imageCropped)="handleCroppedImage($event)" 
+  format="png"
+  *ngIf="image || url"
+></image-cropper>
