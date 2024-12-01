@@ -2,12 +2,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: 80vh;
+    height: 90vh;
     img{
-        width: 80%;
+        width: 100%;
+        aspect-ratio: 1/1;
+        
         object-fit: contain;
         border: 3px dashed #afafaf;
         margin-bottom: 1rem;
+        border-radius: 1rem;
+        .unloaded{
+            background: black;
+        }
+        .loaded{
+            background: transparent;
+        }
     }
     .data{
         width: 100%;
@@ -19,11 +28,19 @@
         .field:last-child{
             flex-direction: column;
             p{
-                background: rgb(250, 250, 250);
+                background: #efefef;
+                border-radius: 1rem;
+                padding: .5ch;
+                height: 5ch;
+                white-space: nowrap;
+                overflow: hidden;
+                word-wrap: break-word;
+                text-overflow: ellipsis;
             }
         }
     }
 }
+
 
 .form-actions{
     margin-top: 1rem;

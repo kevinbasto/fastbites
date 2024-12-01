@@ -9,7 +9,8 @@ import { Product } from '../../core/entities/product';
 })
 export class ProductVisualizerComponent {
 
-  product: Product
+  product: Product;
+  imageload: boolean = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: {product : Product},

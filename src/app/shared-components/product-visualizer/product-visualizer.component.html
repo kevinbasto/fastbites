@@ -1,10 +1,10 @@
 <div class="card">
+    <img src="{{product.croppedImage}}" alt="La imagen de un producto" loading="lazy" (load)="imageload = !imageload" [ngClass]="imageload? ['loaded'] : ['unloaded']" >
     <div class="card-header">
         <h1 style="text-align: center;">
             Información del producto
         </h1>
     </div>
-    <img src="{{product.croppedImage}}" alt="">
     <div class="data">
         <div class="field">
             <b>Nombre:</b>
@@ -12,11 +12,11 @@
         </div>
         <div class="field">
             <b>Costo de producción:</b>
-            <p>{{product.cost}}</p>
+            <p>{{product.cost | currency}}</p>
         </div>
         <div class="field">
             <b>Precio de venta:</b>
-            <p>{{product.price}}</p>
+            <p>{{product.price | currency}}</p>
         </div>
         <div class="field">
             <b>Disponibilidad:</b>
