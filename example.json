@@ -1,0 +1,114 @@
+[
+    {
+        "croppedImage": "https://firebasestorage.googleapis.com/v0/b/fastbites-321c9.firebasestorage.app/o/5VEduscEpdWOgWC5jBkNebYiWcF2%2F1efa1d8b-a49c-67a0-8c41-5c3790a5d214%2F1efa1d8b-a49c-67a0-8c41-5c3790a5d214.png?alt=media&token=5b5c8e5b-7fdc-47ac-a215-a170238e4a0d",
+        "rawImage": "https://firebasestorage.googleapis.com/v0/b/fastbites-321c9.firebasestorage.app/o/5VEduscEpdWOgWC5jBkNebYiWcF2%2F1efa1d8b-a49c-67a0-8c41-5c3790a5d214%2F1efa1d8b-a49c-67a0-8c41-5c3790a5d214-raw.png?alt=media&token=d815d002-b5a9-4e01-89af-c702fc12c452",
+        "name": "Frances",
+        "available": true,
+        "croppedPosition": {
+            "y2": 334.578,
+            "x2": 303.5,
+            "y1": 31.078000000000003,
+            "x1": 0
+        },
+        "price": 350,
+        "uuid": "1efa1d8b-a49c-67a0-8c41-5c3790a5d214",
+        "cost": 150,
+        "description": "Una Squishmallow muy fanática de las películas de terror"
+    },
+    {
+        "uuid": "1efa3a49-3e09-6df0-9510-10c11f9fc286",
+        "name": "Essy",
+        "price": 250,
+        "rawImage": "https://firebasestorage.googleapis.com/v0/b/fastbites-321c9.firebasestorage.app/o/5VEduscEpdWOgWC5jBkNebYiWcF2%2F1efa3a49-3e09-6df0-9510-10c11f9fc286%2F1efa3a49-3e09-6df0-9510-10c11f9fc286.jpg?alt=media&token=28b708cb-482e-4e92-8d2b-ba1043618ca1",
+        "cost": 140,
+        "available": true,
+        "croppedPosition": {
+            "y1": 0,
+            "x2": 303.5,
+            "x1": 0.516000000000048,
+            "y2": 302.9839999999999
+        },
+        "croppedImage": "https://firebasestorage.googleapis.com/v0/b/fastbites-321c9.firebasestorage.app/o/5VEduscEpdWOgWC5jBkNebYiWcF2%2F1efa3a49-3e09-6df0-9510-10c11f9fc286%2F1efa3a49-3e09-6df0-9510-10c11f9fc286.png?alt=media&token=29c81968-5d8f-4da5-a94d-9be0af1a2b1b",
+        "description": "El squishmallow marino"
+    },
+    {
+        "uuid": "1efa3a4c-09fb-61f0-993c-f934a0350b61",
+        "rawImage": "https://firebasestorage.googleapis.com/v0/b/fastbites-321c9.firebasestorage.app/o/5VEduscEpdWOgWC5jBkNebYiWcF2%2F1efa3a4c-09fb-61f0-993c-f934a0350b61%2F1efa3a4c-09fb-61f0-993c-f934a0350b61.jpg?alt=media&token=e25f2217-3ebb-4be5-aefa-b14eb92243e2",
+        "available": true,
+        "name": "Cole",
+        "croppedImage": "https://firebasestorage.googleapis.com/v0/b/fastbites-321c9.firebasestorage.app/o/5VEduscEpdWOgWC5jBkNebYiWcF2%2F1efa3a4c-09fb-61f0-993c-f934a0350b61%2F1efa3a4c-09fb-61f0-993c-f934a0350b61.png?alt=media&token=cb0ceffd-6823-47e4-ac73-f2a64af26fe9",
+        "cost": 120,
+        "price": 200,
+        "description": "Squishmallow con forma de tortuga",
+        "croppedPosition": {
+            "x2": 731.789,
+            "y2": 680.078,
+            "y1": 0,
+            "x1": 51.71100000000001
+        }
+    },
+    {
+        "description": "lorem ipsum",
+        "name": "Vaca squish",
+        "price": 150,
+        "cost": 20,
+        "available": true,
+        "rawImage": "https://firebasestorage.googleapis.com/v0/b/fastbites-321c9.firebasestorage.app/o/5VEduscEpdWOgWC5jBkNebYiWcF2%2F1efa485d-6c22-6cb0-9621-c018f254f866%2F1efa485d-6c22-6cb0-9621-c018f254f866.jpg?alt=media&token=465bd720-22f0-4ac8-8abe-9442722aa420",
+        "croppedImage": "https://firebasestorage.googleapis.com/v0/b/fastbites-321c9.firebasestorage.app/o/5VEduscEpdWOgWC5jBkNebYiWcF2%2F1efa485d-6c22-6cb0-9621-c018f254f866%2F1efa485d-6c22-6cb0-9621-c018f254f866-cropped.png?alt=media&token=16a74600-8cb9-4f85-8e2b-65be3680572f",
+        "uuid": "1efa485d-6c22-6cb0-9621-c018f254f866",
+        "croppedPosition": {
+            "x1": 0,
+            "x2": 781.5,
+            "y1": 26.656000000000006,
+            "y2": 808.156
+        }
+    },
+    {
+        "price": 100,
+        "rawImage": "https://firebasestorage.googleapis.com/v0/b/fastbites-321c9.firebasestorage.app/o/5VEduscEpdWOgWC5jBkNebYiWcF2%2F1efa8e90-e3d4-6f00-8750-424f2522533d%2F1efa8e90-e3d4-6f00-8750-424f2522533d.jpg?alt=media&token=054c6860-f1cd-4a7a-81d8-e78e65f1cac9",
+        "croppedPosition": {
+            "y1": 0,
+            "y2": 612,
+            "x2": 612,
+            "x1": 0
+        },
+        "available": true,
+        "name": "Aron",
+        "description": "Un squishmallow de 5 pulgadas llamado Aron",
+        "uuid": "1efa8e90-e3d4-6f00-8750-424f2522533d",
+        "croppedImage": "https://firebasestorage.googleapis.com/v0/b/fastbites-321c9.firebasestorage.app/o/5VEduscEpdWOgWC5jBkNebYiWcF2%2F1efa8e90-e3d4-6f00-8750-424f2522533d%2F1efa8e90-e3d4-6f00-8750-424f2522533d-cropped.png?alt=media&token=34fd2df3-3185-46ca-95b8-953a3a2df904",
+        "cost": 50
+    },
+    {
+        "croppedPosition": {
+            "x1": 5.684341886080802e-14,
+            "y2": 898.2991472167969,
+            "y1": 410.08514721679694,
+            "x2": 488.214
+        },
+        "description": "Test",
+        "uuid": "1efaaae6-a4e9-6120-90dd-30f17a6d9714",
+        "price": 200,
+        "cost": 15,
+        "available": true,
+        "croppedImage": "https://firebasestorage.googleapis.com/v0/b/fastbites-321c9.firebasestorage.app/o/5VEduscEpdWOgWC5jBkNebYiWcF2%2F1efaaae6-a4e9-6120-90dd-30f17a6d9714%2F1efaaae6-a4e9-6120-90dd-30f17a6d9714.png?alt=media&token=d40a3a78-d052-438c-926c-2caf81eaa5f0",
+        "name": "Test",
+        "rawImage": "https://firebasestorage.googleapis.com/v0/b/fastbites-321c9.firebasestorage.app/o/5VEduscEpdWOgWC5jBkNebYiWcF2%2F1efaaae6-a4e9-6120-90dd-30f17a6d9714%2F1efaaae6-a4e9-6120-90dd-30f17a6d9714.jpg?alt=media&token=e3708fb2-0ce1-411b-b54c-f11c2b3c282c"
+    },
+    {
+        "price": 125,
+        "name": "pantalla oled",
+        "description": "Test",
+        "croppedPosition": {
+            "y1": 243,
+            "y2": 456.562,
+            "x1": 388.14750000000004,
+            "x2": 601.7095
+        },
+        "cost": 23,
+        "available": true,
+        "croppedImage": "https://firebasestorage.googleapis.com/v0/b/fastbites-321c9.firebasestorage.app/o/5VEduscEpdWOgWC5jBkNebYiWcF2%2F1efaadb2-ffbb-6700-b249-a16b986628b4%2F1efaadb2-ffbb-6700-b249-a16b986628b4-cropped.png?alt=media&token=6691354f-3d74-4115-b8cb-bc991973f8f5",
+        "uuid": "1efaadb2-ffbb-6700-b249-a16b986628b4",
+        "rawImage": "https://firebasestorage.googleapis.com/v0/b/fastbites-321c9.firebasestorage.app/o/5VEduscEpdWOgWC5jBkNebYiWcF2%2F1efaadb2-ffbb-6700-b249-a16b986628b4%2F1efaadb2-ffbb-6700-b249-a16b986628b4.jpg?alt=media&token=fc3c1b1c-7cea-46fb-ad40-ae8fbf4a6ffe"
+    }
+]

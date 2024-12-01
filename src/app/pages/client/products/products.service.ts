@@ -55,7 +55,6 @@ export class ProductsService {
       if(!confirmation)
         return;
       products = products.filter(prod => prod.uuid != product.uuid);
-      let uid = await this.authServ.getUID() as string;
       await this.updateProducts(uid, products);
       await this.removeFromStorage(uid, uuid);
       await this.snackbar.openMessage("Producto borrado con éxito!");

@@ -2,7 +2,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { NavigationMenuItem } from '../../../core/generics/Navigation-menu-item';
-import { NavigationMenu } from '../../../../environments/menu';
+import { NavigationMenu } from '../../../../environments/navigation-menu';
 
 @Component({
   selector: 'app-navbar',

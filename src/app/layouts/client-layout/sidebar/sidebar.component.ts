@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { NavigationMenuItem } from '../../../core/generics/Navigation-menu-item';
 import { NavigationEnd, Router } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { NavigationMenu } from '../../../../environments/menu';
+import { NavigationMenu } from '../../../../environments/navigation-menu';
 import { AuthService } from '../../../core/services/auth/auth.service';
 
 @Component({
