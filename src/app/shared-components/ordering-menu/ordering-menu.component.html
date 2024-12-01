@@ -1,5 +1,5 @@
 <div class="grid-container" >
-    <div  *ngFor="let product of products" class="mat-elevation-z8">
+    <div  *ngFor="let product of products">
         <menu-item
             [product]="product"
             (itemSelected)="prod.emit(product)"

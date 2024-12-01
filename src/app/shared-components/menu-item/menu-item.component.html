@@ -1,24 +1,15 @@
-<mat-card class="item">
-    <img src="{{product.croppedImage}}" alt="">
-    <div class="card">
-        <div>
-            <h4>
-                {{product.name}}
-            </h4>
-            <p>
-                {{product.description}}
-            </p>
-            <p>
-                <b>
-                    {{product.price | currency}}
-                </b>
-            </p>
-        </div>
-        <button mat-raised-button color="primary" (click)="itemSelected.emit()">
-            <mat-icon>
-                add_shopping_cart
-            </mat-icon>
-            Agregar
-        </button>
-    </div>
-</mat-card>
+<div class="item">
+    <img src="{{product.croppedImage}}" class="img" alt="">
+     <!-- <div class="img"></div> -->
+     <h1 class="title"> {{product.name}} </h1>
+     <p class="description"> {{product.description}} </p>
+     <p class="price" > {{product.price | currency}} </p>
+     <button mat-button color="primary">
+        <mat-icon> add_shopping-cart </mat-icon>
+        Agregar
+     </button>
+     <!-- <button class="item-btn" mat-raised-button color="primary" (click)="itemSelected.emit()">
+         <mat-icon> add_shopping_cart </mat-icon>
+         Agregar
+     </button> -->
+</div>

@@ -118,4 +118,5 @@ export class ProductsService {
   VisualizeProduct(product: Product) {
     const dialog = this.dialog.open(ProductVisualizerComponent, { data: {product} });
   }
+
 }

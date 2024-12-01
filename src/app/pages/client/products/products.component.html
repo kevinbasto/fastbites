@@ -1,38 +1,26 @@
 <div class="grid-container" [ngClass]="shadow? ['']: ['mat-elevation-z8']">
     <mat-card class="card">
         <div class="table-header card-header">
-            <h1>
-              {{title? title : "Lista de elementos"}}
-            </h1>
+            <h1> {{title? title : "Lista de elementos"}} </h1>
             <div style="display: flex; gap: 1rem;">
               <button mat-raised-button color="primary" (click)="create()" >
-                <mat-icon >
-                  add
-                </mat-icon>
+                <mat-icon > add </mat-icon>
                 Agregar
               </button>
               <button mat-raised-button color="primary" (click)="goToOrderingPage()" >
-                <mat-icon>
-                  point_of_sale
-                </mat-icon>
+                <mat-icon> point_of_sale </mat-icon>
                 Ver menu
               </button>
             </div>
           </div>
           <div class="responsive-card-header">
-            <h1>
-              Productos
-            </h1>
+            <h1> Productos </h1>
             <div style="display: flex; gap: 1rem;">
               <button mat-icon-button color="primary" (click)="create()" >
-                <mat-icon >
-                  add
-                </mat-icon>
+                <mat-icon > add </mat-icon>
               </button>
               <button mat-icon-button color="primary" (click)="goToOrderingPage()" >
-                <mat-icon>
-                  point_of_sale
-                </mat-icon>
+                <mat-icon> point_of_sale </mat-icon>
               </button>
             </div>
           </div>

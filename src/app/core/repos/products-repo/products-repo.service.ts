@@ -3,7 +3,7 @@ import { Firestore, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Product } from '../../entities/product';
 import { AuthService } from '../../services/auth/auth.service';
-import { doc, getDoc, setDoc, updateDoc } from '@firebase/firestore';
+import { collection, doc, getDoc, limitToLast, query, setDoc, updateDoc } from '@firebase/firestore';
 import { v6 } from "uuid";
 
 @Injectable({
@@ -94,5 +94,10 @@ export class ProductsRepoService {
           observer.next(doc.products);
       });
     });
+  }
+
+  async fetchPage() {
+    let colRef = collection(this.firestore, 'users/data');
+    let queryRef = query(colRef, limitToLast(5))
   }
 }
