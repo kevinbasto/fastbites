@@ -6,6 +6,9 @@ import { Product } from '../../../core/entities/product';
 import { TableConfig } from '../../../core/generics/table-config';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { PageEvent } from '@angular/material/paginator';
+import { Menu } from '../../../core/entities/menu';
+import { Category } from '../../../core/entities/category';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './products.component.html',
@@ -13,54 +16,64 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class ProductsComponent implements OnInit {
 
-  title : string = "Listado de productos";
-  data? : Array<any>;
   headers : Array<TableColumn> = productTableHeaders;
   tableConfig: TableConfig = productTableConfig;
-  filtersOpened: boolean = false;
+  products?: Array<Product>;
+  categories?: Array<Category>;
+  menu! : Menu;
+  
   shadow: boolean = false;
 
   constructor(
     private productsService: ProductsService,
-    private breakpoint: BreakpointObserver
+    private breakpoint: BreakpointObserver,
+    private router: Router
   ) {
-    this.breakpoint.observe(['(max-width: 600px)']).subscribe((matcher: BreakpointState) => {
-      this.shadow = matcher.matches;
-    });
+    this.breakpoint.observe(['(max-width: 600px)'])
+    .subscribe((bs: BreakpointState) => this.shadow = bs.matches);
   }
 
   ngOnInit(): void {
-    this.productsService.products$!.subscribe(products => {
-      this.data = products;
+    this.productsService.fetchMenu()
+    .then((menu : Menu) => {
+      let { products, categories } = menu;
+      this.products = products;
+      this.categories = categories;
+      this.menu = menu;
     });
   }
 
-  create() {
-    this.productsService.createNewProduct();
+  createProduct() {
+    this.router.navigate(['/client/products/create']);
   }
 
-  edit(product: Product) {
-    this.productsService.editProduct(product);
+  filterProductsByCategory(category : Category) {
+    this.productsService.filterProductsByCategory(category);
   }
 
-  openSelectedProduct(product: Product) {
-    this.productsService.VisualizeProduct(product);
+  importProductsFromFile() {
+
   }
 
-  deleteItem(product: Product) {
-    this.productsService.deleteProduct(product, this.data!);
+  viewQrDialog() {
+    this.productsService.viewQrDialog()
+  }
+
+  editProduct(product: Product) {
+    this.router.navigate([`/client/products/${product.id}`]);
+  }
+
+  viewProduct(product: Product) {
+    this.productsService.viewProduct(product);
+  }
+
+  deleteProduct(product: Product) {
+    this.productsService.deleteProduct(product);
   }
 
   toggleProduct(product: Product) {
-    product.available = !product.available;
-    this.productsService.updateProduct(product, this.data!);
+    this.productsService.toggleProduct(product);
   }
 
-  goToOrderingPage() {
-    this.productsService.goToProducts()
-  }
-
-  changePage(page: PageEvent) {
-    
-  }
+  
 }

@@ -43,22 +43,22 @@ export class CreateProductService {
    * formato de nombre: <uuid>-<raw | cropped>.<formato>
    */
   async createProduct(product: Product, image: File, cropped: CroppedImage) {
-    try {
-      let uid = await this.auth.getUID() as string;
-      let uuid = v6()
-      let urls = await this.processImage(uid, uuid, image, cropped);
-      product.croppedPosition = cropped.position;
-      product.croppedImage = urls.croppedUrl;
-      product.rawImage = urls.rawUrl;
-      product.uuid = uuid;
-      await this.productsServ.createProduct(product);
-      this.snackbar.openMessage("Producto creado con éxito!");
-      this.goBack()
-    } catch (error) {
-      console.log(error);
-      this.snackbar.openMessage("No se pudo crear el producto")
-      throw error;
-    }
+    // try {
+    //   let uid = await this.auth.getUID() as string;
+    //   let uuid = v6()
+    //   let urls = await this.processImage(uid, uuid, image, cropped);
+    //   product.croppedPosition = cropped.position;
+    //   product.croppedImage = urls.croppedUrl;
+    //   product.rawImage = urls.rawUrl;
+    //   product.uuid = uuid;
+    //   await this.productsServ.createProduct(product);
+    //   this.snackbar.openMessage("Producto creado con éxito!");
+    //   this.goBack()
+    // } catch (error) {
+    //   console.log(error);
+    //   this.snackbar.openMessage("No se pudo crear el producto")
+    //   throw error;
+    // }
   }
 
   /**

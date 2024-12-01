@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Menu } from '../../entities/menu';
 import { Firestore } from '@angular/fire/firestore';
-import { doc, getDoc } from '@firebase/firestore';
+import { doc, getDoc, setDoc } from '@firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -12,23 +12,36 @@ export class MenuRepoService {
     private firestore: Firestore
   ) { }
 
-  async createNewMenu() {}
-  
-  async fetchMenu(uid: string) : Promise<Menu> {
+  async createNewMenu(uid: string) : Promise<Menu> {
     try {
-      let menu!: Menu;
+      let docRef = doc(this.firestore, `/users/${uid}/data/menu`);
+      let menu : Menu = { products: [], categories: [] };
+      await setDoc(docRef, menu);
+      return menu;
+    } catch (error) {
+      throw error;
+    }
+  }
+  
+  async fetchMenu(uid: string) : Promise<Menu | null> {
+    try {
       let docRef = doc(this.firestore, `/user/${uid}/data/menu`);
       let document = await getDoc(docRef);
-      if(!document.exists())
-        throw new Error("No existe el documento solicitado");
-      else
-        menu = document.data() as Menu;
+      let menu = document.data() as Menu;
       return menu;
     } catch (error) {
       throw error;
     }
   }
 
-  updateMenu(menu: Menu) {}
+  async updateMenu(uid: string, menu: Menu) {
+    try {
+      let docRef = doc(this.firestore, `/user/${uid}/data/menu`);
+      await setDoc(docRef, menu);
+      return menu;
+    } catch (error) {
+      throw error;
+    }
+  }
 
 }

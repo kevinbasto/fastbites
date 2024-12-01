@@ -1,7 +1,7 @@
 import { CropperPosition } from "ngx-image-cropper";
 
 export interface Product {
-    uuid: string;
+    id: string;
     name: string;
     category: string;
     description: string;

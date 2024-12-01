@@ -24,18 +24,18 @@ export class MenuService {
 
   fetchProducts() {
     return new Observable<Array<Product>>((obs) => {
-      this.auth.getUID()
-        .then((uid) => {
-          this.productsRepo.fetchProducts(uid!)
-            .subscribe(products => {
-              if (!products)
-                obs.next([])
-              else
-                obs.next(products)
-            })
-        }).catch((err) => {
-          obs.error("error")
-        });
+      // this.auth.getUID()
+      //   .then((uid) => {
+      //     this.productsRepo.fetchProducts(uid!)
+      //       .subscribe(products => {
+      //         if (!products)
+      //           obs.next([])
+      //         else
+      //           obs.next(products)
+      //       })
+      //   }).catch((err) => {
+      //     obs.error("error")
+      //   });
     });
   }
 

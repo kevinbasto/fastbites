@@ -39,7 +39,7 @@ export class CheckoutComponent implements OnInit {
 
   buildCheckout() {
     this.data.cart.forEach(product => {
-      const existingItem = this.orderResume.find(item => item.product.uuid === product.uuid);
+      const existingItem = this.orderResume.find(item => item.product.id === product.id);
       if (existingItem) {
         existingItem.quantity += 1;
       } else {

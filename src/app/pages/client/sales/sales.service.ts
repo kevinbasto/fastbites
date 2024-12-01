@@ -66,7 +66,7 @@ export class SalesService {
       for(let item of sale.items!){
         let { name, date } = sale;
         let { quantity  } = item;
-        let { price, cost, uuid } = item.product!;
+        let { price, cost, id: uuid } = item.product!;
         let prodname = item.product!.name;
         items.push({
           name, date, uuid, prodname, quantity, price, cost

@@ -12,33 +12,27 @@
                 </mat-select>
               </mat-form-field>
             </div>
-            <div style="display: flex; gap: 1rem;">
-              <button mat-icon-button color="primary" (click)="create()" matTooltip="Crear un nuevo producto" >
+            <div style="display: flex;">
+              <button mat-icon-button color="primary" (click)="createProduct()" matTooltip="Crear un nuevo producto" >
                 <mat-icon > add </mat-icon>
               </button>
-              <button mat-icon-button color="accent" (click)="goToOrderingPage()" matTooltip="Abrir URL del menu" >
+              <button mat-icon-button color="primary" (click)="importProductsFromFile()" matTooltip="Importar productos desde excel" >
+                <mat-icon > upload </mat-icon>
+              </button>
+              <button mat-icon-button color="accent" (click)="viewQrDialog()" matTooltip="Abrir URL del menu" >
                 <mat-icon> point_of_sale </mat-icon>
               </button>
             </div>
           </div>
         <app-table
-            [title]="title"
-            [data]="data"
+            [data]="products"
             [headers]="headers"
-            [setSize]="data? data.length : 0"
             [config]="tableConfig"
-            (create)="create()"
-            (edit)="edit($event)"
-            (deleteItem)="deleteItem($event)"
+            (create)="createProduct()"
+            (edit)="editProduct($event)"
+            (deleteItem)="deleteProduct($event)"
             (toggle)="toggleProduct($event)"
-            (selection)="openSelectedProduct($event)"
+            (selection)="viewProduct($event)"
         ></app-table>
-        <mat-paginator
-          [pageSize]="10"
-          [pageSizeOptions]="[10, 50, 100]"
-          [length]="100"
-          (page)="changePage($event)"
-          showFirstLastButtons
-        ></mat-paginator>
     </mat-card>
 </div>

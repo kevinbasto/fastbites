@@ -22,8 +22,8 @@ export class MenuService {
 
   fetchMenu(id: string) {
     return new Observable<Array<Product>>((obs) => {
-      this.productsRepo.fetchProducts(id)
-        .subscribe(products => obs.next(products));
+      // this.productsRepo.fetchProducts(id)
+      //   .subscribe(products => obs.next(products));
     });
   }
 

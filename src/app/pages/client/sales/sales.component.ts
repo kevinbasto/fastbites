@@ -88,12 +88,12 @@ export class SalesComponent implements OnInit {
         const product = item.product;
         const quantity = item.quantity || 0;
 
-        if (product && product.uuid) {
-          if (productSalesMap.has(product.uuid)) {
-            const existing = productSalesMap.get(product.uuid)!;
+        if (product && product.id) {
+          if (productSalesMap.has(product.id)) {
+            const existing = productSalesMap.get(product.id)!;
             existing.quantity += quantity;
           } else {
-            productSalesMap.set(product.uuid, { product, quantity });
+            productSalesMap.set(product.id, { product, quantity });
           }
         }
       });
@@ -203,7 +203,7 @@ export class SalesComponent implements OnInit {
     const productTotals = new Map<string, { product: Partial<Product>, quantity: number }>();
 
     for (let item of items) {
-        const productId = item.product?.uuid;
+        const productId = item.product?.id;
         if (productId) {
             if (!productTotals.has(productId)) {
                 productTotals.set(productId, { product: item.product!, quantity: 0 });

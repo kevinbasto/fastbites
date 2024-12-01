@@ -54,9 +54,9 @@ export class OrdersService {
       });
       let items : Array<Partial<CheckoutItem>> = []
       for(let item of order.items){
-        let { uuid, name, price, cost } = item.product;
+        let { id: uuid, name, price, cost } = item.product;
         let quantity = item.quantity;
-        items.push({ quantity, product: {uuid, name, price, cost} });
+        items.push({ quantity, product: {id: uuid, name, price, cost} });
       }
       this.salesrepo.create({
         date: order.date,
