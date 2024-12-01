@@ -100,4 +100,12 @@ export class ProductsRepoService {
     let colRef = collection(this.firestore, 'users/data');
     let queryRef = query(colRef, limitToLast(5))
   }
+
+  
+  // async createProduct(product: Product) {}
+
+  // async updateProduct(product: Product) {}
+
+  // async deleteProduct(product: Product) {}
+
 }
