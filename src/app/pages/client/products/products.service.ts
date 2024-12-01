@@ -12,6 +12,8 @@ import { Category } from '../../../core/entities/category';
 })
 export class ProductsService {
 
+  menu!: Menu;
+
   constructor(
     private auth: AuthService,
     private menuRepo : MenuRepoService,
@@ -27,6 +29,7 @@ export class ProductsService {
         let menu: Menu | null = await this.menuRepo.fetchMenu(uid);
         if(!menu)
           menu = await this.menuRepo.createNewMenu(uid);
+        this.menu = menu;
         resolve(menu);
       } catch (error) {
         this.snackbar.openMessage("No se puedo obtener el menu");

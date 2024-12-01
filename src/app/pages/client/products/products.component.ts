@@ -52,7 +52,7 @@ export class ProductsComponent implements OnInit {
   }
 
   importProductsFromFile() {
-
+    this.productsService.importProductsFromFile();
   }
 
   viewQrDialog() {
