@@ -17,6 +17,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { MatInputModule } from '@angular/material/input';
     MatDialogModule,
     MatIconModule,
     MatPaginatorModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [
     NgxImageCompressService

@@ -1,12 +1,14 @@
 <div class="grid-container" [ngClass]="shadow? ['']: ['mat-elevation-z8']">
     <mat-card class="card">
           <div class="card-header">
-            <mat-form-field>
-              <mat-label>
-                Buscar
-              </mat-label>
-              <input type="text" matInput>
-            </mat-form-field>
+            <div style="display: flex; gap: 1rem;">
+              <mat-form-field>
+                <mat-label>
+                  Buscar
+                </mat-label>
+                <input type="text" matInput>
+              </mat-form-field>
+            </div>
             <div style="display: flex; gap: 1rem;">
               <button mat-icon-button color="primary" (click)="create()" >
                 <mat-icon > add </mat-icon>
