@@ -14,6 +14,12 @@
     <div class="grid-container">
         <mat-form-field>
             <mat-label>
+                Categoría
+            </mat-label>
+            <input type="text" matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
                 Costo
             </mat-label>
             <input type="text" matInput formControlName="cost" currencyMask [options]="{prefix: 'MXN$', thousands: ',', decimals: '.'}">
