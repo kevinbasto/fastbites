@@ -38,7 +38,8 @@ import { CategoryFormComponent } from './category-form/category-form.component';
     MatAutocompleteModule
   ],
   exports: [
-    ProductFormComponent
+    ProductFormComponent,
+    CategoryFormComponent
   ]
 })
 export class SharedFormsModule { }
