@@ -1,38 +1,64 @@
-<div class="grid-container" [ngClass]="shadow? ['']: ['mat-elevation-z8']">
+<div style="display: flex; gap: 1rem; flex-direction: column;">
+  <div class="grid-container" [ngClass]="shadow? ['']: ['mat-elevation-z8']">
     <mat-card class="card">
-          <div class="card-header">
-            <div style="display: flex; gap: 1rem;">
-              <mat-form-field>
-                <mat-label>
-                  Filtrar por categoría
-                </mat-label>
-                <mat-select>
-                  <mat-option value="1" > categoria 1 </mat-option>
-                  <mat-option value="1" > categoria 1 </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div style="display: flex;">
-              <button mat-icon-button color="primary" (click)="createProduct()" matTooltip="Crear un nuevo producto" >
-                <mat-icon > add </mat-icon>
-              </button>
-              <button mat-icon-button color="primary" (click)="importProductsFromFile()" matTooltip="Importar productos desde excel" >
-                <mat-icon > upload </mat-icon>
-              </button>
-              <button mat-icon-button color="accent" (click)="viewQrDialog()" matTooltip="Abrir URL del menu" >
-                <mat-icon> point_of_sale </mat-icon>
-              </button>
-            </div>
-          </div>
-        <app-table
-            [data]="products"
-            [headers]="headers"
-            [config]="tableConfig"
-            (create)="createProduct()"
-            (edit)="editProduct($event)"
-            (deleteItem)="deleteProduct($event)"
-            (toggle)="toggleProduct($event)"
-            (selection)="viewProduct($event)"
-        ></app-table>
+      <div class="card-header">
+        <div style="display: flex; gap: 1rem;">
+          <mat-form-field>
+            <mat-label>
+              Filtrar por categoría
+            </mat-label>
+            <mat-select>
+              <mat-option value="1"> categoria 1 </mat-option>
+              <mat-option value="1"> categoria 1 </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div style="display: flex;">
+          <button mat-icon-button color="primary" (click)="createProduct()" matTooltip="Crear un nuevo producto">
+            <mat-icon> add </mat-icon>
+          </button>
+          <button mat-icon-button color="primary" (click)="importProductsFromFile()"
+            matTooltip="Importar productos desde excel">
+            <mat-icon> upload </mat-icon>
+          </button>
+          <button mat-icon-button color="accent" (click)="viewQrDialog()" matTooltip="Abrir URL del menu">
+            <mat-icon> point_of_sale </mat-icon>
+          </button>
+        </div>
+      </div>
+      <app-table 
+        [data]="products" 
+        [headers]="headers" 
+        [config]="tableConfig" 
+        (create)="createProduct()"
+        (edit)="editProduct($event)" 
+        (deleteItem)="deleteProduct($event)" 
+        (toggle)="toggleProduct($event)"
+        (selection)="viewProduct($event)"
+      ></app-table>
     </mat-card>
+  </div>
+  <div class="grid-container" [ngClass]="shadow? ['']: ['mat-elevation-z8']">
+    <mat-card class="card">
+      <div class="card-header">
+        <h1>
+          Listado de categorías
+        </h1>
+        <button mat-icon-button (click)="createCategory()" color="primary">
+          <mat-icon>
+            add
+          </mat-icon>
+        </button>
+      </div>
+      <app-table 
+        [data]="categories" 
+        [headers]="categoriesHeaders" 
+        [config]="categoriesConfig"
+        (create)="createCategory()" 
+        (edit)="editCategory($event)" 
+        (deleteItem)="deleteCategory($event)"
+        (selection)="viewCategory($event)"
+      ></app-table>
+    </mat-card>
+  </div>
 </div>

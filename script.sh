@@ -1,2 +1,4 @@
-ng g s core/services/image-service/image-service
-ng g s core/services/products-crud-service/product-crud-service
+ng g c shared-components/create-category --standalone=false
+ng g c shared-components/edit-category --standalone=false 
+ng g c shared-forms/category-form --standalone=false
+ng g c shared-components/category-visualizer --standalone=false

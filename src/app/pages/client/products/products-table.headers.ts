@@ -24,9 +24,23 @@ export const productTableHeaders: Array<TableColumn> = [
   },
 ]
 
-export const productTableConfig : TableConfig = {
+export const productsTableConfig : TableConfig = {
   create: true,
   pagination: false,
   ordersButton: true,
+  options: true
+};
+
+export const categoriesTableHeaders : Array<TableColumn> = [
+  {
+    name: "name",
+    displayName: "Nombre"
+  }
+]
+
+export const categoriesTableConfig : TableConfig = {
+  create: true,
+  pagination: false,
+  ordersButton: false,
   options: true
 };

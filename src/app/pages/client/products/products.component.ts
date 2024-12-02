@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '../../../core/generics/table-column';
 import { ProductsService } from './products.service';
-import { productTableConfig, productTableHeaders } from './products-table.headers';
+import { categoriesTableConfig, categoriesTableHeaders, productTableHeaders } from './products-table.headers';
 import { Product } from '../../../core/entities/product';
 import { TableConfig } from '../../../core/generics/table-config';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
@@ -17,9 +17,8 @@ import { Router } from '@angular/router';
 export class ProductsComponent implements OnInit {
 
   headers : Array<TableColumn> = productTableHeaders;
-  tableConfig: TableConfig = productTableConfig;
+  tableConfig: TableConfig = categoriesTableConfig;
   products?: Array<Product>;
-  categories?: Array<Category>;
   menu! : Menu;
   
   shadow: boolean = false;
@@ -75,5 +74,17 @@ export class ProductsComponent implements OnInit {
     this.productsService.toggleProduct(product);
   }
 
+  categories?: Array<Category>;
+  categoriesHeaders = categoriesTableHeaders;
+  categoriesConfig = categoriesTableConfig;
+
+  createCategory() {}
+
+  viewCategory(category: Category) {}
+
+  editCategory(category: Category) {}
+
+  deleteCategory(category : Category) {}
+  
   
 }

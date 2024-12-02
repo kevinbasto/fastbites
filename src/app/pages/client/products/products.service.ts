@@ -54,4 +54,13 @@ export class ProductsService {
 
   changePage(page: PageEvent) {}
 
+  // category related functions
+  createCategory() {}
+
+  viewCategory(category: Category) {}
+
+  editCategory(category: Category) {}
+
+  deleteCategory(category: Category) {}
+
 }

@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { SharedComponentsModule } from '../shared-components/shared-components.module';
+import { CategoryFormComponent } from './category-form/category-form.component';
 
 
 
@@ -20,6 +21,7 @@ import { SharedComponentsModule } from '../shared-components/shared-components.m
   declarations: [
     FormActionsComponent,
     ProductFormComponent,
+    CategoryFormComponent,
   ],
   imports: [
     CommonModule,
