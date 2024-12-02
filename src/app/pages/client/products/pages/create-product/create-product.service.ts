@@ -4,6 +4,7 @@ import { CroppedImage } from '../../../../../core/generics/cropped-image';
 import { MenuRepoService } from '../../../../../core/repos/menu-repo/menu-repo.service';
 import { Menu } from '../../../../../core/entities/menu';
 import { AuthService } from '../../../../../core/services/auth/auth.service';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Injectable({
@@ -15,15 +16,14 @@ export class CreateProductService {
 
   constructor(
     private menuRepo: MenuRepoService,
-    private authServ: AuthService
+    private authServ: AuthService,
+    private dialog : MatDialog
   ) { }
 
   async fetchFromMenuDocument() : Promise<Menu> {
     try {
       let uid = await this.authServ.getUID();
-      console.log(uid);
       let menu : Menu = await this.menuRepo.fetchMenu(uid) as Menu;
-      console.log(menu);
       return menu;
     } catch (error) {
       throw error;

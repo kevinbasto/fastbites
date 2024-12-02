@@ -25,7 +25,7 @@ export class MenuRepoService {
   
   async fetchMenu(uid: string) : Promise<Menu | null> {
     try {
-      let docRef = doc(this.firestore, `/user/${uid}/data/menu`);
+      let docRef = doc(this.firestore, `/users/${uid}/data/menu`);
       let document = await getDoc(docRef);
       let menu = document.data() as Menu;
       return menu;
