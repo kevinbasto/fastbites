@@ -34,8 +34,6 @@ import { InfoCardComponent } from './info-card/info-card.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ProductVisualizerComponent } from './product-visualizer/product-visualizer.component';
-import { CreateCategoryComponent } from './create-category/create-category.component';
-import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { CategoryVisualizerComponent } from './category-visualizer/category-visualizer.component';
 
 
@@ -56,8 +54,6 @@ import { CategoryVisualizerComponent } from './category-visualizer/category-visu
     BarChartComponent,
     PieChartComponent,
     ProductVisualizerComponent,
-    CreateCategoryComponent,
-    EditCategoryComponent,
     CategoryVisualizerComponent
   ],
   imports: [
@@ -93,8 +89,6 @@ import { CategoryVisualizerComponent } from './category-visualizer/category-visu
     BarChartComponent,
     PieChartComponent,
     ProductVisualizerComponent,
-    CreateCategoryComponent,
-    EditCategoryComponent,
     CategoryVisualizerComponent
   ],
   providers: [

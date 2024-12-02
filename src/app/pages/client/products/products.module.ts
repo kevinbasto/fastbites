@@ -19,13 +19,17 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { CreateCategoryComponent } from './dialogs/create-category/create-category.component';
+import { EditCategoryComponent } from './dialogs/edit-category/edit-category.component';
 
 
 @NgModule({
   declarations: [
     ProductsComponent,
     CreateProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    CreateCategoryComponent,
+    EditCategoryComponent
   ],
   imports: [
     CommonModule,
