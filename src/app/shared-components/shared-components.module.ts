@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from './table/table.component';
 
@@ -10,6 +11,11 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatStepperModule } from "@angular/material/stepper";
+import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatInputModule } from '@angular/material/input';
+import {provideCharts, withDefaultRegisterables, BaseChartDirective  } from "ng2-charts";
 
 import { ImageCropperComponent } from 'ngx-image-cropper';
 import { AppImageCropperComponent } from './image-cropper/image-cropper.component';
@@ -20,17 +26,11 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { OrdersTableComponent } from './orders-table/orders-table.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
 import { OrderVisualizerComponent } from './order-visualizer/order-visualizer.component';
 import { MenuUrlDisplayerComponent } from './menu-url-displayer/menu-url-displayer.component';
 import { OrderingMenuComponent } from './ordering-menu/ordering-menu.component';
-import { MatDividerModule } from '@angular/material/divider';
 import { MenuItemComponent } from './menu-item/menu-item.component';
-import { MatSelectModule } from '@angular/material/select';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { InfoCardComponent } from './info-card/info-card.component';
-import {provideCharts, withDefaultRegisterables, BaseChartDirective  } from "ng2-charts";
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ProductVisualizerComponent } from './product-visualizer/product-visualizer.component';
@@ -71,7 +71,7 @@ import { ProductVisualizerComponent } from './product-visualizer/product-visuali
     MatDividerModule,
     MatSelectModule,
     MatProgressSpinnerModule,
-    BaseChartDirective
+    BaseChartDirective,
   ],
   exports: [
     TableComponent,

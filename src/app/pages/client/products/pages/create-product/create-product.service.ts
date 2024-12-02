@@ -1,15 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Firestore, doc, getDoc, setDoc, updateDoc } from '@angular/fire/firestore';
-import { AuthService } from '../../../../../core/services/auth/auth.service';
-import { Router } from '@angular/router';
 import { Product } from '../../../../../core/entities/product';
-import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.service';
-import { v6 as uuid, v6 } from "uuid";
 import { CroppedImage } from '../../../../../core/generics/cropped-image';
-import { getDownloadURL, ref, Storage, uploadBytes } from '@angular/fire/storage';
-import { NgxImageCompressService } from 'ngx-image-compress';
-import { ImagesService } from '../../../../../core/services/images/images.service';
-import { ProductsRepoService } from '../../../../../core/repos/products-repo/products-repo.service';
+import { MenuRepoService } from '../../../../../core/repos/menu-repo/menu-repo.service';
+import { Menu } from '../../../../../core/entities/menu';
+import { AuthService } from '../../../../../core/services/auth/auth.service';
 
 
 @Injectable({
@@ -17,66 +11,36 @@ import { ProductsRepoService } from '../../../../../core/repos/products-repo/pro
 })
 export class CreateProductService {
 
+  menu! : Menu;
+
   constructor(
-    private firestore: Firestore,
-    private auth: AuthService,
-    private storage: Storage,
-    private router : Router,
-    private snackbar: SnackbarService,
-    private imagesService: ImagesService,
-    private productsServ : ProductsRepoService
+    private menuRepo: MenuRepoService,
+    private authServ: AuthService
   ) { }
 
-  goBack(){
-    this.router.navigate([`/client/products`]);
-  }
-
-  /**
-   * algoritmo de creacion:
-   * 1. se crea el uuid del producto
-   * 2. al subir la imagen del producto:
-   * 2.1 se guardará el raw del producto con uuid-raw
-   * 2.2 se guardará el cropped del producto con uuid-cropped
-   * 2.3 se retornan los download links de ambos
-   * 2.4 se almacenan las coordenadas de cropping de la imagen original
-   * 3. se actualiza el producto para incluir los raw y cropped
-   * formato de nombre: <uuid>-<raw | cropped>.<formato>
-   */
-  async createProduct(product: Product, image: File, cropped: CroppedImage) {
-    // try {
-    //   let uid = await this.auth.getUID() as string;
-    //   let uuid = v6()
-    //   let urls = await this.processImage(uid, uuid, image, cropped);
-    //   product.croppedPosition = cropped.position;
-    //   product.croppedImage = urls.croppedUrl;
-    //   product.rawImage = urls.rawUrl;
-    //   product.uuid = uuid;
-    //   await this.productsServ.createProduct(product);
-    //   this.snackbar.openMessage("Producto creado con éxito!");
-    //   this.goBack()
-    // } catch (error) {
-    //   console.log(error);
-    //   this.snackbar.openMessage("No se pudo crear el producto")
-    //   throw error;
-    // }
-  }
-
-  /**
-   * comprimir el cropped, subir ambas imágenes
-   */
-  async processImage(uid: string, uuid: string, image: File, cropped: CroppedImage) : Promise<{rawUrl: string, croppedUrl: string}> {
+  async fetchFromMenuDocument() : Promise<Menu> {
     try {
-      let urls = { rawUrl: "", croppedUrl: "" }
-      let rawFile = await this.imagesService.prepareImage(`${uuid}-raw`, image);
-      let croppedFile = await this.imagesService.prepareImage(`${uuid}-cropped`, cropped.image);
-      croppedFile = await this.imagesService.compressImage(croppedFile);
-      urls.rawUrl = await this.imagesService.uploadImage(`/${uid}/${uuid}`, rawFile);
-      urls.croppedUrl = await this.imagesService.uploadImage(`/${uid}/${uuid}`, croppedFile);
-      return urls;
+      let uid = await this.authServ.getUID();
+      console.log(uid);
+      let menu : Menu = await this.menuRepo.fetchMenu(uid) as Menu;
+      console.log(menu);
+      return menu;
     } catch (error) {
-      this.snackbar.openMessage("No se pudo crear el producto solicitado");
       throw error;
     }
   }
+
+  /**
+   * se toma el producto, se le agrega un uuid,
+   * se comprime el archivo cropped
+   * se les asigna el uuid a las imagenes y al producto se le agrega las coordenadas del cropping
+   * se envia la información a firestore
+   * si la category asignada no existe, se crea una nueva category
+   * se retorna un success
+   */
+  async createProduct(product: Product, image: File, cropped: CroppedImage) {
+    
+  }
+
 
 }
