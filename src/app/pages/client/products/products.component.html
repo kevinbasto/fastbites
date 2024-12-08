@@ -3,16 +3,17 @@
     <mat-card class="card">
       <div class="card-header">
         <div style="display: flex; gap: 1rem;">
-          <mat-form-field>
-            <mat-label>
-              Filtrar por categoría
-            </mat-label>
-            <mat-select>
-              @for (category of categories; track category; let i = $index) {
-                <mat-option value="{{category.id}}"> {{category.name}} </mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
+          <form [formGroup]="form" >
+            <mat-form-field>
+              <mat-label> Filtrar por categoría </mat-label>
+              <mat-select formControlName="category" >
+                <mat-option value="" > Todas las categorías </mat-option>
+                @for (category of categories; track category; let i = $index) {
+                  <mat-option [value]="category.id"  > {{category.name}} </mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </form>
         </div>
         <div style="display: flex;">
           <button mat-icon-button color="primary" (click)="createProduct()" matTooltip="Crear un nuevo producto">

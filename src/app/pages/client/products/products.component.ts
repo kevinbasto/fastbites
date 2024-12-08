@@ -9,6 +9,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Menu } from '../../../core/entities/menu';
 import { Category } from '../../../core/entities/category';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   templateUrl: './products.component.html',
@@ -23,18 +24,36 @@ export class ProductsComponent implements OnInit {
   menu! : Menu;
   
   shadow: boolean = false;
+  form: FormGroup
 
   constructor(
     private productsService: ProductsService,
     private breakpoint: BreakpointObserver,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {
     this.breakpoint.observe(['(max-width: 600px)'])
     .subscribe((bs: BreakpointState) => this.shadow = bs.matches);
+    this.form = this.fb.group({
+      category: [""]
+    });
+    this.form.valueChanges.subscribe(change=> console.log(change));
   }
 
   ngOnInit(): void {
     this.fetchMenu()
+    this.form.get("category")?.valueChanges
+    .subscribe((categoryId : string) => {
+      if(categoryId == ""){
+        this.products = structuredClone(this.productsCopy);
+        return;
+      }
+      let foundCategory: Category;
+      for(let category of this.categories!)
+        if(category.id == categoryId)
+          foundCategory = category;
+      this.filterProductsByCategory(foundCategory!);
+    });
   }
 
   fetchMenu(){

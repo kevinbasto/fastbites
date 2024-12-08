@@ -22,6 +22,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { CreateCategoryComponent } from './dialogs/create-category/create-category.component';
 import { EditCategoryComponent } from './dialogs/edit-category/edit-category.component';
 import { ViewCategoryComponent } from './dialogs/view-category/view-category.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ViewCategoryComponent } from './dialogs/view-category/view-category.com
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule
   ],
   providers: [
     NgxImageCompressService
