@@ -25,10 +25,12 @@ export class ProductsRepoService {
   async updateProduct(uid: string, updatedProduct: Product) {
     try {
       let menu: Menu = await this.menuRepo.fetchMenu(uid) as Menu;
-      for(let product of menu.products)
-        if(product.id == product.id) product = updatedProduct;
+      menu.products = menu.products.map(product => {
+        if(product.id == updatedProduct.id) 
+          product = updatedProduct;
+        return product;
+      });
       await this.menuRepo.updateMenu(uid, menu);
-
     } catch (error) {
       throw error;
     }
