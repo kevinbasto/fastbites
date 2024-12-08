@@ -38,22 +38,20 @@ export class EditProductService {
   }
 
   async updateProduct(product: Product, image?: File, cropped?: CroppedImage){
-    // try {
-    //   let uid = await this.auth.getUID() as string;
-    //   let { uuid } = product;
-    //   if(image)
-    //     product.rawImage = await this.uploadImage(image, uid, uuid);
-    //   if(cropped){
-    //     product.croppedImage = await this.uploadCroppedImage(cropped, uid, uuid);
-    //     product.croppedPosition = cropped.position;
-    //   }
-    //   await this.productCrud.updateProduct(product, uid, uuid);
-    //   this.snackbar.openMessage("Producto actualizado con éxito");
-    //   this.router.navigate([`/client/products`]);
-    // } catch (error) {
-    //   console.log(error);
-    //   throw error;
-    // }
+    try {
+      let uid = await this.auth.getUID();
+      if(image)
+        product.rawImage = await this.uploadImage(image, uid, product.id);
+      if(cropped){
+        product.croppedImage = await this.uploadCroppedImage(cropped, uid, product.id);
+        product.croppedPosition = cropped!.position;
+      }
+      await this.productCrud.updateProduct(uid, product);
+      this.snackbar.openMessage("Producto actualizado con éxito");
+      this.router.navigate([`/client/products`]);
+    } catch (error) {
+      throw error;
+    }
   }
 
   async uploadImage(file: File, uid: string, uuid: string) : Promise<string> {
