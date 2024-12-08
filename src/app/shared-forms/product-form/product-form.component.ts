@@ -40,8 +40,8 @@ export class ProductFormComponent implements OnChanges, OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['product'] && this.product){
-      let {name, description, cost, price, available } = this.product;
-      this.form.setValue({ name, description, cost, price, available });
+      let {name, description, cost, price, available, category } = this.product;
+      this.form.setValue({ name, description, cost, price, available, category });
     }
   }
 
