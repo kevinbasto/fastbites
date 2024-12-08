@@ -49,7 +49,13 @@ export class ProductsService {
   }
 
   //table header related methods
-  filterProductsByCategory(category: Category) { }
+  filterProductsByCategory(category: Category, products: Array<Product>) : Array<Product> {
+    let prods : Array<Product> = [];
+    for(let product of products)
+      if(product.category == category.id)
+        prods.push(product);
+    return prods;
+  }
 
   importProductsFromFile() { }
 

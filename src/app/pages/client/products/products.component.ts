@@ -18,6 +18,7 @@ export class ProductsComponent implements OnInit {
 
   headers : Array<TableColumn> = productTableHeaders;
   tableConfig: TableConfig = categoriesTableConfig;
+  productsCopy?: Array<Product>;
   products?: Array<Product>;
   menu! : Menu;
   
@@ -41,6 +42,7 @@ export class ProductsComponent implements OnInit {
     .then((menu : Menu) => {
       let { products, categories } = menu;
       this.products = products;
+      this.productsCopy = products;
       this.categories = categories;
       this.menu = menu;
     });
@@ -51,7 +53,8 @@ export class ProductsComponent implements OnInit {
   }
 
   filterProductsByCategory(category : Category) {
-    this.productsService.filterProductsByCategory(category);
+    let products = this.productsService.filterProductsByCategory(category, this.productsCopy!);
+    this.products = products;
   }
 
   importProductsFromFile() {
