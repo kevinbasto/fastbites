@@ -14,6 +14,9 @@ import { Message } from '../../../core/generics/message';
 import { ConfirmDialogComponent } from '../../../shared-components/confirm-dialog/confirm-dialog.component';
 import { v6 as uuid } from "uuid";
 import { CategoriesRepoService } from '../../../core/repos/categories-repo/categories-repo.service';
+import { QrGeneratorService } from '../../../core/services/qr-generator/qr-generator.service';
+import { environment } from '../../../../environments/environment';
+import { MenuUrlDisplayerComponent } from '../../../shared-components/menu-url-displayer/menu-url-displayer.component';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +30,8 @@ export class ProductsService {
     private menuRepo: MenuRepoService,
     private snackbar: SnackbarService,
     private dialog: MatDialog,
-    private categoriesRepo: CategoriesRepoService
+    private categoriesRepo: CategoriesRepoService,
+    private qrGenerator: QrGeneratorService
   ) { }
 
   fetchMenu(): Promise<Menu> {
@@ -59,10 +63,21 @@ export class ProductsService {
 
   importProductsFromFile() { }
 
-  viewQrDialog() { }
+  async viewQrDialog() {
+    try {
+      let uid = await this.auth.getUID();
+      let origin = environment.domain;
+      let [protocol, domain] = origin.split("//");
+      let url = `${protocol}//client.${domain}?id=${uid}`;
+      let qr = await this.qrGenerator.renderQrFromUrl(url);
+      const dialog = this.dialog.open(MenuUrlDisplayerComponent, { data: { url, qr } } )
+    } catch (error) {
+      throw error;
+    }
+  }
 
   //table events related methods
-  viewProduct(product: Product) { }
+  viewProduct(product: Product) {}
 
   deleteProduct(product: Product) { }
 
