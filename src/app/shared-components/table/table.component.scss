@@ -1,6 +1,19 @@
+@media(min-width: 601px){
+    .mat-column-options{
+        div{
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+    }
+}
+
 @media(max-width: 600px){
     .mat-column-options{
         max-width: 50%;
+        div{
+            justify-content: space-between;
+        }
     }
 }
 

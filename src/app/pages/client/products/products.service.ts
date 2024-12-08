@@ -6,6 +6,14 @@ import { Menu } from '../../../core/entities/menu';
 import { Product } from '../../../core/entities/product';
 import { PageEvent } from '@angular/material/paginator';
 import { Category } from '../../../core/entities/category';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateCategoryComponent } from './dialogs/create-category/create-category.component';
+import { EditCategoryComponent } from './dialogs/edit-category/edit-category.component';
+import { ViewCategoryComponent } from './dialogs/view-category/view-category.component';
+import { Message } from '../../../core/generics/message';
+import { ConfirmDialogComponent } from '../../../shared-components/confirm-dialog/confirm-dialog.component';
+import { v6 as uuid } from "uuid";
+import { CategoriesRepoService } from '../../../core/repos/categories-repo/categories-repo.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,18 +24,20 @@ export class ProductsService {
 
   constructor(
     private auth: AuthService,
-    private menuRepo : MenuRepoService,
-    private snackbar: SnackbarService
+    private menuRepo: MenuRepoService,
+    private snackbar: SnackbarService,
+    private dialog: MatDialog,
+    private categoriesRepo: CategoriesRepoService
   ) { }
 
-  fetchMenu() : Promise<Menu> {
+  fetchMenu(): Promise<Menu> {
     return new Promise<Menu>(async (resolve, reject) => {
       try {
         let uid = await this.auth.getUID();
-        if(uid == "")
+        if (uid == "")
           throw new Error("No hay un UID válido");
         let menu: Menu | null = await this.menuRepo.fetchMenu(uid);
-        if(!menu)
+        if (!menu)
           menu = await this.menuRepo.createNewMenu(uid);
         this.menu = menu;
         resolve(menu);
@@ -39,28 +49,78 @@ export class ProductsService {
   }
 
   //table header related methods
-  filterProductsByCategory(category : Category) {}
+  filterProductsByCategory(category: Category) { }
 
-  importProductsFromFile() {}
+  importProductsFromFile() { }
 
-  viewQrDialog() {}
+  viewQrDialog() { }
 
   //table events related methods
   viewProduct(product: Product) { }
 
-  deleteProduct(product: Product) {}
+  deleteProduct(product: Product) { }
 
-  toggleProduct(product: Product) {}
+  toggleProduct(product: Product) { }
 
-  changePage(page: PageEvent) {}
+  changePage(page: PageEvent) { }
 
   // category related functions
-  createCategory() {}
+  createCategory() {
+    return new Promise<void>((resolve, reject) => {
+      const dialog = this.dialog.open(CreateCategoryComponent);
+      dialog.afterClosed().subscribe((category: Category) => {
+        if (!category) return;
+        category.id = uuid();
+        this.categoriesRepo.createCategory(category)
+          .then(() => {
+            this.snackbar.openMessage("Categoría creada con éxito");
+            resolve();
+          })
+          .catch(err => {
+            reject();
+          });
+      });
+    });
+  }
 
-  viewCategory(category: Category) {}
+  viewCategory(category: Category) {
+    this.dialog.open(ViewCategoryComponent, { data: { category } });
+  }
 
-  editCategory(category: Category) {}
+  editCategory(category: Category) {
+    return new Promise<void>((resolve, reject) => {
+      const dialog = this.dialog.open(EditCategoryComponent, { data: { category } });
+      dialog.afterClosed().subscribe((category: Category) => {
+        if (!category) return;
+        this.categoriesRepo.updateCategory(category)
+          .then(() => {
+            this.snackbar.openMessage("Categoría creada con éxito");
+            resolve();
+          })
+          .catch(err => {
+            reject();
+          });
+      });
+    });
+  }
 
-  deleteCategory(category: Category) {}
+  deleteCategory(category: Category) {
+    return new Promise<void>((resolve, reject) => {
+      const message: Message = {
+        name: '¿Borrar Categoría?',
+        message: 'Una vez hecha esta acción, no se puede deshacer'
+      };
+      const dialog = this.dialog.open(ConfirmDialogComponent, { data: { ...message } });
+      dialog.afterClosed().subscribe((confirmation: boolean) => {
+        if (!confirmation) return;
+        this.categoriesRepo.deleteCategory(category)
+        .then((result) => {
+          this.snackbar.openMessage("Producto borrado con éxito");
+          resolve();
+        })
+        .catch((err) => reject());
+      });
+    });
+  }
 
 }

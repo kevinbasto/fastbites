@@ -1,1 +1,10 @@
-<p>edit-category works!</p>
+<div class="card">
+    <div class="card-header">
+        <h1> Editar categoría </h1>
+    </div>
+    <category-form
+        (cancel)="dialogRef.close()"
+        (category)="dialogRef.close($event)"
+        [categoryData]="data.category"
+    ></category-form>
+</div>

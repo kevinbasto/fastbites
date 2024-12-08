@@ -21,6 +21,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CreateCategoryComponent } from './dialogs/create-category/create-category.component';
 import { EditCategoryComponent } from './dialogs/edit-category/edit-category.component';
+import { ViewCategoryComponent } from './dialogs/view-category/view-category.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { EditCategoryComponent } from './dialogs/edit-category/edit-category.com
     CreateProductComponent,
     EditProductComponent,
     CreateCategoryComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    ViewCategoryComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +47,8 @@ import { EditCategoryComponent } from './dialogs/edit-category/edit-category.com
     MatPaginatorModule,
     MatInputModule,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatButtonModule
   ],
   providers: [
     NgxImageCompressService

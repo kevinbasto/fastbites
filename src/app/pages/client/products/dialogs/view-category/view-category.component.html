@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="card-header">
+        <h1> Visualizar Categoría </h1>
+    </div>
+    <div>
+        <p> nombre:
+            <b> {{ data.category.name }} </b>
+        </p> 
+    </div>
+    <div class="actions">
+        <button mat-raised-button color="primary" (click)="dialogRef.close()" >
+            <mat-icon> done </mat-icon>
+            Aceptar
+        </button>
+    </div>
+</div>

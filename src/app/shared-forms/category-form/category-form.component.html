@@ -1,10 +1,20 @@
-<form action="" [formGroup]="form">
-
+<form action="" [formGroup]="form" (submit)="submitCat()" >
+    <mat-form-field>
+        <mat-label> Nombre de la categoría </mat-label>
+        <input type="text" matInput formControlName="name" >
+    </mat-form-field>
     <div class="form-actions">
+        <button mat-raised-button type="button" (click)="cancel.emit()" >
+            <mat-icon>
+                cancel
+            </mat-icon>
+            Cancelar
+        </button>
         <button mat-raised-button color="primary">
             <mat-icon>
                 done
             </mat-icon>
+            Guardar
         </button>
     </div>
 </form>

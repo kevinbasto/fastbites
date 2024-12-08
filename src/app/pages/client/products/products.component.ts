@@ -33,6 +33,10 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fetchMenu()
+  }
+
+  fetchMenu(){
     this.productsService.fetchMenu()
     .then((menu : Menu) => {
       let { products, categories } = menu;
@@ -78,13 +82,27 @@ export class ProductsComponent implements OnInit {
   categoriesHeaders = categoriesTableHeaders;
   categoriesConfig = categoriesTableConfig;
 
-  createCategory() {}
+  createCategory() {
+    this.productsService.createCategory()
+    .then((result) => {
+      this.fetchMenu();
+    });
+  }
 
-  viewCategory(category: Category) {}
+  viewCategory(category: Category) {
+    this.productsService.viewCategory(category);
+  }
 
-  editCategory(category: Category) {}
+  editCategory(category: Category) {
+    this.productsService.editCategory(category)
+    .then((result) => {
+      this.fetchMenu();
+    });
+  }
 
-  deleteCategory(category : Category) {}
-  
+  deleteCategory(category : Category) {
+    this.productsService.deleteCategory(category)
+    .then(() => this.fetchMenu());
+  }
   
 }

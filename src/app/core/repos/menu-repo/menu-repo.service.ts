@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Menu } from '../../entities/menu';
-import { Firestore } from '@angular/fire/firestore';
+import { Firestore, updateDoc } from '@angular/fire/firestore';
 import { doc, getDoc, setDoc } from '@firebase/firestore';
 
 @Injectable({
@@ -34,12 +34,13 @@ export class MenuRepoService {
     }
   }
 
-  async updateMenu(uid: string, menu: Menu) {
+  async updateMenu(uid: string, menu: Partial<Menu>) {
     try {
-      let docRef = doc(this.firestore, `/user/${uid}/data/menu`);
-      await setDoc(docRef, menu);
+      let docRef = doc(this.firestore, `/users/${uid}/data/menu`);
+      await updateDoc(docRef, {...menu});
       return menu;
     } catch (error) {
+      console.log(error);
       throw error;
     }
   }
