@@ -14,6 +14,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { SharedComponentsModule } from '../shared-components/shared-components.module';
 import { CategoryFormComponent } from './category-form/category-form.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -35,7 +36,8 @@ import { CategoryFormComponent } from './category-form/category-form.component';
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatSelectModule
   ],
   exports: [
     ProductFormComponent,

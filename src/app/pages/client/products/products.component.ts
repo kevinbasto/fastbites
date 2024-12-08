@@ -59,7 +59,7 @@ export class ProductsComponent implements OnInit {
   }
 
   viewQrDialog() {
-    this.productsService.viewQrDialog()
+    this.productsService.viewQrDialog();
   }
 
   editProduct(product: Product) {
@@ -84,9 +84,7 @@ export class ProductsComponent implements OnInit {
 
   createCategory() {
     this.productsService.createCategory()
-    .then((result) => {
-      this.fetchMenu();
-    });
+    .then((result) => this.fetchMenu());
   }
 
   viewCategory(category: Category) {
@@ -95,9 +93,7 @@ export class ProductsComponent implements OnInit {
 
   editCategory(category: Category) {
     this.productsService.editCategory(category)
-    .then((result) => {
-      this.fetchMenu();
-    });
+    .then((result) => this.fetchMenu());
   }
 
   deleteCategory(category : Category) {

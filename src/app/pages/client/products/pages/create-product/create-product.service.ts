@@ -5,6 +5,9 @@ import { MenuRepoService } from '../../../../../core/repos/menu-repo/menu-repo.s
 import { Menu } from '../../../../../core/entities/menu';
 import { AuthService } from '../../../../../core/services/auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
+import { v6 as uuid } from "uuid";
+import { ProductsRepoService } from '../../../../../core/repos/products-repo/products-repo.service';
+import { ImagesService } from '../../../../../core/services/images/images.service';
 
 
 @Injectable({
@@ -16,8 +19,9 @@ export class CreateProductService {
 
   constructor(
     private menuRepo: MenuRepoService,
+    private productRepo: ProductsRepoService,
+    private imagesService: ImagesService,
     private authServ: AuthService,
-    private dialog : MatDialog
   ) { }
 
   async fetchFromMenuDocument() : Promise<Menu> {
@@ -39,7 +43,24 @@ export class CreateProductService {
    * se retorna un success
    */
   async createProduct(product: Product, image: File, cropped: CroppedImage) {
-    
+    try {
+      let uid = await this.authServ.getUID();
+      product.id = uuid();
+      let { id } = product;
+      let format = image.name.split(".")[image.name.split(".").length - 1];
+      let newFile = new File([await image.arrayBuffer()], `${id}.${format}`);
+      let raw = await this.imagesService.uploadImage(uid, newFile);
+      product.rawImage = raw;
+      format = cropped.image.name.split(".")[cropped.image.name.split(".").length - 1];
+      let newCropped = new File([await cropped.image.arrayBuffer()], `${id}.${format}`);
+      newCropped = await this.imagesService.compressImage(newCropped);
+      let croppedurl = await this.imagesService.uploadImage(uid, newCropped);
+      product.croppedImage = croppedurl;
+      product.croppedPosition = cropped.position;
+      await this.productRepo.createProduct(uid, product);
+    } catch (error) {
+      throw error;
+    }
   }
 
 

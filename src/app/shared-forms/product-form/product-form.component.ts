@@ -17,13 +17,7 @@ export class ProductFormComponent implements OnChanges, OnInit {
 
   @Input() uploading?: boolean;
   @Input() product?: Product;
-  @Input() categories: Array<Category> = []
-  cats: Array<Category> = [
-    {
-      id: "create",
-      name: "Crear Categoría"
-    }
-  ]
+  @Input() categories: Array<Category> = [];
 
   form : FormGroup
 

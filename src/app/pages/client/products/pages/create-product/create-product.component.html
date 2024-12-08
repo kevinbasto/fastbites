@@ -1,13 +1,12 @@
 <mat-card class="card">
-    <h1>
-        Crear Producto
-    </h1>
+    <h1> Crear Producto </h1>
     <div class="grid-container">
         <div class="container">
             <product-form
-                (cancel)="cancel()"
                 (submitProduct)="createProduct($event)"
                 [uploading]="uploading"
+                [categories]="categories!"
+                (cancel)="cancel()"
                 (file)="file = $event"
             ></product-form>
         </div>

@@ -6,6 +6,8 @@ import { Product } from '../../../../../core/entities/product';
 import { CroppedImage } from '../../../../../core/generics/cropped-image';
 import { ProductsRepoService } from '../../../../../core/repos/products-repo/products-repo.service';
 import { ImagesService } from '../../../../../core/services/images/images.service';
+import { MenuRepoService } from '../../../../../core/repos/menu-repo/menu-repo.service';
+import { Menu } from '../../../../../core/entities/menu';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +16,22 @@ export class EditProductService {
 
   constructor(
     private auth: AuthService,
+    private menuRepo: MenuRepoService,
     private router : Router,
     private snackbar: SnackbarService,
     private productCrud: ProductsRepoService,
     private imagesServ: ImagesService
   ) { }
+
+  async fetchMenu() {
+    try {
+      let uid: string = await this.auth.getUID();
+      let menu: Menu = (await this.menuRepo.fetchMenu(uid)) as Menu;
+      return menu;
+    } catch (error) {
+      throw error;
+    }
+  }
 
   goBack(){
     this.router.navigate([`/client/products`]);

@@ -39,9 +39,7 @@ export class CreateProductComponent implements OnInit{
   createProduct(product: Product) {
     this.uploading = !this.uploading;
     this.createProductServ.createProduct(product, this.file!, this.cropped!)
-      .finally(() => {
-        this.uploading = !this.uploading;
-      })
+      .finally(() => this.uploading = !this.uploading);
   }
 
 }
