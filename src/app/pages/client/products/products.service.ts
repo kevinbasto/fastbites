@@ -17,6 +17,9 @@ import { CategoriesRepoService } from '../../../core/repos/categories-repo/categ
 import { QrGeneratorService } from '../../../core/services/qr-generator/qr-generator.service';
 import { environment } from '../../../../environments/environment';
 import { MenuUrlDisplayerComponent } from '../../../shared-components/menu-url-displayer/menu-url-displayer.component';
+import { ProductVisualizerComponent } from '../../../shared-components/product-visualizer/product-visualizer.component';
+import { ProductsRepoService } from '../../../core/repos/products-repo/products-repo.service';
+import { Storage, deleteObject, listAll, ref } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +34,9 @@ export class ProductsService {
     private snackbar: SnackbarService,
     private dialog: MatDialog,
     private categoriesRepo: CategoriesRepoService,
-    private qrGenerator: QrGeneratorService
+    private qrGenerator: QrGeneratorService,
+    private productsRepo: ProductsRepoService,
+    private storage: Storage
   ) { }
 
   fetchMenu(): Promise<Menu> {
@@ -53,10 +58,10 @@ export class ProductsService {
   }
 
   //table header related methods
-  filterProductsByCategory(category: Category, products: Array<Product>) : Array<Product> {
-    let prods : Array<Product> = [];
-    for(let product of products)
-      if(product.category == category.id)
+  filterProductsByCategory(category: Category, products: Array<Product>): Array<Product> {
+    let prods: Array<Product> = [];
+    for (let product of products)
+      if (product.category == category.id)
         prods.push(product);
     return prods;
   }
@@ -70,20 +75,60 @@ export class ProductsService {
       let [protocol, domain] = origin.split("//");
       let url = `${protocol}//client.${domain}?id=${uid}`;
       let qr = await this.qrGenerator.renderQrFromUrl(url);
-      const dialog = this.dialog.open(MenuUrlDisplayerComponent, { data: { url, qr } } )
+      const dialog = this.dialog.open(MenuUrlDisplayerComponent, { data: { url, qr } })
     } catch (error) {
       throw error;
     }
   }
 
   //table events related methods
-  viewProduct(product: Product) {}
+  viewProduct(product: Product) {
+    const dialog = this.dialog.open(ProductVisualizerComponent, { data: { product } })
+  }
 
-  deleteProduct(product: Product) { }
+  deleteProduct(product: Product) {
+    const message: Message = {
+      name: "¿Borrar el producto?",
+      message: "una vez hecho no se puede deshacer"
+    };
+    return new Promise<void>((resolve, reject) => {
+      const dialog = this.dialog.open(ConfirmDialogComponent, { data: { ...message } });
+      dialog.afterClosed().subscribe((confirmation: boolean) => {
+        if (!confirmation) resolve();
+        this.clearProduct(product)
+        .then((result) => {
+          this.snackbar.openMessage("Item borrado con éxito");
+          resolve();
+        }).catch((err) => {
+          reject();
+        });
+      });
+    })
+  }
 
-  toggleProduct(product: Product) { }
+  private async clearProduct(product: Product) {
+    try {
+      let uid = await this.auth.getUID();
+      let dir = ref(this.storage, `${uid}/${product.id}`);
+      let items = await listAll(dir);
+      for (let item of items.items)
+        await deleteObject(item);
+      await this.productsRepo.deleteProduct(uid, product)
+    } catch (error) {
+      this.snackbar.openMessage("No se pudo borrar las imagenes de los productos");
+    }
+  }
 
-  changePage(page: PageEvent) { }
+  async toggleProduct(product: Product) {
+    try {
+      let uid = await this.auth.getUID();
+      product.available = !product.available;
+      await this.productsRepo.updateProduct(uid, product);
+      this.snackbar.openMessage("Producto actualizado con éxito")
+    } catch (error) {
+      this.snackbar.openMessage("No se pudo actualizar el producto")
+    }
+  }
 
   // category related functions
   createCategory() {
@@ -135,11 +180,11 @@ export class ProductsService {
       dialog.afterClosed().subscribe((confirmation: boolean) => {
         if (!confirmation) return;
         this.categoriesRepo.deleteCategory(category)
-        .then((result) => {
-          this.snackbar.openMessage("Producto borrado con éxito");
-          resolve();
-        })
-        .catch((err) => reject());
+          .then((result) => {
+            this.snackbar.openMessage("Producto borrado con éxito");
+            resolve();
+          })
+          .catch((err) => reject());
       });
     });
   }

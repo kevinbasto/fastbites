@@ -5,7 +5,6 @@ import { categoriesTableConfig, categoriesTableHeaders, productTableHeaders } fr
 import { Product } from '../../../core/entities/product';
 import { TableConfig } from '../../../core/generics/table-config';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { PageEvent } from '@angular/material/paginator';
 import { Menu } from '../../../core/entities/menu';
 import { Category } from '../../../core/entities/category';
 import { Router } from '@angular/router';
@@ -93,7 +92,11 @@ export class ProductsComponent implements OnInit {
   }
 
   deleteProduct(product: Product) {
-    this.productsService.deleteProduct(product);
+    this.productsService.deleteProduct(product)
+    .then((result) => this.fetchMenu())
+    .catch((err) => {
+      
+    });;
   }
 
   toggleProduct(product: Product) {

@@ -35,4 +35,14 @@ export class ProductsRepoService {
       throw error;
     }
   }
+
+  async deleteProduct(uid: string, deletedProduct: Product) {
+    try {
+      let { products } = await this.menuRepo.fetchMenu(uid) as Menu;
+      products = products.filter(product => product.id != deletedProduct.id);
+      await this.menuRepo.updateMenu(uid, { products });
+    } catch (error) {
+      throw error;
+    }
+  }
 }
