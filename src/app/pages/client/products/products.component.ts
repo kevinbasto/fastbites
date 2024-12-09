@@ -93,10 +93,7 @@ export class ProductsComponent implements OnInit {
 
   deleteProduct(product: Product) {
     this.productsService.deleteProduct(product)
-    .then((result) => this.fetchMenu())
-    .catch((err) => {
-      
-    });;
+    .then((result) => this.fetchMenu());
   }
 
   toggleProduct(product: Product) {
