@@ -20,6 +20,7 @@ import { MenuUrlDisplayerComponent } from '../../../shared-components/menu-url-d
 import { ProductVisualizerComponent } from '../../../shared-components/product-visualizer/product-visualizer.component';
 import { ProductsRepoService } from '../../../core/repos/products-repo/products-repo.service';
 import { Storage, deleteObject, listAll, ref } from '@angular/fire/storage';
+import { ProductsImporterDialogComponent } from '../../../shared-components/products-importer-dialog/products-importer-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -66,7 +67,12 @@ export class ProductsService {
     return prods;
   }
 
-  importProductsFromFile() { }
+  importProductsFromFile() {
+    const dialog = this.dialog.open(ProductsImporterDialogComponent);
+    dialog.afterClosed().subscribe((file: File) => {
+      if(!file) return; 
+    });
+  }
 
   async viewQrDialog() {
     try {
