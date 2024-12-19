@@ -1,1 +1,16 @@
-<p>products-importer-dialog works!</p>
+<div class="dialog">
+    <div class="card-header">
+        <h1> Importar productos </h1>
+    </div>
+    <file-dropper (file)="uploadFile($event)" ></file-dropper>
+    <div class="form-actions">
+        <button mat-raised-button (click)="dialogRef.close()" >
+            <mat-icon> cancel </mat-icon>
+            Cancelar
+        </button>
+        <button mat-raised-button color="primary" (click)="dialogRef.close(file)" >
+            <mat-icon> done </mat-icon>
+            Agregar
+        </button>
+    </div>
+</div>

@@ -37,6 +37,7 @@ import { ProductVisualizerComponent } from './product-visualizer/product-visuali
 import { CategoryVisualizerComponent } from './category-visualizer/category-visualizer.component';
 import { ResponsiveCardInfoComponent } from './responsive-card-info/responsive-card-info.component';
 import { ProductsImporterDialogComponent } from './products-importer-dialog/products-importer-dialog.component';
+import { FileDropperComponent } from './file-dropper/file-dropper.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { ProductsImporterDialogComponent } from './products-importer-dialog/prod
     ProductVisualizerComponent,
     CategoryVisualizerComponent,
     ResponsiveCardInfoComponent,
-    ProductsImporterDialogComponent
+    ProductsImporterDialogComponent,
+    FileDropperComponent
   ],
   imports: [
     CommonModule,
@@ -96,7 +98,8 @@ import { ProductsImporterDialogComponent } from './products-importer-dialog/prod
     CategoryVisualizerComponent,
     ResponsiveCardInfoComponent,
     MenuItemComponent,
-    ProductsImporterDialogComponent
+    ProductsImporterDialogComponent,
+    FileDropperComponent
   ],
   providers: [
     provideCharts(withDefaultRegisterables()),
