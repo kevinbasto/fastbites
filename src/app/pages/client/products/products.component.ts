@@ -36,7 +36,6 @@ export class ProductsComponent implements OnInit {
     this.form = this.fb.group({
       category: [""]
     });
-    this.form.valueChanges.subscribe(change=> console.log(change));
   }
 
   ngOnInit(): void {
