@@ -8,7 +8,7 @@ import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-
+import { MatExpansionModule } from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { MatIconModule } from '@angular/material/icon';
     SharedFormsModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatExpansionModule
   ]
 })
 export class MenuModule { }

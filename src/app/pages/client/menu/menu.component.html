@@ -10,8 +10,14 @@
             Confirmar Orden: {{cart.length}} Items
         </button>
     </div>
-    <ordering-menu 
-        [products]="products"
-        (prod)="addProduct($event)"
-    ></ordering-menu>
+    <mat-accordion [multi]="true" >
+        @for (category of menuCategories; track $index; let i = $index) {
+        <mat-expansion-panel [expanded]="true" >
+            <mat-expansion-panel-header>
+                <mat-panel-title> {{ category.category.name }} </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ordering-menu [products]="category.products" ></ordering-menu>
+        </mat-expansion-panel>
+        }
+    </mat-accordion>
 </mat-card>

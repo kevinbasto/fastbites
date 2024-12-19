@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { MenuService } from './menu.service';
 import { Product } from '../../../core/entities/product';
 import { AuthService } from '../../../core/services/auth/auth.service';
+import { Menu } from '../../../core/entities/menu';
+import { Category } from '../../../core/entities/category';
+
+type MenuCategory = {
+  category: Category,
+  products: Array<Product>
+}
 
 @Component({
   selector: 'app-menu',
@@ -9,11 +16,12 @@ import { AuthService } from '../../../core/services/auth/auth.service';
   styleUrl: './menu.component.scss'
 })
 export class MenuComponent implements OnInit {
-
+  menuCategories: Array<MenuCategory> = [];
   items: Array<any> = [];
   cart: Array<Product> = []
 
   products?: Array<Product>;
+  readonly panelOpenState = signal(false);
 
   constructor(
     private menuServ: MenuService,
@@ -22,10 +30,13 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.menuServ.fetchProducts()
-      .subscribe(products => {
-        
-        this.products = products.filter(product => product.available);
-      })
+      .subscribe((menu: Menu) => {
+        // Aquí transformamos el menú en el arreglo de `MenuCategory`
+        this.menuCategories = menu.categories.map(category => ({
+          category,
+          products: menu.products.filter(product => product.category === category.id)
+        }));
+      });
   }
 
   addProduct(product: Product) {

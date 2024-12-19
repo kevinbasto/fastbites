@@ -92,7 +92,8 @@ import { ResponsiveCardInfoComponent } from './responsive-card-info/responsive-c
     PieChartComponent,
     ProductVisualizerComponent,
     CategoryVisualizerComponent,
-    ResponsiveCardInfoComponent
+    ResponsiveCardInfoComponent,
+    MenuItemComponent
   ],
   providers: [
     provideCharts(withDefaultRegisterables()),

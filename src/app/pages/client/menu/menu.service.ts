@@ -8,6 +8,9 @@ import { CheckoutComponent } from '../../../shared-components/checkout/checkout.
 import { OrdersRepoService } from '../../../core/repos/orders-repo/orders-repo.service';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 import { Order } from '../../../core/entities/order';
+import { MenuRepoService } from '../../../core/repos/menu-repo/menu-repo.service';
+import { doc, docData, docSnapshots, Firestore } from '@angular/fire/firestore';
+import { Menu } from '../../../core/entities/menu';
 
 @Injectable({
   providedIn: 'root'
@@ -16,26 +19,21 @@ export class MenuService {
 
   constructor(
     private auth: AuthService,
-    private productsRepo: ProductsRepoService,
+    private menuRepo: MenuRepoService,
     private dialog: MatDialog,
     private ordersRepo: OrdersRepoService,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
+    private firestore: Firestore
   ) { }
 
   fetchProducts() {
-    return new Observable<Array<Product>>((obs) => {
-      // this.auth.getUID()
-      //   .then((uid) => {
-      //     this.productsRepo.fetchProducts(uid!)
-      //       .subscribe(products => {
-      //         if (!products)
-      //           obs.next([])
-      //         else
-      //           obs.next(products)
-      //       })
-      //   }).catch((err) => {
-      //     obs.error("error")
-      //   });
+    return new Observable<Menu>((obs) => {
+      this.auth.getUID()
+      .then((uid : string) => {
+        let docRef = doc(this.firestore, `/users/${uid}/data/menu`);
+        (docData(docRef) as Observable<Menu>).subscribe(menu => obs.next(menu));
+      })
+      .catch((err) => obs.error(err));
     });
   }
 
