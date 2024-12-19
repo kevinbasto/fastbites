@@ -16,7 +16,7 @@ type MenuCategory = {
   styleUrl: './menu.component.scss'
 })
 export class MenuComponent implements OnInit {
-  menuCategories: Array<MenuCategory> = [];
+  menuCategories?: Array<MenuCategory>;
   items: Array<any> = [];
   cart: Array<Product> = []
 
@@ -31,7 +31,6 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.menuServ.fetchProducts()
       .subscribe((menu: Menu) => {
-        // Aquí transformamos el menú en el arreglo de `MenuCategory`
         this.menuCategories = menu.categories.map(category => ({
           category,
           products: menu.products.filter(product => product.category === category.id)
