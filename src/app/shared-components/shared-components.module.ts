@@ -35,6 +35,7 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ProductVisualizerComponent } from './product-visualizer/product-visualizer.component';
 import { CategoryVisualizerComponent } from './category-visualizer/category-visualizer.component';
+import { ResponsiveCardInfoComponent } from './responsive-card-info/responsive-card-info.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { CategoryVisualizerComponent } from './category-visualizer/category-visu
     BarChartComponent,
     PieChartComponent,
     ProductVisualizerComponent,
-    CategoryVisualizerComponent
+    CategoryVisualizerComponent,
+    ResponsiveCardInfoComponent
   ],
   imports: [
     CommonModule,
@@ -89,7 +91,8 @@ import { CategoryVisualizerComponent } from './category-visualizer/category-visu
     BarChartComponent,
     PieChartComponent,
     ProductVisualizerComponent,
-    CategoryVisualizerComponent
+    CategoryVisualizerComponent,
+    ResponsiveCardInfoComponent
   ],
   providers: [
     provideCharts(withDefaultRegisterables()),

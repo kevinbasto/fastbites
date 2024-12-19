@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '../../../core/generics/table-column';
-import { salesTableHeaders } from './sales-table.headers';
+import { salesTableconfig, salesTableHeaders } from './sales-table.headers';
 import { TableConfig } from '../../../core/generics/table-config';
 import { SalesService } from './sales.service';
 import { Sale } from '../../../core/entities/sale';
 import { Product } from '../../../core/entities/product';
 import { CheckoutItem } from '../../../core/entities/checkout-item';
+import { Months } from './sales-data';
 
 @Component({
   templateUrl: './sales.component.html',
@@ -16,26 +17,8 @@ export class SalesComponent implements OnInit {
   data: Array<any> = [];
   headers: Array<TableColumn> = salesTableHeaders;
   size: number = 0;
-  tableConfig: TableConfig = {
-    create: false,
-    pagination: false,
-    ordersButton: false,
-    options: false
-  }
-  months = [
-    'Ene',
-    'Feb',
-    'Mar',
-    'Abr',
-    'May',
-    'Jun',
-    'Jul',
-    'Ago',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dic'
-  ]
+  tableConfig: TableConfig = salesTableconfig
+  months = Months
   date: string = "";
   total: number = 0
   earnings: number = 0;
