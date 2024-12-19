@@ -2,6 +2,10 @@
     <div class="card-header">
         <h1> Importar productos </h1>
     </div>
+    <span>
+        Archivo seleccionado:
+        <b> {{file? file.name : 'No hay archivo seleccionado'}} </b>
+    </span>
     <file-dropper (file)="uploadFile($event)" ></file-dropper>
     <div class="form-actions">
         <button mat-raised-button (click)="dialogRef.close()" >

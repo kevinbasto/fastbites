@@ -21,6 +21,8 @@ import { ProductVisualizerComponent } from '../../../shared-components/product-v
 import { ProductsRepoService } from '../../../core/repos/products-repo/products-repo.service';
 import { Storage, deleteObject, listAll, ref } from '@angular/fire/storage';
 import { ProductsImporterDialogComponent } from '../../../shared-components/products-importer-dialog/products-importer-dialog.component';
+import { XlsxProcessorService } from '../../../core/services/xlsx-processor/xlsx-processor.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +39,8 @@ export class ProductsService {
     private categoriesRepo: CategoriesRepoService,
     private qrGenerator: QrGeneratorService,
     private productsRepo: ProductsRepoService,
-    private storage: Storage
+    private storage: Storage,
+    private xlsxService: XlsxProcessorService 
   ) { }
 
   fetchMenu(): Promise<Menu> {
@@ -68,10 +71,54 @@ export class ProductsService {
   }
 
   importProductsFromFile() {
-    const dialog = this.dialog.open(ProductsImporterDialogComponent);
-    dialog.afterClosed().subscribe((file: File) => {
-      if(!file) return; 
+    return new Promise<void>((resolve, reject) => {
+      const dialog = this.dialog.open(ProductsImporterDialogComponent);
+    dialog.afterClosed().subscribe(async (file: File) => {
+      if (!file) return;
+  
+      try {
+        const products: Array<any> = await this.xlsxService.convertToJson(file);
+        const uid = await this.auth.getUID();
+        let menu: Menu = await this.menuRepo.fetchMenu(uid) as unknown as Menu;
+        let prods : Array<Product> = [];
+        products.forEach(product => {
+          let {nombre, descripcion, categoria, costo, precio } = product;
+          console.table(menu.categories)
+          console.log(categoria.toLocaleLowerCase());
+          let category = menu.categories.find(cat => cat.name.toLowerCase() == product.categoria.toLowerCase());
+          if(!category){
+            category = {name: product.categoria, id: uuid()};
+            menu.categories.push(category);
+          }
+          let prod : Product = {
+            id: uuid(),
+            name: nombre,
+            category: category.id,
+            description: descripcion,
+            cost: costo,
+            price: precio,
+            available: false,
+            rawImage: '',
+            croppedImage: '',
+            croppedPosition: {
+              x1: 0,
+              x2: 0,
+              y1: 0,
+              y2: 0
+            }
+          }
+          prods.push(prod);
+        });
+        menu.products = [...menu.products, ...prods];
+        await this.menuRepo.updateMenu(uid, menu);
+        this.snackbar.openMessage("Productos importados con exito!");
+        resolve()
+      } catch (error) {
+        this.snackbar.openMessage("Hubo un error al importar los productos");
+        reject()
+      }
     });
+    })
   }
 
   async viewQrDialog() {

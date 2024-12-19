@@ -76,7 +76,12 @@ export class ProductsComponent implements OnInit {
   }
 
   importProductsFromFile() {
-    this.productsService.importProductsFromFile();
+    this.productsService.importProductsFromFile()
+    .then((result) => {
+      this.fetchMenu();
+    }).catch((err) => {
+      
+    });
   }
 
   viewQrDialog() {
