@@ -1,1 +1,29 @@
-<p>personalization works!</p>
+<mat-card class="card">
+    <div class="card-header">
+        <h1> configurar color </h1>
+        <button mat-icon-button color="primary" (click)="colorForm.disabled? colorForm.enable() : colorForm.disable()">
+            <mat-icon> edit </mat-icon>
+        </button>
+    </div>
+    <div class="field">
+        <form action="" [formGroup]="colorForm" (submit)="saveColorForm()">
+            <mat-form-field>
+                <mat-label> Color </mat-label>
+                <input type="color" matInput formControlName="color">
+            </mat-form-field>
+            @if(colorForm.enabled){
+            <div class="form-actions">
+                <button mat-raised-button (click)="cancelForm()" type="button">
+                    <mat-icon> cleaning_services </mat-icon>
+                    Cancelar
+                </button>
+                <button mat-raised-button color="primary" type="submit">
+                    <mat-icon> done </mat-icon>
+                    Guardar cambio
+                </button>
+            </div>
+            }
+        </form>
+    </div>
+
+</mat-card>
