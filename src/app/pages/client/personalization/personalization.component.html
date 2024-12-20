@@ -1,17 +1,41 @@
 <mat-card class="card">
     <div class="card-header">
-        <h1> configurar color </h1>
-        <button mat-icon-button color="primary" (click)="colorForm.disabled? colorForm.enable() : colorForm.disable()">
+        <h1> Personalizar tu menú </h1>
+        <button mat-icon-button color="primary" (click)="form.disabled? form.enable() : form.disable()">
             <mat-icon> edit </mat-icon>
         </button>
     </div>
-    <div class="field">
-        <form action="" [formGroup]="colorForm" (submit)="saveColorForm()">
+    <form action="" [formGroup]="form" (submit)="saveForm()">
+        <div class="card-header">
+            <h1> configurar color </h1>
+        </div>
+        <div class="field">
+
             <mat-form-field>
                 <mat-label> Color </mat-label>
                 <input type="color" matInput formControlName="color">
             </mat-form-field>
-            @if(colorForm.enabled){
+        </div>
+        <h1>
+            Cambiar imagen o logo
+        </h1>
+        <span> Imagen escogida:
+            <b> {{ file? file.name : 'No hay un archivo seleccionado' }} </b>
+        </span>
+        @if (form.enabled) {
+        <image-dropper></image-dropper>
+        }
+        <div class="card-header">
+            <h1> Fondo de pantalla </h1>
+        </div>
+        <span> Imagen escogida:
+            <b> {{ file? file.name : 'No hay un archivo seleccionado' }} </b>
+        </span>
+        @if (form.enabled) {
+            <image-dropper></image-dropper>
+        }
+
+        @if(form.enabled){
             <div class="form-actions">
                 <button mat-raised-button (click)="cancelForm()" type="button">
                     <mat-icon> cleaning_services </mat-icon>
@@ -23,7 +47,5 @@
                 </button>
             </div>
             }
-        </form>
-    </div>
-
+    </form>
 </mat-card>

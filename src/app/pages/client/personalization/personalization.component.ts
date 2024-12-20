@@ -8,21 +8,22 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class PersonalizationComponent implements OnInit{
 
-  colorForm: FormGroup;
+  form: FormGroup;
   uploadingColor: boolean = false;
+  file?: File;
 
   constructor(
     private personalizationServ: PersonalizationService,
     private fb: FormBuilder
   ) {
-    this.colorForm = this.fb.group({
-      color: ['']
+    this.form = this.fb.group({
+      color: [''],
+      profile: [],
     })
   }
 
   ngOnInit(): void {
-    this.colorForm.disable()
-    this.colorForm.valueChanges.subscribe(color => console.log(color));
+    this.form.disable();
   }
 
   openpicker(){
@@ -31,13 +32,18 @@ export class PersonalizationComponent implements OnInit{
   }
 
   cancelForm(){
-    this.colorForm.setValue({color: "#FFFFFF"});
+    this.form.setValue({color: "#FFFFFF"});
   }
 
-  saveColorForm(){
+  saveForm(){
     this.uploadingColor = true;
-    this.personalizationServ.saveColorForm(this.colorForm.value.color)
-    .then(() => this.colorForm.disable())
+    this.personalizationServ.saveColorForm(this.form.value.color)
+    .then(() => this.form.disable())
     .finally(() => this.uploadingColor = false);
+  }
+
+  setImage(file: File){
+    this.file = file;
+    this.form.get("image")?.setValue(file);
   }
 }
