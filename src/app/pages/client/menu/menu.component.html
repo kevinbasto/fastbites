@@ -17,7 +17,7 @@
                 <mat-expansion-panel-header>
                     <mat-panel-title> {{ category.category.name }} </mat-panel-title>
                 </mat-expansion-panel-header>
-                <ordering-menu [products]="category.products" ></ordering-menu>
+                <ordering-menu [products]="category.products" (prod)="addProduct($event)" ></ordering-menu>
             </mat-expansion-panel>
             }
         </mat-accordion>

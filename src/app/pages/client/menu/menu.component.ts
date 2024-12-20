@@ -4,6 +4,7 @@ import { Product } from '../../../core/entities/product';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { Menu } from '../../../core/entities/menu';
 import { Category } from '../../../core/entities/category';
+import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 
 type MenuCategory = {
   category: Category,
@@ -25,7 +26,8 @@ export class MenuComponent implements OnInit {
 
   constructor(
     private menuServ: MenuService,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackbar: SnackbarService
   ) { }
 
   ngOnInit(): void {
@@ -39,7 +41,9 @@ export class MenuComponent implements OnInit {
   }
 
   addProduct(product: Product) {
-    this.cart.push(product)
+    console.log(`invoked`);
+    this.cart.push(product);
+    this.snackbar.openMessage("Producto agregado al carrito!", 200);
   }
 
   async goToCheckout() {
