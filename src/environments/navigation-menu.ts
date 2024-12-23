@@ -26,19 +26,19 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         url: "settings",
         icon: "settings",
     },
-    {
-        name: "Personalizar",
-        url: "personalization",
-        icon: "palette",
-    },
-    {
-        name: 'Promociones',
-        url: 'promos',
-        icon: 'sell'
-    },
-    {
-        name: 'Empleados',
-        url: 'staff',
-        icon: 'groups'
-    },
+    // {
+    //     name: 'Promociones',
+    //     url: 'promos',
+    //     icon: 'sell'
+    // },
+    // {
+    //     name: 'Empleados',
+    //     url: 'staff',
+    //     icon: 'groups'
+    // },
+    // {
+    //     name: "Personalizar",
+    //     url: "personalization",
+    //     icon: "palette",
+    // },
 ]
