@@ -11,17 +11,7 @@
                 Editar
             </button>
         </div>
-        <form class="fields" [formGroup]="editMenuForm">
-            <mat-form-field>
-                <mat-label>
-                    Nombre que debe aparecer en el menu
-                </mat-label>
-                <input type="text" matInput formControlName="name">
-            </mat-form-field>
-            <mat-slide-toggle formControlName="iva">
-                Calcular Iva dentro de las ordenes
-            </mat-slide-toggle>
-        </form>
+        <personal-data-form></personal-data-form>
     </div>
     <mat-divider></mat-divider>
     <div class="section">

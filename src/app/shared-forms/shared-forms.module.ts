@@ -15,6 +15,7 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { SharedComponentsModule } from '../shared-components/shared-components.module';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { MatSelectModule } from '@angular/material/select';
+import { PersonalDataFormComponent } from './personal-data-form/personal-data-form.component';
 
 
 
@@ -23,6 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
     FormActionsComponent,
     ProductFormComponent,
     CategoryFormComponent,
+    PersonalDataFormComponent,
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ import { MatSelectModule } from '@angular/material/select';
   ],
   exports: [
     ProductFormComponent,
-    CategoryFormComponent
+    CategoryFormComponent,
+    PersonalDataFormComponent
   ]
 })
 export class SharedFormsModule { }
