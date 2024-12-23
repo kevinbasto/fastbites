@@ -16,6 +16,7 @@ import { SharedComponentsModule } from '../shared-components/shared-components.m
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { MatSelectModule } from '@angular/material/select';
 import { PersonalDataFormComponent } from './personal-data-form/personal-data-form.component';
+import { FiscalDataFormComponent } from './fiscal-data-form/fiscal-data-form.component';
 
 
 
@@ -25,6 +26,7 @@ import { PersonalDataFormComponent } from './personal-data-form/personal-data-fo
     ProductFormComponent,
     CategoryFormComponent,
     PersonalDataFormComponent,
+    FiscalDataFormComponent,
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { PersonalDataFormComponent } from './personal-data-form/personal-data-fo
   exports: [
     ProductFormComponent,
     CategoryFormComponent,
-    PersonalDataFormComponent
+    PersonalDataFormComponent,
+    FiscalDataFormComponent
   ]
 })
 export class SharedFormsModule { }

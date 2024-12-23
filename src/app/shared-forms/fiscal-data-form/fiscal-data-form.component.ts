@@ -1,11 +1,11 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
-  selector: 'personal-data-form',
-  templateUrl: './personal-data-form.component.html',
-  styleUrl: './personal-data-form.component.scss'
+  selector: 'fiscal-data-form',
+  templateUrl: './fiscal-data-form.component.html',
+  styleUrl: './fiscal-data-form.component.scss'
 })
-export class PersonalDataFormComponent implements OnInit, OnChanges {
+export class FiscalDataFormComponent implements OnInit, OnChanges {
 
   @Input() enable: boolean = false;
 
@@ -18,5 +18,4 @@ export class PersonalDataFormComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     
   }
-
 }

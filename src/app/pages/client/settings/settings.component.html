@@ -1,17 +1,24 @@
 <mat-card class="card">
     <div class="section">
         <div class="card-header">
-            <h1>
-                Configuraciones de visualización de menu
-            </h1>
-            <button mat-raised-button color="primary" (click)="alternateEdit()">
-                <mat-icon>
-                    edit
-                </mat-icon>
-                Editar
+            <h1> Configuración de perfil </h1>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="card-header">
+            <h1> Configuración de datos personales</h1>
+            <button mat-icon-button color="primary">
+                <mat-icon> edit </mat-icon>
             </button>
         </div>
         <personal-data-form></personal-data-form>
+        <mat-divider></mat-divider>
+        <div class="card-header">
+            <h1> Información Fiscal </h1>
+            <button mat-icon-button color="primary" >
+                <mat-icon> edit </mat-icon>
+            </button>
+        </div>
+        <fiscal-data-form></fiscal-data-form>
     </div>
     <mat-divider></mat-divider>
     <div class="section">
