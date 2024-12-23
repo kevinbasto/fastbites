@@ -30,5 +30,15 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         name: "Personalizar",
         url: "personalization",
         icon: "palette",
-    }
+    },
+    {
+        name: 'Promociones',
+        url: 'promos',
+        icon: 'sell'
+    },
+    {
+        name: 'Empleados',
+        url: 'staff',
+        icon: 'groups'
+    },
 ]
