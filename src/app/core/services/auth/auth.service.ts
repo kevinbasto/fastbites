@@ -22,4 +22,9 @@ export class AuthService {
   signOut() {
     signOut(this.auth);
   }
+
+  async getToken() : Promise<string> {
+    let token = await this.auth.currentUser?.getIdToken();
+    return token!;
+  }
 }

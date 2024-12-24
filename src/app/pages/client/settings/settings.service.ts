@@ -5,6 +5,9 @@ import { SnackbarService } from '../../../core/services/snackbar/snackbar.servic
 import { MatDialog } from '@angular/material/dialog';
 import { CreateCardComponent } from './dialogs/create-card/create-card.component';
 import { Card } from '../../../core/entities/card';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +17,8 @@ export class SettingsService {
   constructor(
     private profileRepo: ProfileRepoService,
     private snackbar: SnackbarService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private httpclient: HttpClient
   ) { }
 
   async fetchProfile() {
@@ -29,9 +33,14 @@ export class SettingsService {
   async postProfile(profile: Profile) {
     return new Promise<void>((resolve, reject) => {
       this.profileRepo.postProfile(profile)
-      .then((result) => {
-        this.snackbar.openMessage("Perfil Actualizado con éxito");
-        resolve();
+      .then(async (result) => {
+        lastValueFrom(this.httpclient.post(`${environment.apiUrl}/customers`, {...profile}))
+        .then((result) => {
+          this.snackbar.openMessage("Perfil Actualizado con éxito");
+          resolve();
+        }).catch((err) => {
+          reject()
+        });
       }).catch((err) => {
         this.snackbar.openMessage("No se pudo actualizar el perfil");
         reject();

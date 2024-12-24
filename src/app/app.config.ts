@@ -8,6 +8,8 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getFunctions, provideFunctions } from '@angular/fire/functions';
 import { getStorage, provideStorage } from '@angular/fire/storage';
+import { provideHttpClient, withInterceptors } from "@angular/common/http";
+import { httpsInterceptor } from './core/interceptors/https-interceptor/https-interceptor.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,6 +28,10 @@ export const appConfig: ApplicationConfig = {
     provideAuth(() => getAuth()), 
     provideFirestore(() => getFirestore()), 
     provideFunctions(() => getFunctions()), 
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    provideHttpClient(
+      withInterceptors([httpsInterceptor])
+    )
   ],
+  
 };
