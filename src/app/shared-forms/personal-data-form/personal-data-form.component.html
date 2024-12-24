@@ -1,22 +1,44 @@
-<form action="">
+<form action="" [formGroup]="form" (submit)="submitForm()" >
     <section class="grid-container">
         <mat-form-field>
             <mat-label>
                 Nombre completo
             </mat-label>
-            <input type="text" matInput>
+            <input type="text" matInput formControlName="name" >
         </mat-form-field>
         <mat-form-field>
             <mat-label>
                 Correo electrónico
             </mat-label>
-            <input type="email" matInput>
+            <input type="email" matInput formControlName="email" >
         </mat-form-field>
         <mat-form-field>
             <mat-label>
                 Teléfono celular
             </mat-label>
-            <input type="email" matInput>
+            <input type="text" matInput formControlName="phone" >
         </mat-form-field>
     </section>
+    @if(enable){
+        <div class="form-actions">
+            <button mat-raised-button type="button" (click)="cancelForm.emit()" >
+                <mat-icon>
+                    cancel
+                </mat-icon>
+                Cancelar
+            </button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="uploading || form.invalid" >
+                @if (!uploading) {
+                    <span style="display: flex; align-items: center; gap: 1ch;">
+                        <mat-icon>
+                            save
+                        </mat-icon>
+                        Guardar cambios
+                    </span>
+                }@else {
+                    <mat-spinner></mat-spinner>
+                }
+            </button>
+        </div>
+    }
 </form>

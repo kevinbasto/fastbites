@@ -6,19 +6,25 @@
         <mat-divider></mat-divider>
         <div class="card-header">
             <h1> Configuración de datos personales</h1>
-            <button mat-icon-button color="primary">
+            <button mat-icon-button [color]="editPersonal? 'warn' : 'primary' " (click)="editPersonal = !editPersonal">
                 <mat-icon> edit </mat-icon>
             </button>
         </div>
-        <personal-data-form></personal-data-form>
-        <mat-divider></mat-divider>
+        <personal-data-form 
+            [enable]="editPersonal" 
+            [profile]="profile"
+            [uploading]="uploadPersonal"
+            (cancelForm)="editPersonal = !this.editPersonal"
+            (personalData)="postProfileData($event)"
+        ></personal-data-form>
+        <!-- <mat-divider></mat-divider>
         <div class="card-header">
             <h1> Información Fiscal </h1>
             <button mat-icon-button color="primary" >
                 <mat-icon> edit </mat-icon>
             </button>
         </div>
-        <fiscal-data-form></fiscal-data-form>
+        <fiscal-data-form></fiscal-data-form> -->
     </div>
     <mat-divider></mat-divider>
     <div class="section">
