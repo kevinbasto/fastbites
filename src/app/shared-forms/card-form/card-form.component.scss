@@ -1,0 +1,10 @@
+form{
+    width: 450px;
+    max-width: 100%;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 1rem;
+}

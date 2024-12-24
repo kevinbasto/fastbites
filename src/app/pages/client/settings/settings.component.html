@@ -32,9 +32,10 @@
             <h1>
                 Configuraciones de subscripción
             </h1>
-            <mat-slide-toggle>
-                Activar subscripción
-            </mat-slide-toggle>
+            <button mat-raised-button color="primary"  >
+                <mat-icon> card_membership </mat-icon>
+                Ver subscripción
+            </button>
         </div>
         <div class="responsive-info-holder">
             <mat-card class="card">
@@ -81,7 +82,7 @@
                         Siguiente cargo
                     </h3>
                     <p>
-                        {{400 | currency}}
+                        {{ 500 | currency}}
                     </p>
                 </mat-card>
             </div>
@@ -90,7 +91,7 @@
             <h1>
                 Listado de tarjetas
             </h1>
-            <button mat-icon-button color="primary" >
+            <button mat-icon-button color="primary" (click)="createCard()" >
                 <mat-icon> add_card </mat-icon>
             </button>
         </div>
@@ -101,7 +102,6 @@
             [headers]="headers"
             [setSize]="data? data.length : 0"
             [config]="tableConfig"
-            (create)="create()"
             (edit)="edit($event)"
             (deleteItem)="deleteItem($event)"
         ></app-table>

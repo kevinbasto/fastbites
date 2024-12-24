@@ -49,7 +49,9 @@ export class SettingsComponent implements OnInit {
   title : string = "Listado de métodos de pago";
   data? : Array<any>;
 
-  create() {}
+  createCard() {
+    this.settingsService.createCard()
+  }
 
   edit(item : any) {}
 

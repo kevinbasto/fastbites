@@ -12,11 +12,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggle, MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { CreateCardComponent } from './dialogs/create-card/create-card.component';
 
 
 @NgModule({
   declarations: [
-    SettingsComponent
+    SettingsComponent,
+    CreateCardComponent
   ],
   imports: [
     CommonModule,

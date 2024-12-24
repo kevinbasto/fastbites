@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { ProfileRepoService } from '../../../core/repos/profile-repo/profile-repo.service';
 import { Profile } from '../../../core/entities/profile';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateCardComponent } from './dialogs/create-card/create-card.component';
+import { Card } from '../../../core/entities/card';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +13,8 @@ export class SettingsService {
 
   constructor(
     private profileRepo: ProfileRepoService,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
+    private dialog: MatDialog
   ) { }
 
   async fetchProfile() {
@@ -33,5 +37,13 @@ export class SettingsService {
         reject();
       });
     })
+  }
+
+  async createCard() {
+    const dialog = this.dialog.open(CreateCardComponent)
+    dialog.afterClosed().subscribe((card: Card | null) => {
+      if(!card) return;
+
+    });
   }
 }

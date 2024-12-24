@@ -1,0 +1,43 @@
+<form action="" [formGroup]="form" (submit)="card.emit(form.value)" >
+    <section style="display: flex; flex-direction:  column;">
+        <mat-form-field>
+            <mat-label> Nombre </mat-label>
+            <input type="text" matInput formControlName="name" >
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label> Tipo de tarjeta </mat-label>
+            <mat-select formControlName="creditOrDebit" >
+                <mat-option value="credit" > Crédito </mat-option>
+                <mat-option value="debit" > Dédito </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label> Número de tarjeta </mat-label>
+            <input type="text" matInput formControlName="card" >
+        </mat-form-field>
+    </section>
+    <div class="grid-container">
+        <mat-form-field>
+            <mat-label> Mes </mat-label>
+            <input type="number" matInput formControlName="expMonth" >
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label> Año </mat-label>
+            <input type="number" matInput formControlName="card" >
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label> CVC </mat-label>
+            <input type="number" matInput formControlName="card" >
+        </mat-form-field>
+    </div>
+    <div class="form-actions">
+        <button mat-raised-button type="button" (click)="cancel.emit()" >
+            <mat-icon> cancel </mat-icon>
+            Cancelar
+        </button>
+        <button mat-raised-button color="primary" type="submit" >
+            <mat-icon> save </mat-icon>
+            Guardar
+        </button>
+    </div>
+</form>
