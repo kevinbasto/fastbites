@@ -3,6 +3,7 @@ import { Auth, createUserWithEmailAndPassword, deleteUser, GoogleAuthProvider, s
 import { doc, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
+import { User } from '../../../core/entities/user';
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +21,13 @@ export class RegisterService {
     let givenUser : any;
     try {
       let userRef = (await createUserWithEmailAndPassword(this.auth, email, password)).user;
-      let user = {
+      let user : User = {
         email,
         terms,
         uid: userRef.uid,
         verified: false,
         creationDate: Date.now(),
+        firstTime: true
       };
       await sendEmailVerification(userRef)
       .catch(err => { givenUser = userRef; throw err;});

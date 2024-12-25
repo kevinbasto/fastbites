@@ -4,4 +4,5 @@ export interface User {
     verified: boolean;
     terms: boolean;
     creationDate: number | Date;
+    firstTime: boolean;
 }

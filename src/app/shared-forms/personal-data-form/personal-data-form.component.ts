@@ -36,7 +36,6 @@ export class PersonalDataFormComponent implements OnChanges {
 
     if(changes['profile'] && this.profile){
       let { name, email, phone } = this.profile;
-      console.log(this.profile)
       if(name) this.name.setValue(name)
       if(email) this.email.setValue(email)
       if(phone) this.phone.setValue(phone)

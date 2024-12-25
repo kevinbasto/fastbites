@@ -3,6 +3,7 @@ import { Auth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, 
 import { Router } from '@angular/router';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
+import { User } from '../../../core/entities/user';
 
 @Injectable({
   providedIn: 'root'
@@ -41,8 +42,9 @@ export class LoginService {
       uid = signRef.user.uid;
       let docRef = doc(this.firestore, `/users/${uid}`);
       let data = (await getDoc(docRef)).data()
+      let user: User = { email, uid, terms: true, verified: true, firstTime: true,creationDate: Date.now() };
       if(!data)
-        await setDoc(docRef, {email, uid, terms: true, verified: true});
+        await setDoc(docRef, user);
       this.router.navigate(['/client/products']);
     } catch (error) {
       this.snackbar.openMessage("No se pudo iniciar sesión con Google");
