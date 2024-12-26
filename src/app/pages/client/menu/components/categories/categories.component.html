@@ -1,1 +1,22 @@
-<p>categories works!</p>
+<div class="card-header">
+    <h1>
+      Listado de categorías
+    </h1>
+    <button mat-icon-button (click)="createCategory()" color="primary">
+      <mat-icon>
+        add
+      </mat-icon>
+    </button>
+  </div>
+  <app-table 
+    [data]="categories" 
+    [headers]="categoriesHeaders" 
+    [config]="categoriesConfig"
+    (create)="createCategory()" 
+    (edit)="editCategory($event)" 
+    (deleteItem)="deleteCategory($event)"
+    (selection)="viewCategory($event)"
+  ></app-table>
+  <mat-paginator
+    [length]="categories?.length"
+  ></mat-paginator>
