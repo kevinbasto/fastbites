@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: "menu",
-    loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule)
+    loadChildren: () => import('./order-slip/order-slip.module').then(m => m.OrderSlipModule)
   },
   // {
   //   path: "personalization",

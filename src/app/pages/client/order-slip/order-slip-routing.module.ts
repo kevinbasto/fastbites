@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MenuComponent } from './menu.component';
+import { OrderSlipComponent } from './order-slip.component';
 
 const routes: Routes = [
   {
     path: "",
-    component: MenuComponent
+    component: OrderSlipComponent
   }
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MenuRoutingModule { }
+export class OrderSlipRoutingModule { }

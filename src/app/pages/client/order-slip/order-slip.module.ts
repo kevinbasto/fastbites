@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MenuRoutingModule } from './menu-routing.module';
-import { MenuComponent } from './menu.component';
+import { OrderSlipRoutingModule } from './order-slip-routing.module';
+import { OrderSlipComponent } from './order-slip.component';
 import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 import { MatCardModule } from '@angular/material/card';
@@ -13,11 +13,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
-    MenuComponent
+    OrderSlipComponent
   ],
   imports: [
     CommonModule,
-    MenuRoutingModule,
+    OrderSlipRoutingModule,
     SharedComponentsModule,
     SharedFormsModule,
     MatCardModule,
@@ -27,4 +27,4 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatProgressSpinnerModule
   ]
 })
-export class MenuModule { }
+export class OrderSlipModule { }

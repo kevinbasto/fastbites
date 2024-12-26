@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MenuService } from './menu.service';
+import { OrderSlipservice } from './order-slip.service';
 
-describe('MenuService', () => {
-  let service: MenuService;
+describe('OrderSlip', () => {
+  let service: OrderSlipservice;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MenuService);
+    service = TestBed.inject(OrderSlipservice);
   });
 
   it('should be created', () => {

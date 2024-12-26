@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MenuComponent } from './menu.component';
+import { OrderSlipComponent } from './order-slip.component';
 
-describe('MenuComponent', () => {
-  let component: MenuComponent;
-  let fixture: ComponentFixture<MenuComponent>;
+describe('OrderSlipComponent', () => {
+  let component: OrderSlipComponent;
+  let fixture: ComponentFixture<OrderSlipComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MenuComponent]
+      declarations: [OrderSlipComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MenuComponent);
+    fixture = TestBed.createComponent(OrderSlipComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -15,7 +15,7 @@ import { Menu } from '../../../core/entities/menu';
 @Injectable({
   providedIn: 'root'
 })
-export class MenuService {
+export class OrderSlipservice {
 
   constructor(
     private auth: AuthService,

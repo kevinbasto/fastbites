@@ -1,5 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { MenuService } from './menu.service';
+import { OrderSlipservice } from './order-slip.service';
 import { Product } from '../../../core/entities/product';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { Menu } from '../../../core/entities/menu';
@@ -13,10 +13,10 @@ type MenuCategory = {
 
 @Component({
   selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrl: './menu.component.scss'
+  templateUrl: './order-slip.component.html',
+  styleUrl: './order-slip.component.scss'
 })
-export class MenuComponent implements OnInit {
+export class OrderSlipComponent implements OnInit {
   menuCategories?: Array<MenuCategory>;
   items: Array<any> = [];
   cart: Array<Product> = []
@@ -25,7 +25,7 @@ export class MenuComponent implements OnInit {
   readonly panelOpenState = signal(false);
 
   constructor(
-    private menuServ: MenuService,
+    private menuServ: OrderSlipservice,
     private authService: AuthService,
     private snackbar: SnackbarService
   ) { }

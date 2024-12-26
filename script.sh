@@ -1,1 +1,1 @@
-ng g c pages/client/products/components/products
+ng g c pages/client/products/components/products;
