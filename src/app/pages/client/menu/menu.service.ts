@@ -27,7 +27,7 @@ import { XlsxProcessorService } from '../../../core/services/xlsx-processor/xlsx
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
+export class MenuService {
 
   menu!: Menu;
 

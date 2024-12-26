@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductsComponent } from './products.component';
+import { MenuComponent } from './menu.component';
 import { CreateProductComponent } from './routes/create-product/create-product.component';
 import { EditProductComponent } from './routes/edit-product/edit-product.component';
 import { CreateSubmenuComponent } from './routes/create-submenu/create-submenu.component';
@@ -9,7 +9,7 @@ import { EditSubmenuComponent } from './routes/edit-submenu/edit-submenu.compone
 const routes: Routes = [
   {
     path: "",
-    component: ProductsComponent
+    component: MenuComponent
   },
   {
     path: "create",
@@ -33,4 +33,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProductsRoutingModule { }
+export class MenuRoutingModule { }

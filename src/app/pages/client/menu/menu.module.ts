@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ProductsRoutingModule } from './products-routing.module';
-import { ProductsComponent } from './products.component';
+import { MenuRoutingModule } from './menu-routing.module';
+import { MenuComponent } from './menu.component';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from "@angular/material/table";
@@ -29,7 +29,7 @@ import { EditSubmenuComponent } from './routes/edit-submenu/edit-submenu.compone
 
 @NgModule({
   declarations: [
-    ProductsComponent,
+    MenuComponent,
     CreateProductComponent,
     EditProductComponent,
     CreateCategoryComponent,
@@ -40,7 +40,7 @@ import { EditSubmenuComponent } from './routes/edit-submenu/edit-submenu.compone
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule,
+    MenuRoutingModule,
     SharedComponentsModule,
     SharedFormsModule,
     MatProgressSpinnerModule,
@@ -61,4 +61,4 @@ import { EditSubmenuComponent } from './routes/edit-submenu/edit-submenu.compone
     NgxImageCompressService
   ]
 })
-export class ProductsModule { }
+export class MenuModule { }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '../../../core/generics/table-column';
-import { ProductsService } from './products.service';
-import { categoriesTableConfig, categoriesTableHeaders, productTableHeaders } from './products-table.headers';
+import { MenuService } from './menu.service';
+import { categoriesTableConfig, categoriesTableHeaders, productTableHeaders } from './menu-table.headers';
 import { Product } from '../../../core/entities/product';
 import { TableConfig } from '../../../core/generics/table-config';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
@@ -11,10 +11,10 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  templateUrl: './products.component.html',
-  styleUrl: './products.component.scss'
+  templateUrl: './menu.component.html',
+  styleUrl: './menu.component.scss'
 })
-export class ProductsComponent implements OnInit {
+export class MenuComponent implements OnInit {
 
   headers : Array<TableColumn> = productTableHeaders;
   tableConfig: TableConfig = categoriesTableConfig;
@@ -26,7 +26,7 @@ export class ProductsComponent implements OnInit {
   form: FormGroup
 
   constructor(
-    private productsService: ProductsService,
+    private productsService: MenuService,
     private breakpoint: BreakpointObserver,
     private router: Router,
     private fb: FormBuilder
