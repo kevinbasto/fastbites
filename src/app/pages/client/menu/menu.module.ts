@@ -26,6 +26,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from "@angular/material/tabs";
 import { CreateSubmenuComponent } from './routes/create-submenu/create-submenu.component';
 import { EditSubmenuComponent } from './routes/edit-submenu/edit-submenu.component';
+import { ProductsComponent } from './components/products/products.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { SubmenusComponent } from './components/submenus/submenus.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { EditSubmenuComponent } from './routes/edit-submenu/edit-submenu.compone
     EditCategoryComponent,
     ViewCategoryComponent,
     CreateSubmenuComponent,
-    EditSubmenuComponent
+    EditSubmenuComponent,
+    ProductsComponent,
+    CategoriesComponent,
+    SubmenusComponent
   ],
   imports: [
     CommonModule,
