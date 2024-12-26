@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EditSubmenuService } from './edit-submenu.service';
 
 @Component({
   selector: 'app-edit-submenu',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class EditSubmenuComponent implements OnInit {
 
   constructor(
-    private editSubmenuServ: EditSubmemuService
+    private editSubmenuServ: EditSubmenuService
   ) { }
 
   ngOnInit(): void {
