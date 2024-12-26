@@ -21,11 +21,11 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         url: "menu",
         icon: "point_of_sale",
     },
-    {
-        name: "Configuraciones",
-        url: "settings",
-        icon: "settings",
-    },
+    // {
+    //     name: "Configuraciones",
+    //     url: "settings",
+    //     icon: "settings",
+    // },
     // {
     //     name: 'Promociones',
     //     url: 'promos',

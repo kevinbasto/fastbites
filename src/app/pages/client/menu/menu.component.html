@@ -37,9 +37,9 @@
         (toggle)="toggleProduct($event)"
         (selection)="viewProduct($event)"
       ></app-table>
-      <mat-paginator
+      <!-- <mat-paginator
         [length]="products?.length"
-      ></mat-paginator>
+      ></mat-paginator> -->
     </mat-card>
   </div>
   <div class="grid-container" [ngClass]="shadow? ['']: ['mat-elevation-z8']">
@@ -63,9 +63,9 @@
         (deleteItem)="deleteCategory($event)"
         (selection)="viewCategory($event)"
       ></app-table>
-      <mat-paginator
+      <!-- <mat-paginator
         [length]="categories?.length"
-      ></mat-paginator>
+      ></mat-paginator> -->
     </mat-card>
   </div>
 </div>

@@ -19,10 +19,10 @@ const routes: Routes = [
     path: "sales",
     loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule)
   },
-  {
-    path: "settings",
-    loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
-  },
+  // {
+  //   path: "settings",
+  //   loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
+  // },
   {
     path: "menu",
     loadChildren: () => import('./order-slip/order-slip.module').then(m => m.OrderSlipModule)
