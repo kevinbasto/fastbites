@@ -7,6 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { CheckoutComponent } from '../../../shared-components/checkout/checkout.component';
 import { OrdersRepoService } from '../../../core/repos/orders-repo/orders-repo.service';
 import { Order } from '../../../core/entities/order';
+import { Menu } from '../../../core/entities/menu';
+import { doc, docData, Firestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +19,14 @@ export class MenuService {
     private snackbar: SnackbarService,
     private productsRepo: ProductsRepoService,
     private dialog: MatDialog,
-    private ordersRepo: OrdersRepoService
+    private ordersRepo: OrdersRepoService,
+    private firestore: Firestore
   ) { }
 
   fetchMenu(id: string) {
-    return new Observable<Array<Product>>((obs) => {
-      // this.productsRepo.fetchProducts(id)
-      //   .subscribe(products => obs.next(products));
+    return new Observable<Menu>((obs) => {
+      let docRef = doc(this.firestore, `/users/${id}/data/menu`);
+      (docData(docRef) as Observable<Menu>).subscribe(menu => obs.next(menu));
     });
   }
 

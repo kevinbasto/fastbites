@@ -1,4 +1,4 @@
-<div class="grid-container loading-screen" *ngIf="!scannerMode && !products">
+<div class="grid-container loading-screen" *ngIf="!scannerMode && !menuCategories">
     <div>
         <div style="display: flex; flex-direction: column; align-items: center;">
             <mat-spinner></mat-spinner>
@@ -24,14 +24,27 @@
         </mat-card>
     </div>
 </div>
-<div *ngIf="products && products.length > 0" >
+<div *ngIf="menuCategories" >
     <h1 style="text-align: center;">
         Listado de productos
     </h1>
     <mat-divider></mat-divider>
-    <div style="padding: 1rem;">
-        <ordering-menu (prod)="addProductToCard($event)" [products]="products"></ordering-menu>
-    </div>
+    @if(menuCategories){
+        <mat-accordion [multi]="true" >
+            @for (category of menuCategories; track $index; let i = $index) {
+            <mat-expansion-panel [expanded]="true" >
+                <mat-expansion-panel-header>
+                    <mat-panel-title> {{ category.category.name }} </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ordering-menu [products]="category.products" (prod)="addProductToCart($event)" ></ordering-menu>
+            </mat-expansion-panel>
+            }
+        </mat-accordion>
+    }@else {
+        <div class="grid-container">
+            <mat-spinner diameter="150"></mat-spinner>
+        </div>
+    }
     <div class="cart-button" style="display: flex; flex-direction: column;">
         <button mat-raised-button color="primary" (click)="goToCheckout()" style="display: flex; justify-content: center; align-items: center;" >
             Ir a la caja:

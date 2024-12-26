@@ -126,7 +126,8 @@ export class MenuService {
       let uid = await this.auth.getUID();
       let origin = environment.domain;
       let [protocol, domain] = origin.split("//");
-      let url = `${protocol}//client.${domain}?id=${uid}`;
+      // ${protocol}//client.${domain}
+      let url = `${origin}/public/menu?id=${uid}`;
       let qr = await this.qrGenerator.renderQrFromUrl(url);
       const dialog = this.dialog.open(MenuUrlDisplayerComponent, { data: { url, qr } })
     } catch (error) {

@@ -1,8 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { MenuService } from './menu.service';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../../core/entities/product';
 import { Message } from '../../../core/generics/message';
+import { Category } from '../../../core/entities/category';
+import { Menu } from '../../../core/entities/menu';
+
+
+type MenuCategory = {
+  category: Category,
+  products: Array<Product>
+}
 
 @Component({
   selector: 'app-menu',
@@ -11,6 +19,8 @@ import { Message } from '../../../core/generics/message';
 })
 export class MenuComponent implements OnInit {
 
+  menuCategories?: Array<MenuCategory>;
+  readonly panelOpenState = signal(false);
   id?: string;
   scannerMode: boolean = false;
   activeFetch: boolean = false;
@@ -30,7 +40,12 @@ export class MenuComponent implements OnInit {
         this.id = id;
         this.scannerMode = false;
         this.menuService.fetchMenu(this.id!)
-        .subscribe((products) => this.setProducts(products));
+        .subscribe((menu: Menu) => {
+          this.menuCategories = menu.categories.map(category => ({
+            category,
+            products: menu.products.filter(product => product.category === category.id)
+          }));
+        });
       } else {
         this.scannerMode = true
       }
@@ -45,8 +60,13 @@ export class MenuComponent implements OnInit {
           this.id = id;
           this.stop = true;
           this.scannerMode = false;
-          this.menuService.fetchMenu(this.id!)
-          .subscribe((products) => this.setProducts(products));
+          this.menuService.fetchMenu(id)
+            .subscribe((menu: Menu) => {
+              this.menuCategories = menu.categories.map(category => ({
+                category,
+                products: menu.products.filter(product => product.category === category.id)
+              }));
+            });
         })
         .catch((err) => {
           this.stop = false;
@@ -57,8 +77,8 @@ export class MenuComponent implements OnInit {
     }
   }
 
-  setProducts(products : Array<Product>){
-    if(products.length === 0){
+  setProducts(products: Array<Product>) {
+    if (products.length === 0) {
       this.scannerMode = true;
       this.stop = false;
       return;
@@ -67,19 +87,19 @@ export class MenuComponent implements OnInit {
     this.products = this.products.filter(product => product.available);
   }
 
-  addProductToCard(prod: Product) {
+  addProductToCart(prod: Product) {
     this.cart.push(prod)
   }
 
   goToCheckout() {
     this.menuService.goToCheckout(this.cart, this.id!)
-    .then((result : "COMPLETED" | "CANCELED" | "DELETE") => {
-      if(result == "COMPLETED")
-        this.cart = [];
-      else if(result == 'DELETE')
-        this.cart = [];
-    }).catch((err) => {
-      
-    });
+      .then((result: "COMPLETED" | "CANCELED" | "DELETE") => {
+        if (result == "COMPLETED")
+          this.cart = [];
+        else if (result == 'DELETE')
+          this.cart = [];
+      }).catch((err) => {
+
+      });
   }
 }
