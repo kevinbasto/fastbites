@@ -1,6 +1,6 @@
-ng g m pages/client/promotions --routing;
-ng g m pages/client/staff --routing;
-ng g c pages/client/promotions --standalone=false;
-ng g c pages/client/staff --standalone=false;
-ng g s pages/client/promotions/promotions;
-ng g s pages/client/staff/staff;
+ng g c pages/client/products/routes/create-submenu --standalone=false;
+ng g s pages/client/products/routes/create-submenu/create-submenu;
+ng g c pages/client/products/routes/edit-submenu --standalone=false;
+ng g s pages/client/products/routes/edit-submenu/edit-submemu;
+git add .;
+git commit -m "feat: add the create and edit submenus";

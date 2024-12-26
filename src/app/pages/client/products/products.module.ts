@@ -9,8 +9,8 @@ import { MatTableModule } from "@angular/material/table";
 import { MatButtonModule } from "@angular/material/button";
 import { MatDialogModule } from "@angular/material/dialog";
 import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
-import { CreateProductComponent } from './pages/create-product/create-product.component';
-import { EditProductComponent } from './pages/edit-product/edit-product.component';
+import { CreateProductComponent } from './routes/create-product/create-product.component';
+import { EditProductComponent } from './routes/edit-product/edit-product.component';
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -23,7 +23,9 @@ import { CreateCategoryComponent } from './dialogs/create-category/create-catego
 import { EditCategoryComponent } from './dialogs/edit-category/edit-category.component';
 import { ViewCategoryComponent } from './dialogs/view-category/view-category.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatTabsModule } from "@angular/material/tabs";
+import { CreateSubmenuComponent } from './routes/create-submenu/create-submenu.component';
+import { EditSubmenuComponent } from './routes/edit-submenu/edit-submenu.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     EditProductComponent,
     CreateCategoryComponent,
     EditCategoryComponent,
-    ViewCategoryComponent
+    ViewCategoryComponent,
+    CreateSubmenuComponent,
+    EditSubmenuComponent
   ],
   imports: [
     CommonModule,
@@ -50,6 +54,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatTooltipModule,
     MatButtonModule,
+    MatTabsModule,
     ReactiveFormsModule
   ],
   providers: [
