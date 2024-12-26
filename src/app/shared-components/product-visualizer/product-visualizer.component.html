@@ -1,5 +1,11 @@
 <div class="card">
-    <img src="{{product.rawImage}}" alt="La imagen de un producto" loading="lazy" (load)="imageload = !imageload" [ngClass]="imageload? ['loaded'] : ['unloaded']" >
+    <img 
+    src="{{product.rawImage}}" 
+    alt="La imagen de un producto" 
+    loading="lazy" 
+    (load)="imageload = !imageload" 
+    [ngClass]="imageload? ['loaded'] : ['unloaded']" 
+    >
     <div class="card-header">
         <h1 style="text-align: center;">
             Información del producto
