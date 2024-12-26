@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EditSubmemuService } from './edit-submemu.service';
+import { EditSubmenuService } from './edit-submenu.service';
 
-describe('EditSubmemuService', () => {
-  let service: EditSubmemuService;
+describe('EditSubmenuService', () => {
+  let service: EditSubmenuService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(EditSubmemuService);
+    service = TestBed.inject(EditSubmenuService);
   });
 
   it('should be created', () => {

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CreateSubmenuService } from './create-submenu.service';
 
 @Component({
   selector: 'app-create-submenu',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './create-submenu.component.scss'
 })
 export class CreateSubmenuComponent {
+
+  constructor(
+    private submenuServ: CreateSubmenuService
+  ) {}
 
 }
