@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductsService } from './products.service';
-import { categoriesTableConfig, productTableHeaders } from '../../menu-table.headers';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Category } from '../../../../../core/entities/category';
 import { Router } from '@angular/router';
 import { Product } from '../../../../../core/entities/product';
+import { productsTableConfig, productTableHeaders } from './products-table.headers';
 
 @Component({
   selector: 'app-products',
@@ -17,7 +17,7 @@ export class ProductsComponent implements OnInit {
 
   @Input() products?: Array<Product>;
   headers = productTableHeaders;
-  tableConfig = categoriesTableConfig;
+  tableConfig = productsTableConfig;
   categories: Array<Category> = [];
   
 

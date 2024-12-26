@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { categoriesTableConfig, categoriesTableHeaders } from '../../menu-table.headers';
 import { Category } from '../../../../../core/entities/category';
+import { categoriesTableConfig, categoriesTableHeaders } from './categories-table.headers';
 
 @Component({
   selector: 'app-categories',

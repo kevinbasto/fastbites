@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { submenusTableConfig, submenusTableHeaders } from './submenus-table.headers';
+
 
 @Component({
   selector: 'app-submenus',
@@ -7,4 +9,17 @@ import { Component } from '@angular/core';
 })
 export class SubmenusComponent {
 
+  @Input() submenus : Array<any> = [];
+  headers = submenusTableHeaders;
+  config = submenusTableConfig;
+
+  constructor() {}
+
+  createSubmenu() {}
+
+  editSubmenu(submenu: any) {}
+
+  deleteSubmenu(submenu: any) {}
+
+  viewSubmenu(submenu: any) {}
 }

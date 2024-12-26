@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '../../../core/generics/table-column';
 import { MenuService } from './menu.service';
-import { categoriesTableConfig, categoriesTableHeaders, productTableHeaders } from './menu-table.headers';
 import { Product } from '../../../core/entities/product';
 import { TableConfig } from '../../../core/generics/table-config';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
@@ -16,8 +15,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class MenuComponent implements OnInit {
 
-  headers : Array<TableColumn> = productTableHeaders;
-  tableConfig: TableConfig = categoriesTableConfig;
   productsCopy?: Array<Product>;
   products?: Array<Product>;
   menu! : Menu;
@@ -105,8 +102,6 @@ export class MenuComponent implements OnInit {
   }
 
   categories?: Array<Category>;
-  categoriesHeaders = categoriesTableHeaders;
-  categoriesConfig = categoriesTableConfig;
 
   createCategory() {
     this.productsService.createCategory()
