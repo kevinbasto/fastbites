@@ -42,7 +42,14 @@ export class LoginService {
       uid = signRef.user.uid;
       let docRef = doc(this.firestore, `/users/${uid}`);
       let data = (await getDoc(docRef)).data()
-      let user: User = { email, uid, terms: true, verified: true, firstTime: true,creationDate: Date.now() };
+      let user: User = { 
+        uid,
+        email,
+        terms: true,
+        verified: true,
+        firstTime: true,
+        creationDate: Date.now()
+      };
       if(!data)
         await setDoc(docRef, user);
       this.router.navigate(['/client/products']);

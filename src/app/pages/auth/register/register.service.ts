@@ -50,8 +50,17 @@ export class RegisterService {
       uid = signRef.user.uid;
       let docRef = doc(this.firestore, `/users/${uid}`);
       let data = (await getDoc(docRef)).data()
-      if(!data)
-        await setDoc(docRef, {email, uid, terms: true, verified: true});
+      if(!data){
+        let user: User = { 
+          uid,
+          email,
+          terms: true,
+          verified: true,
+          firstTime: true,
+          creationDate: Date.now()
+        }; 
+        await setDoc(docRef, user);
+      }
       this.router.navigate(['/client/products']);
     } catch (error) {
       this.snackbar.openMessage("No se pudo iniciar sesión con Google");
