@@ -7,7 +7,7 @@
                 </div>
                 <personal-data-form [form]="personalDataForm"></personal-data-form>
                 <div class="form-actions">
-                    <button mat-raised-button matStepperNext color="primary">
+                    <button mat-raised-button matStepperNext color="primary" [disabled]="personalDataForm.invalid" >
                         siguiente
                     </button>
                 </div>
@@ -39,13 +39,13 @@
                     <button mat-raised-button matStepperPrevious>
                         Anterior
                     </button>
-                    <button mat-raised-button matStepperNext color="primary">
+                    <button mat-raised-button matStepperNext color="primary"  [disabled]="planForm.invalid" >
                         siguiente
                     </button>
                 </div>
             </div>
         </mat-step>
-        <mat-step label="Método de pago">
+        <mat-step label="Método de pago" [stepControl]="cardForm" >
             <div class="step">
                 <div class="card-header">
                     <h1> Introduce un método de pago </h1>
@@ -62,7 +62,7 @@
                 <button mat-raised-button matStepperPrevious>
                     Anterior
                 </button>
-                <button mat-raised-button matStepperNext color="primary">
+                <button mat-raised-button matStepperNext color="primary" [disabled]="cardForm.invalid">
                     siguiente
                 </button>
             </div>
@@ -97,6 +97,20 @@
                         Precio:
                         <b> {{ (planForm.get("plan")!.value).price | currency }} </b>
                     </p>
+                    @if ( (planForm.get("trial")!.value) ) {
+                        <p>
+                            Incluye Prueba Gratuita de 15 días empezando: 
+                            <b>
+                                {{ startDate | date: 'dd/MM/YYYY HH:mm' }}
+                            </b>
+                        </p>
+                        <p>
+                            La prueba finaliza en: 
+                            <b>
+                                {{ endDate | date: 'dd/MM/YYYY HH:mm' }}
+                            </b>
+                        </p>
+                    }
                 </div>
 
             </div>
@@ -105,7 +119,7 @@
                     Anterior
                 </button>
                 <button mat-raised-button matStepperNext color="primary">
-                    siguiente
+                    Finalizar
                 </button>
             </div>
         </mat-step>

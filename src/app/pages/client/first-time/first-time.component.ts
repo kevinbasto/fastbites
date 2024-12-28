@@ -16,6 +16,8 @@ export class FirstTimeComponent {
   cardForm: FormGroup;
   
   plans : Array<any> = plans
+  startDate?: Date;
+  endDate?: Date
   constructor(
     private fb : FormBuilder,
     private authService: AuthService
@@ -37,16 +39,18 @@ export class FirstTimeComponent {
     })
 
     this.cardForm = this.fb.group({
-      name: ['', [Validators.required]],
-      card: ['', [Validators.required]],
-      creditOrDebit: ['', [Validators.required]],
-      expMonth: ['', Validators.required],
-      expYear: ['', [Validators.required]],
-      cvc: ['', [Validators.required]]
+      name: ['Kdba', [Validators.required]],
+      card: ['4242424242424242', [Validators.required]],
+      creditOrDebit: ['credit', [Validators.required]],
+      expMonth: ['12', Validators.required],
+      expYear: ['28', [Validators.required]],
+      cvc: ['465', [Validators.required]]
     });
   }
 
   setTrial(plan: MatSlideToggleChange) {
-    this.planForm.get("plan")!.setValue(plan.checked)
+    this.planForm.get("trial")!.setValue(plan.checked)
+    this.startDate = new Date(Date.now());
+    this.endDate = new Date(Date.now() + (15 * 24 * 60  * 60 * 1000))
   }
 }
