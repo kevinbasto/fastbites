@@ -19,6 +19,15 @@ export class AuthService {
     }
   }
 
+  async getEmail() : Promise<string>{
+    try {
+      await this.auth.authStateReady()
+      return this.auth.currentUser? this.auth.currentUser.email! : "";
+    } catch (error) {
+      throw error;
+    }
+  }
+
   signOut() {
     signOut(this.auth);
   }

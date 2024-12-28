@@ -21,7 +21,7 @@ export class PersonalDataFormComponent implements OnChanges {
     private fb: FormBuilder
   ) {
     this.form = this.fb.group({
-      name: ["", []],
+      name: ["", [Validators.required]],
       email: ["", [Validators.required, Validators.email]],
       phone: ["", []]
     })

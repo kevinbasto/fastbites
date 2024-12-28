@@ -2,6 +2,11 @@
     <mat-stepper [linear]="true" #stepper>
         <mat-step label="Datos personales" [stepControl]="personalDataForm" >
             <personal-data-form [form]="personalDataForm" ></personal-data-form>
+            <div class="form-actions">
+                <button mat-raised-button matStepperNext color="primary" >
+                    siguiente
+                </button>
+            </div>
         </mat-step>
         <mat-step  label="Selecciona tu plan" >
             <div class="grid-container">
