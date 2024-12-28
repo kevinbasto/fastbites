@@ -1,5 +1,5 @@
 <div class="mat-elevation-z8">
-    <mat-card class="card">
+    <mat-card class="card" [ngClass]="selectedPlan? ['selected'] : [''] ">
         <div class="price-holder">
             <h1> {{ plan.price | currency }} </h1>
             <p> mensuales </p>
@@ -16,8 +16,8 @@
                 <li> {{ perk }} </li>
             }
         </ul>
-        <button mat-raised-button color="primary" (click)="selected.emit(plan)">
-            Escoger plan
+        <button mat-raised-button [color]="!selectedPlan? 'primary' : ''" (click)="selected.emit(plan)">
+            {{ selectedPlan? 'Plan escogido' : 'Escoger plan' }}
         </button>
     </mat-card>
 </div>

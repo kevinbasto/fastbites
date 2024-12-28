@@ -9,6 +9,7 @@ import { Plan } from '../../core/entities/plan';
 export class PlanCardComponent {
 
   @Input() plan!: Plan;
+  @Input() selectedPlan: boolean = false;
   @Output() selected : EventEmitter<Plan> = new EventEmitter();
 
 }

@@ -39,12 +39,12 @@ export class FirstTimeComponent {
     })
 
     this.cardForm = this.fb.group({
-      name: ['Kdba', [Validators.required]],
-      card: ['4242424242424242', [Validators.required]],
-      creditOrDebit: ['credit', [Validators.required]],
-      expMonth: ['12', Validators.required],
-      expYear: ['28', [Validators.required]],
-      cvc: ['465', [Validators.required]]
+      name: ['', [Validators.required]],
+      card: ['', [Validators.required]],
+      creditOrDebit: ['', [Validators.required]],
+      expMonth: ['', Validators.required],
+      expYear: ['', [Validators.required]],
+      cvc: ['', [Validators.required]]
     });
   }
 

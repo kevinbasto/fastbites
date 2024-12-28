@@ -32,7 +32,7 @@
                 </div>
                 <div class="grid-container">
                     @for (plan of plans; track $index; let i = $index) {
-                    <plan-card [plan]="plan" (selected)="planForm.get('plan')?.setValue($event)" ></plan-card>
+                    <plan-card [plan]="plan" (selected)="planForm.get('plan')?.setValue($event)" [selectedPlan]="planForm.get('plan')!.value == plan"  ></plan-card>
                     }
                 </div>
                 <div class="form-actions">
