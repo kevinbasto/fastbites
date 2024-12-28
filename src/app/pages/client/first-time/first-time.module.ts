@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MatSlideToggle } from '@angular/material/slide-toggle';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatSlideToggle
+    MatSlideToggle,
+    MatProgressSpinnerModule
   ]
 })
 export class FirstTimeModule { }

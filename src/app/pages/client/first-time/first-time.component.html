@@ -118,8 +118,12 @@
                 <button mat-raised-button matStepperPrevious>
                     Anterior
                 </button>
-                <button mat-raised-button matStepperNext color="primary">
-                    Finalizar
+                <button mat-raised-button matStepperNext color="primary" (click)="sendInformation()">
+                    @if(!loading){
+                        Finalizar
+                    }@else {
+                        <mat-spinner diameter="35"></mat-spinner>
+                    }
                 </button>
             </div>
         </mat-step>

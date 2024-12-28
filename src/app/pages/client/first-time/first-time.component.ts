@@ -18,6 +18,9 @@ export class FirstTimeComponent {
   plans : Array<any> = plans
   startDate?: Date;
   endDate?: Date
+
+  loading?: boolean;
+
   constructor(
     private fb : FormBuilder,
     private authService: AuthService
@@ -52,5 +55,9 @@ export class FirstTimeComponent {
     this.planForm.get("trial")!.setValue(plan.checked)
     this.startDate = new Date(Date.now());
     this.endDate = new Date(Date.now() + (15 * 24 * 60  * 60 * 1000))
+  }
+
+  sendInformation() {
+    this.loading = true;
   }
 }
