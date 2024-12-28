@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Card } from '../../core/entities/card';
 
@@ -9,10 +9,12 @@ import { Card } from '../../core/entities/card';
 })
 export class CardFormComponent {
 
+  @Input() disablebuttons?: boolean = false;
+
   @Output() cancel: EventEmitter<void> = new EventEmitter();
   @Output() card: EventEmitter<Card> = new EventEmitter();
 
-  form: FormGroup;
+  @Input() form: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({

@@ -30,14 +30,16 @@
             <input type="number" matInput formControlName="card" >
         </mat-form-field>
     </div>
-    <div class="form-actions">
-        <button mat-raised-button type="button" (click)="cancel.emit()" >
-            <mat-icon> cancel </mat-icon>
-            Cancelar
-        </button>
-        <button mat-raised-button color="primary" type="submit" >
-            <mat-icon> save </mat-icon>
-            Guardar
-        </button>
-    </div>
+    @if (!disablebuttons) {
+        <div class="form-actions">
+            <button mat-raised-button type="button" (click)="cancel.emit()" >
+                <mat-icon> cancel </mat-icon>
+                Cancelar
+            </button>
+            <button mat-raised-button color="primary" type="submit" >
+                <mat-icon> save </mat-icon>
+                Guardar
+            </button>
+        </div>
+    }
 </form>

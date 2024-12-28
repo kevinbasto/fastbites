@@ -1,1 +1,23 @@
-<p>plan-card works!</p>
+<div class="mat-elevation-z8">
+    <mat-card class="card">
+        <div class="price-holder">
+            <h1> {{ plan.price | currency }} </h1>
+            <p> mensuales </p>
+        </div>
+        <div class="card-header">
+            <h1 class="title"> {{ plan.title }} </h1>
+        </div>
+        <p class="subtitle" > <b> {{ plan.subtitle }} </b> </p>
+        <p>
+            {{plan.description}}
+        </p>
+        <ul>
+            @for (perk of plan.perks; track $index; let i = $index) {
+                <li> {{ perk }} </li>
+            }
+        </ul>
+        <button mat-raised-button color="primary" (click)="selected.emit(plan)">
+            Escoger plan
+        </button>
+    </mat-card>
+</div>

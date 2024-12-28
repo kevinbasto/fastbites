@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth/auth.service';
+import { plans } from '../../../../environments/plans';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-first-time',
@@ -10,22 +12,41 @@ import { AuthService } from '../../../core/services/auth/auth.service';
 export class FirstTimeComponent {
   
   personalDataForm : FormGroup;
-  plans : Array<any> = [1,2,3]
-
+  planForm: FormGroup;
+  cardForm: FormGroup;
+  
+  plans : Array<any> = plans
   constructor(
     private fb : FormBuilder,
     private authService: AuthService
   ) {
     this.personalDataForm = this.fb.group({
-      name: ["", [Validators.required]],
+      name: ["Kevin Daniel Basto Anquino", [Validators.required]],
       email: ["", [Validators.required, Validators.email]],
-      phone: ["", []]
+      phone: ["9995285247", []]
     });
     this.personalDataForm.get("email")?.disable();
     this.authService.getEmail()
     .then((email : string) => {
       this.personalDataForm.get("email")?.setValue(email);
+    });
+
+    this.planForm = this.fb.group({
+      plan: ['', [Validators.required]],
+      trial: ['', ]
     })
+
+    this.cardForm = this.fb.group({
+      name: ['', [Validators.required]],
+      card: ['', [Validators.required]],
+      creditOrDebit: ['', [Validators.required]],
+      expMonth: ['', Validators.required],
+      expYear: ['', [Validators.required]],
+      cvc: ['', [Validators.required]]
+    });
   }
 
+  setTrial(plan: MatSlideToggleChange) {
+    this.planForm.get("plan")!.setValue(plan.checked)
+  }
 }

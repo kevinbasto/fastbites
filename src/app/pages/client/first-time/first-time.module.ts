@@ -9,6 +9,7 @@ import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MatIconModule } from '@angular/material/icon';
     SharedFormsModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatSlideToggle
   ]
 })
 export class FirstTimeModule { }
