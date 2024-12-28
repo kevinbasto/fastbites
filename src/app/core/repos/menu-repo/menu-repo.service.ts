@@ -15,7 +15,7 @@ export class MenuRepoService {
   async createNewMenu(uid: string) : Promise<Menu> {
     try {
       let docRef = doc(this.firestore, `/users/${uid}/data/menu`);
-      let menu : Menu = { products: [], categories: [] };
+      let menu : Menu = { products: [], categories: [], submenus: [] };
       await setDoc(docRef, menu);
       return menu;
     } catch (error) {

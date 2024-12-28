@@ -1,18 +1,22 @@
 <mat-card>
   <mat-tab-group>
     <mat-tab label="Submenús">
-      <ng-template mat-tab-label>
-        <mat-icon class="example-tab-icon"> menu_book </mat-icon>
-        Submenús
+      <ng-template mat-tab-label class="tab-header" >
+        <span class="tab-header">
+          <mat-icon class="example-tab-icon"> menu_book </mat-icon>
+          Submenús
+        </span>
       </ng-template>
       <div class="card">
         <app-submenus></app-submenus>
       </div>
     </mat-tab>
     <mat-tab label="Categorías">
-      <ng-template mat-tab-label>
-        <mat-icon class="example-tab-icon"> category </mat-icon>
-        Categorías
+      <ng-template mat-tab-label class="tab-header" >
+        <span class="tab-header">
+          <mat-icon class="example-tab-icon"> category </mat-icon>
+          Categorías
+        </span>
       </ng-template>
       <div class="card">
         <app-categories
@@ -22,8 +26,10 @@
     </mat-tab>
     <mat-tab label="Productos">
       <ng-template mat-tab-label>
-        <mat-icon class="example-tab-icon">lunch_dining</mat-icon>
-        Productos
+        <span class="tab-header">
+          <mat-icon class="example-tab-icon">lunch_dining</mat-icon>
+          Productos
+        </span>
       </ng-template>
       <div class="card">
         <app-products  [products]="products" ></app-products>
