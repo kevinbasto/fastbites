@@ -23,9 +23,9 @@ export class FirstTimeComponent {
     private authService: AuthService
   ) {
     this.personalDataForm = this.fb.group({
-      name: ["Kevin Daniel Basto Anquino", [Validators.required]],
+      name: ["", [Validators.required]],
       email: ["", [Validators.required, Validators.email]],
-      phone: ["9995285247", []]
+      phone: ["", []]
     });
     this.personalDataForm.get("email")?.disable();
     this.authService.getEmail()
