@@ -15,7 +15,7 @@ export class PersonalDataFormComponent implements OnChanges {
   @Output() cancelForm : EventEmitter<void> = new EventEmitter()
   @Output() personalData: EventEmitter<Profile> = new EventEmitter();
 
-  form: FormGroup
+  @Input() form: FormGroup
 
   constructor(
     private fb: FormBuilder

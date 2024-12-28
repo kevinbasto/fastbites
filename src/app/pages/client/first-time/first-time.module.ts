@@ -6,6 +6,8 @@ import { FirstTimeComponent } from './first-time.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
     FirstTimeRoutingModule,
     MatStepperModule,
     SharedComponentsModule,
-    SharedFormsModule
+    SharedFormsModule,
+    MatCardModule,
+    MatButtonModule,
   ]
 })
 export class FirstTimeModule { }

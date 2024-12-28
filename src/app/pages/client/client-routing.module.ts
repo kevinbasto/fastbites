@@ -36,7 +36,7 @@ const routes: Routes = [
     path: "first-time",
     loadChildren: () => import('./first-time/first-time.module').then(m => m.FirstTimeModule),
     canActivate: [firstTimeGuard]
-  }
+  },
   // {
   //   path: "personalization",
   //   loadChildren: () => import('./personalization/personalization.module').then(m => m.PersonalizationModule)
@@ -49,6 +49,10 @@ const routes: Routes = [
   //   path: "staff",
   //   loadChildren: () => import('./staff/staff.module').then(m => m.StaffModule)
   // }
+  {
+    path: '**',
+    redirectTo: 'menu'
+  }
 ];
 
 @NgModule({

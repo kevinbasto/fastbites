@@ -81,3 +81,8 @@
         padding: 0;
     }
 }
+
+.firstTime{
+    pointer-events: none;
+    filter: opacity(.3);
+}

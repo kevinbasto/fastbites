@@ -1,1 +1,17 @@
-<p>first-time works!</p>
+<mat-card class="card">
+    <mat-stepper [linear]="true" #stepper>
+        <mat-step label="Datos personales" [stepControl]="personalDataForm" >
+            <personal-data-form [form]="personalDataForm" ></personal-data-form>
+        </mat-step>
+        <mat-step  label="Selecciona tu plan" >
+            <div class="grid-container">
+                @for (plan of plans; track $index; let i = $index) {
+                    <plan-card></plan-card>
+                }
+            </div>
+        </mat-step>
+        <mat-step label="Método de pago" >
+            
+        </mat-step>
+    </mat-stepper>
+</mat-card>
