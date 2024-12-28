@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { firstTimeGuard } from '../../core/guards/first-time/first-time.guard';
 
 const routes: Routes = [
   {
@@ -9,15 +10,18 @@ const routes: Routes = [
   },
   {
     path: "menu",
-    loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule)
+    loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule),
+    canActivateChild: [firstTimeGuard],
   },
   {
     path: "orders",
-    loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule)
+    loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule),
+    canActivateChild: [firstTimeGuard],
   },
   {
     path: "sales",
-    loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule)
+    loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule),
+    canActivateChild: [firstTimeGuard],
   },
   // {
   //   path: "settings",
@@ -25,8 +29,14 @@ const routes: Routes = [
   // },
   {
     path: "orderslip",
-    loadChildren: () => import('./order-slip/order-slip.module').then(m => m.OrderSlipModule)
+    loadChildren: () => import('./order-slip/order-slip.module').then(m => m.OrderSlipModule),
+    canActivateChild: [firstTimeGuard],
   },
+  {
+    path: "first-time",
+    loadChildren: () => import('./first-time/first-time.module').then(m => m.FirstTimeModule),
+    canActivate: [firstTimeGuard]
+  }
   // {
   //   path: "personalization",
   //   loadChildren: () => import('./personalization/personalization.module').then(m => m.PersonalizationModule)
