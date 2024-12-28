@@ -2,8 +2,8 @@ import { NavigationMenuItem } from "../app/core/generics/Navigation-menu-item"
 
 export const NavigationMenu : Array<NavigationMenuItem> = [
     {
-        name: "Productos",
-        url: "products",
+        name: "Menu",
+        url: "menu",
         icon: "lunch_dining",
     },
     {
@@ -18,7 +18,7 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
     },
     {
         name: "Comanda",
-        url: "menu",
+        url: "orderslip",
         icon: "point_of_sale",
     },
     // {

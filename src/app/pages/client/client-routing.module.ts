@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  // {
-  //   path: "",
-  //   redirectTo: "products",
-  //   pathMatch: "full"
-  // },
   {
-    path: "products",
+    path: "",
+    redirectTo: "menu",
+    pathMatch: "full"
+  },
+  {
+    path: "menu",
     loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule)
   },
   {
@@ -24,7 +24,7 @@ const routes: Routes = [
   //   loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
   // },
   {
-    path: "menu",
+    path: "orderslip",
     loadChildren: () => import('./order-slip/order-slip.module').then(m => m.OrderSlipModule)
   },
   // {
