@@ -6,4 +6,5 @@ export interface Plan {
     perks: Array<string>;
     price: number,
     permissions : { [key : string] : boolean };
+    stripeId: string;
 }
