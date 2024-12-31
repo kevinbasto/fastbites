@@ -4,7 +4,7 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
     {
         name: "Menu",
         url: "menu",
-        icon: "lunch_dining",
+        icon: "menu_book",
     },
     {
         name: "Ventas",

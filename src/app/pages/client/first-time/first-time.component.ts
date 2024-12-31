@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { plans } from '../../../../environments/plans';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { FirstTimeService } from './first-time.service';
 
 @Component({
   selector: 'app-first-time',
   templateUrl: './first-time.component.html',
   styleUrl: './first-time.component.scss'
 })
-export class FirstTimeComponent {
+export class FirstTimeComponent implements OnInit {
   
   personalDataForm : FormGroup;
   planForm: FormGroup;
@@ -22,6 +23,7 @@ export class FirstTimeComponent {
   loading?: boolean;
 
   constructor(
+    private firstTimeService: FirstTimeService,
     private fb : FormBuilder,
     private authService: AuthService
   ) {
@@ -49,6 +51,10 @@ export class FirstTimeComponent {
       expYear: ['', [Validators.required]],
       cvc: ['', [Validators.required]]
     });
+  }
+
+  ngOnInit(): void {
+    this.firstTimeService.check()
   }
 
   setTrial(plan: MatSlideToggleChange) {

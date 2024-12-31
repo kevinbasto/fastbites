@@ -1,10 +1,15 @@
-<nav class="navbar" id="navbar">
+<nav class="navbar mat-elevation-z8" id="navbar">
     <div class="page-header">
         <h1>
             {{route}}
         </h1>
     </div>
-    <div (click)="toggleSidebar()">
-        <mat-icon class="menu-icon">menu</mat-icon>
+    <div>
+        <div>
+            <mat-icon  [ngClass]="notifications.length > 0? [''] : ['disabled-icon'] " > notifications </mat-icon>
+        </div>
+        <div (click)="toggleSidebar()">
+            <mat-icon class="menu-icon">menu</mat-icon>
+        </div>
     </div>
 </nav>
