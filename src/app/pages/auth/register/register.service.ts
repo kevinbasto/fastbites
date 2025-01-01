@@ -17,6 +17,14 @@ export class RegisterService {
     private snackbar: SnackbarService
   ) { }
 
+  /**
+   * esta function que hace:
+   * 1. verifica que el usuario pueda ser creado con los servicios de google
+   * 2. crea el documento de registro del usuario
+   * 3. envia correo de de verificacion
+   * 4. si el correo de verificacion no se envia tira error
+   * 5.si se envia con exito, se notifica al usuario y se manda a verificar el correo para inciar sesion
+   */
   async registerWithEmailAndPassword(email: string, password: string, terms: boolean) {
     let givenUser : any;
     try {
@@ -41,27 +49,32 @@ export class RegisterService {
     }
   }
 
+  /**
+   * al registrarse con google:
+   * 1. se verifica que se pudo crear con google,
+   * 2. se manda a registrar al usuario, 
+   * 3. se redirige a client
+  */
   async signInWithGoogle() : Promise<any> {
     try {
-      let email : string = "";
-      let uid : string = "";
       const signRef = await signInWithPopup(this.auth, new GoogleAuthProvider());
-      email = signRef.user.email?? "";
-      uid = signRef.user.uid;
+      const {email, uid} = signRef.user;
       let docRef = doc(this.firestore, `/users/${uid}`);
       let data = (await getDoc(docRef)).data()
       if(!data){
         let user: User = { 
           uid,
-          email,
+          email: email!,
           terms: true,
           verified: true,
           firstTime: true,
           creationDate: Date.now()
         }; 
+        const {firstTime} = user;
+        window.localStorage.setItem('profile', JSON.stringify({firstTime}))
         await setDoc(docRef, user);
       }
-      this.router.navigate(['/client/products']);
+      this.router.navigate(['/client/menu']);
     } catch (error) {
       this.snackbar.openMessage("No se pudo iniciar sesión con Google");
       throw error;

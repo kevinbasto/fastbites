@@ -23,6 +23,7 @@ export class LoginService {
    * 2. debe verificar que el usuario este verificado
    * 3. si el usuario no esta verificado, rechaza el login y automaticamente cierra la sesion
    * 4. si el usuario esta verificado, se iniciara sesion con éxito, pero no esta guardado en db, se manda a actualizar la db
+   * 5. guardar en localstorage si el usuario es un first login o no
    */
   async signWithEmailAndPassword(email : string, password: string) {
     try {
@@ -32,9 +33,11 @@ export class LoginService {
         throw new Error("user not verified");
       }
       let docRef = doc(this.firestore,`/users/${session.user.uid}`);
-      let user : any = (await getDoc(docRef)).data();
+      let user : User = (await getDoc(docRef)).data() as unknown as User;
       if(!user.verified)
         user.verified= true;
+      const {firstTime} = user;
+      window.localStorage.setItem('profile', JSON.stringify({firstTime}))
       await setDoc(docRef, user);
       this.router.navigate(["/client/products"]);
     } catch (error) {
@@ -48,6 +51,7 @@ export class LoginService {
    * 2. con el auth de google se solicita tanto el correo, como el uid,
    * 3. se revisa en firestore si existe el usuario con ese uid
    * 4. si no existe el usuario lo crea en la base de datos
+   * 5. guardar en localstorage si el usuario es un first login o no
    * nota: la verificacion es automatica cuando se inicia con google porque google ya hizo los procesos de verificacion de usuarios
    */
   async signInWithGoogle() : Promise<any> {
@@ -67,6 +71,8 @@ export class LoginService {
         firstTime: true,
         creationDate: Date.now()
       };
+      const {firstTime} = user;
+      window.localStorage.setItem('profile', JSON.stringify({firstTime}))
       if(!data)
         await setDoc(docRef, user);
       this.router.navigate(['/client/products']);
