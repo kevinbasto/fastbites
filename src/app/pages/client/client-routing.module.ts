@@ -8,9 +8,19 @@ const routes: Routes = [
     redirectTo: "menu",
     pathMatch: "full"
   },
+  // la idea principal de este enrutado es similar a navigation menu, que es: menu, personalizacion, comanda, ordenes, ventas, configuraciones,
   {
     path: "menu",
     loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule),
+    canActivateChild: [firstTimeGuard],
+  },
+  {
+    path: "personalization",
+    loadChildren: () => import('./personalization/personalization.module').then(m => m.PersonalizationModule)
+  },
+  {
+    path: "orderslip",
+    loadChildren: () => import('./order-slip/order-slip.module').then(m => m.OrderSlipModule),
     canActivateChild: [firstTimeGuard],
   },
   {
@@ -27,20 +37,12 @@ const routes: Routes = [
     path: "settings",
     loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
   },
-  {
-    path: "orderslip",
-    loadChildren: () => import('./order-slip/order-slip.module').then(m => m.OrderSlipModule),
-    canActivateChild: [firstTimeGuard],
-  },
+  // elementos de uso unico que no se pretende sean accesibles una vez cumplida su funcion
   {
     path: "first-time",
     loadChildren: () => import('./first-time/first-time.module').then(m => m.FirstTimeModule),
     canActivate: [firstTimeGuard]
   },
-  // {
-  //   path: "personalization",
-  //   loadChildren: () => import('./personalization/personalization.module').then(m => m.PersonalizationModule)
-  // },
   // {
   //   path: "promos",
   //   loadChildren: () => import('./promotions/promotions.module').then(m => m.PromotionsModule)

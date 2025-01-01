@@ -17,11 +17,20 @@ export class LoginService {
     private snackbar: SnackbarService
   ) { }
 
+  /**
+   * que deberia hacer:
+   * 1. esta funcion debe verificar que el usuario exista dentro de la base de datos de usuarios
+   * 2. debe verificar que el usuario este verificado
+   * 3. si el usuario no esta verificado, rechaza el login y automaticamente cierra la sesion
+   * 4. si el usuario esta verificado, se iniciara sesion con éxito, pero no esta guardado en db, se manda a actualizar la db
+   */
   async signWithEmailAndPassword(email : string, password: string) {
     try {
       let session = await signInWithEmailAndPassword(this.auth, email, password);
-      if(!session.user.emailVerified)
+      if(!session.user.emailVerified){
+        await signOut(this.auth);
         throw new Error("user not verified");
+      }
       let docRef = doc(this.firestore,`/users/${session.user.uid}`);
       let user : any = (await getDoc(docRef)).data();
       if(!user.verified)
@@ -33,6 +42,14 @@ export class LoginService {
     }
   }
 
+  /**
+   * que deberia hacer:
+   * 1. invoca el popup de inicio de sesion con google
+   * 2. con el auth de google se solicita tanto el correo, como el uid,
+   * 3. se revisa en firestore si existe el usuario con ese uid
+   * 4. si no existe el usuario lo crea en la base de datos
+   * nota: la verificacion es automatica cuando se inicia con google porque google ya hizo los procesos de verificacion de usuarios
+   */
   async signInWithGoogle() : Promise<any> {
     try {
       let email : string = "";

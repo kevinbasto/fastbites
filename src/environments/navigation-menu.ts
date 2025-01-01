@@ -7,14 +7,14 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         icon: "menu_book",
     },
     {
-        name: "Configuraciones",
-        url: "settings",
-        icon: "settings",
+        name: "Personalizar",
+        url: "personalization",
+        icon: "palette",
     },
     {
-        name: "Ventas",
-        url: "sales",
-        icon: "payments",
+        name: "Comanda",
+        url: "orderslip",
+        icon: "point_of_sale",
     },
     {
         name: "Ordenes",
@@ -22,9 +22,14 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         icon: "receipt",
     },
     {
-        name: "Comanda",
-        url: "orderslip",
-        icon: "point_of_sale",
+        name: "Ventas",
+        url: "sales",
+        icon: "payments",
+    },
+    {
+        name: "Configuraciones",
+        url: "settings",
+        icon: "settings",
     },
     // {
     //     name: 'Promociones',
@@ -35,10 +40,5 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
     //     name: 'Empleados',
     //     url: 'staff',
     //     icon: 'groups'
-    // },
-    // {
-    //     name: "Personalizar",
-    //     url: "personalization",
-    //     icon: "palette",
     // },
 ]
