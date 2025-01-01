@@ -23,10 +23,10 @@ const routes: Routes = [
     loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule),
     canActivateChild: [firstTimeGuard],
   },
-  // {
-  //   path: "settings",
-  //   loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
-  // },
+  {
+    path: "settings",
+    loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
+  },
   {
     path: "orderslip",
     loadChildren: () => import('./order-slip/order-slip.module').then(m => m.OrderSlipModule),

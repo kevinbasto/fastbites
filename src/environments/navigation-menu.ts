@@ -7,6 +7,11 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         icon: "menu_book",
     },
     {
+        name: "Configuraciones",
+        url: "settings",
+        icon: "settings",
+    },
+    {
         name: "Ventas",
         url: "sales",
         icon: "payments",
@@ -21,11 +26,6 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         url: "orderslip",
         icon: "point_of_sale",
     },
-    // {
-    //     name: "Configuraciones",
-    //     url: "settings",
-    //     icon: "settings",
-    // },
     // {
     //     name: 'Promociones',
     //     url: 'promos',

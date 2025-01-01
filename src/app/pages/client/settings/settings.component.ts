@@ -34,14 +34,14 @@ export class SettingsComponent implements OnInit {
 
   postProfileData(profile: Profile) {
     this.uploadPersonal = !this.uploadPersonal;
-    this.settingsService.postProfile(profile)
-    .then((result) => {
-      this.editPersonal = false;
-    })
-    .catch((err) => {
+    // this.settingsService.postProfile(profile)
+    // .then((result) => {
+    //   this.editPersonal = false;
+    // })
+    // .catch((err) => {
       
-    })
-    .finally(() => this.uploadPersonal = !this.uploadPersonal);
+    // })
+    // .finally(() => this.uploadPersonal = !this.uploadPersonal);
   }
 
   headers : Array<TableColumn> = paymentMethodsTableHeaders;
