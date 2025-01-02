@@ -1,129 +1,49 @@
 <mat-card class="card">
     <mat-stepper [linear]="true" #stepper>
-        <mat-step label="Datos personales" [stepControl]="personalDataForm">
-            <div class="step">
-                <div class="card-header">
-                    <h1> Cuentanos un poco sobre ti </h1>
-                </div>
-                <personal-data-form [form]="personalDataForm"></personal-data-form>
-                <div class="form-actions">
-                    <button mat-raised-button matStepperNext color="primary" [disabled]="personalDataForm.invalid" >
-                        siguiente
-                    </button>
-                </div>
+        <mat-step label="Datos personales">
+            <personal-data-form (personalDataForm)="setPersonalDataForm($event)"></personal-data-form>
+            @if (personalDataForm) {
+            <div class="form-actions">
+                <button mat-raised-button color="primary" matStepperNext>
+                    Continuar
+                </button>
             </div>
+            }
         </mat-step>
         <mat-step label="Selecciona tu plan">
-            <div class="step">
-                <div class="card-header">
-                    <h1> Planes disponibles </h1>
-                </div>
-                <div>
-                    <p>
-                        plan escogido:
-                        <b> {{planForm.get("plan")!.value? (planForm.get("plan")!.value).title : "No se ha escodigo un plan"}} </b>
-                    </p>
-                </div>
-                <div style="margin-bottom: 1rem;">
-                    <mat-slide-toggle  (change)="setTrial($event)"> Iniciar prueba gratuita de 15 días </mat-slide-toggle>
-                </div>
-                <div class="card-header">
-                    <h2> Escoge un plan </h2>
-                </div>
-                <div class="grid-container">
-                    @for (plan of plans; track $index; let i = $index) {
-                    <plan-card [plan]="plan" (selected)="planForm.get('plan')?.setValue($event)" [selectedPlan]="planForm.get('plan')!.value == plan"  ></plan-card>
-                    }
-                </div>
-                <div class="form-actions">
-                    <button mat-raised-button matStepperPrevious>
-                        Anterior
-                    </button>
-                    <button mat-raised-button matStepperNext color="primary"  [disabled]="planForm.invalid" >
-                        siguiente
-                    </button>
-                </div>
-            </div>
-        </mat-step>
-        <mat-step label="Método de pago" [stepControl]="cardForm" >
-            <div class="step">
-                <div class="card-header">
-                    <h1> Introduce un método de pago </h1>
-                </div>
-                @if (planForm.get("trial")!.value) {
-                    <p> No se generarán cargos hasta que termine tu prueba gratuita. </p>
-                }
-                <card-form
-                    [disablebuttons]="true"
-                    [form]="cardForm"
-                ></card-form>
-            </div>
+            <plan-selector-form [plans]="plans!" (planForm)="setPlanForm($event)"></plan-selector-form>
+            @if (planForm) {
             <div class="form-actions">
                 <button mat-raised-button matStepperPrevious>
-                    Anterior
+                    Regresar
                 </button>
-                <button mat-raised-button matStepperNext color="primary" [disabled]="cardForm.invalid">
-                    siguiente
+                <button mat-raised-button color="primary" matStepperNext>
+                    Continuar
                 </button>
             </div>
+            }
         </mat-step>
-        <mat-step label="Resumen General" >
-            <div class="step">
-                <div class="card-header">
-                    <h1> Resumen </h1>
-                </div>
-                <div class="card-body">
-                    <h2> Tus datos personales </h2>
-                    <p>
-                        Tu nombre:
-                        <b> {{ personalDataForm.get("name")!.value }} </b>
-                    </p>
-                    <p>
-                        Tu Correo:
-                        <b> {{ personalDataForm.get("email")!.value }} </b>
-                    </p>
-                    <p>
-                        Teléfono:
-                        <b> {{ personalDataForm.get("phone")!.value }} </b>
-                    </p>
-                </div>
-                <div class="card-body">
-                    <h2> Tu plan escogido </h2>
-                    <p>
-                        Plan:
-                        <b> {{ (planForm.get("plan")!.value).title }} </b>
-                    </p>
-                    <p>
-                        Precio:
-                        <b> {{ (planForm.get("plan")!.value).price | currency }} </b>
-                    </p>
-                    @if ( (planForm.get("trial")!.value) ) {
-                        <p>
-                            Incluye Prueba Gratuita de 15 días empezando: 
-                            <b>
-                                {{ startDate | date: 'dd/MM/YYYY HH:mm' }}
-                            </b>
-                        </p>
-                        <p>
-                            La prueba finaliza en: 
-                            <b>
-                                {{ endDate | date: 'dd/MM/YYYY HH:mm' }}
-                            </b>
-                        </p>
-                    }
-                </div>
-
-            </div>
+        <mat-step label="Selecciona tu plan">
+            <card-form (cardForm)="setCardForm($event)" [disablebuttons]="true" ></card-form>
+            @if (cardForm) {
             <div class="form-actions">
                 <button mat-raised-button matStepperPrevious>
-                    Anterior
+                    Regresar
                 </button>
-                <button mat-raised-button matStepperNext color="primary" (click)="sendInformation()">
-                    @if(!loading){
-                        Finalizar
-                    }@else {
-                        <mat-spinner diameter="35"></mat-spinner>
-                    }
+                <button mat-raised-button color="primary" matStepperNext>
+                    Continuar
+                </button>
+            </div>
+            }
+        </mat-step>
+        <mat-step label="Resumen General">
+            <plan-summary></plan-summary>
+            <div class="form-actions">
+                <button mat-raised-button matStepperPrevious>
+                    Regresar
+                </button>
+                <button mat-raised-button color="primary" matStepperNext>
+                    Finalizar
                 </button>
             </div>
         </mat-step>

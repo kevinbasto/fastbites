@@ -18,6 +18,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { PersonalDataFormComponent } from './personal-data-form/personal-data-form.component';
 import { FiscalDataFormComponent } from './fiscal-data-form/fiscal-data-form.component';
 import { CardFormComponent } from './card-form/card-form.component';
+import { PlanSelectorFormComponent } from './plan-selector-form/plan-selector-form.component';
+
 
 
 
@@ -29,6 +31,7 @@ import { CardFormComponent } from './card-form/card-form.component';
     PersonalDataFormComponent,
     FiscalDataFormComponent,
     CardFormComponent,
+    PlanSelectorFormComponent,
   ],
   imports: [
     CommonModule,
@@ -50,7 +53,8 @@ import { CardFormComponent } from './card-form/card-form.component';
     CategoryFormComponent,
     PersonalDataFormComponent,
     FiscalDataFormComponent,
-    CardFormComponent
+    CardFormComponent,
+    PlanSelectorFormComponent,
   ]
 })
 export class SharedFormsModule { }

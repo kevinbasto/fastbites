@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Functions, httpsCallableFromURL } from '@angular/fire/functions';
-import { environment } from '../../../../environments/environment';
+import { collection, Firestore, getDocs } from '@angular/fire/firestore';
+import { Plan } from '../../../core/entities/plan';
+import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,23 @@ import { environment } from '../../../../environments/environment';
 export class FirstTimeService {
 
   constructor(
-    private functions: Functions
+    private firestore: Firestore,
+    private snackbar: SnackbarService
   ) { }
 
-  check(){
-    let callable = httpsCallableFromURL(this.functions, 'https://us-central1-fastbites-321c9.cloudfunctions.net/api');
-    callable()
+  async fetchPlans() {
+    try {
+      const plansCollection = collection(this.firestore, `/plans`);
+      const plansRef = await getDocs(plansCollection);
+      const {docs} = plansRef
+      let plans : Array<Plan> = [];
+      for(let doc of docs)
+        plans.push(doc.data() as unknown as Plan)
+      return plans;
+    } catch (error) {
+      this.snackbar.openMessage("Hubo un problema obteniendo los planes del software, reintenta mas tarde");
+      throw error;
+    }
   }
+
 }

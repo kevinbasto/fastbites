@@ -4,6 +4,7 @@ import { AuthService } from '../../../core/services/auth/auth.service';
 import { plans } from '../../../../environments/plans';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { FirstTimeService } from './first-time.service';
+import { Plan } from '../../../core/entities/plan';
 
 @Component({
   selector: 'app-first-time',
@@ -12,58 +13,38 @@ import { FirstTimeService } from './first-time.service';
 })
 export class FirstTimeComponent implements OnInit {
   
-  personalDataForm : FormGroup;
-  planForm: FormGroup;
-  cardForm: FormGroup;
-  
-  plans : Array<any> = plans
-  startDate?: Date;
-  endDate?: Date
+  plans? : Array<Plan>
 
-  loading?: boolean;
+  personalDataForm?: FormGroup;
+  planForm?: FormGroup;
+  cardForm?: FormGroup;
 
   constructor(
     private firstTimeService: FirstTimeService,
-    private fb : FormBuilder,
-    private authService: AuthService
+    
   ) {
-    this.personalDataForm = this.fb.group({
-      name: ["", [Validators.required]],
-      email: ["", [Validators.required, Validators.email]],
-      phone: ["", []]
-    });
-    this.personalDataForm.get("email")?.disable();
-    this.authService.getEmail()
-    .then((email : string) => {
-      this.personalDataForm.get("email")?.setValue(email);
-    });
-
-    this.planForm = this.fb.group({
-      plan: ['', [Validators.required]],
-      trial: ['', ]
-    })
-
-    this.cardForm = this.fb.group({
-      name: ['', [Validators.required]],
-      card: ['', [Validators.required]],
-      creditOrDebit: ['', [Validators.required]],
-      expMonth: ['', Validators.required],
-      expYear: ['', [Validators.required]],
-      cvc: ['', [Validators.required]]
-    });
+    
   }
 
   ngOnInit(): void {
-    this.firstTimeService.check()
+    this.firstTimeService.fetchPlans()
+    .then((plans) => {
+      console.log(plans)
+      this.plans = plans;
+    });
   }
 
-  setTrial(plan: MatSlideToggleChange) {
-    this.planForm.get("trial")!.setValue(plan.checked)
-    this.startDate = new Date(Date.now());
-    this.endDate = new Date(Date.now() + (15 * 24 * 60  * 60 * 1000))
+  setPersonalDataForm(form: FormGroup) {
+    this.personalDataForm = form;
   }
 
-  sendInformation() {
-    this.loading = true;
+  setPlanForm(form: FormGroup) {
+    this.planForm = form;
   }
+
+  setCardForm(form: FormGroup) {
+    this.cardForm = form;
+  }
+
+  saveForm() {}
 }

@@ -39,6 +39,7 @@ import { ResponsiveCardInfoComponent } from './responsive-card-info/responsive-c
 import { ProductsImporterDialogComponent } from './products-importer-dialog/products-importer-dialog.component';
 import { FileDropperComponent } from './file-dropper/file-dropper.component';
 import { PlanCardComponent } from './plan-card/plan-card.component';
+import { PlanSummaryComponent } from './plan-summary/plan-summary.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { PlanCardComponent } from './plan-card/plan-card.component';
     ResponsiveCardInfoComponent,
     ProductsImporterDialogComponent,
     FileDropperComponent,
-    PlanCardComponent
+    PlanCardComponent,
+    PlanSummaryComponent
   ],
   imports: [
     CommonModule,
@@ -102,7 +104,8 @@ import { PlanCardComponent } from './plan-card/plan-card.component';
     MenuItemComponent,
     ProductsImporterDialogComponent,
     FileDropperComponent,
-    PlanCardComponent
+    PlanCardComponent,
+    PlanSummaryComponent
   ],
   providers: [
     provideCharts(withDefaultRegisterables()),

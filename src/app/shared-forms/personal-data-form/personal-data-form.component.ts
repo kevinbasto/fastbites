@@ -7,15 +7,16 @@ import { Profile } from '../../core/entities/profile';
   templateUrl: './personal-data-form.component.html',
   styleUrl: './personal-data-form.component.scss'
 })
-export class PersonalDataFormComponent implements OnChanges {
+export class PersonalDataFormComponent implements OnChanges, OnInit {
 
   @Input() enable: boolean = false;
   @Input() profile?: Profile;
   @Input() uploading?: boolean;
-  @Output() cancelForm : EventEmitter<void> = new EventEmitter()
+  @Output() cancelForm : EventEmitter<void> = new EventEmitter();
   @Output() personalData: EventEmitter<Profile> = new EventEmitter();
+  @Output() personalDataForm : EventEmitter<FormGroup> = new EventEmitter();
 
-  @Input() form: FormGroup
+  form: FormGroup
 
   constructor(
     private fb: FormBuilder
@@ -25,6 +26,11 @@ export class PersonalDataFormComponent implements OnChanges {
       email: ["", [Validators.required, Validators.email]],
       phone: ["", []]
     })
+    this.form.get("email")?.disable();
+  }
+
+  ngOnInit(): void {
+    this.personalDataForm.emit(this.form);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
