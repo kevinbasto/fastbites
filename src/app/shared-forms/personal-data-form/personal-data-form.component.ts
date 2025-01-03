@@ -16,7 +16,8 @@ export class PersonalDataFormComponent implements OnChanges, OnInit {
   @Output() personalData: EventEmitter<Profile> = new EventEmitter();
   @Output() personalDataForm : EventEmitter<FormGroup> = new EventEmitter();
 
-  form: FormGroup
+  form: FormGroup;
+  private formattingPhone = false; 
 
   constructor(
     private fb: FormBuilder
@@ -31,6 +32,14 @@ export class PersonalDataFormComponent implements OnChanges, OnInit {
 
   ngOnInit(): void {
     this.personalDataForm.emit(this.form);
+    this.phone.valueChanges.subscribe((phone: string) => {
+      if (!this.formattingPhone) {
+        this.formattingPhone = true;
+        const formattedPhone = this.formatPhone(phone);
+        this.phone.setValue(formattedPhone, { emitEvent: false }); // Evita disparar valueChanges de nuevo
+        this.formattingPhone = false;
+      }
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -63,6 +72,14 @@ export class PersonalDataFormComponent implements OnChanges, OnInit {
 
   get phone() {
     return this.form.get("phone")!;
+  }
+
+  private formatPhone(phone: string): string {
+    // Lógica de formateo (ejemplo: formato internacional +1 (123) 456-7890)
+    const digits = phone.replace(/\D/g, ''); // Remover caracteres no numéricos
+    if (digits.length <= 3) return digits;
+    if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`;
   }
 
 }
