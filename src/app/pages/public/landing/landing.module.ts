@@ -5,6 +5,7 @@ import { LandingRoutingModule } from './landing-routing.module';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { LandingComponent } from './landing.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { LandingComponent } from './landing.component';
     CommonModule,
     LandingRoutingModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class LandingModule { }
