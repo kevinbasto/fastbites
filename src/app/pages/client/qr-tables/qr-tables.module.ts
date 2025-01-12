@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { QrTablesRoutingModule } from './qr-tables-routing.module';
 import { QrTablesComponent } from './qr-tables.component';
+import { MatCardModule } from '@angular/material/card';
+import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
+import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 
 
 @NgModule({
@@ -11,7 +14,10 @@ import { QrTablesComponent } from './qr-tables.component';
   ],
   imports: [
     CommonModule,
-    QrTablesRoutingModule
+    QrTablesRoutingModule,
+    MatCardModule,
+    SharedComponentsModule,
+    SharedFormsModule
   ]
 })
 export class QrTablesModule { }
