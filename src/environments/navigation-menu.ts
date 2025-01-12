@@ -27,6 +27,11 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         icon: "payments",
     },
     {
+        name: 'QR y mesas',
+        url: 'qrtables',
+        icon: 'qr_code_2'
+    },
+    {
         name: "Configuraciones",
         url: "settings",
         icon: "settings",

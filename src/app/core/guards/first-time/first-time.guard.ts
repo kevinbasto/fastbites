@@ -16,10 +16,11 @@ export const firstTimeGuard: CanActivateChildFn = (childRoute, state) => {
       if(!(event instanceof NavigationEnd)) return;
       const {url} = event;
       let {firstTime} = JSON.parse(window.localStorage.getItem("profile")!) as unknown as User;
-      if(url.includes('first-time') && !firstTime)
+      console.log(url.includes('first-time') && firstTime)
+      if(url.includes('first-time') && firstTime)
         obs.next(true)
-      else
-        router.navigate(['/client/menu'])
+      
+
       if(!firstTime)
         obs.next(true);
       else

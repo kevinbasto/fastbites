@@ -16,7 +16,8 @@ const routes: Routes = [
   },
   {
     path: "personalization",
-    loadChildren: () => import('./personalization/personalization.module').then(m => m.PersonalizationModule)
+    loadChildren: () => import('./personalization/personalization.module').then(m => m.PersonalizationModule),
+    canActivateChild: [firstTimeGuard],
   },
   {
     path: "orderslip",
@@ -34,14 +35,20 @@ const routes: Routes = [
     canActivateChild: [firstTimeGuard],
   },
   {
+    path: 'qrtables',
+    loadChildren: () => import('./qr-tables/qr-tables.module').then(m => m.QrTablesModule),
+    canActivateChild: [firstTimeGuard],
+  },
+  {
     path: "settings",
-    loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
+    loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule),
+    canActivateChild: [firstTimeGuard],
   },
   // elementos de uso unico que no se pretende sean accesibles una vez cumplida su funcion
   {
     path: "first-time",
     loadChildren: () => import('./first-time/first-time.module').then(m => m.FirstTimeModule),
-    canActivate: [firstTimeGuard]
+    canActivateChild: [firstTimeGuard],
   },
   // {
   //   path: "promos",
@@ -51,10 +58,10 @@ const routes: Routes = [
   //   path: "staff",
   //   loadChildren: () => import('./staff/staff.module').then(m => m.StaffModule)
   // }
-  {
-    path: '**',
-    redirectTo: 'menu'
-  }
+  // {
+  //   path: '**',
+  //   redirectTo: 'menu'
+  // }
 ];
 
 @NgModule({

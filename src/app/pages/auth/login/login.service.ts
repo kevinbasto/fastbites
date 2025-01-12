@@ -62,7 +62,7 @@ export class LoginService {
       email = signRef.user.email?? "";
       uid = signRef.user.uid;
       let docRef = doc(this.firestore, `/users/${uid}`);
-      let data = (await getDoc(docRef)).data()
+      let data : User = (await getDoc(docRef)).data() as unknown as User;
       let user: User = { 
         uid,
         email,
@@ -71,10 +71,13 @@ export class LoginService {
         firstTime: true,
         creationDate: Date.now()
       };
-      const {firstTime} = user;
-      window.localStorage.setItem('profile', JSON.stringify({firstTime}))
       if(!data)
         await setDoc(docRef, user);
+      else
+        user = data;
+      const {firstTime} = user;
+      window.localStorage.setItem('profile', JSON.stringify({firstTime}));
+      
       this.router.navigate(['/client/products']);
     } catch (error) {
       this.snackbar.openMessage("No se pudo iniciar sesión con Google");
