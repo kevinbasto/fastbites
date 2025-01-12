@@ -1,14 +1,14 @@
 <mat-card>
   <mat-tab-group>
-    <mat-tab label="Submenús">
-      <ng-template mat-tab-label class="tab-header" >
+    <mat-tab label="Productos">
+      <ng-template mat-tab-label>
         <span class="tab-header">
-          <mat-icon class="example-tab-icon"> menu_book </mat-icon>
-          Submenús
+          <mat-icon class="example-tab-icon">lunch_dining</mat-icon>
+          Productos
         </span>
       </ng-template>
       <div class="card">
-        <app-submenus></app-submenus>
+        <!-- <app-products  [products]="products" ></app-products> -->
       </div>
     </mat-tab>
     <mat-tab label="Categorías">
@@ -19,93 +19,19 @@
         </span>
       </ng-template>
       <div class="card">
-        <app-categories
-          [categories]="categories"
-        ></app-categories>
+        <!-- <app-categories [categories]="categories" ></app-categories> -->
       </div>
     </mat-tab>
-    <mat-tab label="Productos">
-      <ng-template mat-tab-label>
+    <mat-tab label="Submenús">
+      <ng-template mat-tab-label class="tab-header" >
         <span class="tab-header">
-          <mat-icon class="example-tab-icon">lunch_dining</mat-icon>
-          Productos
+          <mat-icon class="example-tab-icon"> menu_book </mat-icon>
+          Submenús
         </span>
       </ng-template>
       <div class="card">
-        <app-products  [products]="products" ></app-products>
+        <!-- <app-submenus></app-submenus> -->
       </div>
     </mat-tab>
   </mat-tab-group>
 </mat-card>
-
-<!-- <div style="display: flex; gap: 1rem; flex-direction: column;">
-  <div class="grid-container" [ngClass]="shadow? ['']: ['mat-elevation-z8']">
-    <mat-card class="card">
-      <div class="card-header">
-        <div style="display: flex; gap: 1rem;">
-          <form [formGroup]="form" >
-            <mat-form-field>
-              <mat-label> Filtrar por categoría </mat-label>
-              <mat-select formControlName="category" >
-                <mat-option value="" > Todas las categorías </mat-option>
-                @for (category of categories; track category; let i = $index) {
-                  <mat-option [value]="category.id"  > {{category.name}} </mat-option>
-                }
-              </mat-select>
-            </mat-form-field>
-          </form>
-        </div>
-        <div style="display: flex;">
-          <button mat-icon-button color="primary" (click)="createProduct()" matTooltip="Crear un nuevo producto">
-            <mat-icon> add </mat-icon>
-          </button>
-          <button mat-icon-button color="primary" (click)="importProductsFromFile()" matTooltip="Importar productos desde excel" >
-            <mat-icon> upload </mat-icon>
-          </button>
-          <button mat-icon-button color="accent" (click)="viewQrDialog()" matTooltip="Abrir URL del menu">
-            <mat-icon> point_of_sale </mat-icon>
-          </button>
-        </div>
-      </div>
-      <app-table 
-        [data]="products" 
-        [headers]="headers" 
-        [config]="tableConfig" 
-        (create)="createProduct()"
-        (edit)="editProduct($event)" 
-        (deleteItem)="deleteProduct($event)" 
-        (toggle)="toggleProduct($event)"
-        (selection)="viewProduct($event)"
-      ></app-table>
-      <mat-paginator
-        [length]="products?.length"
-      ></mat-paginator>
-    </mat-card>
-  </div>
-  <div class="grid-container" [ngClass]="shadow? ['']: ['mat-elevation-z8']">
-    <mat-card class="card">
-      <div class="card-header">
-        <h1>
-          Listado de categorías
-        </h1>
-        <button mat-icon-button (click)="createCategory()" color="primary">
-          <mat-icon>
-            add
-          </mat-icon>
-        </button>
-      </div>
-      <app-table 
-        [data]="categories" 
-        [headers]="categoriesHeaders" 
-        [config]="categoriesConfig"
-        (create)="createCategory()" 
-        (edit)="editCategory($event)" 
-        (deleteItem)="deleteCategory($event)"
-        (selection)="viewCategory($event)"
-      ></app-table>
-      <mat-paginator
-        [length]="categories?.length"
-      ></mat-paginator>
-    </mat-card>
-  </div>
-</div> -->
