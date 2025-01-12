@@ -1,0 +1,18 @@
+.card-header{
+    display: flex;
+    gap: 1rem;
+    form{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+}
+
+@media(max-width: 600px) {
+    form{
+        .search_field{
+            display: none;
+        }
+    }
+}

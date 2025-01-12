@@ -13,22 +13,11 @@ export class CategoriesComponent {
   categoriesHeaders = categoriesTableHeaders;
   categoriesConfig = categoriesTableConfig;
 
-  createCategory() {
-    // this.productsService.createCategory()
-    // .then((result) => this.fetchMenu());
-  }
+  createCategory() { }
 
-  viewCategory(category: Category) {
-    // this.productsService.viewCategory(category);
-  }
+  viewCategory(category: Category) { }
 
-  editCategory(category: Category) {
-    // this.productsService.editCategory(category)
-    // .then((result) => this.fetchMenu());
-  }
+  editCategory(category: Category) { }
 
-  deleteCategory(category : Category) {
-    // this.productsService.deleteCategory(category)
-    // .then(() => this.fetchMenu());
-  }
+  deleteCategory(category : Category) { }
 }

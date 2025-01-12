@@ -1,39 +1,32 @@
 <div class="card-header">
-    <div style="display: flex; gap: 1rem;">
-      <form [formGroup]="form" >
-        <mat-form-field>
-          <mat-label> Filtrar por categoría </mat-label>
-          <mat-select formControlName="category" >
-            <mat-option value="" > Todas las categorías </mat-option>
-            @for (category of categories; track category; let i = $index) {
-              <mat-option [value]="category.id"  > {{category.name}} </mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-      </form>
-    </div>
-    <div style="display: flex;">
-      <button mat-icon-button color="primary" (click)="createProduct()" matTooltip="Crear un nuevo producto">
-        <mat-icon> add </mat-icon>
-      </button>
-      <button mat-icon-button color="primary" (click)="importProductsFromFile()" matTooltip="Importar productos desde excel" >
-        <mat-icon> upload </mat-icon>
-      </button>
-      <button mat-icon-button color="accent" (click)="viewQrDialog()" matTooltip="Abrir URL del menu">
-        <mat-icon> point_of_sale </mat-icon>
-      </button>
-    </div>
-  </div>
-  <app-table 
-    [data]="products" 
-    [headers]="headers" 
-    [config]="tableConfig" 
-    (create)="createProduct()"
-    (edit)="editProduct($event)" 
-    (deleteItem)="deleteProduct($event)" 
-    (toggle)="toggleProduct($event)"
-    (selection)="viewProduct($event)"
-  ></app-table>
-  <mat-paginator
-    [length]="products?.length"
-  ></mat-paginator>
+  <form [formGroup]="form" >
+    <mat-form-field class="search_field">
+      <mat-label> Filtrar por categoría </mat-label>
+      <mat-select formControlName="category" >
+        <mat-option value="" > Todas las categorías </mat-option>
+        @for (category of categories; track category; let i = $index) {
+          <mat-option [value]="category.id"  > {{category.name}} </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label> Buscar </mat-label>
+      <mat-icon matPrefix > search </mat-icon>
+      <input type="text" matInput>
+    </mat-form-field>
+  </form>
+  <button mat-icon-button color="primary" >
+    <mat-icon> add </mat-icon>
+  </button>
+</div>
+<app-table 
+  [data]="products" 
+  [headers]="headers" 
+  [config]="tableConfig" 
+  (create)="createProduct()"
+  (edit)="editProduct($event)" 
+  (deleteItem)="deleteProduct($event)" 
+  (toggle)="toggleProduct($event)"
+  (selection)="viewProduct($event)"
+></app-table>
+<mat-paginator [length]="products?.length"></mat-paginator>

@@ -9,7 +9,7 @@ import { submenusTableConfig, submenusTableHeaders } from './submenus-table.head
 })
 export class SubmenusComponent {
 
-  @Input() submenus : Array<any> = [];
+  @Input() submenus? : Array<any> = [];
   headers = submenusTableHeaders;
   config = submenusTableConfig;
 

@@ -1,7 +1,11 @@
 <div class="card-header">
-    <h1>
-      Listado de categorías
-    </h1>
+    <form action="">
+      <mat-form-field>
+        <mat-label>Buscar</mat-label>
+        <input type="text" matInput>
+        <mat-icon matPrefix > search </mat-icon>
+      </mat-form-field>
+    </form>
     <button mat-icon-button (click)="createCategory()" color="primary">
       <mat-icon>
         add
@@ -9,7 +13,7 @@
     </button>
   </div>
   <app-table 
-    [data]="categories" 
+    [data]="categories"
     [headers]="categoriesHeaders" 
     [config]="categoriesConfig"
     (create)="createCategory()" 

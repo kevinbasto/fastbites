@@ -8,7 +8,7 @@
         </span>
       </ng-template>
       <div class="card">
-        <!-- <app-products  [products]="products" ></app-products> -->
+        <app-products  [products]="products" [categories]="categories" ></app-products>
       </div>
     </mat-tab>
     <mat-tab label="Categorías">
@@ -19,7 +19,7 @@
         </span>
       </ng-template>
       <div class="card">
-        <!-- <app-categories [categories]="categories" ></app-categories> -->
+        <app-categories [categories]="categories" ></app-categories>
       </div>
     </mat-tab>
     <mat-tab label="Submenús">
@@ -30,7 +30,7 @@
         </span>
       </ng-template>
       <div class="card">
-        <!-- <app-submenus></app-submenus> -->
+        <app-submenus [submenus]="submenus" ></app-submenus>
       </div>
     </mat-tab>
   </mat-tab-group>

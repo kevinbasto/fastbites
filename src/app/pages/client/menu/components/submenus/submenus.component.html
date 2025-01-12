@@ -1,22 +1,26 @@
 <div class="card-header">
-    <h1>
-      Listado de submenús
-    </h1>
-    <button mat-icon-button color="primary"  >
-      <mat-icon>
-        add
-      </mat-icon>
-    </button>
-  </div>
-  <app-table 
-    [data]="submenus" 
-    [headers]="headers" 
-    [config]="config"
-    (create)="createSubmenu()" 
-    (edit)="editSubmenu($event)" 
-    (deleteItem)="deleteSubmenu($event)"
-    (selection)="viewSubmenu($event)"
-  ></app-table>
-  <mat-paginator
-    [length]="submenus? submenus.length : 0"
-  ></mat-paginator>
+  <form action="">
+    <mat-form-field>
+      <mat-label>Buscar</mat-label>
+      <input type="text" matInput>
+      <mat-icon matPrefix > search </mat-icon>
+    </mat-form-field>
+  </form>
+  <button mat-icon-button color="primary"  >
+    <mat-icon>
+      add
+    </mat-icon>
+  </button>
+</div>
+<app-table 
+  [data]="submenus" 
+  [headers]="headers" 
+  [config]="config"
+  (create)="createSubmenu()" 
+  (edit)="editSubmenu($event)" 
+  (deleteItem)="deleteSubmenu($event)"
+  (selection)="viewSubmenu($event)"
+></app-table>
+<mat-paginator
+  [length]="submenus? submenus.length : 0"
+></mat-paginator>

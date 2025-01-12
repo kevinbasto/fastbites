@@ -16,9 +16,10 @@ export class ProductsComponent implements OnInit {
   form: FormGroup
 
   @Input() products?: Array<Product>;
+  @Input() categories?: Array<Category> = [];
+
   headers = productTableHeaders;
   tableConfig = productsTableConfig;
-  categories: Array<Category> = [];
   
 
   constructor(
