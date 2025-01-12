@@ -67,6 +67,7 @@ export class SalesComponent implements OnInit {
   private calculateTrendProduct(sales: Array<Sale>) {
     const productSalesMap: Map<string, { product: Partial<Product>; quantity: number }> = new Map();
     sales.forEach((sale) => {
+      
       sale.items.forEach((item) => {
         const product = item.product;
         const quantity = item.quantity || 0;
