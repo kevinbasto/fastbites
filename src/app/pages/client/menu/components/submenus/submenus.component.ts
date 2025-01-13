@@ -3,6 +3,8 @@ import { submenusTableConfig, submenusTableHeaders } from './submenus-table.head
 import { Submenu } from '../../../../../core/entities/submenu';
 import { environment } from '../../../../../../environments/environment';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
+import { SubmenusService } from './submenus.service';
 
 
 @Component({
@@ -19,17 +21,31 @@ export class SubmenusComponent {
   size = environment.defaultPageSize;
   displaySubmenus: Array<Submenu> = [];
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private submenuService: SubmenusService
+  ) { }
 
-  createSubmenu() { }
+  createSubmenu() {
+    this.router.navigate(['/client/menu/submenu/create']);
+  }
 
-  editSubmenu(submenu: Submenu) { }
+  editSubmenu(submenu: Submenu) { 
+    console.log(submenu)
+    this.router.navigate([`/client/menu/submenu/${submenu.id}`]);
+  }
 
-  deleteSubmenu(submenu: Submenu) { }
+  deleteSubmenu(submenu: Submenu) {
+    this.submenuService.deleteSubmenu(submenu);
+  }
 
-  viewSubmenu(submenu: Submenu) { }
+  viewSubmenu(submenu: Submenu) {
+    this.submenuService.viewSubmenu(submenu);
+  }
 
-  toggleSubmenu(submenu: Submenu) { }
+  toggleSubmenu(submenu: Submenu) {
+    this.submenuService.toggleSubmenu(submenu);
+  }
 
   setPage() {
     for (let i = 0; i < this.size; i++) {

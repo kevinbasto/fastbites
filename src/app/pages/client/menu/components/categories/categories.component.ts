@@ -4,6 +4,7 @@ import { categoriesTableConfig, categoriesTableHeaders } from './categories-tabl
 import { CategoriesService } from './categories.service';
 import { environment } from '../../../../../../environments/environment';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -20,12 +21,17 @@ export class CategoriesComponent {
   displayCategories: Array<Category> = [];
 
   constructor(
+    private router: Router,
     private categoriesService: CategoriesService
   ) { }
 
-  createCategory() { }
+  createCategory() { 
+    this.router.navigate(['/client/menu/category/create']);
+  }
 
-  editCategory(category: Category) { }
+  editCategory(category: Category) {
+    this.router.navigate([`/client/menu/category/${category.id}`]);
+  }
 
   viewCategory(category: Category) {
     this.categoriesService.viewCategory(category);

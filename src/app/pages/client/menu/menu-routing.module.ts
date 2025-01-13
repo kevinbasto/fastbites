@@ -37,7 +37,7 @@ const routes: Routes = [
     component: CreateSubmenuComponent
   },
   {
-    path: 'submenu/edit/:id',
+    path: 'submenu/:id',
     component: EditSubmenuComponent
   }
 ];

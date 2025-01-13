@@ -71,8 +71,6 @@ export class ProductsComponent implements OnInit, OnChanges {
       if(i < this.products!.length)
         this.displayProducts.push(this.products![i])
     }
-
-    console.log(this.displayProducts)
   }
 
   changePage(page: PageEvent) {
