@@ -16,11 +16,14 @@
     [data]="categories"
     [headers]="categoriesHeaders" 
     [config]="categoriesConfig"
-    (create)="createCategory()" 
     (edit)="editCategory($event)" 
     (deleteItem)="deleteCategory($event)"
     (selection)="viewCategory($event)"
   ></app-table>
   <mat-paginator
     [length]="categories?.length"
+    [pageSizeOptions]="options" 
+    [pageSize]="size" 
+    (page)="changePage($event)"
+    showFirstLastButtons
   ></mat-paginator>

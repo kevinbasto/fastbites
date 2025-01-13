@@ -19,6 +19,7 @@
 
 .row:hover{
     filter: brightness(.9);
+    cursor: pointer;
 }
 
 .row:nth-child(2n){

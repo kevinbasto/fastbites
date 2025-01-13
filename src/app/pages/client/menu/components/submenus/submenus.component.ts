@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { submenusTableConfig, submenusTableHeaders } from './submenus-table.headers';
+import { Submenu } from '../../../../../core/entities/submenu';
+import { environment } from '../../../../../../environments/environment';
+import { PageEvent } from '@angular/material/paginator';
 
 
 @Component({
@@ -9,17 +12,36 @@ import { submenusTableConfig, submenusTableHeaders } from './submenus-table.head
 })
 export class SubmenusComponent {
 
-  @Input() submenus? : Array<any> = [];
+  @Input() submenus?: Array<any> = [];
   headers = submenusTableHeaders;
   config = submenusTableConfig;
+  options = environment.paginationOptions
+  size = environment.defaultPageSize;
+  displaySubmenus: Array<Submenu> = [];
 
-  constructor() {}
+  constructor() { }
 
-  createSubmenu() {}
+  createSubmenu() { }
 
-  editSubmenu(submenu: any) {}
+  editSubmenu(submenu: Submenu) { }
 
-  deleteSubmenu(submenu: any) {}
+  deleteSubmenu(submenu: Submenu) { }
 
-  viewSubmenu(submenu: any) {}
+  viewSubmenu(submenu: Submenu) { }
+
+  toggleSubmenu(submenu: Submenu) { }
+
+  setPage() {
+    for (let i = 0; i < this.size; i++) {
+      if (i < this.submenus!.length)
+        this.displaySubmenus.push(this.submenus![i])
+    }
+  }
+
+  changePage(page: PageEvent) {
+    const startIndex = page.pageIndex * page.pageSize;
+    const endIndex = startIndex + page.pageSize;
+    this.displaySubmenus = this.submenus?.slice(startIndex, endIndex) || [];
+  }
+
 }

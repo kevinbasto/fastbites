@@ -6,7 +6,7 @@
       <mat-icon matPrefix > search </mat-icon>
     </mat-form-field>
   </form>
-  <button mat-icon-button color="primary"  >
+  <button mat-icon-button color="primary" (click)="createSubmenu()" >
     <mat-icon>
       add
     </mat-icon>
@@ -16,11 +16,14 @@
   [data]="submenus" 
   [headers]="headers" 
   [config]="config"
-  (create)="createSubmenu()" 
   (edit)="editSubmenu($event)" 
   (deleteItem)="deleteSubmenu($event)"
   (selection)="viewSubmenu($event)"
 ></app-table>
 <mat-paginator
-  [length]="submenus? submenus.length : 0"
+  [length]="submenus?.length"
+  [pageSizeOptions]="options" 
+  [pageSize]="size" 
+  (page)="changePage($event)"
+  showFirstLastButtons
 ></mat-paginator>
