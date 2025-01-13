@@ -1,17 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ProductsService } from './products.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Category } from '../../../../../core/entities/category';
 import { Router } from '@angular/router';
 import { Product } from '../../../../../core/entities/product';
 import { productsTableConfig, productTableHeaders } from './products-table.headers';
+import { environment } from '../../../../../../environments/environment';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnChanges {
 
   form: FormGroup
 
@@ -20,6 +22,9 @@ export class ProductsComponent implements OnInit {
 
   headers = productTableHeaders;
   tableConfig = productsTableConfig;
+  options = environment.paginationOptions;
+  size = environment.defaultPageSize;
+  displayProducts: Array<Product> = [];
   
 
   constructor(
@@ -32,42 +37,47 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
 
-  }
-
-  viewQrDialog() {
-    // this.productsService.viewQrDialog();
-  }
-
-  importProductsFromFile() {
-    // this.productsService.importProductsFromFile()
-    // .then((result) => {
-    //   this.fetchMenu();
-    // }).catch((err) => {
-      
-    // });
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['products'] && this.products){
+      this.setPage()
+    }
   }
 
   createProduct() {
-    this.router.navigate(['/client/products/create']);
+    this.router.navigate(['/client/menu/product/create']);
   }
 
   editProduct(product: Product) {
-    this.router.navigate([`/client/products/${product.id}`]);
+    console.log(product)
+    this.router.navigate([`/client/menu/product/${product.id}`]);
   }
 
   viewProduct(product: Product) {
-    // this.productsService.viewProduct(product);
+    this.productsService.visualizeProduct(product)
   }
 
   deleteProduct(product: Product) {
-    // this.productsService.deleteProduct(product)
-      // .then((result) => this.fetchMenu());
+    this.productsService.deleteProduct(product);
   }
 
   toggleProduct(product: Product) {
-    // this.productsService.toggleProduct(product);
+    this.productsService.toggleProduct(product);
   }
 
+  setPage() {
+    for(let i = 0; i < this.size; i++) {
+      if(i < this.products!.length)
+        this.displayProducts.push(this.products![i])
+    }
+
+    console.log(this.displayProducts)
+  }
+
+  changePage(page: PageEvent) {
+    const startIndex = page.pageIndex * page.pageSize;
+    const endIndex = startIndex + page.pageSize;
+    this.displayProducts = this.products?.slice(startIndex, endIndex) || [];
+  }
 }

@@ -15,18 +15,29 @@
       <input type="text" matInput>
     </mat-form-field>
   </form>
-  <button mat-icon-button color="primary" >
+  <button mat-icon-button color="primary" (click)="createProduct()" >
     <mat-icon> add </mat-icon>
   </button>
 </div>
-<app-table 
-  [data]="products" 
-  [headers]="headers" 
-  [config]="tableConfig" 
-  (create)="createProduct()"
-  (edit)="editProduct($event)" 
-  (deleteItem)="deleteProduct($event)" 
-  (toggle)="toggleProduct($event)"
-  (selection)="viewProduct($event)"
-></app-table>
-<mat-paginator [length]="products?.length"></mat-paginator>
+@if (displayProducts.length) {
+  <app-table 
+    [data]="displayProducts" 
+    [headers]="headers" 
+    [config]="tableConfig" 
+    (edit)="editProduct($event)" 
+    (deleteItem)="deleteProduct($event)" 
+    (toggle)="toggleProduct($event)"
+    (selection)="viewProduct($event)"
+  ></app-table>
+}@else {
+  <div style="display: grid; place-content: center;">
+    <mat-spinner diameter="70"></mat-spinner>
+  </div>
+}
+<mat-paginator 
+  [length]="products?.length" 
+  [pageSizeOptions]="options" 
+  [pageSize]="size" 
+  (page)="changePage($event)"
+  showFirstLastButtons
+></mat-paginator>
