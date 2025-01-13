@@ -6,6 +6,11 @@ export const categoriesTableHeaders : Array<TableColumn> = [
     {
       name: "name",
       displayName: "Nombre"
+    },
+    {
+      name: 'available',
+      displayName: "Disponible",
+      toggable: true
     }
   ]
   

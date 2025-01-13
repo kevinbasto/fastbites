@@ -8,7 +8,8 @@ export const submenusTableHeaders: Array<TableColumn> = [
   },
   {
     name: 'available',
-    displayName: "Disponible"
+    displayName: "Disponible",
+    toggable: true
   }
 ]
 
