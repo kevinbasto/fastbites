@@ -33,6 +33,10 @@ export class QrTablesComponent implements OnInit {
     this.qrTablesService.createTable();
   }
 
+  visualizeTable(table: Table) {
+    this.qrTablesService.visualizeQRWithTable(table);
+  }
+
   toggleTable(table: Table) {
     this.qrTablesService.toggleTable(table);
   }

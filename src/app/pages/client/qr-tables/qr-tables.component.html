@@ -10,5 +10,13 @@
             </button>
         </div>
     </div>
-    <app-table [headers]="headers" [config]="config" [data]="tables" ></app-table>
+    <app-table 
+        [headers]="headers" 
+        [config]="config" 
+        [data]="tables"
+        (selection)="visualizeTable($event)"
+        (toggle)="toggleTable($event)"
+        (edit)="editTable($event)"
+        (deleteItem)="deleteTable($event)"
+    ></app-table>
 </mat-card>

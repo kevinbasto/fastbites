@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Table } from '../../core/entities/table';
 
@@ -7,10 +7,12 @@ import { Table } from '../../core/entities/table';
   templateUrl: './table-form.component.html',
   styleUrl: './table-form.component.scss'
 })
-export class TableFormComponent {
+export class TableFormComponent implements OnChanges {
 
-  @Output() tableEvent : EventEmitter<Table> = new EventEmitter()
-  @Output() cancelEvent : EventEmitter<void> = new EventEmitter()
+  @Input() table!: Table;
+
+  @Output() tableEvent : EventEmitter<Table> = new EventEmitter();
+  @Output() cancelEvent : EventEmitter<void> = new EventEmitter();
 
   form: FormGroup;
 
@@ -19,6 +21,13 @@ export class TableFormComponent {
       name: ['', [Validators.required]],
       available: [false]
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['table'] && this.table){
+      const { name, available } = this.table;
+      this.form.setValue({name, available});
+    }
   }
 
   cancelForm() {
