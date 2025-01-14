@@ -1,1 +1,12 @@
-<p>visualize-qr works!</p>
+<div class="card">
+    <div class="card-header">
+        <h1> Visualizar QR sin mesa </h1>
+    </div>
+    <img src="{{qr}}" alt="">
+    <a href="{{url}}" class="link" target="_blank" >Ir al menu</a>
+    <div class="form-action-dialog">
+        <button mat-raised-button color="primary" (click)="close()">
+            Aceptar
+        </button>
+    </div>
+</div>

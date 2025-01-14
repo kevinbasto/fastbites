@@ -25,6 +25,28 @@ export class QrTablesComponent implements OnInit {
     });
   }
 
-  visualizeCode() {}
+  visualizeCode() {
+    this.qrTablesService.visualizeQr();
+  }
+
+  createNewTable() {
+    this.qrTablesService.createTable();
+  }
+
+  visualizeTable(table: Table) {
+    this.qrTablesService.visualizeQRWithTable(table);
+  }
+
+  toggleTable(table: Table) {
+    this.qrTablesService.toggleTable(table);
+  }
+
+  editTable(table: Table) {
+    this.qrTablesService.updateTable(table);
+  }
+
+  deleteTable(table: Table) {
+    this.qrTablesService.deleteTable(table);
+  }
 
 }

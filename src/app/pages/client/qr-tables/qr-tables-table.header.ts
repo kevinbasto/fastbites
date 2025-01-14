@@ -8,7 +8,8 @@ export const QrTablesTableHeaders : Array<TableColumn> = [
     },
     {
         name: 'available',
-        displayName: 'Disponible'
+        displayName: 'Disponible',
+        toggable: true
     },
 ]
 
@@ -16,5 +17,5 @@ export const QrTablesTableConfig : TableConfig = {
     create: false,
     pagination: false,
     ordersButton: false,
-    options: false
+    options: true
 }

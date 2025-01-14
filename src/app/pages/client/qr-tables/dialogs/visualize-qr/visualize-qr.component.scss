@@ -1,0 +1,14 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 600px) {
+    .card{
+        img{
+            width: 100%;
+            aspect-ratio: 1;
+        }
+    }
+}

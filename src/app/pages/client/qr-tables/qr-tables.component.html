@@ -2,13 +2,21 @@
     <div class="card-header">
         <h1>Qrs y Mesas</h1>
         <div>
-            <button mat-icon-button color="accent" >
+            <button mat-icon-button color="accent" (click)="visualizeCode()" >
                 <mat-icon>qr_code_2</mat-icon>
             </button>
-            <button mat-icon-button color="primary" >
+            <button mat-icon-button color="primary" (click)="createNewTable()" >
                 <mat-icon>add</mat-icon>
             </button>
         </div>
     </div>
-    <app-table [headers]="headers" [config]="config" [data]="tables" ></app-table>
+    <app-table 
+        [headers]="headers" 
+        [config]="config" 
+        [data]="tables"
+        (selection)="visualizeTable($event)"
+        (toggle)="toggleTable($event)"
+        (edit)="editTable($event)"
+        (deleteItem)="deleteTable($event)"
+    ></app-table>
 </mat-card>

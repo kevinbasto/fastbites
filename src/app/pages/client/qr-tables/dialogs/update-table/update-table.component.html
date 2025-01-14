@@ -1,1 +1,7 @@
-<p>update-table works!</p>
+<div class="card">
+    <table-form
+        (cancelEvent)="cancel()"
+        (tableEvent)="submitTable($event)"
+        [table]="table"
+    ></table-form>
+</div>
