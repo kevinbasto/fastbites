@@ -6,6 +6,7 @@ import { Message } from '../../../core/generics/message';
 import { Category } from '../../../core/entities/category';
 import { Menu } from '../../../core/entities/menu';
 import { Submenu } from '../../../core/entities/submenu';
+import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 
 
 type SubmenuCategory = {
@@ -37,7 +38,8 @@ export class MenuComponent implements OnInit {
 
   constructor(
     public menuService: MenuService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackbar: SnackbarService
   ) { }
 
   ngOnInit(): void {
@@ -91,7 +93,8 @@ export class MenuComponent implements OnInit {
   }
 
   addProductToCart(prod: Product) {
-    this.cart.push(prod)
+    this.cart.push(prod);
+    this.snackbar.openMessage('Producto Agregado al carrito con éxito');
   }
 
   goToCheckout() {
