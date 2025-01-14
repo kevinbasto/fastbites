@@ -46,7 +46,7 @@ export class EditProductService {
         product.croppedImage = await this.uploadCroppedImage(cropped, uid, product.id);
         product.croppedPosition = cropped!.position;
       }
-      await this.productCrud.updateProduct(uid, product);
+      await this.productCrud.updateProduct( product);
       this.snackbar.openMessage("Producto actualizado con éxito");
       this.router.navigate([`/client/products`]);
     } catch (error) {

@@ -1,6 +1,12 @@
 <mat-card class="card">
-    <div class="card-header">
-        <h1> Editar categoría </h1>
-    </div>
-    <category-form ></category-form>
+    @if (category) {
+        <div class="card-header">
+            <h1> Editar categoría </h1>
+        </div>
+        <category-form [uploading]="uploading" [categoryData]="category" (cancel)="cancel()" (category)="submitCategory($any($event))" ></category-form>
+    }@else {
+        <div style="display: grid; place-content: center;">
+            <mat-spinner diameter="70" ></mat-spinner>
+        </div>
+    }
 </mat-card>
