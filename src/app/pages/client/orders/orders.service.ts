@@ -65,6 +65,7 @@ export class OrdersService {
         orderId: order.id!,
         items
       });
+      this.snackbar.openMessage('Orden cerrada con éxito');
     });
   }
 

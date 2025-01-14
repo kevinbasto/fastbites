@@ -106,8 +106,6 @@ export class OrderSlipComponent implements OnInit {
           this.cart = [];
         else if (result == 'DELETE')
           this.cart = [];
-      }).catch((err) => {
-
-      });
+      }).catch((err) => {});
   }
 }
