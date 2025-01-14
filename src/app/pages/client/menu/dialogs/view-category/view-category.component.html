@@ -4,6 +4,15 @@
             Visualizar Categoría
         </h1>
     </div>
+    <p>
+        Nombre: <b>{{category.name}}</b>
+    </p>
+    <p>
+        Descripción: <b>{{category.description}}</b>
+    </p>
+    <p>
+        Disponible: <mat-slide-toggle  disabled [checked]="category.available" ></mat-slide-toggle>
+    </p>
     <div class="form-action-dialog">
         <button mat-raised-button color="primary" (click)="dialogRef.close()">
             Aceptar

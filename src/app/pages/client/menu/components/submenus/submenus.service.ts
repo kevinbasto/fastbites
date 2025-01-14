@@ -37,7 +37,7 @@ export class SubmenusService {
       }).catch((err) => {
         this.snackbar.openMessage('No se pudo borrar el submenú');
       });
-    })
+    });
   }
 
   toggleSubmenu(submenu: Submenu) { 

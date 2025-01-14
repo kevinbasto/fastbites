@@ -9,9 +9,13 @@ import { Category } from '../../../../../core/entities/category';
 })
 export class ViewCategoryComponent {
 
+  category: Category;
+  
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { category: Category },
     public dialogRef: MatDialogRef<ViewCategoryComponent>
-  ) {}
+  ) {
+    this.category = data.category;
+  }
 
 }

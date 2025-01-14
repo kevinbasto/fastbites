@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MenuRepoService } from '../menu-repo/menu-repo.service';
 import { Product } from '../../entities/product';
 import { Menu } from '../../entities/menu';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { Menu } from '../../entities/menu';
 export class ProductsRepoService {
 
   constructor(
-    private menuRepo : MenuRepoService
+    private menuRepo : MenuRepoService,
+    private auth: AuthService
   ) {}
 
   async createProduct(uid: string, product: Product){
@@ -22,8 +24,9 @@ export class ProductsRepoService {
     }
   }
 
-  async updateProduct(uid: string, updatedProduct: Product) {
+  async updateProduct( updatedProduct: Product) {
     try {
+      let uid = await this.auth.getUID();
       let menu: Menu = await this.menuRepo.fetchMenu(uid) as Menu;
       menu.products = menu.products.map(product => {
         if(product.id == updatedProduct.id) 
@@ -36,8 +39,9 @@ export class ProductsRepoService {
     }
   }
 
-  async deleteProduct(uid: string, deletedProduct: Product) {
+  async deleteProduct(deletedProduct: Product) {
     try {
+      let uid: string = await this.auth.getUID();
       let { products } = await this.menuRepo.fetchMenu(uid) as Menu;
       products = products.filter(product => product.id != deletedProduct.id);
       await this.menuRepo.updateMenu(uid, { products });
