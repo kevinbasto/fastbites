@@ -33,4 +33,16 @@ export class QrTablesComponent implements OnInit {
     this.qrTablesService.createTable();
   }
 
+  toggleTable(table: Table) {
+    this.qrTablesService.toggleTable(table);
+  }
+
+  editTable(table: Table) {
+    this.qrTablesService.updateTable(table);
+  }
+
+  deleteTable(table: Table) {
+    this.qrTablesService.deleteTable(table);
+  }
+
 }

@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateTableComponent } from './dialogs/create-table/create-table.component';
 import { Table } from '../../../core/entities/table';
 import { VisualizeQrComponent } from './dialogs/visualize-qr/visualize-qr.component';
+import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class QrTablesService {
     private tablesRepo: TablesRepoService,
     private auth: AuthService,
     private dialog: MatDialog,
+    private snackbar: SnackbarService,
   ) { }
 
   fetchTables() {
@@ -35,13 +37,28 @@ export class QrTablesService {
     const dialog = this.dialog.open(CreateTableComponent);
     dialog.afterClosed().subscribe((table: Table | null) => {
       if(table == null) return;
-
+      this.tablesRepo.createTable(table)
+      .then((result) => {
+        this.snackbar.openMessage('Mesa Creada con éxito');
+      }).catch((err) => {
+        this.snackbar.openMessage('Hubo un error creando la mesa');
+      });
     });
   }
 
   visualizeQRWithTable(table: Table) {}
 
-  updateTable(table: Table) {}
+  toggleTable(table: Table) {
+    
+  }
+
+  updateTable(table: Table) {
+    const dialog = this.dialog.open(CreateTableComponent);
+    dialog.afterClosed().subscribe((table: Table | null) => {
+      if(table == null) return;
+
+    });
+  }
 
   deleteTable(table: Table) {}
 }

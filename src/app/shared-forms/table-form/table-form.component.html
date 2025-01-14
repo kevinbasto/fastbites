@@ -1,1 +1,15 @@
-<p>table-form works!</p>
+<form action="" [formGroup]="form" (submit)="submitForm()" >
+    <div class="card-header">
+        <h1> Crear una mesa nueva </h1>
+    </div>
+    <mat-form-field>
+        <mat-label>
+            Nombre de la mesa
+        </mat-label>
+        <input type="text" matInput formControlName="name" >
+    </mat-form-field>
+    <div style="margin-bottom: 1rem;">
+        <mat-slide-toggle formControlName="available" >Disponible</mat-slide-toggle>
+    </div>
+    <form-actions [disabled]="form.invalid" (cancel)="cancelForm()" ></form-actions>
+</form>
