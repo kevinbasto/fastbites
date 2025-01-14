@@ -9,19 +9,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="link">
+                    <a href="" class="link" [routerLink]="'/public/about'" >
                         <mat-icon class="icon"> person </mat-icon>
                         Conocenos
                     </a>
                 </li>
                 <li>
-                    <a href="" class="link">
+                    <a href="" class="link" [routerLink]="'/public/book'" >
                         <mat-icon class="icon"> call </mat-icon>
                         Agendar cita
                     </a>
                 </li>
                 <li>
-                    <a href="" class="link">
+                    <a href="" class="link" [routerLink]="'/public/documentation'" >
                         <mat-icon class="icon"> book </mat-icon>
                         Documentación
                     </a>
@@ -59,13 +59,13 @@
                             </button>
                         </li>
                         <li>
-                            <a href="" class="link"> Conócenos </a>
+                            <a href="" [routerLink]="'/public/about'" class="link"> Conócenos </a>
                         </li>
                         <li>
-                            <a href="" class="link"> Agendar </a>
+                            <a href="" [routerLink]="'/public/book'" class="link"> Agendar </a>
                         </li>
                         <li>
-                            <a href="" class="link"  > Documentación </a>
+                            <a href="" [routerLink]="'/public/documentation'" class="link"  > Documentación </a>
                         </li>
                     </ul>
                 </nav>
@@ -82,7 +82,7 @@
                             ganancias sin contratar más personal, sin hacerlo todo tu solo
                         </p>
                         <div class="form-actions">
-                            <button mat-raised-button color="primary">
+                            <button mat-raised-button color="primary" [routerLink]="'/public/buy'" >
                                 Quiero Fastbites
                             </button>
                         </div>
