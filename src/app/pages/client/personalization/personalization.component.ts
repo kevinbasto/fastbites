@@ -17,8 +17,15 @@ export class PersonalizationComponent implements OnInit{
     private fb: FormBuilder
   ) {
     this.form = this.fb.group({
+      restaurant: this.fb.group({
+        name: [''],
+        description: [''],
+      }),
       color: [''],
+      button: [''],
+      fontColor: [''],
       profile: [],
+      background: []
     })
   }
 
