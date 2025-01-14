@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Menu } from '../../entities/menu';
-import { Firestore, updateDoc } from '@angular/fire/firestore';
+import { docData, Firestore, updateDoc } from '@angular/fire/firestore';
 import { doc, getDoc, setDoc } from '@firebase/firestore';
+import { Observable, Observer } from 'rxjs';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,8 @@ import { doc, getDoc, setDoc } from '@firebase/firestore';
 export class MenuRepoService {
 
   constructor(
-    private firestore: Firestore
+    private firestore: Firestore,
+    private auth: AuthService
   ) { }
 
   async createNewMenu(uid: string) : Promise<Menu> {
@@ -21,6 +24,18 @@ export class MenuRepoService {
     } catch (error) {
       throw error;
     }
+  }
+
+  ObserveMenu() : Observable<Menu> {
+    return new Observable<Menu>((obs: Observer<Menu>) => {
+      this.auth.getUID()
+      .then((uid) => {
+        let docRef = doc(this.firestore, `/users/${uid}/data/menu`);
+        (docData(docRef) as Observable<Menu>).subscribe((menu : Menu) => obs.next(menu));
+      }).catch((err) => {
+        obs.error(err);
+      });
+    });
   }
   
   async fetchMenu(uid: string) : Promise<Menu | null> {

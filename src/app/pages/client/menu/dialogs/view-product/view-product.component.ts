@@ -9,8 +9,12 @@ import { Product } from '../../../../../core/entities/product';
 })
 export class ViewProductComponent {
 
+  product: Product;
+
   constructor(
       @Inject(MAT_DIALOG_DATA) data: { product: Product },
       public dialogRef: MatDialogRef<ViewProductComponent>,
-    ) {}
+    ) {
+      this.product = data.product;
+    }
 }

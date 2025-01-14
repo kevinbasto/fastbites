@@ -1,10 +1,39 @@
 <div class="card">
+    <h1>
+        Visualizar Producto
+    </h1>
+    <div>
+        <img src="{{product.rawImage}}" alt="">
+    </div>
     <div class="card-header">
-        <h1>
-            Visualizar Producto
+        <h1 style="text-align: center;">
+            Información del producto
         </h1>
     </div>
-    
+    <div class="data">
+        <div class="field">
+            <b>Nombre:</b>
+            <p>{{product.name}}</p>
+        </div>
+        <div class="field">
+            <b>Costo de producción:</b>
+            <p>{{product.cost | currency}}</p>
+        </div>
+        <div class="field">
+            <b>Precio de venta:</b>
+            <p>{{product.price | currency}}</p>
+        </div>
+        <div class="field">
+            <b>Disponibilidad:</b>
+            <mat-slide-toggle [checked]="product.available" [disabled]="true" >
+                {{product.available? "Disponible" : "No disponible"}}
+            </mat-slide-toggle>
+        </div>
+        <div class="field">
+            <b>Descripción:</b>
+            <p >{{product.description}}</p>
+        </div>
+    </div>
     <div class="form-action-dialog">
         <button mat-raised-button color="primary" (click)="dialogRef.close()">
             Aceptar
