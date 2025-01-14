@@ -90,7 +90,7 @@ ul{
 
 @media (max-width: 1200px) {
     .shadow{
-        background: rgba(0,0,0,.9);
+        background: rgba(0,0,0,.6);
         nav{
             ul{
                 li{
@@ -110,6 +110,32 @@ ul{
                 h1{
                     line-height: 3rem;
                 }
+            }
+        }
+    }
+}
+
+.sidenav{
+    padding: 1rem;
+    ul{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        margin:0;
+        gap: 2rem;
+        li{
+            color: black;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            cursor: pointer;
+            .icon{
+                color: black;
+            }
+            a{
+                color: black;
             }
         }
     }

@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class LandingComponent {
 
+  toggle: boolean = false;
+
   constructor(
     private router: Router
   ) {}
@@ -15,4 +17,14 @@ export class LandingComponent {
   goToLogin() {
     this.router.navigate(['/auth/login'])
   }
+
+  
+  toggleSidebar(){
+    this.toggle = !this.toggle;
+  }
+
+  close(){
+    this.toggle = false;
+  }
+
 }
