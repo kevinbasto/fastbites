@@ -9,7 +9,7 @@
                     shopping_cart
                 </mat-icon>
                 <!-- Confirmar Orden: {{cart.length}} Items -->
-                Confirmar Orden: 0 Items
+                Confirmar Orden: {{cart.length}} Items
             </button>
         </div>
         <mat-divider></mat-divider>
@@ -36,21 +36,5 @@
             <mat-spinner diameter="140"></mat-spinner>
         </div>
         }
-        <!-- @if(menuCategories){
-            <mat-accordion [multi]="true" >
-                @for (category of menuCategories; track $index; let i = $index) {
-                <mat-expansion-panel [expanded]="true" >
-                    <mat-expansion-panel-header>
-                        <mat-panel-title> {{ category.category.name }} </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ordering-menu [products]="category.products" (prod)="addProduct($event)" ></ordering-menu>
-                </mat-expansion-panel>
-                }
-            </mat-accordion>
-        }@else {
-            <div class="grid-container">
-                <mat-spinner diameter="150"></mat-spinner>
-            </div>
-        } -->
     </mat-card>
 </div>

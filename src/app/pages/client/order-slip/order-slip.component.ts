@@ -26,6 +26,7 @@ export class OrderSlipComponent implements OnInit {
 
   menu?: Menu;
   displayMenu?: Array<SubmenuCategory>;
+  cart: Array<Product> = []
 
   constructor(
     private orderSlipService: OrderSlipservice,
@@ -114,7 +115,8 @@ export class OrderSlipComponent implements OnInit {
   }
 
   addProduct(product: Product) {
-
+    this.cart.push(product);
+    this.snackbar.openMessage('Item Agregado al carrito', 100)
   }
 
   async goToCheckout() {
