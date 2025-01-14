@@ -1,0 +1,55 @@
+<form action="" [formGroup]="form" (submit)="submitSubmenu()">
+    <mat-form-field>
+        <mat-label>
+            Nombre del submenú
+        </mat-label>
+        <input type="text" matInput formControlName='name' >
+    </mat-form-field>
+    <div class="card-header">
+        <h1> Configura que categorías quieres que aparezcan </h1>
+    </div>
+    <div style="margin-bottom: 1rem;">
+        @for (category of categories; track $index; let i = $index) {
+            <mat-checkbox [checked]="Categories.value.includes(category.id)" (change)="modifyCategories(category.id, $event)"  > {{ category.name }} </mat-checkbox>
+        }
+    </div>
+    <div style="margin-bottom: 1rem;">
+        <mat-slide-toggle formControlName="available" > Disponible </mat-slide-toggle>
+    </div>
+
+    <mat-accordion class="mat-elevation-z5" >
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title> Configuraciones avanzadas </mat-panel-title>
+                <mat-panel-description> Configura como y cuando quieres que aparezca </mat-panel-description>
+            </mat-expansion-panel-header>
+            <form action="" [formGroup]="Time" >
+                <div class="grid-container">
+                    <mat-form-field>
+                        <mat-label>
+                            Hora de apertura
+                        </mat-label>
+                        <input [ngxTimepicker]="openingHour" matInput formControlName='openingHour' >
+                        <ngx-material-timepicker #openingHour [theme]="pickerTheme"></ngx-material-timepicker>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>
+                            Hora de cierre
+                        </mat-label>
+                        <input [ngxTimepicker]="closingHour" matInput formControlName='closingHour' >
+                        <ngx-material-timepicker #closingHour [format]="24" [theme]="pickerTheme"></ngx-material-timepicker>
+                    </mat-form-field>
+                </div>
+                <div [formGroup]="Days" >
+                    @for (day of weekDays; track $index; let i = $index) {
+                        <mat-checkbox formControlName="{{day.name}}"  > {{ day.displayName }} </mat-checkbox>
+                    }
+                </div>
+            </form>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+    <div style="margin-top: 1rem; ">
+        <form-actions (cancel)="cancel()" [disabled]="form.invalid || Categories.value.length == 0" [uploading]="uploading"></form-actions>
+    </div>
+</form>
