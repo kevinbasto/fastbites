@@ -4,6 +4,7 @@ import { MenuRepoService } from '../../../../../core/repos/menu-repo/menu-repo.s
 import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.service';
 import { SubmenusRepoService } from '../../../../../core/repos/submenus-repo/submenus-repo.service';
 import { Menu } from '../../../../../core/entities/menu';
+import { Submenu } from '../../../../../core/entities/submenu';
 
 @Injectable({
   providedIn: 'root'
@@ -11,20 +12,24 @@ import { Menu } from '../../../../../core/entities/menu';
 export class EditSubmenuService {
 
   constructor(
-      private auth: AuthService,
-      private menuRepo: MenuRepoService,
-      private snackbar: SnackbarService,
-      private submenuRepo: SubmenusRepoService
-    ) { }
+    private auth: AuthService,
+    private menuRepo: MenuRepoService,
+    private snackbar: SnackbarService,
+    private submenuRepo: SubmenusRepoService
+  ) { }
 
   async fetchMenu() {
-      try {
-        let uid = await this.auth.getUID();
-        let menu: Menu = (await this.menuRepo.fetchMenu(uid))!;
-        return menu;
-      } catch (error) {
-        this.snackbar.openMessage('Hubo un error con la solicitud');
-        throw error;
-      }
+    try {
+      let uid = await this.auth.getUID();
+      let menu: Menu = (await this.menuRepo.fetchMenu(uid))!;
+      return menu;
+    } catch (error) {
+      this.snackbar.openMessage('Hubo un error con la solicitud');
+      throw error;
     }
+  }
+
+  async editSubmenu(submenu: Submenu) {
+    return this.submenuRepo.updatesubmenu(submenu);
+  }
 }

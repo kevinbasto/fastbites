@@ -17,6 +17,7 @@ export class SubmenuFormComponent implements OnChanges {
   @Output() cancelForm: EventEmitter<void> = new EventEmitter();
 
   @Input() uploading?: boolean = false;
+  @Input()  submenu!: Submenu;
   @Input() categories!: Array<Category>;
 
   form : FormGroup;
@@ -49,7 +50,10 @@ export class SubmenuFormComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    
+    if(changes['submenu'] && this.submenu){
+      let {  id, ...submenu } = this.submenu;
+      this.form.setValue(submenu);
+    }
   }
 
   modifyCategories(id: string, addRemove: MatCheckboxChange) {

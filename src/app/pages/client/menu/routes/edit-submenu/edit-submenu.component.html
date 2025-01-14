@@ -4,5 +4,17 @@
             Editar submenú
         </h1>
     </div>
-    <submenu-form></submenu-form>
+    @if (categories) {
+        <submenu-form
+            [categories]="categories"
+            [submenu]="submenu"
+            [uploading]="uploading"
+            (cancelForm)="cancelForm()"
+            (submenuForm)="editSubmenu($event)"
+        ></submenu-form>
+    }@else {
+        <div style="display: grid; place-content:  center;">
+            <mat-spinner diameter="70" ></mat-spinner>
+        </div>
+    }
 </mat-card>
