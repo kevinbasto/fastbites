@@ -6,6 +6,7 @@ import { SubmenusRepoService } from '../../../../../core/repos/submenus-repo/sub
 import { ConfirmDialogComponent } from '../../../../../shared-components/confirm-dialog/confirm-dialog.component';
 import { ViewSubmenuComponent } from '../../dialogs/view-submenu/view-submenu.component';
 import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.service';
+import { Menu } from '../../../../../core/entities/menu';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,8 @@ export class SubmenusService {
     private snackbar: SnackbarService,
   ) { }
 
-  viewSubmenu(submenu: Submenu) {
-    const dialog = this.matDialog.open(ViewSubmenuComponent, { data: { submenu } });
+  viewSubmenu(submenu: Submenu, menu: Menu) {
+    const dialog = this.matDialog.open(ViewSubmenuComponent, { data: { submenu, menu } });
   }
 
   deleteSubmenu(submenu: Submenu) {

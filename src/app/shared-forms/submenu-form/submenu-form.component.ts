@@ -30,6 +30,7 @@ export class SubmenuFormComponent implements OnChanges {
   ) {
     this.form = this.fb.group({
       name: ['', [Validators.required]],
+      description: [''],
       categories: [[], Validators.minLength(1)],
       available: [false],
       time: this.fb.group({

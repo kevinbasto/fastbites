@@ -5,6 +5,7 @@ import { environment } from '../../../../../../environments/environment';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { SubmenusService } from './submenus.service';
+import { Menu } from '../../../../../core/entities/menu';
 
 
 @Component({
@@ -15,6 +16,7 @@ import { SubmenusService } from './submenus.service';
 export class SubmenusComponent {
 
   @Input() submenus?: Array<any> = [];
+  @Input() menu!: Menu;
   headers = submenusTableHeaders;
   config = submenusTableConfig;
   options = environment.paginationOptions
@@ -40,7 +42,7 @@ export class SubmenusComponent {
   }
 
   viewSubmenu(submenu: Submenu) {
-    this.submenuService.viewSubmenu(submenu);
+    this.submenuService.viewSubmenu(submenu, this.menu!);
   }
 
   toggleSubmenu(submenu: Submenu) {

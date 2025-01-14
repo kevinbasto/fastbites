@@ -11,6 +11,7 @@ import { Submenu } from '../../../core/entities/submenu';
 })
 export class MenuComponent implements OnInit {
 
+  menu?: Menu;
   products?: Array<Product>;
   categories?: Array<Category>;
   submenus?: Array<Submenu>;
@@ -26,6 +27,7 @@ export class MenuComponent implements OnInit {
       this.products = products;
       this.categories = categories;
       this.submenus = submenus;
+      this.menu = menu;
     });
     this.menuService.fetchMenu();
   }

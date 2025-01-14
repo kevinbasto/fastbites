@@ -32,6 +32,7 @@ import { EditProductComponent } from './routes/edit-product/edit-product.compone
 import { ViewCategoryComponent } from './dialogs/view-category/view-category.component';
 import { ViewProductComponent } from './dialogs/view-product/view-product.component';
 import { ViewSubmenuComponent } from './dialogs/view-submenu/view-submenu.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { ViewSubmenuComponent } from './dialogs/view-submenu/view-submenu.compon
     MatTooltipModule,
     MatButtonModule,
     MatTabsModule,
+    MatSlideToggleModule
   ],
   providers: [
     NgxImageCompressService
