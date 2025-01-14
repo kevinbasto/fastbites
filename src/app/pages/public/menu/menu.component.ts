@@ -5,11 +5,17 @@ import { Product } from '../../../core/entities/product';
 import { Message } from '../../../core/generics/message';
 import { Category } from '../../../core/entities/category';
 import { Menu } from '../../../core/entities/menu';
+import { Submenu } from '../../../core/entities/submenu';
 
 
-type MenuCategory = {
-  category: Category,
-  products: Array<Product>
+type SubmenuCategory = {
+  submenu: Submenu;
+  categories: Array<CategoryProduct>
+}
+
+type CategoryProduct = {
+  category: Category;
+  products: Array<Product>;
 }
 
 @Component({
@@ -19,14 +25,15 @@ type MenuCategory = {
 })
 export class MenuComponent implements OnInit {
 
-  menuCategories?: Array<MenuCategory>;
-  readonly panelOpenState = signal(false);
   id?: string;
   scannerMode: boolean = false;
   activeFetch: boolean = false;
   stop: boolean = false;
   products?: Array<Product>;
   cart: Array<Product> = []
+
+  menu?: Menu;
+  displayMenu?: Array<SubmenuCategory>;
 
   constructor(
     public menuService: MenuService,
@@ -41,10 +48,8 @@ export class MenuComponent implements OnInit {
         this.scannerMode = false;
         this.menuService.fetchMenu(this.id!)
         .subscribe((menu: Menu) => {
-          this.menuCategories = menu.categories.map(category => ({
-            category,
-            products: menu.products.filter(product => product.category === category.id)
-          }));
+          this.menu = menu;
+          this.processMenu();          
         });
       } else {
         this.scannerMode = true
@@ -62,10 +67,8 @@ export class MenuComponent implements OnInit {
           this.scannerMode = false;
           this.menuService.fetchMenu(id)
             .subscribe((menu: Menu) => {
-              this.menuCategories = menu.categories.map(category => ({
-                category,
-                products: menu.products.filter(product => product.category === category.id)
-              }));
+              this.menu = menu;
+              this.processMenu()
             });
         })
         .catch((err) => {
@@ -102,4 +105,58 @@ export class MenuComponent implements OnInit {
 
       });
   }
+
+
+  processMenu() {
+    const { submenus, categories, products } = this.menu!;
+    let subs: Array<SubmenuCategory> = [];
+    let date = new Date();
+    let currentDay = date.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
+    let currentTime = `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+    for (let submenu of submenus) {
+      if (!submenu.available) continue;
+      const { openingHour, closingHour, days } = submenu.time;
+      const isDayAvailable =
+        Object.values(days).every(value => !value) || // Si todos los días son falsos, está disponible siempre
+        days[currentDay];
+      if (!isDayAvailable) continue;
+      if (openingHour && closingHour) {
+        const openingTime = this.convertTo24HourTime(openingHour);
+        const closingTime = this.convertTo24HourTime(closingHour);
+        if (!(currentTime >= openingTime && currentTime <= closingTime)) {
+          continue;
+        }
+      }
+      let submenuCategories: Array<CategoryProduct> = [];
+      for (let categoryId of submenu.categories) {
+        let category = categories.find(c => c.id === categoryId);
+        if (category && category.available) {
+          let categoryProducts = products.filter(
+            product => product.category === category.id && product.available
+          );
+          submenuCategories.push({
+            category,
+            products: categoryProducts
+          });
+        }
+      }
+      subs.push({
+        submenu,
+        categories: submenuCategories
+      });
+    }
+    this.displayMenu = subs;
+  }
+
+  convertTo24HourTime(time: string): string {
+    const [hoursMinutes, period] = time.split(/(AM|PM)/i);
+    let [hours, minutes] = hoursMinutes.split(':').map(Number);
+    if (period.toUpperCase() === 'PM' && hours !== 12) {
+      hours += 12;
+    } else if (period.toUpperCase() === 'AM' && hours === 12) {
+      hours = 0;
+    }
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+  }
+
 }
