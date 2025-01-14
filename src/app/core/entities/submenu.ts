@@ -1,6 +1,6 @@
 interface Time{
-    openingHour: boolean;
-    closingHour: boolean;
+    openingHour: string;
+    closingHour: string;
     days: { [name: string] : boolean };
 }
 

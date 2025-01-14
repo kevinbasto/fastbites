@@ -1,29 +1,56 @@
-<mat-card class="card">
-    <div class="card-header">
-        <h1>
-            Comanda en admin
-        </h1>
-        <button mat-raised-button color="primary" (click)="goToCheckout()">
-            <mat-icon>
-                shopping_cart
-            </mat-icon>
-            Confirmar Orden: {{cart.length}} Items
-        </button>
-    </div>
-    @if(menuCategories){
-        <mat-accordion [multi]="true" >
-            @for (category of menuCategories; track $index; let i = $index) {
-            <mat-expansion-panel [expanded]="true" >
-                <mat-expansion-panel-header>
-                    <mat-panel-title> {{ category.category.name }} </mat-panel-title>
-                </mat-expansion-panel-header>
-                <ordering-menu [products]="category.products" (prod)="addProduct($event)" ></ordering-menu>
-            </mat-expansion-panel>
-            }
-        </mat-accordion>
-    }@else {
-        <div class="grid-container">
-            <mat-spinner diameter="150"></mat-spinner>
+<div class="mat-elevation-z8">
+    <mat-card class="card">
+        <div class="card-header">
+            <h1>
+                Comanda en admin
+            </h1>
+            <button mat-raised-button color="primary" (click)="goToCheckout()">
+                <mat-icon>
+                    shopping_cart
+                </mat-icon>
+                <!-- Confirmar Orden: {{cart.length}} Items -->
+                Confirmar Orden: 0 Items
+            </button>
         </div>
-    }
-</mat-card>
+        <mat-divider></mat-divider>
+        @if(displayMenu) {
+            
+            <mat-tab-group>
+                
+                @for (submenu of displayMenu; track $index) {
+                    <mat-tab label="{{submenu.submenu.name}}">
+                        @for (category of submenu.categories; track $index) {
+                            <mat-expansion-panel [expanded]="true" >
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title> {{ category.category.name }} </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <ordering-menu [products]="category.products" (prod)="addProduct($event)" ></ordering-menu>
+                            </mat-expansion-panel>
+                        }
+                    </mat-tab>
+                }
+            </mat-tab-group>
+        }
+        @else {
+        <div style="display: grid; place-content: center; padding: 1rem;">
+            <mat-spinner diameter="140"></mat-spinner>
+        </div>
+        }
+        <!-- @if(menuCategories){
+            <mat-accordion [multi]="true" >
+                @for (category of menuCategories; track $index; let i = $index) {
+                <mat-expansion-panel [expanded]="true" >
+                    <mat-expansion-panel-header>
+                        <mat-panel-title> {{ category.category.name }} </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ordering-menu [products]="category.products" (prod)="addProduct($event)" ></ordering-menu>
+                </mat-expansion-panel>
+                }
+            </mat-accordion>
+        }@else {
+            <div class="grid-container">
+                <mat-spinner diameter="150"></mat-spinner>
+            </div>
+        } -->
+    </mat-card>
+</div>
