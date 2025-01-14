@@ -46,7 +46,7 @@ export class SubmenusRepoService {
     try {
       let uid = await this.authServ.getUID();
       let submenus = (await this.menuRepo.fetchMenu(uid))?.submenus;
-      submenus = submenus?.filter((submenu: Submenu) => submenu.id != submenu.id);
+      submenus = submenus?.filter((sub: Submenu) => sub.id != submenu.id);
       await this.menuRepo.updateMenu(uid, { submenus });
     } catch (error) {
       throw error;

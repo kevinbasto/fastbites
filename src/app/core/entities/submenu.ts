@@ -7,6 +7,7 @@ interface Time{
 export interface Submenu {
     id: string;
     name: string;
+    available: boolean;
     categories: Array<string>;
     time: Time;
 }
