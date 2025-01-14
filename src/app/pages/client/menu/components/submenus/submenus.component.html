@@ -1,1 +1,30 @@
-<p>submenus works!</p>
+<div class="card-header">
+  <form action="">
+    <mat-form-field>
+      <mat-label>Buscar</mat-label>
+      <input type="text" matInput>
+      <mat-icon matPrefix > search </mat-icon>
+    </mat-form-field>
+  </form>
+  <button mat-icon-button color="primary" (click)="createSubmenu()" >
+    <mat-icon>
+      add
+    </mat-icon>
+  </button>
+</div>
+<app-table 
+  [data]="submenus" 
+  [headers]="headers" 
+  [config]="config"
+  (edit)="editSubmenu($event)" 
+  (toggle)="toggleSubmenu($event)"
+  (deleteItem)="deleteSubmenu($event)"
+  (selection)="viewSubmenu($event)"
+></app-table>
+<mat-paginator
+  [length]="submenus?.length"
+  [pageSizeOptions]="options" 
+  [pageSize]="size" 
+  (page)="changePage($event)"
+  showFirstLastButtons
+></mat-paginator>

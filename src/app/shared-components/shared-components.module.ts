@@ -38,6 +38,8 @@ import { CategoryVisualizerComponent } from './category-visualizer/category-visu
 import { ResponsiveCardInfoComponent } from './responsive-card-info/responsive-card-info.component';
 import { ProductsImporterDialogComponent } from './products-importer-dialog/products-importer-dialog.component';
 import { FileDropperComponent } from './file-dropper/file-dropper.component';
+import { PlanCardComponent } from './plan-card/plan-card.component';
+import { PlanSummaryComponent } from './plan-summary/plan-summary.component';
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import { FileDropperComponent } from './file-dropper/file-dropper.component';
     CategoryVisualizerComponent,
     ResponsiveCardInfoComponent,
     ProductsImporterDialogComponent,
-    FileDropperComponent
+    FileDropperComponent,
+    PlanCardComponent,
+    PlanSummaryComponent
   ],
   imports: [
     CommonModule,
@@ -99,7 +103,9 @@ import { FileDropperComponent } from './file-dropper/file-dropper.component';
     ResponsiveCardInfoComponent,
     MenuItemComponent,
     ProductsImporterDialogComponent,
-    FileDropperComponent
+    FileDropperComponent,
+    PlanCardComponent,
+    PlanSummaryComponent
   ],
   providers: [
     provideCharts(withDefaultRegisterables()),

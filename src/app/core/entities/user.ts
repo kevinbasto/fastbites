@@ -5,4 +5,7 @@ export interface User {
     terms: boolean;
     creationDate: number | Date;
     firstTime: boolean;
+    onTrial?: boolean;
+    trialStart?: Date;
+    trialEnd?: Date;
 }

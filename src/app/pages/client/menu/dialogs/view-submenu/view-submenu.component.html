@@ -1,0 +1,42 @@
+<div class="card">
+    <div class="card-header">
+        <h1>
+            Visualizar Submenú
+        </h1>
+    </div>
+    <div>
+        <p>
+            Nombre: <b>{{submenu.name}}</b>
+        </p>
+        <p>
+            Disponible: <mat-slide-toggle  disabled [checked]="submenu.available" ></mat-slide-toggle>
+        </p>
+        <p>
+            Descripción: <b> {{submenu.description}} </b>
+        </p>
+        <h2> Categorías </h2>
+        <ol>
+            @for (category of categories; track $index) {
+            <li>{{category.name}}</li>
+            }
+        </ol>
+        <p>
+            Aparece a las: <b>{{submenu.time.openingHour? submenu.time.openingHour : 'No hay horario programado'}}</b>
+        </p>
+        <p>
+            Desaparece a las: <b>{{submenu.time.closingHour? submenu.time.closingHour : 'No hay horario programado'}}</b>
+        </p>
+        <h2> Estos dias programados: </h2>
+        <div style="display: flex; flex-direction: column;">
+            @for (day of weekDays; track $index) {
+                <mat-slide-toggle [checked]="submenu.time.days[day.name]" disabled > {{day.displayName}} </mat-slide-toggle>
+            }
+        </div>
+        <mat-hint>Si el horario no fue especificado, no te preocupes, el submenu a menos que este no disponible se mostrará por default</mat-hint>
+    </div>
+    <div class="form-action-dialog">
+        <button mat-raised-button color="primary" (click)="dialogRef.close()">
+            Aceptar
+        </button>
+    </div>
+</div>

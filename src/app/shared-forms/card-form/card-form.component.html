@@ -23,21 +23,23 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label> Año </mat-label>
-            <input type="number" matInput formControlName="card" >
+            <input type="number" matInput formControlName="expYear" >
         </mat-form-field>
         <mat-form-field>
             <mat-label> CVC </mat-label>
-            <input type="number" matInput formControlName="card" >
+            <input type="number" matInput formControlName="cvc" >
         </mat-form-field>
     </div>
-    <div class="form-actions">
-        <button mat-raised-button type="button" (click)="cancel.emit()" >
-            <mat-icon> cancel </mat-icon>
-            Cancelar
-        </button>
-        <button mat-raised-button color="primary" type="submit" >
-            <mat-icon> save </mat-icon>
-            Guardar
-        </button>
-    </div>
+    @if (!disablebuttons) {
+        <div class="form-actions">
+            <button mat-raised-button type="button" (click)="cancel.emit()" >
+                <mat-icon> cancel </mat-icon>
+                Cancelar
+            </button>
+            <button mat-raised-button color="primary" type="submit" >
+                <mat-icon> save </mat-icon>
+                Guardar
+            </button>
+        </div>
+    }
 </form>

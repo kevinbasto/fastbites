@@ -1,1 +1,43 @@
-<p>products works!</p>
+<div class="card-header">
+  <form [formGroup]="form" >
+    <mat-form-field class="search_field">
+      <mat-label> Filtrar por categoría </mat-label>
+      <mat-select formControlName="category" >
+        <mat-option value="" > Todas las categorías </mat-option>
+        @for (category of categories; track category; let i = $index) {
+          <mat-option [value]="category.id"  > {{category.name}} </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label> Buscar </mat-label>
+      <mat-icon matPrefix > search </mat-icon>
+      <input type="text" matInput>
+    </mat-form-field>
+  </form>
+  <button mat-icon-button color="primary" (click)="createProduct()" >
+    <mat-icon> add </mat-icon>
+  </button>
+</div>
+@if (displayProducts.length) {
+  <app-table 
+    [data]="displayProducts" 
+    [headers]="headers" 
+    [config]="tableConfig" 
+    (edit)="editProduct($event)" 
+    (deleteItem)="deleteProduct($event)"
+    (toggle)="toggleProduct($event)"
+    (selection)="viewProduct($event)"
+  ></app-table>
+}@else {
+  <div style="display: grid; place-content: center;">
+    <mat-spinner diameter="70"></mat-spinner>
+  </div>
+}
+<mat-paginator 
+  [length]="products?.length" 
+  [pageSizeOptions]="options" 
+  [pageSize]="size" 
+  (page)="changePage($event)"
+  showFirstLastButtons
+></mat-paginator>

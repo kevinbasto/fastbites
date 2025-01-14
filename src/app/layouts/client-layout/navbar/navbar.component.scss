@@ -3,6 +3,10 @@
   position: sticky;
   top: 0;
   z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  margin-bottom: 1rem;
 }
 
 div {
@@ -36,4 +40,9 @@ div {
     align-items: center;
     height: 2rem;
   }
+}
+
+.disabled-icon{
+  filter: opacity(.3);
+  pointer-events: none;
 }

@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './core/guards/auth.guard';
-import { nonAuthGuard } from './core/guards/non-auth.guard';
+import { authGuard } from './core/guards/auth/auth.guard';
+import { nonAuthGuard } from './core/guards/non-auth/non-auth.guard';
 
 export const routes: Routes = [
     {
         path: "",
-        redirectTo: "auth",
+        redirectTo: "public",
         pathMatch: "full"
     },
     {

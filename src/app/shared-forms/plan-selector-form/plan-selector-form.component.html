@@ -1,0 +1,10 @@
+<form action="" [formGroup]="form">
+    <div style="margin-bottom: 1rem;">
+        <mat-slide-toggle  formControlName="trial" > Iniciar prueba gratuita de 15 días </mat-slide-toggle>
+    </div>
+    <div class="grid-container">
+        @for (plan of plans; track $index; let i = $index) {
+        <plan-card [plan]="plan" (selected)="form.get('plan')!.setValue(plan)" [selectedPlan]="form.get('plan')!.value == plan" ></plan-card>
+        }
+    </div>
+</form>

@@ -2,14 +2,19 @@ import { NavigationMenuItem } from "../app/core/generics/Navigation-menu-item"
 
 export const NavigationMenu : Array<NavigationMenuItem> = [
     {
-        name: "Productos",
-        url: "products",
-        icon: "lunch_dining",
+        name: "Menu",
+        url: "menu",
+        icon: "menu_book",
     },
     {
-        name: "Ventas",
-        url: "sales",
-        icon: "payments",
+        name: "Personalizar",
+        url: "personalization",
+        icon: "palette",
+    },
+    {
+        name: "Comanda",
+        url: "orderslip",
+        icon: "point_of_sale",
     },
     {
         name: "Ordenes",
@@ -17,15 +22,20 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         icon: "receipt",
     },
     {
-        name: "Comanda",
-        url: "menu",
-        icon: "point_of_sale",
+        name: "Ventas",
+        url: "sales",
+        icon: "payments",
     },
-    // {
-    //     name: "Configuraciones",
-    //     url: "settings",
-    //     icon: "settings",
-    // },
+    {
+        name: 'QR y mesas',
+        url: 'qrtables',
+        icon: 'qr_code_2'
+    },
+    {
+        name: "Configuraciones",
+        url: "settings",
+        icon: "settings",
+    },
     // {
     //     name: 'Promociones',
     //     url: 'promos',
@@ -35,10 +45,5 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
     //     name: 'Empleados',
     //     url: 'staff',
     //     icon: 'groups'
-    // },
-    // {
-    //     name: "Personalizar",
-    //     url: "personalization",
-    //     icon: "palette",
     // },
 ]

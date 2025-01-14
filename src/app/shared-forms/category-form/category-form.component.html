@@ -3,18 +3,12 @@
         <mat-label> Nombre de la categoría </mat-label>
         <input type="text" matInput formControlName="name" >
     </mat-form-field>
-    <div class="form-actions">
-        <button mat-raised-button type="button" (click)="cancel.emit()" >
-            <mat-icon>
-                cancel
-            </mat-icon>
-            Cancelar
-        </button>
-        <button mat-raised-button color="primary">
-            <mat-icon>
-                done
-            </mat-icon>
-            Guardar
-        </button>
-    </div>
+    <mat-form-field>
+        <mat-label>
+            Description
+        </mat-label>
+        <textarea name="" id="" rows="10" matInput  formControlName="description" ></textarea>
+    </mat-form-field>
+    <mat-slide-toggle formControlName="available" > Disponible </mat-slide-toggle>
+    <form-actions [disabled]="form.invalid" [uploading]="uploading" (cancel)="cancel.emit()" ></form-actions>
 </form>

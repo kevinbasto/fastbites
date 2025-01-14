@@ -18,6 +18,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { PersonalDataFormComponent } from './personal-data-form/personal-data-form.component';
 import { FiscalDataFormComponent } from './fiscal-data-form/fiscal-data-form.component';
 import { CardFormComponent } from './card-form/card-form.component';
+import { PlanSelectorFormComponent } from './plan-selector-form/plan-selector-form.component';
+import { SubmenuFormComponent } from './submenu-form/submenu-form.component';
+import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 
@@ -26,9 +31,11 @@ import { CardFormComponent } from './card-form/card-form.component';
     FormActionsComponent,
     ProductFormComponent,
     CategoryFormComponent,
+    SubmenuFormComponent,
     PersonalDataFormComponent,
     FiscalDataFormComponent,
     CardFormComponent,
+    PlanSelectorFormComponent,
   ],
   imports: [
     CommonModule,
@@ -43,14 +50,19 @@ import { CardFormComponent } from './card-form/card-form.component';
     MatIconModule,
     MatProgressSpinnerModule,
     MatAutocompleteModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule,
+    NgxMaterialTimepickerModule,
+    MatExpansionModule
   ],
   exports: [
     ProductFormComponent,
     CategoryFormComponent,
+    SubmenuFormComponent,
     PersonalDataFormComponent,
     FiscalDataFormComponent,
-    CardFormComponent
+    CardFormComponent,
+    PlanSelectorFormComponent,
   ]
 })
 export class SharedFormsModule { }

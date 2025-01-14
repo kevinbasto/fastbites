@@ -1,0 +1,116 @@
+*{
+    color: white;
+}
+
+.body{
+    height: 100vh;
+    background: url("../../../../assets/waiter.jpg") center;
+    background-size: cover;  /* La imagen cubre todo el fondo */
+    margin: 0;
+    padding: 0;
+}
+
+.shadow{
+    background: linear-gradient(to right, rgba(0,0,0,.9), rgba(0,0,0,0));
+    height: 100%;
+    nav{
+        min-height: 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+    main{
+        min-height: 80%;
+        display: flex;
+        align-items: center;
+    }
+    footer{
+        min-height: 10%;
+    }
+}
+
+.title{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    img{
+        height: 2rem;
+    }
+    h1{
+        margin: 0;
+        font-weight: bold;
+        font-size: 2rem;
+        font-family: "Playwrite AU SA", serif;
+    }
+}
+
+ul{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 1rem;
+    align-items: center;
+    li{
+        a{
+            font-weight: bold;
+        }
+    }
+}
+
+.hero-info{
+    width: 40%;
+    margin-left: 10%;
+    h1{
+        // font-family: "Playwrite AU SA", serif;
+        font-weight: bold;
+        font-size: 3rem;
+    }
+    h3{
+        margin: 0;
+        font-weight: bold;
+    }
+    .form-actions{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 1200px) {
+    nav{
+        ul{
+            li:first-child{
+                display: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .shadow{
+        background: rgba(0,0,0,.9);
+        nav{
+            ul{
+                li{
+                    display: none;
+                }
+                li:first-child{
+                    display: block;
+                }
+            }
+        }
+        main{
+            justify-content: center;
+            .hero-info{
+                margin: 0;
+                width: auto;
+                max-width: 90%;
+                h1{
+                    line-height: 3rem;
+                }
+            }
+        }
+    }
+}

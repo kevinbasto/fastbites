@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable, timestamp } from 'rxjs';
 import { Sale } from '../../../core/entities/sale';
 import { SalesRepoService } from '../../../core/repos/sales-repo/sales-repo.service';
-import { collection, Timestamp } from '@angular/fire/firestore';
+import { Timestamp } from '@angular/fire/firestore';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 import * as xlsx from 'xlsx';
-import { CheckoutItem } from '../../../core/entities/checkout-item';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class SalesService {
 
   constructor(
     private salesRepo: SalesRepoService,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
   ) {
     this.sales$ = new Observable<Array<Sale>>((observer) => {
       this.salesRepo.sales$.subscribe(sales => {
@@ -34,11 +34,11 @@ export class SalesService {
       let date = new Date();
       let year = date.getFullYear();
       let month: any = date.getMonth() + 1;
-      month = month < 10 ? '0' + month : month;
+      month = month < 10 ?  month : month;
       let daysInMonth = new Date(year, month, 0).getDate();
       let days = [];
       for (let day = 1; day <= daysInMonth; day++) {
-        let dayString = day < 10 ? '0' + day : day;
+        let dayString = day < 10 ?  + day : day;
         days.push(`${year}-${month}-${dayString}`);
       }
       let sales : Array<any> = []
@@ -46,9 +46,9 @@ export class SalesService {
       for (let day of days) 
         promises.push(this.salesRepo.fetchFromDate(day));
       let salesData : Array<Array<Sale>> = await Promise.all(promises);
+      console.log(salesData)
       for(let sale of salesData)
         sales = [...sales, ...sale]
-      
       sales.forEach(sale => {
         let date : Timestamp =  sale.date as any;
         sale.date = date.toDate()

@@ -1,1 +1,30 @@
-<p>categories works!</p>
+<div class="card-header">
+    <form action="">
+      <mat-form-field>
+        <mat-label>Buscar</mat-label>
+        <input type="text" matInput>
+        <mat-icon matPrefix > search </mat-icon>
+      </mat-form-field>
+    </form>
+    <button mat-icon-button (click)="createCategory()" color="primary">
+      <mat-icon>
+        add
+      </mat-icon>
+    </button>
+  </div>
+  <app-table 
+    [data]="categories"
+    [headers]="categoriesHeaders" 
+    [config]="categoriesConfig"
+    (edit)="editCategory($event)"
+    (toggle)="toggleCategory($event)"
+    (deleteItem)="deleteCategory($event)"
+    (selection)="viewCategory($event)"
+  ></app-table>
+  <mat-paginator
+    [length]="categories?.length"
+    [pageSizeOptions]="options" 
+    [pageSize]="size" 
+    (page)="changePage($event)"
+    showFirstLastButtons
+  ></mat-paginator>

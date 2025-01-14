@@ -17,15 +17,27 @@ export class LoginService {
     private snackbar: SnackbarService
   ) { }
 
+  /**
+   * que deberia hacer:
+   * 1. esta funcion debe verificar que el usuario exista dentro de la base de datos de usuarios
+   * 2. debe verificar que el usuario este verificado
+   * 3. si el usuario no esta verificado, rechaza el login y automaticamente cierra la sesion
+   * 4. si el usuario esta verificado, se iniciara sesion con éxito, pero no esta guardado en db, se manda a actualizar la db
+   * 5. guardar en localstorage si el usuario es un first login o no
+   */
   async signWithEmailAndPassword(email : string, password: string) {
     try {
       let session = await signInWithEmailAndPassword(this.auth, email, password);
-      if(!session.user.emailVerified)
+      if(!session.user.emailVerified){
+        await signOut(this.auth);
         throw new Error("user not verified");
+      }
       let docRef = doc(this.firestore,`/users/${session.user.uid}`);
-      let user : any = (await getDoc(docRef)).data();
+      let user : User = (await getDoc(docRef)).data() as unknown as User;
       if(!user.verified)
         user.verified= true;
+      const {firstTime} = user;
+      window.localStorage.setItem('profile', JSON.stringify({firstTime}))
       await setDoc(docRef, user);
       this.router.navigate(["/client/products"]);
     } catch (error) {
@@ -33,6 +45,15 @@ export class LoginService {
     }
   }
 
+  /**
+   * que deberia hacer:
+   * 1. invoca el popup de inicio de sesion con google
+   * 2. con el auth de google se solicita tanto el correo, como el uid,
+   * 3. se revisa en firestore si existe el usuario con ese uid
+   * 4. si no existe el usuario lo crea en la base de datos
+   * 5. guardar en localstorage si el usuario es un first login o no
+   * nota: la verificacion es automatica cuando se inicia con google porque google ya hizo los procesos de verificacion de usuarios
+   */
   async signInWithGoogle() : Promise<any> {
     try {
       let email : string = "";
@@ -41,10 +62,22 @@ export class LoginService {
       email = signRef.user.email?? "";
       uid = signRef.user.uid;
       let docRef = doc(this.firestore, `/users/${uid}`);
-      let data = (await getDoc(docRef)).data()
-      let user: User = { email, uid, terms: true, verified: true, firstTime: true,creationDate: Date.now() };
+      let data : User = (await getDoc(docRef)).data() as unknown as User;
+      let user: User = { 
+        uid,
+        email,
+        terms: true,
+        verified: true,
+        firstTime: true,
+        creationDate: Date.now()
+      };
       if(!data)
         await setDoc(docRef, user);
+      else
+        user = data;
+      const {firstTime} = user;
+      window.localStorage.setItem('profile', JSON.stringify({firstTime}));
+      
       this.router.navigate(['/client/products']);
     } catch (error) {
       this.snackbar.openMessage("No se pudo iniciar sesión con Google");

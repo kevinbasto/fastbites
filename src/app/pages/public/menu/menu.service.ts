@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 import { ProductsRepoService } from '../../../core/repos/products-repo/products-repo.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Product } from '../../../core/entities/product';
 import { MatDialog } from '@angular/material/dialog';
 import { CheckoutComponent } from '../../../shared-components/checkout/checkout.component';

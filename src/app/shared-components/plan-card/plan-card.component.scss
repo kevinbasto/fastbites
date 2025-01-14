@@ -1,0 +1,52 @@
+@import '../../../colors.scss';
+
+.card-header {
+    display: flex;
+    justify-content: center;
+
+    h1 {
+        margin-bottom: 1ch;
+    }
+}
+
+.subtitle {
+    text-align: center;
+}
+
+ul {
+    li {
+        margin: 1rem;
+        font-size: 1.2rem; // Hacer las letras más grandes
+        list-style-type: disc; // Puntos
+        list-style-position: inside; // Poner los puntos dentro de la lista
+
+        &::marker {
+            color: $primary-color; // Poner el color de los puntos como la variable $primary-color
+            font-weight: 800; // Bolding ligero
+        }
+    }
+}
+
+.price-holder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    h1 {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+}
+
+.selected{
+    background: $primary-color;
+    color: white;
+
+    ul{
+        li{
+            &::marker{
+                color: white;
+            }
+        }
+    }
+}

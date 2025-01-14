@@ -1,1 +1,19 @@
-<p>create-submenu works!</p>
+<mat-card class="card">
+    <div class="card-header">
+        <h1>
+            Crear submenú
+        </h1>
+    </div>
+    @if (categories) {
+        <submenu-form
+            [categories]="categories"
+            (cancelForm)="cancelSubmenu()"
+            (submenuForm)="submitSubmenu($event)"
+            [uploading]="uploading"
+        ></submenu-form>
+    }@else {
+        <div style="display: grid; place-content:  center;">
+            <mat-spinner diameter="70" ></mat-spinner>
+        </div>
+    }
+</mat-card>

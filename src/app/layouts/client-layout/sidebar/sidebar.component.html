@@ -16,7 +16,7 @@
     </div>
     <ul class="sidebar-menu" style="list-style: none; margin: 0; padding: 0;">
         <li class="menu-item" *ngFor="let route of routes" (click)="toggleMenu()" [routerLink]="['/client/'+route.url]"
-            [ngClass]="[currentRoute == route.url? 'selected' : '' ]">
+            [ngClass]="[currentRoute == route.url? 'selected' : currentRoute == 'first-time'? 'firstTime' : '' ]">
             <mat-icon class="icon">{{route.icon}}</mat-icon>
             <span>{{route.name}}</span>
         </li>

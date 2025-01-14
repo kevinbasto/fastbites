@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   @Output() toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
   public route!: string;
   menu: Array<NavigationMenuItem> = NavigationMenu;
+  notifications : Array<any> = [];
 
   constructor(
     private breakpoint: BreakpointObserver,

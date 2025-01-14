@@ -10,6 +10,7 @@ import { Category } from '../../core/entities/category';
 export class CategoryFormComponent implements OnChanges {
 
   @Input() categoryData?: Category; 
+  @Input() uploading: boolean = false;
 
   @Output() cancel : EventEmitter<null> = new EventEmitter();
   @Output() category: EventEmitter<Partial<Category>> = new EventEmitter();
@@ -18,13 +19,15 @@ export class CategoryFormComponent implements OnChanges {
 
   constructor( private fb : FormBuilder ) {
     this.form = this.fb.group({
-      name: ["", [Validators.required]]
+      name: ["", [Validators.required]],
+      description: ['', [Validators.required]],
+      available: [false]
     });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes["categoryData"] && this.categoryData)
-      this.form.setValue({name: this.categoryData.name});
+      this.form.setValue({name: this.categoryData.name, description: this.categoryData.description, available: this.categoryData.available});
     
   }
 
