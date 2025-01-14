@@ -16,7 +16,8 @@
     [data]="categories"
     [headers]="categoriesHeaders" 
     [config]="categoriesConfig"
-    (edit)="editCategory($event)" 
+    (edit)="editCategory($event)"
+    (toggle)="toggleCategory($event)"
     (deleteItem)="deleteCategory($event)"
     (selection)="viewCategory($event)"
   ></app-table>
