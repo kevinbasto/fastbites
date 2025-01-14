@@ -8,7 +8,7 @@ describe('VisualizeTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VisualizeTableComponent]
+      declarations: [VisualizeTableComponent]
     })
     .compileComponents();
 

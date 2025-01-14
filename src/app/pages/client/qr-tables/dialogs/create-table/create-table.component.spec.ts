@@ -8,7 +8,7 @@ describe('CreateTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CreateTableComponent]
+      declarations: [CreateTableComponent]
     })
     .compileComponents();
 

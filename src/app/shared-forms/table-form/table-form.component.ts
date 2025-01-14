@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-table-form',
-  standalone: true,
-  imports: [],
   templateUrl: './table-form.component.html',
   styleUrl: './table-form.component.scss'
 })

@@ -8,7 +8,7 @@ describe('VisualizeQrComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VisualizeQrComponent]
+      declarations: [VisualizeQrComponent]
     })
     .compileComponents();
 
