@@ -1,3 +1,14 @@
 <mat-card class="card">
-    <p>tables works!</p>
+    <div class="card-header">
+        <h1>Qrs y Mesas</h1>
+        <div>
+            <button mat-icon-button color="accent" >
+                <mat-icon>qr_code_2</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" >
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </div>
+    <app-table [headers]="headers" [config]="config" [data]="tables" ></app-table>
 </mat-card>

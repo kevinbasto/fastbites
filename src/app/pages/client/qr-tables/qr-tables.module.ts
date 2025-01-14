@@ -6,6 +6,8 @@ import { QrTablesComponent } from './qr-tables.component';
 import { MatCardModule } from '@angular/material/card';
 import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
     QrTablesRoutingModule,
     MatCardModule,
     SharedComponentsModule,
-    SharedFormsModule
+    SharedFormsModule,
+    MatIconModule,
+    MatButtonModule
   ]
 })
 export class QrTablesModule { }

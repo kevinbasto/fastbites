@@ -1,3 +1,4 @@
-ng g m pages/client/qr-tables --routing
-ng g c pages/client/qr-tables --standalone=false
-ng g s pages/client/qr-tables/qr-tables
+ng g c pages/client/qr-tables/dialogs/create-table;
+ng g c pages/client/qr-tables/dialogs/visualize-table;
+ng g c pages/client/qr-tables/dialogs/update-table;
+ng g c pages/client/qr-tables/dialogs/visualize-qr;
