@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
-import { ProductsRepoService } from '../../../core/repos/products-repo/products-repo.service';
 import { Observable } from 'rxjs';
 import { Product } from '../../../core/entities/product';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,7 +16,6 @@ export class MenuService {
 
   constructor(
     private snackbar: SnackbarService,
-    private productsRepo: ProductsRepoService,
     private dialog: MatDialog,
     private ordersRepo: OrdersRepoService,
     private firestore: Firestore

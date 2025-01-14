@@ -99,7 +99,15 @@ export class OrderSlipComponent implements OnInit {
     this.snackbar.openMessage('Item Agregado al carrito', 100)
   }
 
-  async goToCheckout() {
+  goToCheckout() {
+    this.orderSlipService.goToCheckout(this.cart)
+      .then((result: "COMPLETED" | "CANCELED" | "DELETE") => {
+        if (result == "COMPLETED")
+          this.cart = [];
+        else if (result == 'DELETE')
+          this.cart = [];
+      }).catch((err) => {
 
+      });
   }
 }
