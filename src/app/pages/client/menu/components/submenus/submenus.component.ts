@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { submenusTableConfig, submenusTableHeaders } from './submenus-table.headers';
 import { Submenu } from '../../../../../core/entities/submenu';
 import { environment } from '../../../../../../environments/environment';
@@ -7,33 +8,58 @@ import { Router } from '@angular/router';
 import { SubmenusService } from './submenus.service';
 import { Menu } from '../../../../../core/entities/menu';
 
-
 @Component({
   selector: 'app-submenus',
   templateUrl: './submenus.component.html',
   styleUrl: './submenus.component.scss'
 })
-export class SubmenusComponent {
+export class SubmenusComponent implements OnInit, OnChanges {
 
-  @Input() submenus?: Array<any> = [];
+  form: FormGroup;
+
+  @Input() submenus?: Array<Submenu> = [];
   @Input() menu!: Menu;
   headers = submenusTableHeaders;
   config = submenusTableConfig;
-  options = environment.paginationOptions
+  options = environment.paginationOptions;
   size = environment.defaultPageSize;
   displaySubmenus: Array<Submenu> = [];
+  filteredSubmenus?: Array<Submenu>;
 
   constructor(
     private router: Router,
-    private submenuService: SubmenusService
-  ) { }
+    private submenuService: SubmenusService,
+    private fb: FormBuilder
+  ) {
+    this.form = this.fb.group({
+      name: [""]
+    });
+  }
+
+  ngOnInit(): void {
+    this.form.valueChanges.subscribe((value) => {
+      console.log(value);
+      this.filteredSubmenus = this.submenus?.filter((submenu) => {
+        const matchesName = value.name === "" || submenu.name.toLowerCase().includes(value.name.toLowerCase());
+        return matchesName;
+      });
+      console.log(this.filteredSubmenus);
+      this.setPage();
+    });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['submenus'] && this.submenus) {
+      this.setPage();
+    }
+  }
 
   createSubmenu() {
     this.router.navigate(['/client/menu/submenu/create']);
   }
 
-  editSubmenu(submenu: Submenu) { 
-    console.log(submenu)
+  editSubmenu(submenu: Submenu) {
+    console.log(submenu);
     this.router.navigate([`/client/menu/submenu/${submenu.id}`]);
   }
 
@@ -50,16 +76,17 @@ export class SubmenusComponent {
   }
 
   setPage() {
+    this.displaySubmenus = [];
+    const submenusToDisplay = this.filteredSubmenus || this.submenus || [];
     for (let i = 0; i < this.size; i++) {
-      if (i < this.submenus!.length)
-        this.displaySubmenus.push(this.submenus![i])
+      if (i < submenusToDisplay.length)
+        this.displaySubmenus.push(submenusToDisplay[i]);
     }
   }
 
   changePage(page: PageEvent) {
     const startIndex = page.pageIndex * page.pageSize;
     const endIndex = startIndex + page.pageSize;
-    this.displaySubmenus = this.submenus?.slice(startIndex, endIndex) || [];
+    this.displaySubmenus = this.filteredSubmenus?.slice(startIndex, endIndex) || [];
   }
-
 }

@@ -1,8 +1,8 @@
 <div class="card-header">
-  <form action="">
+  <form action="" [formGroup]="form">
     <mat-form-field>
       <mat-label>Buscar</mat-label>
-      <input type="text" matInput>
+      <input type="text" matInput formControlName="name" >
       <mat-icon matPrefix > search </mat-icon>
     </mat-form-field>
   </form>
@@ -13,7 +13,7 @@
   </button>
 </div>
 <app-table 
-  [data]="submenus" 
+  [data]="displaySubmenus" 
   [headers]="headers" 
   [config]="config"
   (edit)="editSubmenu($event)" 
