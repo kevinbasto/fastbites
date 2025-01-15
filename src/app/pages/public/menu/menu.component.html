@@ -38,7 +38,7 @@
     <mat-tab-group>
         @for (submenu of displayMenu; track $index) {
 
-        <mat-tab label="{{submenu.submenu.name}}" [ngStyle]="personalization? { color: personalization.personalization.titleColor} : {} " >
+        <mat-tab  label="{{submenu.submenu.name}}" [ngStyle]="personalization? { color: personalization.personalization.titleColor} : {} " >
             @for (category of submenu.categories; track $index) {
 
             <mat-expansion-panel [expanded]="true" class="item-panel" [ngStyle]="personalization? { background: personalization.personalization.background } : {}" >
