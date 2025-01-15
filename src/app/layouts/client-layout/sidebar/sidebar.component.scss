@@ -1,10 +1,13 @@
 @import "../../../../colors.scss";
 
-.sidebar{
-    display: flex; 
+.sidebar {
+    display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
 
     .logo {
+
         // h1{
         //     width: 17rem;
         //     max-width: 17rem;
@@ -12,27 +15,29 @@
         //     padding-top: 1rem;
         //     margin: 0;
         // }
-        span{
+        span {
             display: flex;
             justify-content: center;
         }
-        img{
+
+        img {
             max-width: 250px;
             height: fit-content;
             margin: 0;
             padding: 0;
         }
 
-        .divider{
+        .divider {
             margin: 10px;
         }
     }
-    
-    .sidebar-menu{
-        list-style: none; 
-        margin: 0; 
+
+    .sidebar-menu {
+        list-style: none;
+        margin: 0;
         padding: 0;
-        .menu-item{
+
+        .menu-item {
             cursor: pointer;
             height: 3rem;
             display: flex;
@@ -40,50 +45,71 @@
             gap: 1rem;
             margin: 1rem;
             border-radius: 5px;
-    
-            &:hover{
+
+            &:hover {
                 transform: scale(1.01);
                 // background: $fifth-color;
                 color: black;
-                .icon{
+
+                .icon {
                     color: black !important;
                 }
             }
-    
-            .icon{
+
+            .icon {
                 padding: 1rem;
                 color: $secondary-text;
             }
         }
     }
-    
+
     .selected {
         background-color: $primary-color;
         color: white;
-        .icon{
+
+        .icon {
             color: white !important;
         }
     }
 }
 
-.title{
+.title {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
     gap: 1ch;
-    img{
+
+    img {
         width: 2rem;
         height: 2rem;
     }
-    h1{
+
+    h1 {
         margin: 0;
         padding: 0;
         font-family: "Playwrite AU SA", serif;
     }
 }
 
-.firstTime{
+.firstTime {
     pointer-events: none;
     filter: opacity(.3);
+}
+
+.last {
+    .legend {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h4 {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
 }

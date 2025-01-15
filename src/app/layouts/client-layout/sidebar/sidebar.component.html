@@ -1,38 +1,48 @@
 <div class="sidebar">
-    <div class="logo">
-        <div class="title">
-            <img src="../../../../assets/bell.svg" alt="">
-            <h1>
-                Fastbites
-            </h1>
+    <div>
+        <div class="logo">
+            <div class="title">
+                <img src="../../../../assets/bell.svg" alt="">
+                <h1>
+                    Fastbites
+                </h1>
+            </div>
+            <span>
+                Consola de administración
+            </span>
+            <!-- <span *ngIf="profile && !profile.isActive" style="color: red;">
+                Subscripción inactiva
+            </span> -->
+            <mat-divider class="divider"></mat-divider>
         </div>
-        <span>
-            Consola de administración
-        </span>
-        <!-- <span *ngIf="profile && !profile.isActive" style="color: red;">
-            Subscripción inactiva
-        </span> -->
-        <mat-divider class="divider"></mat-divider>
+        <ul class="sidebar-menu" style="list-style: none; margin: 0; padding: 0;">
+            <li class="menu-item" *ngFor="let route of routes" (click)="toggleMenu()" [routerLink]="['/client/'+route.url]"
+                [ngClass]="[currentRoute == route.url? 'selected' : currentRoute == 'first-time'? 'firstTime' : '' ]">
+                <mat-icon class="icon">{{route.icon}}</mat-icon>
+                <span>{{route.name}}</span>
+            </li>
+            <li class="menu-item" (click)="logout()">
+                <mat-icon class="icon">
+                    logout
+                </mat-icon>
+                <span>
+                    Salir de la sesión
+                </span>
+            </li>
+            <li class="menu-item" (click)="toggleMenu()" [ngStyle]="hideSidebar? {display: 'none'} : {}">
+                <mat-icon class="icon">arrow_back</mat-icon>
+                <span>
+                    Regresar
+                </span>
+            </li>
+        </ul>
     </div>
-    <ul class="sidebar-menu" style="list-style: none; margin: 0; padding: 0;">
-        <li class="menu-item" *ngFor="let route of routes" (click)="toggleMenu()" [routerLink]="['/client/'+route.url]"
-            [ngClass]="[currentRoute == route.url? 'selected' : currentRoute == 'first-time'? 'firstTime' : '' ]">
-            <mat-icon class="icon">{{route.icon}}</mat-icon>
-            <span>{{route.name}}</span>
-        </li>
-        <li class="menu-item" (click)="logout()">
-            <mat-icon class="icon">
-                logout
-            </mat-icon>
-            <span>
-                Salir de la sesión
-            </span>
-        </li>
-        <li class="menu-item" (click)="toggleMenu()" [ngStyle]="hideSidebar? {display: 'none'} : {}">
-            <mat-icon class="icon">arrow_back</mat-icon>
-            <span>
-                Regresar
-            </span>
-        </li>
-    </ul>
+    <div class="last">
+        <mat-divider></mat-divider>
+        <div class="legend">
+            <h4>Fastbites 2025 </h4>
+            <p> Todos los derechos reservados </p>
+            <p>Version: 1.0.1</p>
+        </div>
+    </div>
 </div>
