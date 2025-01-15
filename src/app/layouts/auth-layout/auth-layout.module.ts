@@ -5,6 +5,7 @@ import { AuthLayoutRoutingModule } from './auth-layout-routing.module';
 import { AuthLayoutComponent } from './auth-layout.component';
 
 import { MatCardModule } from "@angular/material/card";
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MatCardModule } from "@angular/material/card";
   imports: [
     CommonModule,
     AuthLayoutRoutingModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule,
   ]
 })
 export class AuthLayoutModule { }
