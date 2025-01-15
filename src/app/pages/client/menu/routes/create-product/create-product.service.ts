@@ -49,7 +49,7 @@ export class CreateProductService {
       let { id } = product;
       let format = image.name.split(".")[image.name.split(".").length - 1];
       let newFile = new File([await image.arrayBuffer()], `${id}.${format}`);
-      let raw = await this.imagesService.uploadImage(uid, newFile);
+      let raw = await this.imagesService.uploadImage(`/${uid}/${id}`, newFile);
       product.rawImage = raw;
       format = cropped.image.name.split(".")[cropped.image.name.split(".").length - 1];
       let newCropped = new File([await cropped.image.arrayBuffer()], `${id}.${format}`);
