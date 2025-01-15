@@ -25,7 +25,7 @@ export class ProductsComponent implements OnInit, OnChanges {
   options = environment.paginationOptions;
   size = environment.defaultPageSize;
   displayProducts?: Array<Product>;
-  
+  filteredProducts?: Array<Product>;
 
   constructor(
     private productsService: ProductsService,
@@ -33,11 +33,21 @@ export class ProductsComponent implements OnInit, OnChanges {
     private router: Router,
   ) {
     this.form = this.fb.group({
+      name: [""],
       category: [""]
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.form.valueChanges.subscribe((value) => {
+      this.filteredProducts = this.products?.filter((product) => {
+        const matchesCategory = value.category === "" || product.category === value.category;
+        const matchesName = value.name === "" || product.name.toLowerCase().includes(value.name.toLowerCase());
+        return matchesCategory && matchesName;
+      });
+      this.setPage();
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['products'] && this.products){
@@ -68,15 +78,16 @@ export class ProductsComponent implements OnInit, OnChanges {
 
   setPage() {
     this.displayProducts = [];
+    const productsToDisplay = this.filteredProducts || this.products || [];
     for(let i = 0; i < this.size; i++) {
-      if(i < this.products!.length)
-        this.displayProducts.push(this.products![i])
+      if(i < productsToDisplay.length)
+        this.displayProducts.push(productsToDisplay[i])
     }
   }
 
   changePage(page: PageEvent) {
     const startIndex = page.pageIndex * page.pageSize;
     const endIndex = startIndex + page.pageSize;
-    this.displayProducts = this.products?.slice(startIndex, endIndex) || [];
+    this.displayProducts = this.filteredProducts?.slice(startIndex, endIndex) || [];
   }
 }
