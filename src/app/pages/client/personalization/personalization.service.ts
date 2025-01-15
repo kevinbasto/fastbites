@@ -23,7 +23,24 @@ export class PersonalizationService {
     try {
       const uid = await this.auth.getUID();
       const docRef = doc(this.firestore, `/users/${uid}/data/personalization`);
-      return (await getDoc(docRef)).data() as Personalization;
+      const docVal =await getDoc(docRef);
+      if(docVal.exists())
+        return docVal.data() as Personalization;
+      let personalization: Personalization = {
+        company: {
+          name: '',
+          description: '',
+          logo: ''
+        },
+        personalization: {
+          background: '',
+          buttonColor: '',
+          actionsFontColor: '',
+          titleColor: ''
+        }
+      };
+      await setDoc(docRef, personalization);
+      return personalization;
     } catch (error) {
       throw error;
     }
