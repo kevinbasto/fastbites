@@ -1,16 +1,29 @@
-h1{
+h1 {
     text-align: center;
     margin: 0;
 }
 
-.data{
+.data {
     height: 70%;
     max-height: 70%;
     overflow-y: auto;
 }
 
-img{
-    max-width: 100%;
+img {
+    max-width: 280px;
+    max-height: 100%;
     aspect-ratio: 1;
     border-radius: 1rem;
+    object-fit: contain;
+}
+
+.card {
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog-content {
+    flex: 1;
+    overflow-y: auto;
 }
