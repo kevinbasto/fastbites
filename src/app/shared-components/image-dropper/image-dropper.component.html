@@ -7,7 +7,7 @@
         </mat-icon>
         Agregar imagen al producto
     </button>
-    <input type="file" (change)="uploadFromButton($event)" id="fileLoader" style="display: none;">
+    <input type="file" (change)="uploadFromButton($event)" id="{{id? id: 'fileLoader'}}" style="display: none;">
     <!-- <label for="fileLoader" class="fileButton" >
         <p style="text-align: center;">Haz click aquí para subir la imagen</p>
     </label> -->

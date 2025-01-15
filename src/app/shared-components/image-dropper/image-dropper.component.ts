@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'image-dropper',
@@ -10,6 +10,7 @@ export class ImageDropperComponent {
   public isHovering? : boolean;
 
   @Output() file : EventEmitter<File>;
+  @Input() id? : string;
 
   constructor() {
     this.file = new EventEmitter<File>();
@@ -33,7 +34,7 @@ export class ImageDropperComponent {
   }
 
   clickButton(){
-    let item = document.getElementById("fileLoader");
+    let item = document.getElementById(this.id? this.id: "fileLoader");
     item?.click()
   }
 }

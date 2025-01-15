@@ -14,3 +14,31 @@
 .card-header{
     margin-top: 1rem;
 }
+
+$icon-size: 5rem;
+$placeholder-color: #afafaf;
+
+.placeholder{
+    border: 1px dashed $placeholder-color;
+    display: grid;
+    place-content: center;
+    .icon{
+        color: $placeholder-color;
+        font-size: $icon-size;
+        width: $icon-size;
+        height: $icon-size;
+    }
+}
+
+img{
+    width: 60%;
+    margin: auto;
+    
+}
+
+.actions{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
