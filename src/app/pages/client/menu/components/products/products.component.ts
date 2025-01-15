@@ -88,6 +88,9 @@ export class ProductsComponent implements OnInit, OnChanges {
   changePage(page: PageEvent) {
     const startIndex = page.pageIndex * page.pageSize;
     const endIndex = startIndex + page.pageSize;
-    this.displayProducts = this.filteredProducts?.slice(startIndex, endIndex) || [];
+    if(this.form.value.name || this.form.value.category) 
+      this.displayProducts = this.filteredProducts?.slice(startIndex, endIndex) || [];
+    else 
+      this.displayProducts = this.products?.slice(startIndex, endIndex) || [];
   }
 }

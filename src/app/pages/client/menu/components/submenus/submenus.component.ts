@@ -87,6 +87,9 @@ export class SubmenusComponent implements OnInit, OnChanges {
   changePage(page: PageEvent) {
     const startIndex = page.pageIndex * page.pageSize;
     const endIndex = startIndex + page.pageSize;
-    this.displaySubmenus = this.filteredSubmenus?.slice(startIndex, endIndex) || [];
+    if(this.form.value.name)
+      this.displaySubmenus = this.filteredSubmenus?.slice(startIndex, endIndex) || [];
+    else
+      this.displaySubmenus = this.submenus?.slice(startIndex, endIndex) || [];
   }
 }

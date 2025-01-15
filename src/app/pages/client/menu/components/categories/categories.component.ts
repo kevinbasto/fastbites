@@ -82,6 +82,9 @@ export class CategoriesComponent implements OnInit, OnChanges {
   changePage(page: PageEvent) {
     const startIndex = page.pageIndex * page.pageSize;
     const endIndex = startIndex + page.pageSize;
-    this.displayCategories = this.filteredCategories?.slice(startIndex, endIndex) || [];
+    if(this.form.value.name) 
+      this.displayCategories = this.filteredCategories?.slice(startIndex, endIndex) || [];
+    else
+      this.displayCategories = this.categories?.slice(startIndex, endIndex) || [];
   }
 }
