@@ -27,7 +27,6 @@ export class MenuService {
       let uid = await this.auth.getUID();
       let docRef = doc(this.firestore, `/users/${uid}/data/menu`);
       let docVal = await getDoc(docRef);
-      console.log(docVal.exists())
       if(!docVal.exists()){
         let menu: Menu = {
           submenus: [],

@@ -20,7 +20,6 @@ export class QrTablesComponent implements OnInit {
 
   ngOnInit(): void {
     this.qrTablesService.fetchTables().subscribe(tables => {
-      console.log(tables);
       this.tables = tables;
     });
   }
