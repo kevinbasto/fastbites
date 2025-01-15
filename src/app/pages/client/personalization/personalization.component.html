@@ -1,56 +1,8 @@
-<mat-card class="card">
-    <div class="card-header">
-        <h1> Personalizar tu menú </h1>
-        <button mat-icon-button color="primary" (click)="form.disabled? form.enable() : form.disable()">
-            <mat-icon> edit </mat-icon>
-        </button>
-    </div>
-    <mat-divider></mat-divider>
-    <form action="" [formGroup]="form" (submit)="saveForm()">
+<form action="" [formGroup]="form" >
+    <mat-card class="card">
         <div class="card-header">
-            <h1> configurar color </h1>
+            <h1> Información de la empresa </h1>
         </div>
-        <div class="field">
-
-            <mat-form-field>
-                <mat-label> Color </mat-label>
-                <input type="color" matInput formControlName="color">
-            </mat-form-field>
-        </div>
-        <mat-divider></mat-divider>
-        <div class="card-header">
-            <h1> Cambiar imagen o logo </h1>
-        </div>
-        <span> Imagen escogida:
-            <b> {{ file? file.name : 'No hay un archivo seleccionado' }} </b>
-        </span>
-        @if (form.enabled) {
-        <image-dropper></image-dropper>
-        }
-        <div style="margin-top: 1rem;">
-            <mat-divider></mat-divider>
-        </div>
-        <div class="card-header">
-            <h1> Fondo de pantalla </h1>
-        </div>
-        <span> Imagen escogida:
-            <b> {{ file? file.name : 'No hay un archivo seleccionado' }} </b>
-        </span>
-        @if (form.enabled) {
-            <image-dropper></image-dropper>
-        }
-
-        @if(form.enabled){
-            <div class="form-actions">
-                <button mat-raised-button (click)="cancelForm()" type="button">
-                    <mat-icon> cleaning_services </mat-icon>
-                    Cancelar
-                </button>
-                <button mat-raised-button color="primary" type="submit">
-                    <mat-icon> done </mat-icon>
-                    Guardar cambio
-                </button>
-            </div>
-            }
-    </form>
-</mat-card>
+        <form action="" [formGroup]="company"></form>
+    </mat-card>
+</form>

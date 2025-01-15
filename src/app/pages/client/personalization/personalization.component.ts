@@ -9,48 +9,25 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class PersonalizationComponent implements OnInit{
 
   form: FormGroup;
-  uploadingColor: boolean = false;
-  file?: File;
 
   constructor(
     private personalizationServ: PersonalizationService,
     private fb: FormBuilder
   ) {
     this.form = this.fb.group({
-      restaurant: this.fb.group({
+      company: this.fb.group({
         name: [''],
         description: [''],
-      }),
-      color: [''],
-      button: [''],
-      fontColor: [''],
-      profile: [],
-      background: []
-    })
+        Logo: [null]
+      })
+    });
   }
 
-  ngOnInit(): void {
-    this.form.disable();
+  ngOnInit(): void {    
   }
 
-  openpicker(){
-    let item = document.getElementById("picker");
-    item?.click()
+  get company() {
+    return this.form.get('company') as FormGroup; 
   }
 
-  cancelForm(){
-    this.form.setValue({color: "#FFFFFF"});
-  }
-
-  saveForm(){
-    this.uploadingColor = true;
-    this.personalizationServ.saveColorForm(this.form.value.color)
-    .then(() => this.form.disable())
-    .finally(() => this.uploadingColor = false);
-  }
-
-  setImage(file: File){
-    this.file = file;
-    this.form.get("image")?.setValue(file);
-  }
 }

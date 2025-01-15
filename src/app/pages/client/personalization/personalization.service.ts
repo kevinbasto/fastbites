@@ -14,22 +14,8 @@ export class PersonalizationService {
     private snackbar: SnackbarService
   ) { }
 
+  // file: /users/${uid}/data/personalization
   saveColorForm(color: string) : Promise<void> {
-    return new Promise<void>(async (resolve, reject) => {
-      try {
-        let uid: string = await this.auth.getUID();
-        let docRef = doc(this.firestore, `/users/${uid}/data/profile`);
-        let docsnap = await getDoc(docRef);
-        if(!docsnap.exists())
-          await setDoc(docRef, {color});
-        else
-          await updateDoc(docRef, { color });
-        this.snackbar.openMessage("Color guardado con éxito");
-        resolve();
-      } catch (error) {
-        this.snackbar.openMessage("Hubo un error al procesar el color");
-        reject();
-      }
-    })
+    return new Promise<void>(async (resolve, reject) => {});
   }
 }
