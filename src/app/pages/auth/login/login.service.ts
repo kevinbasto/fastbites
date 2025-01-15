@@ -28,10 +28,10 @@ export class LoginService {
   async signWithEmailAndPassword(email : string, password: string) {
     try {
       let session = await signInWithEmailAndPassword(this.auth, email, password);
-      if(!session.user.emailVerified){
-        await signOut(this.auth);
-        throw new Error("user not verified");
-      }
+      // if(!session.user.emailVerified){
+      //   await signOut(this.auth);
+      //   throw new Error("user not verified");
+      // }
       let docRef = doc(this.firestore,`/users/${session.user.uid}`);
       let user : User = (await getDoc(docRef)).data() as unknown as User;
       if(!user.verified)

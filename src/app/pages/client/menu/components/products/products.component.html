@@ -19,7 +19,7 @@
     <mat-icon> add </mat-icon>
   </button>
 </div>
-@if (displayProducts.length) {
+@if (displayProducts) {
   <app-table 
     [data]="displayProducts" 
     [headers]="headers" 

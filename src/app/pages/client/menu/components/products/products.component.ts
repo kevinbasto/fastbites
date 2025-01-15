@@ -24,7 +24,7 @@ export class ProductsComponent implements OnInit, OnChanges {
   tableConfig = productsTableConfig;
   options = environment.paginationOptions;
   size = environment.defaultPageSize;
-  displayProducts: Array<Product> = [];
+  displayProducts?: Array<Product>;
   
 
   constructor(
@@ -67,6 +67,7 @@ export class ProductsComponent implements OnInit, OnChanges {
   }
 
   setPage() {
+    this.displayProducts = [];
     for(let i = 0; i < this.size; i++) {
       if(i < this.products!.length)
         this.displayProducts.push(this.products![i])
