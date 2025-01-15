@@ -7,7 +7,8 @@ import { CheckoutComponent } from '../../../shared-components/checkout/checkout.
 import { OrdersRepoService } from '../../../core/repos/orders-repo/orders-repo.service';
 import { Order } from '../../../core/entities/order';
 import { Menu } from '../../../core/entities/menu';
-import { doc, docData, Firestore } from '@angular/fire/firestore';
+import { doc, docData, Firestore, getDoc } from '@angular/fire/firestore';
+import { Personalization } from '../../../core/entities/personalization';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,18 @@ export class MenuService {
     return new Observable<Menu>((obs) => {
       let docRef = doc(this.firestore, `/users/${id}/data/menu`);
       (docData(docRef) as Observable<Menu>).subscribe(menu => obs.next(menu));
+    });
+  }
+
+  fetchPersonalization(id: string) {
+    return new Promise<Personalization>((resolve, reject) => {
+      let docRef = doc(this.firestore, `/users/${id}/data/personalization`);
+      getDoc(docRef)
+      .then((result) => {
+        resolve(result.data() as Personalization);
+      }).catch((err) => {
+        reject(err);
+      });
     });
   }
 

@@ -51,19 +51,19 @@
                     </mat-label>
                     <input type="color" matInput formControlName="actionsFontColor">
                 </mat-form-field>
-                @if (edit) {
-                <h3> Fondo de Pantalla </h3>
-                <image-dropper [id]="'background'" (file)="setBackground($event)"></image-dropper>
-                }
+                <mat-form-field>
+                    <mat-label>
+                        Color del fondo de pantalla
+                    </mat-label>
+                    <input type="color" matInput formControlName="background">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>
+                        Color de los titulos de las categorias
+                    </mat-label>
+                    <input type="color" matInput formControlName="titleColor">
+                </mat-form-field>
             </form>
-            @if (company.get('logo')!.value) {
-            <img src="{{displayBackground}}" alt="">
-            }
-            @else {
-            <div class="placeholder">
-                <mat-icon class="icon">image</mat-icon>
-            </div>
-            }
         </div>
         <mat-divider></mat-divider>
         @if (edit) {

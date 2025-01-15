@@ -35,25 +35,14 @@ export class PersonalizationService {
       let uid = await this.auth.getUID();
       let path = `/${uid}/personalization`
       let { logo, ...company } = customization.company;
-      let { background, ...personalization } = customization.personalization;
       let logoUrl = '';
-      let backgroundUrl = '';
       if (logo instanceof File) {
         const logoName = uuid();
         logo = await this.imagesService.prepareImage(logoName, logo);
-        logo = await this.imagesService.compressImage(logo);
         logoUrl = await this.imagesService.uploadImage(path, logo);
-      }
-      if (background instanceof File) {
-        const backgroundName = uuid();
-        background = await this.imagesService.prepareImage(backgroundName, background);
-        background = await this.imagesService.compressImage(background);
-        backgroundUrl = await this.imagesService.uploadImage(path, background);
       }
       if (logoUrl)
         customization.company = { ...company, logo: logoUrl };
-      if (backgroundUrl)
-        customization.personalization = { ...personalization, background: backgroundUrl };
       let docRef = doc(this.firestore, `/users/${uid}/data/personalization`);
       await setDoc(docRef, customization);
     } catch (error) {

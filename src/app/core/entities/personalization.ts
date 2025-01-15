@@ -8,5 +8,6 @@ export interface Personalization {
     background: File | string;
     buttonColor: string;
     actionsFontColor: string;
+    titleColor: string;
   }
 }

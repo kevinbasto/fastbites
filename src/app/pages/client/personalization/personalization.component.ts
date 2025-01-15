@@ -31,6 +31,7 @@ export class PersonalizationComponent implements OnInit{
         background: [null],
         buttonColor: [''],
         actionsFontColor: [''],
+        titleColor: [''],
       })
     });
   }
@@ -38,10 +39,12 @@ export class PersonalizationComponent implements OnInit{
   ngOnInit(): void {    
     this.personalizationService.loadPersonalization()
     .then((personalization : Personalization) => {
+      personalization.personalization.titleColor = personalization.personalization.titleColor? personalization.personalization.titleColor : ''
       this.form.setValue(personalization);
       this.displayBackground = (personalization.personalization.background as string);
       this.displayLogo = (personalization.company.logo as string);
     }).catch((err) => {
+      console.log(err)
       this.snackbar.openMessage('Hubo un error al cargar tu información guardada');
     });
     this.form.disable();
@@ -83,6 +86,7 @@ export class PersonalizationComponent implements OnInit{
 
   submitForm() {
     this.uploading = true;
+    console.log(this.form.value)
     this.personalizationService.savePersonalization(this.form.value)
     .then((result) => {
       this.snackbar.openMessage('personalizaciones guardadas con éxito');
@@ -93,6 +97,7 @@ export class PersonalizationComponent implements OnInit{
     .finally(() => {
       this.edit = false;
       this.uploading = false;
+      this.form.disable()
     });
   }
 }

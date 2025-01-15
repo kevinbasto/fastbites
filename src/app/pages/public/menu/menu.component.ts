@@ -7,6 +7,7 @@ import { Category } from '../../../core/entities/category';
 import { Menu } from '../../../core/entities/menu';
 import { Submenu } from '../../../core/entities/submenu';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
+import { Personalization } from '../../../core/entities/personalization';
 
 
 type SubmenuCategory = {
@@ -36,6 +37,8 @@ export class MenuComponent implements OnInit {
   menu?: Menu;
   displayMenu?: Array<SubmenuCategory>;
 
+  personalization?: Personalization;
+
   constructor(
     public menuService: MenuService,
     private route: ActivatedRoute,
@@ -48,11 +51,7 @@ export class MenuComponent implements OnInit {
       if (id) {
         this.id = id;
         this.scannerMode = false;
-        this.menuService.fetchMenu(this.id!)
-        .subscribe((menu: Menu) => {
-          this.menu = menu;
-          this.processMenu();          
-        });
+        this.getMenu(this.id);
       } else {
         this.scannerMode = true
       }
@@ -67,11 +66,7 @@ export class MenuComponent implements OnInit {
           this.id = id;
           this.stop = true;
           this.scannerMode = false;
-          this.menuService.fetchMenu(id)
-            .subscribe((menu: Menu) => {
-              this.menu = menu;
-              this.processMenu()
-            });
+          this.getMenu(id);
         })
         .catch((err) => {
           this.stop = false;
@@ -80,6 +75,22 @@ export class MenuComponent implements OnInit {
           this.activeFetch = false;
         });
     }
+  }
+
+  getMenu(id: string) {
+    this.menuService.fetchMenu(id)
+      .subscribe((menu: Menu) => {
+        this.menu = menu;
+        this.processMenu()
+      });
+    this.menuService.fetchPersonalization(id)
+      .then((personalization: Personalization) => {
+        this.personalization = personalization;
+        let menu = document.getElementById("menu")!
+        menu.style.background = personalization.personalization.background as string;
+      }).catch((err) => {
+        this.snackbar.openMessage('Hubo un error al aplicar la capa de personalización');
+      });
   }
 
   setProducts(products: Array<Product>) {

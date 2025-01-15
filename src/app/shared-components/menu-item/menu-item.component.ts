@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../core/entities/product';
+import { Personalization } from '../../core/entities/personalization';
 
 @Component({
   selector: 'menu-item',
@@ -8,6 +9,7 @@ import { Product } from '../../core/entities/product';
 })
 export class MenuItemComponent {
 
+  @Input() personalization?: Personalization;
   @Input() product!: Product;
 
   @Output() itemSelected = new EventEmitter();
