@@ -25,6 +25,12 @@
             </h1>
         </div>
         <mat-divider></mat-divider>
+        @if(personalization) {
+            <p>
+                {{personalization.company.description}}
+            </p>
+            <mat-divider></mat-divider>
+        }
         @if(displayMenu) {
         <mat-tab-group>
             @for (submenu of displayMenu; track $index) {
