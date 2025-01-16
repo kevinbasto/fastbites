@@ -12,6 +12,7 @@ import { DataExporterService } from '../../../core/services/data-exporter/data-e
 import { ExportFormat } from '../../../core/entities/export-format';
 import { ImportMenuComponent } from './dialogs/import-menu/import-menu.component';
 import { DataImporterService } from '../../../core/services/data-importer/data-importer.service';
+import { ImportFormat } from '../../../core/entities/import-format';
 
 
 @Injectable({
@@ -36,39 +37,43 @@ export class MenuService {
       let uid = await this.auth.getUID();
       let docRef = doc(this.firestore, `/users/${uid}/data/menu`);
       let docVal = await getDoc(docRef);
-      if(!docVal.exists()){
+      if (!docVal.exists()) {
         let menu: Menu = {
           submenus: [],
           categories: [],
           products: []
         }
-        await setDoc(docRef, {...menu});
+        await setDoc(docRef, { ...menu });
       }
-      docData(docRef).subscribe((menu : Menu) => this.menu$.next(menu));
-      
+      docData(docRef).subscribe((menu: Menu) => this.menu$.next(menu));
+
     } catch (error) {
       this.snackbar.openMessage('Hubo un error al cargar el menú');
     }
   }
 
   importMenu() {
-    const dialog = this.dialog.open(ImportMenuComponent );
-    dialog.afterClosed().subscribe((file: File | null) => {
-      if(file == null) return;
-      this.menuImporter.importMenu(file).then(async(menu: Menu) => {
-        let uid = await this.auth.getUID();
-        this.menuRepo.updateMenu(uid, menu)
-        .then(() => this.snackbar.openMessage('Menú importado correctamente'))
-        .catch(() => {  });
+    const dialog = this.dialog.open(ImportMenuComponent);
+    dialog.afterClosed().subscribe((file: ImportFormat | null) => {
+      if (file == null) return;
+      this.menuImporter.importMenu(file.file).then(async (menu: Menu) => {
+          let uid = await this.auth.getUID();
+          this.menuRepo.updateMenu(uid, menu)
+            .then(() => this.snackbar.openMessage('Menú importado correctamente'))
+            .catch(() => this.snackbar.openMessage(`Hubo un problema al importar el menú`));
+      })
+      .catch((error) => {
+        this.snackbar.openMessage(`Hubo un problema al importar el menú: ${error}`);
+        console.log(error);
       });
     });
   }
-  
+
   exportMenu(menu?: Menu) {
-    const dialog = this.dialog.open(ExportMenuComponent );
+    const dialog = this.dialog.open(ExportMenuComponent);
     dialog.afterClosed().subscribe((result: ExportFormat | null) => {
-      if(!result) return;
-      if(!menu){
+      if (!result) return;
+      if (!menu) {
         this.snackbar.openMessage('La operación solicitada no es válida');
         return
       }

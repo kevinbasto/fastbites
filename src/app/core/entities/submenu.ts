@@ -1,4 +1,4 @@
-interface Time{
+export interface Time{
     openingHour: string;
     closingHour: string;
     days: { [name: string] : boolean };

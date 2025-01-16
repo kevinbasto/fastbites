@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ImportFormat } from '../../core/entities/import-format';
 
 @Component({
-  selector: 'app-file-importer-form',
+  selector: 'file-importer-form',
   templateUrl: './file-importer-form.component.html',
   styleUrl: './file-importer-form.component.scss'
 })
@@ -30,6 +30,10 @@ export class FileImporterFormComponent implements OnInit {
 
   submit() {
     this.import.emit(this.form.value);
+  }
+
+  get file() { 
+    return this.form.get('file')?.value as File; 
   }
 
 }
