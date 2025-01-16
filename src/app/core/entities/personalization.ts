@@ -9,5 +9,6 @@ export interface Personalization {
     buttonColor: string;
     actionsFontColor: string;
     titleColor: string;
+    banner: File | string;
   }
 }

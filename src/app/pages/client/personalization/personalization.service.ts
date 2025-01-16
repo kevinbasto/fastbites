@@ -30,13 +30,14 @@ export class PersonalizationService {
         company: {
           name: '',
           description: '',
-          logo: ''
+          logo: '',
         },
         personalization: {
           background: '',
           buttonColor: '',
           actionsFontColor: '',
-          titleColor: ''
+          titleColor: '',
+          banner: '',
         }
       };
       await setDoc(docRef, personalization);
@@ -52,14 +53,23 @@ export class PersonalizationService {
       let uid = await this.auth.getUID();
       let path = `/${uid}/personalization`
       let { logo, ...company } = customization.company;
+      let { banner, ...personalization } = customization.personalization;
       let logoUrl = '';
+      let bannerUrl = '';
       if (logo instanceof File) {
         const logoName = uuid();
         logo = await this.imagesService.prepareImage(logoName, logo);
         logoUrl = await this.imagesService.uploadImage(path, logo);
       }
+      if (banner instanceof File) {
+        const logoName = uuid();
+        banner = await this.imagesService.prepareImage(logoName, banner);
+        bannerUrl = await this.imagesService.uploadImage(path, banner);
+      }
       if (logoUrl)
         customization.company = { ...company, logo: logoUrl };
+      if(bannerUrl)
+        customization.personalization = { ...personalization, banner: bannerUrl };
       let docRef = doc(this.firestore, `/users/${uid}/data/personalization`);
       await setDoc(docRef, customization);
     } catch (error) {

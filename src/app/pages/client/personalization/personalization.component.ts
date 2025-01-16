@@ -12,7 +12,7 @@ export class PersonalizationComponent implements OnInit{
 
   form: FormGroup;
   displayLogo?: string;
-  displayBackground? : string;
+  displayBanner? : string;
   uploading: boolean = false;
   edit: boolean = false;
 
@@ -25,13 +25,14 @@ export class PersonalizationComponent implements OnInit{
       company: this.fb.group({
         name: ['', [Validators.required]],
         description: ['', [Validators.required]],
-        logo: [null, []]
+        logo: [null, []],
       }),
       personalization: this.fb.group({
         background: [null],
         buttonColor: [''],
         actionsFontColor: [''],
         titleColor: [''],
+        banner: [null, []]
       })
     });
   }
@@ -40,8 +41,9 @@ export class PersonalizationComponent implements OnInit{
     this.personalizationService.loadPersonalization()
     .then((personalization : Personalization) => {
       personalization.personalization.titleColor = personalization.personalization.titleColor? personalization.personalization.titleColor : ''
+      personalization.personalization.banner = personalization.personalization.banner? personalization.personalization.banner : '';
       this.form.setValue(personalization);
-      this.displayBackground = (personalization.personalization.background as string);
+      this.displayBanner = (personalization.personalization.background as string);
       this.displayLogo = (personalization.company.logo as string);
     }).catch((err) => {
       console.log(err)
@@ -59,11 +61,11 @@ export class PersonalizationComponent implements OnInit{
     reader.readAsDataURL(file);
   }
 
-  setBackground(file: File) {
-    this.personalization.get('background')?.setValue(file);
+  setBanner(file: File) {
+    this.personalization.get('banner')?.setValue(file);
     const reader = new FileReader();
     reader.onload = () => {
-      this.displayBackground = reader.result as string;
+      this.displayBanner = reader.result as string;
     };
     reader.readAsDataURL(file);
   }
@@ -86,7 +88,6 @@ export class PersonalizationComponent implements OnInit{
 
   submitForm() {
     this.uploading = true;
-    console.log(this.form.value)
     this.personalizationService.savePersonalization(this.form.value)
     .then((result) => {
       this.snackbar.openMessage('personalizaciones guardadas con éxito');
