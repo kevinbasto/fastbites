@@ -40,6 +40,8 @@ import { ProductsImporterDialogComponent } from './products-importer-dialog/prod
 import { FileDropperComponent } from './file-dropper/file-dropper.component';
 import { PlanCardComponent } from './plan-card/plan-card.component';
 import { PlanSummaryComponent } from './plan-summary/plan-summary.component';
+import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
+import { MenuScannerComponent } from './menu-scanner/menu-scanner.component';
 
 
 @NgModule({
@@ -64,7 +66,9 @@ import { PlanSummaryComponent } from './plan-summary/plan-summary.component';
     ProductsImporterDialogComponent,
     FileDropperComponent,
     PlanCardComponent,
-    PlanSummaryComponent
+    PlanSummaryComponent,
+    LoadingScreenComponent,
+    MenuScannerComponent
   ],
   imports: [
     CommonModule,
