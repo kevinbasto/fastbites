@@ -1,6 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { MenuService } from './menu.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../../core/entities/product';
 import { Message } from '../../../core/generics/message';
 import { Category } from '../../../core/entities/category';
@@ -42,7 +42,8 @@ export class MenuComponent implements OnInit {
   constructor(
     public menuService: MenuService,
     private route: ActivatedRoute,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -175,4 +176,7 @@ export class MenuComponent implements OnInit {
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
   }
 
+  checkProductDetails(product: Product) {
+    this.router.navigate(['product', product.id], { relativeTo: this.route });
+  }
 }

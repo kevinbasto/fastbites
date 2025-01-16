@@ -12,5 +12,6 @@ export class MenuItemComponent {
   @Input() personalization?: Personalization;
   @Input() product!: Product;
 
-  @Output() itemSelected = new EventEmitter();
+  @Output() itemSelected : EventEmitter<Product> = new EventEmitter();
+  @Output() orderItem: EventEmitter<Product> = new EventEmitter();
 }

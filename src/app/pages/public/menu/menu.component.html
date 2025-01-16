@@ -44,8 +44,12 @@
                     <div class="item-container"
                         [ngStyle]="personalization? { background: personalization.personalization.background } : {}">
     
-                        <ordering-menu [personalization]="personalization" [products]="category.products"
-                            (prod)="addProductToCart($event)"></ordering-menu>
+                        <ordering-menu 
+                            [personalization]="personalization" 
+                            [products]="category.products"
+                            (prod)="checkProductDetails($event)" 
+                            (orderItem)="addProductToCart($event)"
+                        ></ordering-menu>
                     </div>
     
                 </mat-expansion-panel>

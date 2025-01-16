@@ -12,6 +12,7 @@ export class OrderingMenuComponent {
   @Input() personalization?: Personalization;
   @Input() products?: Array<Product>;
   @Output() prod: EventEmitter<Product> = new EventEmitter();
+  @Output() orderItem: EventEmitter<Product> = new EventEmitter();
 
   constructor() {}
 }

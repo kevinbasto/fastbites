@@ -2,8 +2,9 @@
     <div  *ngFor="let product of products">
         <menu-item
             [product]="product"
-            (itemSelected)="prod.emit(product)"
             [personalization]="personalization"
+            (itemSelected)="prod.emit(product)"
+            (orderItem)="orderItem.emit(product)"
         ></menu-item>
     </div>
 </div>
