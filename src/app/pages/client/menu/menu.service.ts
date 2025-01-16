@@ -6,6 +6,8 @@ import { docData, docSnapshots, Firestore } from '@angular/fire/firestore';
 import { doc, getDoc, setDoc } from '@firebase/firestore';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 import { MenuRepoService } from '../../../core/repos/menu-repo/menu-repo.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ExportMenuComponent } from './dialogs/export-menu/export-menu.component';
 
 
 @Injectable({
@@ -19,7 +21,8 @@ export class MenuService {
     private auth: AuthService,
     private firestore: Firestore,
     private snackbar: SnackbarService,
-    private menuRepo: MenuRepoService
+    private menuRepo: MenuRepoService,
+    private dialog: MatDialog,
   ) { }
 
   async fetchMenu() {
@@ -40,5 +43,16 @@ export class MenuService {
     } catch (error) {
       this.snackbar.openMessage('Hubo un error al cargar el menú');
     }
+  }
+
+  importMenu() {
+    throw new Error('Method not implemented.');
+  }
+  
+  exportMenu() {
+    const dialog = this.dialog.open(ExportMenuComponent );
+    dialog.afterClosed().subscribe((result: File | null) => {
+      if(!result) return;
+    });
   }
 }

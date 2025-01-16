@@ -1,0 +1,19 @@
+<form action="" [formGroup]="form" >
+    <mat-form-field>
+        <mat-label>
+            Nombre del archivo
+        </mat-label>
+        <input type="text" matInput formControlName="name" >
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>
+            Formato a exportar
+        </mat-label>
+        <mat-select formControlName="format" >
+            <mat-option value="json">JSON</mat-option>
+            <mat-option value="csv">CSV</mat-option>
+            <mat-option value="xlsx">XLSX</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <form-actions></form-actions>
+</form>

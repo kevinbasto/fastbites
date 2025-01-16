@@ -1,4 +1,21 @@
 <mat-card>
+  <div class="card-header">
+    <h1>
+      Catálogo de Menú
+    </h1>
+    <div style="display: flex; gap: 1rem;">
+      <button mat-icon-button color="primary" (click)="exportMenu()" >
+        <mat-icon>
+          download
+        </mat-icon>
+      </button>
+      <button mat-icon-button color="primary" (click)="importMenu()" >
+        <mat-icon>
+          cloud_upload
+        </mat-icon>
+      </button>
+    </div>
+  </div>
   <mat-tab-group>
     <mat-tab label="Productos">
       <ng-template mat-tab-label>

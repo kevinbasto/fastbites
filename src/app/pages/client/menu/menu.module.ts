@@ -33,6 +33,8 @@ import { ViewCategoryComponent } from './dialogs/view-category/view-category.com
 import { ViewProductComponent } from './dialogs/view-product/view-product.component';
 import { ViewSubmenuComponent } from './dialogs/view-submenu/view-submenu.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ExportMenuComponent } from './dialogs/export-menu/export-menu.component';
+import { ImportMenuComponent } from './dialogs/import-menu/import-menu.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     ViewProductComponent,
     ViewCategoryComponent,
     ViewSubmenuComponent,
+    ExportMenuComponent,
+    ImportMenuComponent,
   ],
   imports: [
     CommonModule,

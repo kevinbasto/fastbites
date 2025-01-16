@@ -24,6 +24,7 @@ import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TableFormComponent } from './table-form/table-form.component';
+import { ExportFormComponent } from './export-form/export-form.component';
 
 
 
@@ -37,7 +38,8 @@ import { TableFormComponent } from './table-form/table-form.component';
     FiscalDataFormComponent,
     CardFormComponent,
     PlanSelectorFormComponent,
-    TableFormComponent
+    TableFormComponent,
+    ExportFormComponent
   ],
   imports: [
     CommonModule,
@@ -66,6 +68,7 @@ import { TableFormComponent } from './table-form/table-form.component';
     CardFormComponent,
     PlanSelectorFormComponent,
     TableFormComponent,
+    ExportFormComponent,
   ]
 })
 export class SharedFormsModule { }

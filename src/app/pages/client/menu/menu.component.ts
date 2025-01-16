@@ -32,4 +32,12 @@ export class MenuComponent implements OnInit {
     this.menuService.fetchMenu();
   }
 
+  exportMenu(): void {
+    this.menuService.exportMenu();
+  }
+
+  importMenu(): void {
+    this.menuService.importMenu();
+  }
+
 }
