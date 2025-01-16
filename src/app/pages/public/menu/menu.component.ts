@@ -112,15 +112,16 @@ export class MenuComponent implements OnInit {
   }
 
   goToCheckout() {
-    this.menuService.goToCheckout(this.cart, this.id!)
-      .then((result: "COMPLETED" | "CANCELED" | "DELETE") => {
-        if (result == "COMPLETED")
-          this.cart = [];
-        else if (result == 'DELETE')
-          this.cart = [];
-      }).catch((err) => {
+    this.router.navigate(['checkout'], { relativeTo: this.route });
+    // this.menuService.goToCheckout(this.cart, this.id!)
+    //   .then((result: "COMPLETED" | "CANCELED" | "DELETE") => {
+    //     if (result == "COMPLETED")
+    //       this.cart = [];
+    //     else if (result == 'DELETE')
+    //       this.cart = [];
+    //   }).catch((err) => {
 
-      });
+    //   });
   }
 
 

@@ -15,12 +15,14 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { CompanyProfileComponent } from './pages/company-profile/company-profile.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 @NgModule({
   declarations: [
     MenuComponent,
     ProductDetailComponent,
-    CompanyProfileComponent
+    CompanyProfileComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,

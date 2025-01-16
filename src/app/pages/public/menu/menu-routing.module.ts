@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from './menu.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { CompanyProfileComponent } from './pages/company-profile/company-profile.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: "about",
     component: CompanyProfileComponent
+  },
+  {
+    path: "checkout",
+    component: CheckoutComponent
   }
 ];
 
