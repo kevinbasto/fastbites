@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, resolveForwardRef } from '@angular/core';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 import { Observable } from 'rxjs';
 import { Product } from '../../../core/entities/product';
@@ -9,6 +9,7 @@ import { Order } from '../../../core/entities/order';
 import { Menu } from '../../../core/entities/menu';
 import { doc, docData, Firestore, getDoc } from '@angular/fire/firestore';
 import { Personalization } from '../../../core/entities/personalization';
+import { ProductDetailComponent } from './dialogs/product-detail/product-detail.component';
 
 @Injectable({
   providedIn: 'root'
@@ -33,11 +34,11 @@ export class MenuService {
     return new Promise<Personalization>((resolve, reject) => {
       let docRef = doc(this.firestore, `/users/${id}/data/personalization`);
       getDoc(docRef)
-      .then((result) => {
-        resolve(result.data() as Personalization);
-      }).catch((err) => {
-        reject(err);
-      });
+        .then((result) => {
+          resolve(result.data() as Personalization);
+        }).catch((err) => {
+          reject(err);
+        });
     });
   }
 
@@ -80,7 +81,7 @@ export class MenuService {
       }
       const dialog = this.dialog.open(CheckoutComponent, { data: { cart } });
       dialog.afterClosed().subscribe((order: Order | "DELETE" | null) => {
-        if (!order){
+        if (!order) {
           resolve("CANCELED");
           return;
         }
@@ -89,15 +90,25 @@ export class MenuService {
           resolve("DELETE");
         } else {
           this.ordersRepo.create(order, id)
-          .then((result) => {
-            this.snackbar.openMessage("Orden creada con éxito");
-            resolve("COMPLETED");
-          }).catch((err) => {
-            this.snackbar.openMessage("No se pudo crear la orden");
-            reject(err);
-          });
+            .then((result) => {
+              this.snackbar.openMessage("Orden creada con éxito");
+              resolve("COMPLETED");
+            }).catch((err) => {
+              this.snackbar.openMessage("No se pudo crear la orden");
+              reject(err);
+            });
         }
       });
     });
-  };
+  }
+
+  checkProductDetail(product: Product): Promise<{ product: Product, quantity: number } | null> {
+    return new Promise<{product: Product, quantity: number } | null>((resolve, reject) => {
+      const dialog = this.dialog.open(ProductDetailComponent, { data: { product } });
+      dialog.afterClosed().subscribe((result: { product: Product, quantity: number }) => {
+        if (result) resolve(result);
+        else resolve(null)
+      });
+    });
+  }
 }

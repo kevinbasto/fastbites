@@ -13,16 +13,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from "@angular/material/toolbar";
-import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
-import { CompanyProfileComponent } from './pages/company-profile/company-profile.component';
-import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { ProductDetailComponent } from './dialogs/product-detail/product-detail.component';
+import { CompanyAboutComponent } from './dialogs/company-about/company-about.component';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     MenuComponent,
     ProductDetailComponent,
-    CompanyProfileComponent,
-    CheckoutComponent
+    CompanyAboutComponent,
   ],
   imports: [
     CommonModule,
@@ -37,7 +37,9 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     MatExpansionModule,
     MatExpansionModule,
     MatTabsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatInputModule,
+    FormsModule,
   ]
 })
 export class MenuModule { }

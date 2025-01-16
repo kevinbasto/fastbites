@@ -1,20 +1,2 @@
-ng g m pages/public/buy --routing;
-ng g c pages/public/buy --standalone=false;
-ng g s pages/public/buy/buy;
-git add .;
-git commit -m "feat: add the buy page in public";
-ng g m pages/public/book --routing;
-ng g c pages/public/book --standalone=false;
-git add .;
-git commit -m "feat: implement the book page in public"
-ng g s pages/public/book/book;
-ng g m pages/public/about --routing;
-ng g c pages/public/about --standalone=false;
-git add .;
-git commit -m "feat: add the about page";
-ng g s pages/public/about/about;
-ng g m pages/public/documentation --routing;
-ng g c pages/public/documentation --standalone=false;
-ng g s pages/public/documentation/documentation;
-git add .; 
-git commit -m "feat: add the documentation page";
+ng g c pages/public/menu/dialogs/product-detail --standalone=false;
+ng g c pages/public/menu/dialogs/company-about --standalone=false;

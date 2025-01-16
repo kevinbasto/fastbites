@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="card-header">
+        <h3>
+            {{ product.name }}
+        </h3>
+        <button mat-icon-button (click)="close()" >
+            <mat-icon>
+                close
+            </mat-icon>
+        </button>
+    </div>
+    <mat-divider></mat-divider>
+    <img src="{{product.rawImage}}" alt="">
+    <div class="card-body">
+        <p>
+            {{ product.description }}
+        </p>
+        <p>
+            Precio: <b>{{ product.price | currency }}</b>
+        </p>
+        <div style="display: flex; flex-direction: column;">
+            <mat-form-field>
+                <mat-label>
+                    Cantidad
+                </mat-label>
+                <input type="number" matInput [(ngModel)]="quantity" >
+            </mat-form-field>
+        </div>
+    <div class="form-actions">
+        <button mat-raised-button (click)="close()" >
+            <mat-icon>
+                cancel
+            </mat-icon>
+            Cancelar
+        </button>
+        <button mat-raised-button color="primary" (click)="addtoCart()" [disabled]="quantity < 1" >
+            <mat-icon>
+                add_shopping_cart
+            </mat-icon>
+            Agregar
+        </button>
+    </div>
+</div>

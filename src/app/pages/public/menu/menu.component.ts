@@ -43,7 +43,6 @@ export class MenuComponent implements OnInit {
     public menuService: MenuService,
     private route: ActivatedRoute,
     private snackbar: SnackbarService,
-    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -88,7 +87,7 @@ export class MenuComponent implements OnInit {
       .then((personalization: Personalization) => {
         this.personalization = personalization;
         let menu = document.getElementById("menu")!
-        if(menu)
+        if (menu)
           menu.style.background = personalization.personalization.background as string;
       }).catch((err) => {
         console.log(err);
@@ -111,17 +110,28 @@ export class MenuComponent implements OnInit {
     this.snackbar.openMessage('Producto Agregado al carrito con éxito');
   }
 
-  goToCheckout() {
-    this.router.navigate(['checkout'], { relativeTo: this.route });
-    // this.menuService.goToCheckout(this.cart, this.id!)
-    //   .then((result: "COMPLETED" | "CANCELED" | "DELETE") => {
-    //     if (result == "COMPLETED")
-    //       this.cart = [];
-    //     else if (result == 'DELETE')
-    //       this.cart = [];
-    //   }).catch((err) => {
+  checkProductDetail(product: Product){
+    this.menuService.checkProductDetail(product)
+    .then((result) => {
+      if(!result) return;
+      const { product, quantity } = result;
+      for(let i = 0; i < quantity; i++)
+        this.cart.push(product);
+    }).catch((err) => {
+      
+    });
+  }
 
-    //   });
+  goToCheckout() {
+    this.menuService.goToCheckout(this.cart, this.id!)
+      .then((result: "COMPLETED" | "CANCELED" | "DELETE") => {
+        if (result == "COMPLETED")
+          this.cart = [];
+        else if (result == 'DELETE')
+          this.cart = [];
+      }).catch((err) => {
+
+      });
   }
 
 
@@ -175,9 +185,5 @@ export class MenuComponent implements OnInit {
       hours = 0;
     }
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-  }
-
-  checkProductDetails(product: Product) {
-    this.router.navigate(['product', product.id], { relativeTo: this.route });
   }
 }
