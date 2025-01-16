@@ -25,6 +25,11 @@
     </div>
 </div>
 <div id="menu">
+    @if(personalization && personalization.personalization.banner) {
+        <div class="banner">
+            <img src="{{personalization.personalization.banner}}" alt="">
+        </div>
+    }
     <div class="title">
         @if (personalization && personalization.company.logo) {
         <img src="{{personalization!.company.logo}}" alt="" class="logo">
