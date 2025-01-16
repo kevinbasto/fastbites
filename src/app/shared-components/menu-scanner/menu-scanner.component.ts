@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-menu-scanner',
+  selector: 'menu-scanner',
   templateUrl: './menu-scanner.component.html',
   styleUrl: './menu-scanner.component.scss'
 })
 export class MenuScannerComponent {
 
+  @Output() scan : EventEmitter<string> = new EventEmitter<string>();
+
+  @Input() stop: boolean = false;
+
+  processScan(scan: string) {
+    this.scan.emit(scan);
+  }
 }

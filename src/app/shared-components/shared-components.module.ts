@@ -109,7 +109,9 @@ import { MenuScannerComponent } from './menu-scanner/menu-scanner.component';
     ProductsImporterDialogComponent,
     FileDropperComponent,
     PlanCardComponent,
-    PlanSummaryComponent
+    PlanSummaryComponent,
+    LoadingScreenComponent,
+    MenuScannerComponent
   ],
   providers: [
     provideCharts(withDefaultRegisterables()),

@@ -1,1 +1,13 @@
-<p>menu-scanner works!</p>
+<div class="grid-container">
+    <div class="mat-elevation-z8">
+        <mat-card class="card">
+            <h1 style="text-align: center;">
+                ¡Hola!
+            </h1>
+            <p style="text-align: center;">
+                ¡scanea un QR de fastbites para cargar el menú!
+            </p>
+            <qr-scanner (scan)="processScan($event)" [stop]="stop"></qr-scanner>
+        </mat-card>
+    </div>
+</div>

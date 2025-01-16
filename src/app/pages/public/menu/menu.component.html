@@ -1,41 +1,23 @@
-<div class="grid-container loading-screen" *ngIf="!scannerMode && !displayMenu">
-    <div>
-        <div style="display: flex; flex-direction: column; align-items: center;">
-            <mat-spinner></mat-spinner>
-        </div>
-        <h1 style="text-align: center; font-weight: bold;">
-            powered by Fastbites
-        </h1>
-        <p style="text-align: center;">
-            estamos cargando tu menú
-        </p>
-    </div>
-</div>
-<div class="grid-container" *ngIf="scannerMode">
-    <div class="mat-elevation-z8">
-        <mat-card class="card">
-            <h1 style="text-align: center;">
-                ¡Hola!
-            </h1>
-            <p style="text-align: center;">
-                ¡scanea un QR de fastbites para cargar el menú!
-            </p>
-            <qr-scanner (scan)="processScan($event)" [stop]="stop"></qr-scanner>
-        </mat-card>
-    </div>
-</div>
+@if (!scannerMode && !displayMenu) {
+<app-loading-screen></app-loading-screen>
+}
+@if (scannerMode) {
+    <menu-scanner [stop]="stop" (scan)="processScan($event)" ></menu-scanner>
+}
 <div id="menu">
     @if(personalization && personalization.personalization.banner) {
-        <div class="banner">
-            <img src="{{personalization.personalization.banner}}" alt="">
-        </div>
+    <div class="banner">
+        <img src="{{personalization.personalization.banner}}" alt="">
+    </div>
     }
     <div class="title">
         @if (personalization && personalization.company.logo) {
         <img src="{{personalization!.company.logo}}" alt="" class="logo">
         }
-        <h1 style="text-align: center;" [ngStyle]="personalization? { color: personalization.personalization.titleColor} : {} " >
-            {{personalization? personalization.company.name? personalization.company.name : "Mi menú personal" : "Menú" }}
+        <h1 style="text-align: center;"
+            [ngStyle]="personalization? { color: personalization.personalization.titleColor} : {} ">
+            {{personalization? personalization.company.name? personalization.company.name : "Mi menú personal" : "Menú"
+            }}
         </h1>
     </div>
     <mat-divider></mat-divider>
@@ -43,17 +25,23 @@
     <mat-tab-group>
         @for (submenu of displayMenu; track $index) {
 
-        <mat-tab  label="{{submenu.submenu.name}}" [ngStyle]="personalization? { color: personalization.personalization.titleColor} : {} " >
+        <mat-tab label="{{submenu.submenu.name}}"
+            [ngStyle]="personalization? { color: personalization.personalization.titleColor} : {} ">
             @for (category of submenu.categories; track $index) {
 
-            <mat-expansion-panel [expanded]="true" class="item-panel" [ngStyle]="personalization? { background: personalization.personalization.background } : {}" >
+            <mat-expansion-panel [expanded]="true" class="item-panel"
+                [ngStyle]="personalization? { background: personalization.personalization.background } : {}">
                 <mat-expansion-panel-header>
-                    <mat-panel-title [ngStyle]="personalization? { color: personalization.personalization.titleColor} : {} " > {{ category.category.name }} </mat-panel-title>
+                    <mat-panel-title
+                        [ngStyle]="personalization? { color: personalization.personalization.titleColor} : {} "> {{
+                        category.category.name }} </mat-panel-title>
 
                 </mat-expansion-panel-header>
-                <div class="item-container" [ngStyle]="personalization? { background: personalization.personalization.background } : {}" >
+                <div class="item-container"
+                    [ngStyle]="personalization? { background: personalization.personalization.background } : {}">
 
-                <ordering-menu [personalization]="personalization" [products]="category.products" (prod)="addProductToCart($event)"></ordering-menu>
+                    <ordering-menu [personalization]="personalization" [products]="category.products"
+                        (prod)="addProductToCart($event)"></ordering-menu>
                 </div>
 
             </mat-expansion-panel>
@@ -64,11 +52,7 @@
         }
     </mat-tab-group>
     }
-    @else {
-    <div class="grid-container">
-        <mat-spinner diameter="150"></mat-spinner>
-    </div>
-    }
+    @if(!scannerMode && displayMenu){
     <div class="cart-button" style="display: flex; flex-direction: column;">
         <button mat-raised-button color="primary" (click)="goToCheckout()"
             style="display: flex; justify-content: center; align-items: center;"
@@ -80,4 +64,5 @@
             {{cart.length}} Items
         </button>
     </div>
+    }
 </div>
