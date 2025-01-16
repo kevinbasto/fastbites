@@ -25,6 +25,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TableFormComponent } from './table-form/table-form.component';
 import { ExportFormComponent } from './export-form/export-form.component';
+import { FileImporterFormComponent } from './file-importer-form/file-importer-form.component';
 
 
 
@@ -39,7 +40,8 @@ import { ExportFormComponent } from './export-form/export-form.component';
     CardFormComponent,
     PlanSelectorFormComponent,
     TableFormComponent,
-    ExportFormComponent
+    ExportFormComponent,
+    FileImporterFormComponent
   ],
   imports: [
     CommonModule,
@@ -69,6 +71,7 @@ import { ExportFormComponent } from './export-form/export-form.component';
     PlanSelectorFormComponent,
     TableFormComponent,
     ExportFormComponent,
+    FileImporterFormComponent
   ]
 })
 export class SharedFormsModule { }

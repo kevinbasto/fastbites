@@ -10,6 +10,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ExportMenuComponent } from './dialogs/export-menu/export-menu.component';
 import { DataExporterService } from '../../../core/services/data-exporter/data-exporter.service';
 import { ExportFormat } from '../../../core/entities/export-format';
+import { ImportMenuComponent } from './dialogs/import-menu/import-menu.component';
+import { DataImporterService } from '../../../core/services/data-importer/data-importer.service';
 
 
 @Injectable({
@@ -25,7 +27,8 @@ export class MenuService {
     private snackbar: SnackbarService,
     private menuRepo: MenuRepoService,
     private dialog: MatDialog,
-    private exportDataService: DataExporterService
+    private exportDataService: DataExporterService,
+    private menuImporter: DataImporterService
   ) { }
 
   async fetchMenu() {
@@ -49,7 +52,16 @@ export class MenuService {
   }
 
   importMenu() {
-    throw new Error('Method not implemented.');
+    const dialog = this.dialog.open(ImportMenuComponent );
+    dialog.afterClosed().subscribe((file: File | null) => {
+      if(file == null) return;
+      this.menuImporter.importMenu(file).then(async(menu: Menu) => {
+        let uid = await this.auth.getUID();
+        this.menuRepo.updateMenu(uid, menu)
+        .then(() => this.snackbar.openMessage('Menú importado correctamente'))
+        .catch(() => {  });
+      });
+    });
   }
   
   exportMenu(menu?: Menu) {
