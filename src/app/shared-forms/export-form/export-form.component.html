@@ -1,4 +1,4 @@
-<form action="" [formGroup]="form" >
+<form action="" [formGroup]="form" (submit)="submitForm()" >
     <mat-form-field>
         <mat-label>
             Nombre del archivo
@@ -11,9 +11,8 @@
         </mat-label>
         <mat-select formControlName="format" >
             <mat-option value="json">JSON</mat-option>
-            <mat-option value="csv">CSV</mat-option>
-            <mat-option value="xlsx">XLSX</mat-option>
+            <!-- <mat-option value="xlsx">XLSX</mat-option> -->
         </mat-select>
     </mat-form-field>
-    <form-actions></form-actions>
+    <form-actions  [disabled]="form.invalid" (cancel)="cancelForm()"  ></form-actions>
 </form>

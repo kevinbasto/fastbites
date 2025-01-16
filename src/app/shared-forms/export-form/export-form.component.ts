@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ExportFormat } from '../../core/entities/export-format';
+
 
 @Component({
   selector: 'export-form',
@@ -7,6 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './export-form.component.scss'
 })
 export class ExportFormComponent {
+
+  @Output() cancel = new EventEmitter<void>();
+  @Output() submitExport = new EventEmitter<ExportFormat>();
 
   form: FormGroup;
 
@@ -17,5 +22,13 @@ export class ExportFormComponent {
       name: ['', [Validators.required]],
       format: ['', [Validators.required]],
     });
+  }
+
+  cancelForm() {
+    this.cancel.emit();
+  }
+
+  submitForm() {
+    this.submitExport.emit(this.form.value);
   }
 }

@@ -33,7 +33,7 @@ export class MenuComponent implements OnInit {
   }
 
   exportMenu(): void {
-    this.menuService.exportMenu();
+    this.menuService.exportMenu(this.menu);
   }
 
   importMenu(): void {

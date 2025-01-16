@@ -8,6 +8,8 @@ import { SnackbarService } from '../../../core/services/snackbar/snackbar.servic
 import { MenuRepoService } from '../../../core/repos/menu-repo/menu-repo.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ExportMenuComponent } from './dialogs/export-menu/export-menu.component';
+import { DataExporterService } from '../../../core/services/data-exporter/data-exporter.service';
+import { ExportFormat } from '../../../core/entities/export-format';
 
 
 @Injectable({
@@ -23,6 +25,7 @@ export class MenuService {
     private snackbar: SnackbarService,
     private menuRepo: MenuRepoService,
     private dialog: MatDialog,
+    private exportDataService: DataExporterService
   ) { }
 
   async fetchMenu() {
@@ -49,10 +52,15 @@ export class MenuService {
     throw new Error('Method not implemented.');
   }
   
-  exportMenu() {
+  exportMenu(menu?: Menu) {
     const dialog = this.dialog.open(ExportMenuComponent );
-    dialog.afterClosed().subscribe((result: File | null) => {
+    dialog.afterClosed().subscribe((result: ExportFormat | null) => {
       if(!result) return;
+      if(!menu){
+        this.snackbar.openMessage('La operación solicitada no es válida');
+        return
+      }
+      this.exportDataService.exportMenu(menu!, result);
     });
   }
 }

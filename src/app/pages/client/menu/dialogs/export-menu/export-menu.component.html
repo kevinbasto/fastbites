@@ -2,5 +2,8 @@
     <div class="card-header">
         <h1> Exportar menú en archivo </h1>
     </div>
-    <export-form></export-form>
+    <export-form
+        (cancel)="cancelExport()"
+        (submitExport)="submitExport($event)"
+    ></export-form>
 </div>
