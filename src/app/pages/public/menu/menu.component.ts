@@ -87,8 +87,10 @@ export class MenuComponent implements OnInit {
       .then((personalization: Personalization) => {
         this.personalization = personalization;
         let menu = document.getElementById("menu")!
-        menu.style.background = personalization.personalization.background as string;
+        if(menu)
+          menu.style.background = personalization.personalization.background as string;
       }).catch((err) => {
+        console.log(err);
         this.snackbar.openMessage('Hubo un error al aplicar la capa de personalización');
       });
   }

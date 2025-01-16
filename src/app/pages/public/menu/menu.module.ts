@@ -12,10 +12,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { CompanyProfileComponent } from './pages/company-profile/company-profile.component';
 
 @NgModule({
   declarations: [
-    MenuComponent
+    MenuComponent,
+    ProductDetailComponent,
+    CompanyProfileComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +34,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatButtonModule,
     MatExpansionModule,
     MatExpansionModule,
-    MatTabsModule
+    MatTabsModule,
+    MatToolbarModule
   ]
 })
 export class MenuModule { }
