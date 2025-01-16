@@ -14,7 +14,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { ProductDetailComponent } from './dialogs/product-detail/product-detail.component';
-import { CompanyAboutComponent } from './dialogs/company-about/company-about.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 
@@ -22,7 +21,6 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     MenuComponent,
     ProductDetailComponent,
-    CompanyAboutComponent,
   ],
   imports: [
     CommonModule,
