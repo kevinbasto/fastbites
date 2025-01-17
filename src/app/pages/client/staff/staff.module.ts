@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { StaffRoutingModule } from './staff-routing.module';
 import { StaffComponent } from './staff.component';
+import { EmployeesComponent } from './components/employees/employees.component';
 
 
 @NgModule({
   declarations: [
-    StaffComponent
+    StaffComponent,
+    EmployeesComponent
   ],
   imports: [
     CommonModule,
