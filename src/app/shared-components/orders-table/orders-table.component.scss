@@ -1,0 +1,15 @@
+.tab{
+    cursor: pointer;
+}
+
+.row:hover{
+    filter: brightness(.9);
+}
+
+.row:nth-child(2n){
+    background: hsl(0, 0%, 95%);
+}
+
+.row {
+    transition: filter 0.3s ease;
+}
