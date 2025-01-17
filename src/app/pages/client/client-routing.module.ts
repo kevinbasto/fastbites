@@ -69,10 +69,14 @@ const routes: Routes = [
   //   path: "promos",
   //   loadChildren: () => import('./promotions/promotions.module').then(m => m.PromotionsModule)
   // },
-  // {
-  //   path: "staff",
-  //   loadChildren: () => import('./staff/staff.module').then(m => m.StaffModule)
-  // }
+  {
+    path: "staff",
+    loadChildren: () => import('./staff/staff.module').then(m => m.StaffModule)
+  },
+  {
+    path: 'shifts',
+    loadChildren: () => import('./shifts/shifts.module').then(m => m.ShiftsModule)
+  },
   {
     path: '**',
     redirectTo: 'menu'
