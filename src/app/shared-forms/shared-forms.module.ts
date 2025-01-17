@@ -32,7 +32,7 @@ import { AnnouncementFormComponent } from './announcement-form/announcement-form
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
-
+import { GroupFormComponent } from './group-form/group-form.component';
 
 
 @NgModule({
@@ -53,6 +53,9 @@ import { EmployeeFormComponent } from './employee-form/employee-form.component';
     AnnouncementFormComponent,
     ScheduleFormComponent,
     EmployeeFormComponent,
+    EmployeeFormComponent,
+    GroupFormComponent
+
   ],
   imports: [
     CommonModule,
