@@ -12,6 +12,7 @@ import { EditGroupComponent } from './routes/edit-group/edit-group.component';
 import { MatCardModule } from '@angular/material/card';
 import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
     StaffRoutingModule,
     MatCardModule,
     SharedComponentsModule,
-    SharedFormsModule
+    SharedFormsModule,
+    MatTabsModule
   ]
 })
 export class StaffModule { }
