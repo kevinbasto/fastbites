@@ -5,13 +5,15 @@ import { StaffRoutingModule } from './staff-routing.module';
 import { StaffComponent } from './staff.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { CreateEmployeeComponent } from './routes/create-employee/create-employee.component';
+import { EditEmployeeComponent } from './routes/edit-employee/edit-employee.component';
 
 
 @NgModule({
   declarations: [
     StaffComponent,
     EmployeesComponent,
-    CreateEmployeeComponent
+    CreateEmployeeComponent,
+    EditEmployeeComponent
   ],
   imports: [
     CommonModule,
