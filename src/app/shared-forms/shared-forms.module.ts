@@ -33,6 +33,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { GroupFormComponent } from './group-form/group-form.component';
+import { ShiftFormComponent } from './shift-form/shift-form.component';
 
 
 @NgModule({
@@ -54,8 +55,8 @@ import { GroupFormComponent } from './group-form/group-form.component';
     ScheduleFormComponent,
     EmployeeFormComponent,
     EmployeeFormComponent,
-    GroupFormComponent
-
+    GroupFormComponent,
+    ShiftFormComponent
   ],
   imports: [
     CommonModule,
@@ -95,6 +96,7 @@ import { GroupFormComponent } from './group-form/group-form.component';
     ImageFormComponent,
     AnnouncementFormComponent,
     EmployeeFormComponent,
+    GroupFormComponent,
   ]
 })
 export class SharedFormsModule { }

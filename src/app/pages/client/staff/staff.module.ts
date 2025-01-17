@@ -9,6 +9,9 @@ import { EditEmployeeComponent } from './routes/edit-employee/edit-employee.comp
 import { GroupsComponent } from './components/groups/groups.component';
 import { CreateGroupComponent } from './routes/create-group/create-group.component';
 import { EditGroupComponent } from './routes/edit-group/edit-group.component';
+import { MatCardModule } from '@angular/material/card';
+import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
+import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { EditGroupComponent } from './routes/edit-group/edit-group.component';
   ],
   imports: [
     CommonModule,
-    StaffRoutingModule
+    StaffRoutingModule,
+    MatCardModule,
+    SharedComponentsModule,
+    SharedFormsModule
   ]
 })
 export class StaffModule { }
