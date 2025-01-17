@@ -13,6 +13,11 @@ import { MatCardModule } from '@angular/material/card';
 import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -31,7 +36,12 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatCardModule,
     SharedComponentsModule,
     SharedFormsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ]
 })
 export class StaffModule { }
