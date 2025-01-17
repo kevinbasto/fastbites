@@ -7,6 +7,7 @@ import { EmployeesComponent } from './components/employees/employees.component';
 import { CreateEmployeeComponent } from './routes/create-employee/create-employee.component';
 import { EditEmployeeComponent } from './routes/edit-employee/edit-employee.component';
 import { GroupsComponent } from './components/groups/groups.component';
+import { CreateGroupComponent } from './routes/create-group/create-group.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { GroupsComponent } from './components/groups/groups.component';
     EmployeesComponent,
     CreateEmployeeComponent,
     EditEmployeeComponent,
-    GroupsComponent
+    GroupsComponent,
+    CreateGroupComponent
   ],
   imports: [
     CommonModule,
