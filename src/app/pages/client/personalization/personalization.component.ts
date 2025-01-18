@@ -43,7 +43,7 @@ export class PersonalizationComponent implements OnInit{
       personalization.personalization.titleColor = personalization.personalization.titleColor? personalization.personalization.titleColor : ''
       personalization.personalization.banner = personalization.personalization.banner? personalization.personalization.banner : '';
       this.form.setValue(personalization);
-      this.displayBanner = (personalization.personalization.background as string);
+      this.displayBanner = (personalization.personalization.banner as string);
       this.displayLogo = (personalization.company.logo as string);
     }).catch((err) => {
       console.log(err)
