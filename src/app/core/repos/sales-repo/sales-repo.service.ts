@@ -17,38 +17,46 @@ export class SalesRepoService {
   ) {
     this.sales$ = new Observable<Array<Sale>>((observer) => {
       this.auth.getUID()
-      .then((uid: string | null) => {
-        if(!uid)
-          observer.error(new Error("Problem loading the uid"));
-        let date = new Date();
-        let docId = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate() > 10? date.getDate() : `0${date.getDate()}`}`
-        let docRef = doc(this.firestore,`/users/${uid}/sales/${docId}`);
-        (docData(docRef) as Observable<{sales: Array<Sale>}>).subscribe(sales => {
-          if(!sales)
-            observer.next([])
-          else
-            observer.next(sales.sales);
-        })
-      }).catch((err) => {
-        observer.error(err);
-      });
+        .then((uid: string | null) => {
+          if (!uid)
+            observer.error(new Error("Problem loading the uid"));
+          let docId = this.buildDatedoc()
+          let docRef = doc(this.firestore, `/users/${uid}/sales/${docId}`);
+          (docData(docRef) as Observable<{ sales: Array<Sale> }>).subscribe(sales => {
+            if (!sales)
+              observer.next([])
+            else
+              observer.next(sales.sales);
+          })
+        }).catch((err) => {
+          observer.error(err);
+        });
     });
-  }
+  }  
 
   async create(sale: Sale) {
     try {
       let uid = await this.auth.getUID();
-      let date = new Date();
-        let docId = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
-        let docRef = doc(this.firestore, `/users/${uid}/sales/${docId}`);
-        let sales : {sales: Array<Sale>} = (await getDoc(docRef)).data() as any;
-        if(!sales)
-          await setDoc(docRef, {sales: [sale], date: new Date() });
-        else
-          await setDoc(docRef, {sales: [...sales.sales, sale]});
+      let docId = this.buildDatedoc();
+      let docRef = doc(this.firestore, `/users/${uid}/sales/${docId}`);
+      let sales: { sales: Array<Sale> } = (await getDoc(docRef)).data() as any;
+      if (!sales)
+        await setDoc(docRef, { sales: [sale], date: new Date() });
+      else
+        await setDoc(docRef, { sales: [...sales.sales, sale] });
     } catch (error) {
       throw error;
     }
+  }
+
+  private buildDatedoc() {
+    let dateTime = new Date();
+    let date : number | string = dateTime.getDate();
+    date = date < 10? `0${date}` : date.toString();
+    let month : number | string = dateTime.getMonth() + 1;
+    month = month < 10? `0${month}` : month.toString();
+    let year = dateTime.getFullYear();
+    return `${year}-${month}-${date}`;
   }
 
   async fetchFromDate(date: string) {
@@ -56,7 +64,7 @@ export class SalesRepoService {
       let uid = await this.auth.getUID();
       let docRef = doc(this.firestore, `/users/${uid}/sales/${date}`);
       let data = (await getDoc(docRef)).data() as any
-      if(data)
+      if (data)
         return data.sales
       else
         return []
@@ -65,8 +73,8 @@ export class SalesRepoService {
     }
   }
 
-  update() {}
+  update() { }
 
-  remove() {}
+  remove() { }
 
 }

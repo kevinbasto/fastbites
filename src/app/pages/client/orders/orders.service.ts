@@ -58,13 +58,8 @@ export class OrdersService {
         let quantity = item.quantity;
         items.push({ quantity, product: {id: uuid, name, price, cost} });
       }
-      this.salesrepo.create({
-        date: order.date,
-        name: order.name!,
-        total: order.total,
-        orderId: order.id!,
-        items
-      });
+      const { date, name, total, id } = order;
+      this.salesrepo.create({ date, name, total, items, orderId: id!,});
       this.snackbar.openMessage('Orden cerrada con éxito');
     });
   }

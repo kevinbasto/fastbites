@@ -2,7 +2,7 @@ import { CheckoutItem } from "./checkout-item";
 
 export interface Order {
     id?: string;
-    name?: string;
+    name: string;
     details?: string;
     items: Array<CheckoutItem>;
     date: Date;
