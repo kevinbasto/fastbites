@@ -19,7 +19,6 @@ export class PlanSelectorFormComponent implements OnInit{
   ) {
     this.form = this.fb.group({
       plan: ['', [Validators.required]],
-      trial: [true]
     });
   }
 

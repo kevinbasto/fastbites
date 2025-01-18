@@ -12,12 +12,6 @@ import { Router } from '@angular/router';
 })
 export class FirstTimeComponent implements OnInit {
   
-  plans? : Array<Plan>;
-  uploading: boolean = false;
-
-  personalDataForm?: FormGroup;
-  planForm?: FormGroup;
-  cardForm?: FormGroup;
 
   constructor(
     private firstTimeService: FirstTimeService,
@@ -26,27 +20,11 @@ export class FirstTimeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.firstTimeService.fetchPlans()
-    .then((plans) => {
-      this.plans = plans;
-    });
-    this.auth.getEmail()
-    .then((email: string) => this.personalDataForm?.get("email")?.setValue(email));
+  
   }
 
+  
   saveNewUser() {
-    const profile = this.personalDataForm?.getRawValue();
-    const plan = this.planForm?.value;
-    const card = this.cardForm?.value;
-    this.uploading = true;
-    this.firstTimeService.postNewProfile({profile, plan, card})
-    .then((result) => {
-      this.router.navigate(['/client/menu']);
-    }).catch((err) => {
-      
-    })
-    .finally(() => {
-      this.uploading = false;
-    });
+  
   }
 }

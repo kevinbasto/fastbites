@@ -12,6 +12,7 @@ export class PersonalDataFormComponent implements OnChanges, OnInit {
   @Input() enable: boolean = false;
   @Input() profile?: Profile;
   @Input() uploading?: boolean;
+  @Input() disableCancel? : boolean;
   @Output() cancelForm : EventEmitter<void> = new EventEmitter();
   @Output() personalData: EventEmitter<Profile> = new EventEmitter();
   @Output() personalDataForm : EventEmitter<FormGroup> = new EventEmitter();

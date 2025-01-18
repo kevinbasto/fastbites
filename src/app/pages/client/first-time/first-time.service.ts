@@ -38,16 +38,10 @@ export class FirstTimeService {
     }
   }
 
-  async postNewProfile(profile: {profile: Profile, plan : {plan: Plan, trial: boolean}, card: Card}) {
+  async postNewProfile(profile: {profile: Profile, plan : {plan: Plan}, card: Card}) {
     try {
       const uid = await this.auth.getUID();
-      await lastValueFrom(this.http.post(`${this.apiUrl}/customers`, {...profile, uid}))
-      .then((result) => {
-        this.snackbar.openMessage("Usuario creado con exito");
-      }).catch((err) => {
-        this.snackbar.openMessage("Error al crear el usuario");
-        throw err;
-      });
+      
     } catch (error) {
       this.snackbar.openMessage("Hubo un error al procesar la solicitud, reintenta de nuevo mas tarde");
       throw error;

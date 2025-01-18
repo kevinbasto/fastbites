@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Plan } from '../../core/entities/plan';
+import { Profile } from '../../core/entities/profile';
 
 @Component({
   selector: 'plan-summary',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './plan-summary.component.scss'
 })
 export class PlanSummaryComponent {
+
+  @Input() plan!: Plan;
+  @Input() profile!: Profile;
 
 }

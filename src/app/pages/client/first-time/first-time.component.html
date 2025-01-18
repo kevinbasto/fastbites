@@ -1,51 +1,9 @@
 <mat-card class="card">
-    <mat-stepper [linear]="true" #stepper>
-        <mat-step label="Datos personales">
-            <personal-data-form (personalDataForm)="personalDataForm = $event"></personal-data-form>
-            @if (personalDataForm) {
-            <div class="form-actions">
-                <button mat-raised-button color="primary" matStepperNext  [disabled]="personalDataForm.invalid">
-                    Continuar
-                </button>
-            </div>
-            }
-        </mat-step>
-        <mat-step label="Selecciona tu plan">
-            <plan-selector-form [plans]="plans!" (planForm)="planForm = $event" ></plan-selector-form>
-            @if (planForm) {
-            <div class="form-actions">
-                <button mat-raised-button matStepperPrevious>
-                    Regresar
-                </button>
-                <button mat-raised-button color="primary" matStepperNext [disabled]="planForm.invalid">
-                    Continuar
-                </button>
-            </div>
-            }
-        </mat-step>
-        <mat-step label="Selecciona tu plan">
-            <card-form (cardForm)="cardForm = $event" [disablebuttons]="true" ></card-form>
-            @if (cardForm) {
-            <div class="form-actions">
-                <button mat-raised-button matStepperPrevious>
-                    Regresar
-                </button>
-                <button mat-raised-button color="primary" matStepperNext [disabled]="cardForm.invalid">
-                    Continuar
-                </button>
-            </div>
-            }
-        </mat-step>
-        <mat-step label="Resumen General">
-            <plan-summary></plan-summary>
-            <div class="form-actions">
-                <button mat-raised-button matStepperPrevious>
-                    Regresar
-                </button>
-                <button mat-raised-button color="primary" (click)="saveNewUser()">
-                    Finalizar
-                </button>
-            </div>
-        </mat-step>
-    </mat-stepper>
+    <div class="card-header" style="margin-bottom: 1rem;">
+        <div>
+            <h1> ¡Bienvenido a Fastbites! </h1>
+            <span>cuentanos un poco mas sobre ti</span>
+        </div>
+    </div>
+    <personal-data-form [enable]="true" [disableCancel]="true" ></personal-data-form>
 </mat-card>
