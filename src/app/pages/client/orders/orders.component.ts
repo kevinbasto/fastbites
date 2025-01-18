@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TableColumn } from '../../../core/generics/table-column';
-import { TableConfig } from '../../../core/generics/table-config';
 import { OrdersTableHeaders } from './orders-table.headers';
 import { OrdersService } from './orders.service';
 import { Timestamp } from '@angular/fire/firestore';
@@ -13,7 +12,7 @@ import { Order } from '../../../core/entities/order';
 })
 export class OrdersComponent implements OnInit {
   title: string = "Listado de productos";
-  data: Array<any> = [];
+  orders?: Array<Order>;
   headers: Array<TableColumn> = OrdersTableHeaders;
   size: number = 0;
 
@@ -30,7 +29,7 @@ export class OrdersComponent implements OnInit {
           return order;
         })
       orders.sort((a: Order, b:Order) => b.date.getTime() - a.date.getTime())
-      this.data = orders;
+      this.orders = orders;
     })
   }
 

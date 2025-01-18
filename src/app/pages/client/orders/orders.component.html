@@ -1,9 +1,66 @@
 <mat-card class="card">
-    <app-orders-table
+    <div class="card-header">
+        <h1>Listado de ordenes</h1>
+    </div>
+    @if (orders) {
+    <mat-accordion>
+        @for (order of orders; track $index) {
+        <mat-expansion-panel expanded="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{order.name}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{order.total | currency}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="items">
+                @for (product of order.items; track $index) {
+                <div class="product">
+                    <img src="{{product.product.croppedImage}}" alt="">
+                    <div class="info">
+                        <div class="info-header">
+                            <h3>
+                                {{product.product.name}}
+                            </h3>
+                            <h3>
+                                {{product.quantity}}pza
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+
+            <div class="form-actions">
+                <button mat-raised-button (click)="cancelOrder(order)">
+                    <mat-icon>
+                        cancel
+                    </mat-icon>
+                    Cancelar Orden
+                </button>
+                <button mat-raised-button color="primary" (click)="closeOrder(order)">
+                    <mat-icon>
+                        attach_money
+                    </mat-icon>
+                    Cerrar Orden
+                </button>
+            </div>
+        </mat-expansion-panel>
+        }
+    </mat-accordion>
+    }
+    @else {
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <mat-spinner diameter="150"></mat-spinner>
+    </div>
+    }
+    <!-- <app-orders-table
         [headers]="headers"
-        [orders]="data"
+        [orders]="orders"
         (details)="detailOrder($event)"
         (closeOrder)="closeOrder($event)"
         (cancelOrder)="cancelOrder($event)"
-    ></app-orders-table>
+    ></app-orders-table> -->
 </mat-card>
