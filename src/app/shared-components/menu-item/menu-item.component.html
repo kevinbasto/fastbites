@@ -1,14 +1,15 @@
-<div class="item mat-elevation-z5" >
-    <div (click)="itemSelected.emit(product)" class="item">
-        <img src="{{product.croppedImage}}" class="img" alt="">
-    <h2 class="title"> {{product.name}} </h2>
-    <p class="description"> {{product.description}} </p>
-    <p class="price"> {{product.price | currency}} </p>
+<div class="item mat-elevation-z5">
+    <div class="content">
+        <img src="{{product.croppedImage}}" class="img" alt="" (click)="itemSelected.emit(product)">
+        <div (click)="itemSelected.emit(product)" class="info">
+            <h2 class="title"> {{product.name}} </h2>
+            <p class="description"> {{product.description}} </p>
+            <p class="price"> {{product.price | currency}} </p>
+        </div>
     </div>
     <button mat-button color="primary"
         [ngStyle]="personalization? {color: personalization.personalization.buttonColor} : {}"
-        (click)="orderItem.emit(product)"
-        >
+        (click)="orderItem.emit(product)">
         <mat-icon> add_shopping-cart </mat-icon>
         Agregar
     </button>

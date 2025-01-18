@@ -1,51 +1,90 @@
 @import "../../../colors.scss";
 
 .item{
-    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background: white;
-    max-width: 150px;
-    .img{
-        width: 100%;
-        aspect-ratio: 1/1;
-        background: grey;
-        border-radius: 1rem;
+    justify-content: space-between;
+    .content{
+        img{
+            width: 100%;
+            border-radius: 1rem;
+        }
+        .info{
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
     }
-    .title{
-        width: 100%;
-        font-weight: lighter;
-        margin: .5rem;
-    }
-    .description{
-        color: hsl(0deg, 0%, 60%);
-        white-space: nowrap;
-        overflow: hidden;
-        word-wrap: break-word;
-        text-overflow: ellipsis;
-        height: 2ch;
-        width: 100%;
-        margin: 0;
-    }
-    .price{
-        color: hsl(0deg, 0%, 20%);
-        width: 100%;
-        text-align: left;
-        font-size: 12px;
-        font-weight: bold;
-        margin: .5rem;
-    }
-    button{
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-    }
-    &:hover{
+
+    &:hover {
         transform: scale(1.05);
         transition: 100ms ease;
         cursor: pointer;
     }
 }
 
+// .item {
+//     border-radius: 1rem;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     background: white;
+//     max-width: 150px;
+
+//     &:hover {
+//         transform: scale(1.05);
+//         transition: 100ms ease;
+//         cursor: pointer;
+//     }
+// }
+
+// .img {
+//     width: 100%;
+//     aspect-ratio: 1/1;
+//     background: grey;
+//     border-radius: 1rem;
+// }
+
+.title {
+    width: 100%;
+    font-size: 1rem;
+    /* Ajusta según tu diseño */
+    line-height: 1.2;
+    /* Altura de línea deseada */
+    max-height: calc(1.2em * 2);
+    /* Altura máxima para 2 líneas */
+    overflow: hidden;
+    /* Oculta el contenido desbordante */
+    text-overflow: ellipsis;
+    /* Aplica los puntos suspensivos */
+    white-space: nowrap;
+}
+
+.description {
+    color: hsl(0deg, 0%, 60%);
+    white-space: nowrap;
+    overflow: hidden;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    height: 2ch;
+    width: 100%;
+    margin: 0;
+}
+
+.price {
+    color: hsl(0deg, 0%, 20%);
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: .5rem;
+}
+
+button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
