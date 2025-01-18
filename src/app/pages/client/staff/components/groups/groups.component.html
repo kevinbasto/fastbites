@@ -18,4 +18,11 @@
         (edit)="editGroup($event)"
         (deleteItem)="deleteGroup($event)"
     ></app-table>
-</div><p>groups works!</p>
+    <mat-paginator 
+      [length]="staff? staff.groups.length : 0" 
+      [pageSizeOptions]="options" 
+      [pageSize]="size" 
+      (page)="changePage($event)"
+      showFirstLastButtons
+    ></mat-paginator>
+</div>

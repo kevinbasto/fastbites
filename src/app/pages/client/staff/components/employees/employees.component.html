@@ -18,4 +18,11 @@
         (edit)="editEmployee($event)"
         (deleteItem)="deleteEmployee($event)"
     ></app-table>
+    <mat-paginator 
+      [length]="staff? staff.employees.length : 0" 
+      [pageSizeOptions]="options" 
+      [pageSize]="size" 
+      (page)="changePage($event)"
+      showFirstLastButtons
+    ></mat-paginator>
 </div>
