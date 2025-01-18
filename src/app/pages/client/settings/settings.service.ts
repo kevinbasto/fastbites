@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateCardComponent } from './dialogs/create-card/create-card.component';
 import { Card } from '../../../core/entities/card';
 import { HttpClient } from '@angular/common/http';
+import { doc, Firestore } from '@angular/fire/firestore';
+import { AuthService } from '../../../core/services/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,9 @@ export class SettingsService {
     private profileRepo: ProfileRepoService,
     private snackbar: SnackbarService,
     private dialog: MatDialog,
-    private httpclient: HttpClient
+    private httpclient: HttpClient,
+    private auth: AuthService,
+    private firestore: Firestore
   ) { }
 
   async fetchProfile() {

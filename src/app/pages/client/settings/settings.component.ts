@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsService } from './settings.service';
 import { TableColumn } from '../../../core/generics/table-column';
-import { paymentMethodsTableConfig, paymentMethodsTableHeaders } from './payment-methods';
+import { paymentMethodsTableConfig, paymentMethodsTableHeaders } from './payment-methods-table.headers';
 import { TableConfig } from '../../../core/generics/table-config';
 import { Profile } from '../../../core/entities/profile';
 
@@ -47,7 +47,7 @@ export class SettingsComponent implements OnInit {
   headers : Array<TableColumn> = paymentMethodsTableHeaders;
   tableConfig: TableConfig = paymentMethodsTableConfig;
   title : string = "Listado de métodos de pago";
-  data? : Array<any>;
+  cards? : Array<any>;
 
   createCard() {
     this.settingsService.createCard()

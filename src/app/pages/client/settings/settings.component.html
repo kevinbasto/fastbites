@@ -98,9 +98,9 @@
         <div class="section">
             <app-table
             [title]="title"
-            [data]="data"
+            [data]="cards"
             [headers]="headers"
-            [setSize]="data? data.length : 0"
+            [setSize]="cards? cards.length : 0"
             [config]="tableConfig"
             (edit)="edit($event)"
             (deleteItem)="deleteItem($event)"
