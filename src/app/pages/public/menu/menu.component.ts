@@ -90,7 +90,6 @@ export class MenuComponent implements OnInit {
         if (menu)
           menu.style.background = personalization.personalization.background as string;
       }).catch((err) => {
-        console.log(err);
         this.snackbar.openMessage('Hubo un error al aplicar la capa de personalización');
       });
   }

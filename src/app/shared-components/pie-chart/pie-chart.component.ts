@@ -33,7 +33,6 @@ export class PieChartComponent implements OnChanges{
       this.pieChartData.labels = labels;
       this.pieChartData.datasets[0].data = data;
       this.chart?.update()
-      console.log("object");
     }
   }
 
@@ -79,7 +78,6 @@ export class PieChartComponent implements OnChanges{
     event: ChartEvent;
     active: object[];
   }): void {
-    console.log(event, active);
   }
 
   public chartHovered({
@@ -89,7 +87,6 @@ export class PieChartComponent implements OnChanges{
     event: ChartEvent;
     active: object[];
   }): void {
-    console.log(event, active);
   }
 
 }

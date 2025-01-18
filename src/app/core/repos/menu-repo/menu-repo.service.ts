@@ -55,7 +55,6 @@ export class MenuRepoService {
       await updateDoc(docRef, {...menu});
       return menu;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }

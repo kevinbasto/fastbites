@@ -64,7 +64,6 @@ export class MenuService {
       })
       .catch((error) => {
         this.snackbar.openMessage(`Hubo un problema al importar el menú: ${error}`);
-        console.log(error);
       });
     });
   }

@@ -46,7 +46,6 @@ export class PersonalizationComponent implements OnInit{
       this.displayBanner = (personalization.personalization.banner as string);
       this.displayLogo = (personalization.company.logo as string);
     }).catch((err) => {
-      console.log(err)
       this.snackbar.openMessage('Hubo un error al cargar tu información guardada');
     });
     this.form.disable();

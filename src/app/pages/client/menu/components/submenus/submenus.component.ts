@@ -38,12 +38,10 @@ export class SubmenusComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.form.valueChanges.subscribe((value) => {
-      console.log(value);
       this.filteredSubmenus = this.submenus?.filter((submenu) => {
         const matchesName = value.name === "" || submenu.name.toLowerCase().includes(value.name.toLowerCase());
         return matchesName;
       });
-      console.log(this.filteredSubmenus);
       this.setPage();
     });
   }
@@ -59,7 +57,6 @@ export class SubmenusComponent implements OnInit, OnChanges {
   }
 
   editSubmenu(submenu: Submenu) {
-    console.log(submenu);
     this.router.navigate([`/client/menu/submenu/${submenu.id}`]);
   }
 

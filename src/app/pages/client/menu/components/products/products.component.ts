@@ -60,7 +60,6 @@ export class ProductsComponent implements OnInit, OnChanges {
   }
 
   editProduct(product: Product) {
-    console.log(product)
     this.router.navigate([`/client/menu/product/${product.id}`]);
   }
 

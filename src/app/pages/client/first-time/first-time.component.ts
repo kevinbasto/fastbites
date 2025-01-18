@@ -39,7 +39,6 @@ export class FirstTimeComponent implements OnInit {
     const plan = this.planForm?.value;
     const card = this.cardForm?.value;
     this.uploading = true;
-    console.log(JSON.stringify({customer: profile, plan, card}, null, 2))
     this.firstTimeService.postNewProfile({profile, plan, card})
     .then((result) => {
       this.router.navigate(['/client/menu']);

@@ -46,7 +46,6 @@ export class SalesService {
       for (let day of days) 
         promises.push(this.salesRepo.fetchFromDate(day));
       let salesData : Array<Array<Sale>> = await Promise.all(promises);
-      console.log(salesData)
       for(let sale of salesData)
         sales = [...sales, ...sale]
       sales.forEach(sale => {

@@ -41,7 +41,6 @@ export class SubmenusService {
   }
 
   toggleSubmenu(submenu: Submenu) { 
-    console.log(`invoked`)
     submenu.available = !submenu.available;
     this.submenusRepo.updatesubmenu(submenu)
     .then((result) => {

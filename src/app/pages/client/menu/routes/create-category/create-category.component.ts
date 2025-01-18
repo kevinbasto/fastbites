@@ -19,7 +19,6 @@ export class CreateCategoryComponent {
   ) {}
 
   cancel() {
-    console.log(`invoked`)
     this.router.navigate(['/client/menu']);
   }
 
