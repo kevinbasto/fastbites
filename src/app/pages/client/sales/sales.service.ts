@@ -34,11 +34,11 @@ export class SalesService {
       let date = new Date();
       let year = date.getFullYear();
       let month: any = date.getMonth() + 1;
-      month = month < 10 ?  month : month;
+      month = month < 10 ?  `0${month}` : month;
       let daysInMonth = new Date(year, month, 0).getDate();
       let days = [];
       for (let day = 1; day <= daysInMonth; day++) {
-        let dayString = day < 10 ?  + day : day;
+        let dayString = day < 10 ?  `0${day}` : day;
         days.push(`${year}-${month}-${dayString}`);
       }
       let sales : Array<any> = []
@@ -81,4 +81,12 @@ export class SalesService {
     xlsx.writeFile(wb, 'ventas.xlsx');
   }
 
+  private buildDatedoc(dateTime: Date) {
+    let date : number | string = dateTime.getDate();
+    date = date < 10? `0${date}` : date.toString();
+    let month : number | string = dateTime.getMonth() + 1;
+    month = month < 10? `0${month}` : month.toString();
+    let year = dateTime.getFullYear();
+    return `${year}-${month}-${date}`;
+  }
 }
