@@ -6,5 +6,5 @@ export interface Profile{
     email: string;
     phone: string;
     paymentMethods: Array<PaymentMethod>;
-    plan: Plan;
+    // plan: Plan;
 }

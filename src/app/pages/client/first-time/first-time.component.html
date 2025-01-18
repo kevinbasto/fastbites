@@ -5,5 +5,5 @@
             <span>cuentanos un poco mas sobre ti</span>
         </div>
     </div>
-    <personal-data-form [enable]="true" [disableCancel]="true" ></personal-data-form>
+    <personal-data-form [enable]="true" [disableCancel]="true" (personalData)="saveNewUser($event)" (personalDataForm)="form = $event"  ></personal-data-form>
 </mat-card>
