@@ -5,6 +5,7 @@ import { SalesRepoService } from '../../../core/repos/sales-repo/sales-repo.serv
 import { Timestamp } from '@angular/fire/firestore';
 import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 import * as xlsx from 'xlsx';
+import { PageEvent } from '@angular/material/paginator';
 
 
 @Injectable({
@@ -80,12 +81,4 @@ export class SalesService {
     xlsx.writeFile(wb, 'ventas.xlsx');
   }
 
-  private buildDatedoc(dateTime: Date) {
-    let date : number | string = dateTime.getDate();
-    date = date < 10? `0${date}` : date.toString();
-    let month : number | string = dateTime.getMonth() + 1;
-    month = month < 10? `0${month}` : month.toString();
-    let year = dateTime.getFullYear();
-    return `${year}-${month}-${date}`;
-  }
 }

@@ -88,17 +88,6 @@
                 </mat-icon>
             </button>
         </div>
-        <div class="buttonry">
-            <!-- <button mat-raised-button [color]="salesHistoryMode == 'week'? 'primary' : ''" (click)="salesHistoryMode = 'week'" >
-                Semana
-            </button>
-            <button mat-raised-button [color]="salesHistoryMode == 'month'? 'primary' : ''" (click)="salesHistoryMode = 'month'" >
-                Mes
-            </button>
-            <button mat-raised-button [color]="salesHistoryMode == 'year'? 'primary' : ''" (click)="salesHistoryMode = 'year'" >
-                Año
-            </button> -->
-        </div>
         <app-table
             [title]="salesTitle"
             [data]="sales"
@@ -106,5 +95,12 @@
             [setSize]="size"
             [config]="tableConfig"
         ></app-table>
+        <mat-paginator 
+          [length]="sales?.length?? 0" 
+          [pageSizeOptions]="options" 
+          [pageSize]="size" 
+          (page)="changePage($event)"
+          showFirstLastButtons
+        ></mat-paginator>
     </mat-card>
 </div>

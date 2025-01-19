@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatStepperModule } from "@angular/material/stepper";
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MatStepperModule } from "@angular/material/stepper";
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
-    MatStepperModule
+    MatStepperModule,
+    MatPaginatorModule
   ]
 })
 export class SalesModule { }

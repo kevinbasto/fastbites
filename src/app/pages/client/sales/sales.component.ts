@@ -7,6 +7,8 @@ import { Sale } from '../../../core/entities/sale';
 import { Product } from '../../../core/entities/product';
 import { CheckoutItem } from '../../../core/entities/checkout-item';
 import { Months } from './sales-data';
+import { PageEvent } from '@angular/material/paginator';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   templateUrl: './sales.component.html',
@@ -23,7 +25,7 @@ export class SalesComponent implements OnInit {
   total: number = 0
   earnings: number = 0;
   trendProduct: string = "";
-  salesHistoryMode : "week" | "month" | "year" = "week"
+  salesHistoryMode: "week" | "month" | "year" = "week"
 
   constructor(
     private salesServ: SalesService
@@ -39,6 +41,7 @@ export class SalesComponent implements OnInit {
 
   salesTitle: string = "Listado de ventas del Mes";
   sales?: Array<any>;
+  displaySales?: Array<any>;
   salesHeaders: Array<TableColumn> = salesTableHeaders;
   MonthTotal = 0
 
@@ -47,6 +50,12 @@ export class SalesComponent implements OnInit {
     this.salesServ.fetchFromMonth()
       .then((sales: Array<Sale>) => {
         this.sales = sales;
+        let page: PageEvent = {
+          pageIndex: 0,
+          pageSize: 10,
+          length: sales.length
+        }
+        this.changePage(page);
         this.calculateMonthTotal(sales);
         this.CalculateEarnings(sales);
         this.calculateTrendProduct(sales);
@@ -67,7 +76,7 @@ export class SalesComponent implements OnInit {
   private calculateTrendProduct(sales: Array<Sale>) {
     const productSalesMap: Map<string, { product: Partial<Product>; quantity: number }> = new Map();
     sales.forEach((sale) => {
-      
+
       sale.items.forEach((item) => {
         const product = item.product;
         const quantity = item.quantity || 0;
@@ -131,6 +140,7 @@ export class SalesComponent implements OnInit {
   }
 
   dailySales: Array<number> = []
+  options = environment.paginationOptions;
 
   calculateDailySales(sales: Array<Sale>) {
     const dailySales: Array<Array<Sale>> = [];
@@ -159,8 +169,8 @@ export class SalesComponent implements OnInit {
       // Add to daily sales array
       dailySales.push(salesForDay);
     }
-    let dailyCalculation : Array<number> = []
-    for(let sale of dailySales) {
+    let dailyCalculation: Array<number> = []
+    for (let sale of dailySales) {
       let calculation = this.calculateDayTotal(sale);
       dailyCalculation.push(calculation)
     }
@@ -175,34 +185,40 @@ export class SalesComponent implements OnInit {
     return total;
   }
 
-  brief?: Array<{product: Product, quantity: number}>;
+  brief?: Array<{ product: Product, quantity: number }>;
 
   private debriefSales(sales: Array<Sale>) {
     let items: Array<Partial<CheckoutItem>> = [];
-    
+
     for (let sale of sales) {
-        items = [...items, ...sale.items];
+      items = [...items, ...sale.items];
     }
-    
+
     const productTotals = new Map<string, { product: Partial<Product>, quantity: number }>();
 
     for (let item of items) {
-        const productId = item.product?.id;
-        if (productId) {
-            if (!productTotals.has(productId)) {
-                productTotals.set(productId, { product: item.product!, quantity: 0 });
-            }
-            const current = productTotals.get(productId)!;
-            current.quantity += item.quantity ?? 0;
+      const productId = item.product?.id;
+      if (productId) {
+        if (!productTotals.has(productId)) {
+          productTotals.set(productId, { product: item.product!, quantity: 0 });
         }
+        const current = productTotals.get(productId)!;
+        current.quantity += item.quantity ?? 0;
+      }
     }
 
-  let brief = Array.from(productTotals.values());
-  this.brief = brief as any;
-}
+    let brief = Array.from(productTotals.values());
+    this.brief = brief as any;
+  }
 
   exportToExcel() {
     this.salesServ.exportToExcel(this.sales!);
+  }
+
+  changePage(page: PageEvent) {
+    const startIndex = page.pageIndex * page.pageSize;
+    const endIndex = startIndex + page.pageSize;
+    this.displaySales = this.sales?.slice(startIndex, endIndex) || [];
   }
 
 }
