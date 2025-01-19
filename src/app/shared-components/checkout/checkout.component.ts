@@ -25,24 +25,12 @@ export class CheckoutComponent implements OnInit {
     this.form = this.builder.group({
       name: ["", [Validators.required]],
       details: [""],
-      type: [""],
+      type: ["", [Validators.required]],
+      creditOrDebit: ['']
     });
     this.form.get("type")?.valueChanges.subscribe(change => {
-      if(change.includes("card"))
-        this.form = this.builder.group({
-          name: ["", [Validators.required]],
-          details: [""],
-          type: [""],
-          creditOrDebit: ['']
-        });
-      else
-        if(this.form.get("creditOrDebit"))
-          this.form = this.builder.group({
-            name: ["", [Validators.required]],
-            details: [""],
-            type: [""],
-          });
-    })
+      
+    });
   }
 
   ngOnInit(): void {
