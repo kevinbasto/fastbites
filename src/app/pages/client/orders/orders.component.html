@@ -3,6 +3,7 @@
         <h1>Listado de ordenes</h1>
     </div>
     @if (orders) {
+    @if(orders.length > 0) {
     <mat-accordion [multi]="true">
         @for (order of orders; track $index) {
         <mat-expansion-panel expanded="true">
@@ -27,12 +28,12 @@
                 </p>
             </div>
             @if (order.details) {
-                <div>
-                    <b>Detalles:</b>
-                    <p>
-                        {{order.details}}
-                    </p>
-                </div>
+            <div>
+                <b>Detalles:</b>
+                <p>
+                    {{order.details}}
+                </p>
+            </div>
             }
             <div class="items">
                 @for (product of order.items; track $index) {
@@ -69,6 +70,17 @@
         </mat-expansion-panel>
         }
     </mat-accordion>
+    }
+    @else {
+    <div style="display: grid; place-content: center;">
+        <div style="display: grid; place-content: center;">
+            <mat-icon style="width: 5rem; height: 5rem; font-size: 5rem;"> sentiment_dissatisfied </mat-icon>
+        </div>
+        <p>
+            No hay información para mostrar
+        </p>
+    </div>
+    }
     }
     @else {
     <div style="display: flex; align-items: center; justify-content: center;">
