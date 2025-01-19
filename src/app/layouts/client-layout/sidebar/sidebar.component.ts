@@ -54,8 +54,7 @@ export class SidebarComponent {
   }
 
   logout(){
-    this.authServ.signOut()
-    this.router.navigate(['/auth/login'])
+    this.authServ.signOut();
   }
 
 }
