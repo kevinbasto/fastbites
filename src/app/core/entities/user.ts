@@ -5,4 +5,5 @@ export interface User {
     terms: boolean;
     creationDate: number | Date;
     firstTime: boolean;
+    active: boolean;
 }

@@ -69,7 +69,8 @@ export class LoginService {
         terms: true,
         verified: true,
         firstTime: true,
-        creationDate: Date.now()
+        creationDate: Date.now(),
+        active: false
       };
       if(!data)
         await setDoc(docRef, user);
