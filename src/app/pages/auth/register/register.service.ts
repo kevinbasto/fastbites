@@ -35,7 +35,8 @@ export class RegisterService {
         uid: userRef.uid,
         verified: false,
         creationDate: Date.now(),
-        firstTime: true
+        firstTime: true,
+        active:false
       };
       await sendEmailVerification(userRef)
       .catch(err => { givenUser = userRef; throw err;});
@@ -68,7 +69,8 @@ export class RegisterService {
           terms: true,
           verified: true,
           firstTime: true,
-          creationDate: Date.now()
+          creationDate: Date.now(),
+          active: false
         }; 
         const {firstTime} = user;
         window.localStorage.setItem('profile', JSON.stringify({firstTime}))
