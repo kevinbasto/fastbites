@@ -3,6 +3,7 @@ import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/
 import { ChartConfiguration, ChartData, ChartEvent, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { Product } from '../../core/entities/product';
+import { Category } from '../../core/entities/category';
 
 @Component({
   selector: 'pie-chart',
@@ -12,7 +13,7 @@ import { Product } from '../../core/entities/product';
 export class PieChartComponent implements OnChanges{
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
-  @Input() brief? : Array<{product: Product, quantity: number}>
+  @Input() brief? : Array<{category: Category, quantity: number}>
 
   constructor(
     private breakpointObserver: BreakpointObserver
@@ -27,7 +28,7 @@ export class PieChartComponent implements OnChanges{
       let labels :string[] = [];
       let data: number[] = [];
       for(let item of this.brief){
-        labels.push(item.product.name);
+        labels.push(item.category.name);
         data.push(item.quantity);
       }
       this.pieChartData.labels = labels;

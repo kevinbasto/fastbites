@@ -9,6 +9,10 @@ import { CheckoutItem } from '../../../core/entities/checkout-item';
 import { Months } from './sales-data';
 import { PageEvent } from '@angular/material/paginator';
 import { environment } from '../../../../environments/environment';
+import { MenuRepoService } from '../../../core/repos/menu-repo/menu-repo.service';
+import { AuthService } from '../../../core/services/auth/auth.service';
+import { Menu } from '../../../core/entities/menu';
+import { Category } from '../../../core/entities/category';
 
 @Component({
   templateUrl: './sales.component.html',
@@ -28,7 +32,9 @@ export class SalesComponent implements OnInit {
   salesHistoryMode: "week" | "month" | "year" = "week"
 
   constructor(
-    private salesServ: SalesService
+    private salesServ: SalesService,
+    private menuRepo: MenuRepoService,
+    private auth: AuthService
   ) {
     let date = new Date()
     this.date = `${date.getDate()}-${this.months[date.getMonth()]}-${date.getFullYear()}`
@@ -62,6 +68,7 @@ export class SalesComponent implements OnInit {
         this.debriefSales(sales);
         this.setDates()
         this.calculateDailySales(sales);
+        this.debriefByCategory(sales);
       }).catch((err) => {
 
       });
@@ -209,6 +216,43 @@ export class SalesComponent implements OnInit {
 
     let brief = Array.from(productTotals.values());
     this.brief = brief as any;
+  }
+
+  categoriesBrief : any;
+
+  async debriefByCategory(sales: Array<Sale>) {
+    const uid = await this.auth.getUID();
+    let menu: Menu = await this.menuRepo.fetchMenu(uid) as Menu;
+    let ids: Array<{ id: string, quantity: number, name: string }> = [];
+    for (let sale of sales) {
+      for (let item of sale.items) {
+        const { product, quantity } = item;
+        const { id } = product!;
+        ids.push({ id: id!, quantity: quantity!, name: product!.name! });
+      }
+    }
+    let categoriesItems: Array<{ category: string, quantity: number }> = [];
+    for (let id of ids) {
+      let product = menu.products.find(prod => prod.id == id.id);
+      let category = menu.categories.find(cat => cat.id == product!.category);
+      categoriesItems.push({ category: category!.id, quantity: id.quantity });
+    }
+
+    const categoryTotals = new Map<string, { category: Category, quantity: number }>();
+
+    for (let item of categoriesItems) {
+      if (!categoryTotals.has(item.category)) {
+        const category = menu.categories.find(cat => cat.id === item.category);
+        if (category) {
+          categoryTotals.set(item.category, { category: category, quantity: 0 });
+        }
+      }
+      const current = categoryTotals.get(item.category)!;
+      current.quantity += item.quantity;
+    }
+
+    let brief = Array.from(categoryTotals.values());
+    this.categoriesBrief = brief;
   }
 
   exportToExcel() {
