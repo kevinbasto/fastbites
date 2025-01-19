@@ -1,142 +1,163 @@
-*{
+* {
     color: white;
-}
-
-.body{
+  }
+  
+  .body {
     height: 100vh;
     background: url("../../../../assets/waiter.jpg") center;
-    background-size: cover;  /* La imagen cubre todo el fondo */
+    background-size: cover; /* La imagen cubre todo el fondo */
     margin: 0;
     padding: 0;
-}
-
-.shadow{
+    scroll-snap-type: y mandatory; /* Habilitar scroll-snap */
+    overflow-y: scroll; /* Habilitar desplazamiento vertical */
+  }
+  
+  .shadow {
     background: linear-gradient(to right, rgba(0,0,0,.9), rgba(0,0,0,0));
     height: 100%;
-    nav{
-        min-height: 10%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-right: 1rem;
-        padding-left: 1rem;
+    nav {
+      min-height: 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 1rem;
+      padding-left: 1rem;
     }
-    main{
-        min-height: 80%;
-        display: flex;
-        align-items: center;
+    main {
+      min-height: 80%;
+      display: flex;
+      align-items: center;
     }
-    footer{
-        min-height: 10%;
+    footer {
+      min-height: 10%;
     }
-}
-
-.title{
+  }
+  
+  .title {
     display: flex;
     gap: 1rem;
     align-items: center;
-    img{
-        height: 2rem;
+    img {
+      height: 2rem;
     }
-    h1{
-        margin: 0;
-        font-weight: bold;
-        font-size: 2rem;
-        font-family: "Playwrite AU SA", serif;
+    h1 {
+      margin: 0;
+      font-weight: bold;
+      font-size: 2rem;
+      font-family: "Playwrite AU SA", serif;
     }
-}
-
-ul{
+  }
+  
+  ul {
     display: flex;
     margin: 0;
     padding: 0;
     list-style: none;
     gap: 1rem;
     align-items: center;
-    li{
-        a{
-            font-weight: bold;
-        }
+    li {
+      a {
+        font-weight: bold;
+      }
     }
-}
-
-.hero-info{
+  }
+  
+  .hero-info {
     width: 40%;
     margin-left: 10%;
-    h1{
-        // font-family: "Playwrite AU SA", serif;
-        font-weight: bold;
-        font-size: 3rem;
+    h1 {
+      // font-family: "Playwrite AU SA", serif;
+      font-weight: bold;
+      font-size: 3rem;
     }
-    h3{
-        margin: 0;
-        font-weight: bold;
+    h3 {
+      margin: 0;
+      font-weight: bold;
     }
-    .form-actions{
-        display: flex;
+    .form-actions {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    nav {
+      ul {
+        li:first-child {
+          display: none;
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    .shadow {
+      background: rgba(0,0,0,.6);
+      nav {
+        ul {
+          li {
+            display: none;
+          }
+          li:first-child {
+            display: block;
+          }
+        }
+      }
+      main {
         justify-content: center;
-    }
-}
-
-@media (min-width: 1200px) {
-    nav{
-        ul{
-            li:first-child{
-                display: none;
-            }
+        .hero-info {
+          margin: 0;
+          width: auto;
+          max-width: 90%;
+          h1 {
+            line-height: 3rem;
+          }
         }
+      }
     }
-}
-
-@media (max-width: 1200px) {
-    .shadow{
-        background: rgba(0,0,0,.6);
-        nav{
-            ul{
-                li{
-                    display: none;
-                }
-                li:first-child{
-                    display: block;
-                }
-            }
-        }
-        main{
-            justify-content: center;
-            .hero-info{
-                margin: 0;
-                width: auto;
-                max-width: 90%;
-                h1{
-                    line-height: 3rem;
-                }
-            }
-        }
-    }
-}
-
-.sidenav{
+  }
+  
+  .sidenav {
     padding: 1rem;
-    ul{
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      margin: 0;
+      gap: 2rem;
+      li {
+        color: black;
+        font-size: 1.5rem;
+        font-weight: bold;
         display: flex;
-        flex-direction: column;
-        align-items: start;
-        margin:0;
-        gap: 2rem;
-        li{
-            color: black;
-            font-size: 1.5rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            cursor: pointer;
-            .icon{
-                color: black;
-            }
-            a{
-                color: black;
-            }
+        align-items: center;
+        justify-content: flex-start;
+        cursor: pointer;
+        .icon {
+          color: black;
         }
+        a {
+          color: black;
+        }
+      }
     }
-}
+  }
+  
+  .benefits {
+    height: 100vh;
+    display: grid;
+    place-content: center;
+    scroll-snap-align: start; /* Hacer que la sección se alinee al inicio del contenedor */
+  }
+  
+  .section {
+    height: 100vh;
+    scroll-snap-align: start; /* Hacer que la sección se alinee al inicio del contenedor */
+    .info {
+      display: grid;
+      place-content: center;
+      h1, p {
+        color: black;
+      }
+    }
+  }
