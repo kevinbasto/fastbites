@@ -20,6 +20,12 @@
                     {{order.date | date: "dd/MM/YYYY HH:MM"}}
                 </p>
             </div>
+            <div>
+                <b>Teléfono:</b>
+                <p>
+                    {{order.phone}}
+                </p>
+            </div>
             @if (order.details) {
                 <div>
                     <b>Detalles:</b>

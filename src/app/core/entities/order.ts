@@ -8,5 +8,6 @@ export interface Order {
     date: Date;
     active: boolean;
     total: number;
+    phone: string;
     status: "PROCESSING" |"CANCELLED" | "COMPLETED"
 }
