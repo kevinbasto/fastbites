@@ -14,6 +14,12 @@
                     {{order.total | currency}}
                 </mat-panel-description>
             </mat-expansion-panel-header>
+            <div>
+                <b>Fecha:</b>
+                <p>
+                    {{order.date | date: "dd/MM/YYYY HH:MM"}}
+                </p>
+            </div>
             @if (order.details) {
                 <div>
                     <b>Detalles:</b>
