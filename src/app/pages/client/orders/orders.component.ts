@@ -27,10 +27,11 @@ export class OrdersComponent implements OnInit {
           let timestamp: Timestamp = order.date as any;
           order.date = timestamp.toDate();
           return order;
-        })
-      orders.sort((a: Order, b:Order) => b.date.getTime() - a.date.getTime())
+        });
+      // Ordenar los pedidos de más antiguo a más reciente
+      orders.sort((a: Order, b: Order) => a.date.getTime() - b.date.getTime());
       this.orders = orders;
-    })
+    });
   }
 
   detailOrder(order: Order) {

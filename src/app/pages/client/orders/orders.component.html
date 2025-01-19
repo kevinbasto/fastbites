@@ -3,7 +3,7 @@
         <h1>Listado de ordenes</h1>
     </div>
     @if (orders) {
-    <mat-accordion>
+    <mat-accordion [multi]="true">
         @for (order of orders; track $index) {
         <mat-expansion-panel expanded="true">
             <mat-expansion-panel-header>
@@ -14,7 +14,14 @@
                     {{order.total | currency}}
                 </mat-panel-description>
             </mat-expansion-panel-header>
-
+            @if (order.details) {
+                <div>
+                    <b>Detalles:</b>
+                    <p>
+                        {{order.details}}
+                    </p>
+                </div>
+            }
             <div class="items">
                 @for (product of order.items; track $index) {
                 <div class="product">
