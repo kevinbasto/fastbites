@@ -26,6 +26,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { TableFormComponent } from './table-form/table-form.component';
 import { ExportFormComponent } from './export-form/export-form.component';
 import { FileImporterFormComponent } from './file-importer-form/file-importer-form.component';
+import { ScheduleFormComponent } from './schedule-form/schedule-form.component';
 
 
 
@@ -41,7 +42,8 @@ import { FileImporterFormComponent } from './file-importer-form/file-importer-fo
     PlanSelectorFormComponent,
     TableFormComponent,
     ExportFormComponent,
-    FileImporterFormComponent
+    FileImporterFormComponent,
+    ScheduleFormComponent
   ],
   imports: [
     CommonModule,
@@ -71,7 +73,8 @@ import { FileImporterFormComponent } from './file-importer-form/file-importer-fo
     PlanSelectorFormComponent,
     TableFormComponent,
     ExportFormComponent,
-    FileImporterFormComponent
+    FileImporterFormComponent,
+    ScheduleFormComponent
   ]
 })
 export class SharedFormsModule { }

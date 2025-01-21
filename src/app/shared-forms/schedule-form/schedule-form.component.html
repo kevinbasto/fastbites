@@ -1,0 +1,21 @@
+<form action="" style="padding-left: 1rem; padding-right: 1rem;" [formGroup]="form" >
+    <div class="grid-container">
+        <mat-form-field>
+            <mat-label>
+                Hora de apertura
+            </mat-label>
+            <input [ngxTimepicker]="openingHour" matInput formControlName='openingHour' >
+            <ngx-material-timepicker #openingHour [theme]="pickerTheme"></ngx-material-timepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>
+                Hora de cierre
+            </mat-label>
+            <input [ngxTimepicker]="closingHour" matInput formControlName='closingHour' >
+            <ngx-material-timepicker #closingHour [format]="24" [theme]="pickerTheme"></ngx-material-timepicker>
+        </mat-form-field>
+    </div>
+    @if (edit) {
+        <form-actions></form-actions>
+    }
+</form>
