@@ -41,7 +41,8 @@ export class MenuService {
         let menu: Menu = {
           submenus: [],
           categories: [],
-          products: []
+          products: [],
+          schedules: []
         }
         await setDoc(docRef, { ...menu });
       }
