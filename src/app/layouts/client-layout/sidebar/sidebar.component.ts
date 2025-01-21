@@ -4,6 +4,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { NavigationMenu } from '../../../../environments/navigation-menu';
 import { AuthService } from '../../../core/services/auth/auth.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-sidebar',
@@ -16,6 +17,7 @@ export class SidebarComponent {
   @Output() public toggle : EventEmitter<boolean> = new EventEmitter<boolean>();
   public hideSidebar! : boolean;
   private mode : "side" | "over" = "side";
+  version: string = environment.version;
 
   constructor(
     private router: Router,
