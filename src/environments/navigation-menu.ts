@@ -59,7 +59,7 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
     {
         name: 'Turnos',
         url: 'shifts',
-        icon: 'schedule'
+        icon: 'calendar_month'
     }
     // {
     //     name: 'Promociones',
