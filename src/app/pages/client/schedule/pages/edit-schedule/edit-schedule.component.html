@@ -1,1 +1,8 @@
-<p>edit-schedule works!</p>
+<mat-card class="card">
+    <schedule-form
+        [schedule]="schedule"
+        [uploading]="uploading"
+        (cancel)="cancel()"
+        (submitProduct)="submitProduct($event)"
+    ></schedule-form>
+</mat-card>

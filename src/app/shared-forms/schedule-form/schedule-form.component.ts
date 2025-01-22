@@ -11,6 +11,7 @@ import { Schedule } from '../../core/entities/schedule';
 export class ScheduleFormComponent implements OnChanges {
 
   @Input() uploading?: boolean;
+  @Input() schedule?: Schedule;
 
   @Output() cancel: EventEmitter<null> = new EventEmitter()
   @Output() submitProduct : EventEmitter<Schedule> = new EventEmitter();
@@ -29,11 +30,14 @@ export class ScheduleFormComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    
+    if(changes['schedule'] && this.schedule){
+      const { openingHour, closingHour, available } = this.schedule;
+      this.form.setValue({ openingHour, closingHour, available });
+    }
   }
 
   submit() {
-    this.submitProduct.emit(this.form.value);
+    this.submitProduct.emit({...this.schedule, ...this.form.value});
   }
 
 }

@@ -58,9 +58,11 @@ export class schedulesRepoService {
     try {
       let uid : string = await this.authServ.getUID();
       let schedules = (await this.menuRepo.fetchMenu(uid))?.schedules;
-      schedules  = schedules?.map((cat : Schedule) => {
-        if(cat.id == schedule.id) cat = schedule;
-        return cat;
+      
+      schedules  = schedules?.map((sch : Schedule) => {
+        
+        if(sch.id == schedule.id) sch = schedule;
+        return sch;
       });
       await this.menuRepo.updateMenu(uid, { schedules });
     } catch (error) {
