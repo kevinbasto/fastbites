@@ -3,6 +3,7 @@ import { Product } from "./product";
 import { Submenu } from "./submenu";
 
 export interface Schedule{
+    id: string;
     openingHour: string,
     closingHour: string
 }

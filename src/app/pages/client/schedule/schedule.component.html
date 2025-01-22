@@ -1,0 +1,18 @@
+<mat-card class="card">
+    <div class="card-header">
+        <h1> Horarios de disponibilidad </h1>
+        <button mat-icon-button color="primary" (click)="addSchedule()">
+            <mat-icon>
+                more_time
+            </mat-icon>
+        </button>
+    </div>
+    <app-table [config]="config" [headers]="headers" [data]="schedules" ></app-table>
+    <mat-paginator 
+      [length]="schedules.length" 
+      [pageSizeOptions]="options" 
+      [pageSize]="size" 
+      (page)="changePage($event)"
+      showFirstLastButtons
+    ></mat-paginator>
+</mat-card>

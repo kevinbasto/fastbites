@@ -36,6 +36,11 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         url: "settings",
         icon: "settings",
     },
+    {
+        name: 'Horarios',
+        url: 'schedule',
+        icon: 'schedule',
+    }
     // {
     //     name: 'Promociones',
     //     url: 'promos',
