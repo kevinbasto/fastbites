@@ -1,6 +1,25 @@
 <mat-card class="card">
     <div class="card-header">
-        <h1> Galería de fotos </h1>
+        <h1> Horarios de disponibilidad </h1>
+        <button mat-icon-button color="primary" (click)="createPhoto()">
+            <mat-icon>
+                more_time
+            </mat-icon>
+        </button>
     </div>
-    <file-dropper></file-dropper>
+    <app-table 
+        [config]="config" 
+        [headers]="headers" 
+        [data]="displayPhotos"
+        (edit)="updatePhoto($event)"
+        (toggle)="togglePhoto($event)"
+        (deleteItem)="deletePhoto($event)"
+    ></app-table>
+    <mat-paginator 
+      [length]="photos.length" 
+      [pageSizeOptions]="options" 
+      [pageSize]="size" 
+      (page)="changePage($event)"
+      showFirstLastButtons
+    ></mat-paginator>
 </mat-card>

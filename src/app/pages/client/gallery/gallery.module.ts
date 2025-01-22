@@ -6,6 +6,9 @@ import { GalleryComponent } from './gallery.component';
 import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { MatCardModule } from '@angular/material/card';
     GalleryRoutingModule,
     SharedComponentsModule,
     SharedFormsModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatPaginatorModule
   ]
 })
 export class GalleryModule { }
