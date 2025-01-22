@@ -25,6 +25,14 @@
             <input type="text" matInput formControlName="phone" >
         </mat-form-field>
     </section>
+    <div class="grid-container">
+        <mat-form-field>
+            <mat-label>
+                Dirección
+            </mat-label>
+            <textarea name="" id="" rows="10" matInput formControlName="address" ></textarea>
+        </mat-form-field>
+    </div>
     @if(enable){
         <div class="form-actions">
             @if (!disableCancel) {
@@ -44,7 +52,7 @@
                         Guardar cambios
                     </span>
                 }@else {
-                    <mat-spinner></mat-spinner>
+                    <mat-spinner diameter="35" ></mat-spinner>
                 }
             </button>
         </div>

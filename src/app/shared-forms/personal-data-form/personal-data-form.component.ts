@@ -26,7 +26,8 @@ export class PersonalDataFormComponent implements OnChanges, OnInit {
     this.form = this.fb.group({
       name: ["", [Validators.required]],
       email: ["", [Validators.required, Validators.email]],
-      phone: ["", []]
+      phone: ["", []],
+      address: ['']
     })
     this.form.get("email")?.disable();
   }
@@ -51,10 +52,11 @@ export class PersonalDataFormComponent implements OnChanges, OnInit {
     }
 
     if(changes['profile'] && this.profile){
-      let { name, email, phone } = this.profile;
+      let { name, email, phone, address } = this.profile;
       if(name) this.name.setValue(name)
       if(email) this.email.setValue(email)
       if(phone) this.phone.setValue(phone)
+      if(address) this.address.setValue(address)
     }
   }
 
@@ -73,6 +75,10 @@ export class PersonalDataFormComponent implements OnChanges, OnInit {
 
   get phone() {
     return this.form.get("phone")!;
+  }
+
+  get address() {
+    return this.form.get("address")!;
   }
 
   private formatPhone(phone: string): string {

@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateCardComponent } from './dialogs/create-card/create-card.component';
 import { Card } from '../../../core/entities/card';
 import { HttpClient } from '@angular/common/http';
-import { doc, Firestore } from '@angular/fire/firestore';
+import { doc, Firestore, updateDoc } from '@angular/fire/firestore';
 import { AuthService } from '../../../core/services/auth/auth.service';
 
 @Injectable({
@@ -32,6 +32,15 @@ export class SettingsService {
     }
   }
 
+  async postProfile(profile: Profile) {
+    try {
+      let uid = await this.auth.getUID();
+      let profdoc = doc(this.firestore, `/users/${uid}/data/profile`);
+      updateDoc(profdoc, {...profile});
+    } catch (error) {
+      throw error;
+    }
+  }
   // async postProfile(profile: Profile) {
   //   return new Promise<void>((resolve, reject) => {
   //     this.profileRepo.postProfile(profile)

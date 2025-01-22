@@ -4,6 +4,7 @@ import { TableColumn } from '../../../core/generics/table-column';
 import { paymentMethodsTableConfig, paymentMethodsTableHeaders } from './payment-methods-table.headers';
 import { TableConfig } from '../../../core/generics/table-config';
 import { Profile } from '../../../core/entities/profile';
+import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-settings',
@@ -19,6 +20,7 @@ export class SettingsComponent implements OnInit {
   
   constructor(
     private settingsService: SettingsService,
+    private snackbar: SnackbarService
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +36,14 @@ export class SettingsComponent implements OnInit {
 
   postProfileData(profile: Profile) {
     this.uploadPersonal = !this.uploadPersonal;
+    this.settingsService.postProfile(profile)
+    .then(() => {
+      this.snackbar.openMessage('Perfil actualizado con éxito');
+      this.editPersonal = false;
+    }).catch(() => {
+      this.snackbar.openMessage('No se pudo actualizar el perfil');
+    })
+    .finally(() => this.uploadPersonal = !this.uploadPersonal);
     // this.settingsService.postProfile(profile)
     // .then((result) => {
     //   this.editPersonal = false;
