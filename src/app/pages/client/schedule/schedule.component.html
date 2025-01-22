@@ -12,6 +12,7 @@
         [headers]="headers" 
         [data]="schedules"
         (edit)="updateSchedule($event)"
+        (deleteItem)="deleteSchedule($event)"
     ></app-table>
     <mat-paginator 
       [length]="schedules.length" 

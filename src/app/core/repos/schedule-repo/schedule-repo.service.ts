@@ -74,7 +74,7 @@ export class schedulesRepoService {
     try {
       let uid = await this.authServ.getUID();
       let schedules = (await this.menuRepo.fetchMenu(uid))?.schedules;
-      schedules = schedules?.filter((cat: Schedule) => cat.id != schedule.id);
+      schedules = schedules?.filter((sch: Schedule) => sch.id != schedule.id);
       await this.menuRepo.updateMenu(uid, { schedules });
     } catch (error) {
       throw error;

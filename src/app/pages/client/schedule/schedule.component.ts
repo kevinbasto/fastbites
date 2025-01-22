@@ -40,6 +40,10 @@ export class ScheduleComponent {
     this.router.navigate(['client/schedule/edit', schedule.id]);
   }
 
+  deleteSchedule(schedule: Schedule) {
+    this.scheduleService.removeSchedule(schedule);
+  }
+
   changePage(page: PageEvent) {
     const startIndex = page.pageIndex * page.pageSize;
     const endIndex = startIndex + page.pageSize;

@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, Observer } from 'rxjs';
 import { Schedule } from '../../../core/entities/schedule';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Message } from '../../../core/generics/message';
 import { ConfirmDialogComponent } from '../../../shared-components/confirm-dialog/confirm-dialog.component';
 import { schedulesRepoService } from '../../../core/repos/schedule-repo/schedule-repo.service';
+import { SnackbarService } from '../../../core/services/snackbar/snackbar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,7 @@ export class ScheduleService {
   constructor(
     private scheduleRepo: schedulesRepoService,
     private dialog: MatDialog,
-    private snackbar: MatSnackBar,
+    private snackbar: SnackbarService,
   ) { }
 
   fetchSchedule() {
@@ -24,11 +23,20 @@ export class ScheduleService {
 
   toggleSchedule(schedule: Schedule) { }
 
-  removeSchedule() {
+  removeSchedule(schedule: Schedule) {
     const message : Message = {
       name: '¿Borrar Horario?',
       message: 'Una vez hecho no se puede deshacer'
     }
     const dialog = this.dialog.open(ConfirmDialogComponent, { data: message });
+    dialog.afterClosed().subscribe((result: boolean) => {
+      if(!result) return;
+      this.scheduleRepo.deleteSchedule(schedule)
+      .then((result) => {
+        this.snackbar.openMessage('Horario eliminado');
+      }).catch((err) => {
+        this.snackbar.openMessage('Error al eliminar horario');
+      });
+    });
   }
 }
