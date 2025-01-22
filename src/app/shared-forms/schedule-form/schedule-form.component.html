@@ -15,7 +15,8 @@
             <ngx-material-timepicker #closingHour [format]="24" [theme]="pickerTheme"></ngx-material-timepicker>
         </mat-form-field>
     </div>
-    @if (edit) {
-        <form-actions></form-actions>
-    }
+    <div style="margin-top: 1rem; margin-bottom: 1rem;">
+        <mat-slide-toggle formControlName="available" > Disponible </mat-slide-toggle>
+    </div>
+    <form-actions [disabled]="form.invalid" [uploading]="uploading" (cancel)="cancel.emit()"></form-actions>
 </form>

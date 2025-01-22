@@ -1,15 +1,19 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { pickerTheme } from '../submenu-form/picker-theme';
+import { Schedule } from '../../core/entities/schedule'; 
 
 @Component({
-  selector: 'app-schedule-form',
+  selector: 'schedule-form',
   templateUrl: './schedule-form.component.html',
   styleUrl: './schedule-form.component.scss'
 })
 export class ScheduleFormComponent implements OnChanges {
 
-  @Input() edit: boolean = false;
+  @Input() uploading?: boolean;
+
+  @Output() cancel: EventEmitter<null> = new EventEmitter()
+  @Output() submitProduct : EventEmitter<Schedule> = new EventEmitter();
 
   form: FormGroup;
   pickerTheme = pickerTheme;
@@ -18,19 +22,18 @@ export class ScheduleFormComponent implements OnChanges {
     private fb: FormBuilder,
   ) {
     this.form = this.fb.group({
-      openingHour: [''],
-      closingHour: [''],
+      openingHour: ['', [Validators.required]],
+      closingHour: ['', [Validators.required]],
+      available: [],
     });
-    this.form.disable();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes['edit'])
-      if(this.edit){
-        this.form.enable();
-      } else {
-        this.form.disable();
-      }
+    
+  }
+
+  submit() {
+    this.submitProduct.emit(this.form.value);
   }
 
 }

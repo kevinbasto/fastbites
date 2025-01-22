@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Schedule } from '../../entities/menu';
+import { Schedule } from '../../entities/schedule';
 import { MenuRepoService } from '../menu-repo/menu-repo.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { v6 as uuid } from "uuid";

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { schedulesTableConfig, schedulesTableHeaders } from './schedules-table.headers';
-import { Schedule } from '../../../core/entities/menu';
+import { Schedule } from '../../../core/entities/schedule'; 
 import { environment } from '../../../../environments/environment';
 import { PageEvent } from '@angular/material/paginator';
 import { ScheduleService } from './schedule.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-schedule',
@@ -20,6 +21,7 @@ export class ScheduleComponent {
   schedules: Array<Schedule> = [];
 
   constructor(
+    private router: Router,
     private scheduleService: ScheduleService
   ) { }
 
@@ -31,11 +33,11 @@ export class ScheduleComponent {
   }
 
   addSchedule() {
-    this.scheduleService.createSchedule();
+    this.router.navigate(['client/schedule/create']);
   }
 
   updateSchedule(schedule: Schedule) {
-    this.scheduleService.editSchedule(schedule);
+    this.router.navigate(['client/schedule/edit', schedule.id]);
   }
 
   changePage(page: PageEvent) {
