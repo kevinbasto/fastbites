@@ -3,6 +3,8 @@ import { Schedule } from '../../entities/schedule';
 import { MenuRepoService } from '../menu-repo/menu-repo.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { v6 as uuid } from "uuid";
+import { Menu } from '../../entities/menu';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +29,29 @@ export class schedulesRepoService {
     } catch (error) {
       throw error;
     }
+  }
+
+  fetchSchedules() {
+    return new Observable<Array<Schedule>>((obs) => {
+      this.menuRepo.ObserveMenu().subscribe((menu : Menu) => {
+        if(menu.schedules){
+          obs.next(menu.schedules);
+        } else {
+          this.authServ.getUID()
+          .then((uid : string) => {
+            this.menuRepo.updateMenu(uid, { schedules: [] })
+            .then((result) => {
+              obs.next([]);
+            }).catch((err) => {
+              obs.error(err);
+            });
+          }).catch((err) => {
+            obs.error(err);
+          });
+        }
+
+      });
+    })
   }
 
   async updateSchedule(schedule: Schedule) {
