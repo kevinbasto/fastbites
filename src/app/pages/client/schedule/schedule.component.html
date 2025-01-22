@@ -10,8 +10,9 @@
     <app-table 
         [config]="config" 
         [headers]="headers" 
-        [data]="schedules"
+        [data]="displaySchedules"
         (edit)="updateSchedule($event)"
+        (toggle)="toggleSchedule($event)"
         (deleteItem)="deleteSchedule($event)"
     ></app-table>
     <mat-paginator 

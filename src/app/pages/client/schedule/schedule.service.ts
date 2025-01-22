@@ -21,7 +21,15 @@ export class ScheduleService {
     return this.scheduleRepo.fetchSchedules();
   }
 
-  toggleSchedule(schedule: Schedule) { }
+  toggleSchedule(schedule: Schedule) {
+    schedule.available = !schedule.available;
+    this.scheduleRepo.updateSchedule(schedule)
+    .then(() => {
+      this.snackbar.openMessage('Horario actualizado');
+    }).catch((err) => {
+      this.snackbar.openMessage('Error al actualizar horario');
+    });
+  }
 
   removeSchedule(schedule: Schedule) {
     const message : Message = {

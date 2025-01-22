@@ -17,7 +17,7 @@ export class ScheduleComponent {
   config = schedulesTableConfig;
   options = environment.paginationOptions;
   size = environment.defaultPageSize;
-  displaySchedules: Array<Schedule> = [];
+  displaySchedules?: Array<Schedule>;
   schedules: Array<Schedule> = [];
 
   constructor(
@@ -38,6 +38,10 @@ export class ScheduleComponent {
 
   updateSchedule(schedule: Schedule) {
     this.router.navigate(['client/schedule/edit', schedule.id]);
+  }
+
+  toggleSchedule(schedule: Schedule) {
+    this.scheduleService.toggleSchedule(schedule);
   }
 
   deleteSchedule(schedule: Schedule) {
