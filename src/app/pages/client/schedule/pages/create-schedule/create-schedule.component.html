@@ -3,6 +3,7 @@
         <h1> Crear Horario </h1>
     </div>
     <schedule-form
+        [uploading]="uploading"
         (cancel)="cancel()"
         (submitProduct)="submitSchedule($event)"
     ></schedule-form>

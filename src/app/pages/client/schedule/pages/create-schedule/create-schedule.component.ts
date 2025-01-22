@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CreateScheduleService } from './create-schedule.service';
 import { Schedule } from '../../../../../core/entities/schedule';
+import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-schedule',
@@ -12,7 +14,9 @@ export class CreateScheduleComponent {
   uploading = false;
 
   constructor(
-    private createScheduleService: CreateScheduleService
+    private createScheduleService: CreateScheduleService,
+    private snackbar: SnackbarService,
+    private router: Router
   ) { }
 
   cancel() {
@@ -20,7 +24,15 @@ export class CreateScheduleComponent {
   }
 
   submitSchedule(schedule: Partial<Schedule>) {
-    this.createScheduleService.createSchedule(schedule);
+    this.uploading = true;
+    this.createScheduleService.createSchedule(schedule)
+    .then((result) => {
+      this.snackbar.openMessage('Schedule created successfully');
+      this.router.navigate(['/client/schedule']);
+    }).catch((err) => {
+      this.snackbar.openMessage('Error creating schedule');
+    })
+    .finally(() => { this.uploading = false; });
   }
 
 }

@@ -16,12 +16,13 @@ export class schedulesRepoService {
     private authServ: AuthService
   ) { }
 
-  async createSchedule(schedule: Schedule) {
+  async createSchedule(schedule: Partial<Schedule>) {
     try {
       let uid = await this.authServ.getUID();
       schedule.id = uuid();
       let schedules = (await this.menuRepo.fetchMenu(uid))?.schedules;
-      schedules?.push(schedule);
+      if(!schedules) schedules = [];
+      schedules?.push(schedule as Schedule);
       await this.menuRepo.updateMenu(uid, { schedules });
     } catch (error) {
       throw error;

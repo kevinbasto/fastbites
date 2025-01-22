@@ -17,7 +17,7 @@ export class CreateScheduleService {
     this.router.navigate(['/client/schedule']);
   }
 
-  createSchedule(schedule: Partial<Schedule>) {
-    // this.scheduleRepo.createSchedule(schedule)
+  async createSchedule(schedule: Partial<Schedule>) {
+    this.scheduleRepo.createSchedule(schedule)
   }
 }
