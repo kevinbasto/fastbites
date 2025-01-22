@@ -7,7 +7,12 @@
             </mat-icon>
         </button>
     </div>
-    <app-table [config]="config" [headers]="headers" [data]="schedules" ></app-table>
+    <app-table 
+        [config]="config" 
+        [headers]="headers" 
+        [data]="schedules"
+        (edit)="updateSchedule($event)"
+    ></app-table>
     <mat-paginator 
       [length]="schedules.length" 
       [pageSizeOptions]="options" 
