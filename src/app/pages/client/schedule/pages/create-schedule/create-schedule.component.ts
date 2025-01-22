@@ -27,10 +27,10 @@ export class CreateScheduleComponent {
     this.uploading = true;
     this.createScheduleService.createSchedule(schedule)
     .then((result) => {
-      this.snackbar.openMessage('Schedule created successfully');
+      this.snackbar.openMessage('Horario creado con éxito');
       this.router.navigate(['/client/schedule']);
     }).catch((err) => {
-      this.snackbar.openMessage('Error creating schedule');
+      this.snackbar.openMessage('Error creando horario');
     })
     .finally(() => { this.uploading = false; });
   }

@@ -41,7 +41,17 @@ export class ScheduleComponent {
   }
 
   toggleSchedule(schedule: Schedule) {
-    this.scheduleService.toggleSchedule(schedule);
+    this.scheduleService.toggleSchedule(schedule, this.schedules)
+    .catch((err) => {
+      let copy = structuredClone(this.displaySchedules);
+      this.displaySchedules = [];
+      this.displaySchedules = copy!.map(sch => {
+        if(sch.id === schedule.id) {
+          sch.available = !sch.available;
+        }
+        return sch
+      });
+    });
   }
 
   deleteSchedule(schedule: Schedule) {

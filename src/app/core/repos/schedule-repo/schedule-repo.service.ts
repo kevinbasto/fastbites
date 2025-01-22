@@ -31,6 +31,11 @@ export class schedulesRepoService {
     }
   }
 
+  async getSchedules() : Promise<Array<Schedule>> {
+    let uid = await this.authServ.getUID();
+      return (await this.menuRepo.fetchMenu(uid))!.schedules;
+  }
+
   fetchSchedules() {
     return new Observable<Array<Schedule>>((obs) => {
       this.menuRepo.ObserveMenu().subscribe((menu : Menu) => {
