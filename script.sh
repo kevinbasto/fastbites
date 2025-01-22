@@ -1,4 +1,3 @@
-ng g c pages/client/schedule/pages/create-schedule --standalone=false;
-ng g s pages/client/schedule/pages/create-schedule/create-schedule;
-ng g c pages/client/schedule/pages/edit-schedule --standalone=false;
-ng g s pages/client/schedule/pages/edit-schedule/edit-schedule;
+ng g m pages/client/gallery --routing;
+ng g c pages/client/gallery --standalone=false;
+ng g s pages/client/gallery/gallery;

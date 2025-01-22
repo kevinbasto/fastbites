@@ -49,6 +49,11 @@ const routes: Routes = [
     loadChildren: () => import('./schedule/schedule.module').then(m => m.ScheduleModule),
     canActivateChild: [firstTimeGuard],
   },
+  {
+    path: 'gallery',
+    loadChildren: () => import('./gallery/gallery.module').then(m => m.GalleryModule),
+    canActivateChild: [firstTimeGuard],
+  },
   // elementos de uso unico que no se pretende sean accesibles una vez cumplida su funcion
   {
     path: "first-time",

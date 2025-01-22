@@ -40,6 +40,11 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         name: 'Horarios',
         url: 'schedule',
         icon: 'schedule',
+    },
+    {
+        name: 'Galería',
+        url: 'gallery',
+        icon: 'image',
     }
     // {
     //     name: 'Promociones',
