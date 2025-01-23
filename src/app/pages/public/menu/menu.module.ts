@@ -16,11 +16,17 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { ProductDetailComponent } from './dialogs/product-detail/product-detail.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { OrderCheckoutComponent } from './pages/order-checkout/order-checkout.component';
+import { GalleryComponent } from './pages/gallery/gallery.component';
+import { CatalogComponent } from './pages/catalog/catalog.component';
 
 @NgModule({
   declarations: [
     MenuComponent,
     ProductDetailComponent,
+    OrderCheckoutComponent,
+    GalleryComponent,
+    CatalogComponent,
   ],
   imports: [
     CommonModule,
