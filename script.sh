@@ -1,3 +1,3 @@
-ng g m pages/client/gallery --routing;
-ng g c pages/client/gallery --standalone=false;
-ng g s pages/client/gallery/gallery;
+ng g m pages/client/announcements --routing;
+ng g c pages/client/announcements --standalone=false;
+ng g s pages/client/announcements/announcements;

@@ -54,6 +54,11 @@ const routes: Routes = [
     loadChildren: () => import('./gallery/gallery.module').then(m => m.GalleryModule),
     canActivateChild: [firstTimeGuard],
   },
+  {
+    path: 'announcements',
+    loadChildren: () => import('./announcements/announcements.module').then(m => m.AnnouncementsModule),
+    canActivateChild: [firstTimeGuard],
+  },
   // elementos de uso unico que no se pretende sean accesibles una vez cumplida su funcion
   {
     path: "first-time",

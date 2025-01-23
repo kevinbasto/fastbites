@@ -45,6 +45,11 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         name: 'Galería',
         url: 'gallery',
         icon: 'image',
+    },
+    {
+        name: 'Anuncios',
+        url: 'announcements',
+        icon: 'campaign',
     }
     // {
     //     name: 'Promociones',
