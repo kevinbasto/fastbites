@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GalleryService } from './gallery.service';
 import { galleryTableConfig, gallerytableHeaders } from './gallery-table.headers';
 import { environment } from '../../../../environments/environment';
-import { Photo } from '../../../core/entities/photo';
+import { Image } from '../../../core/entities/image';
 import { PageEvent } from '@angular/material/paginator';
 
 @Component({
@@ -16,8 +16,8 @@ export class GalleryComponent implements OnInit {
   config = galleryTableConfig;
   options = environment.paginationOptions;
   size = environment.defaultPageSize;
-  displayPhotos?: Array<Photo>;
-  photos: Array<Photo> = [];
+  displayPhotos?: Array<Image>;
+  photos: Array<Image> = [];
 
   constructor(
     private galleryService: GalleryService
@@ -25,13 +25,16 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  createPhoto() { }
+  createPhoto() {
+  }
 
-  updatePhoto(photo: Photo) { }
+  togglePhoto(image: Image) {
+    this.galleryService.togglePhoto(image);
+  }
 
-  togglePhoto(photo: Photo) { }
-
-  deletePhoto(photo: Photo) { }
+  deletePhoto(image: Image) {
+    this.galleryService.deletePhoto(image);
+  }
 
 
   changePage(page: PageEvent) {

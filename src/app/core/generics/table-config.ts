@@ -3,4 +3,5 @@ export interface TableConfig {
     pagination : boolean;
     ordersButton: boolean;
     options: boolean;
+    disableUpdate?: boolean;
 }
