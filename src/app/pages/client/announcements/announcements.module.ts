@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -20,8 +21,9 @@ import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    MatPaginatorModule,
     SharedComponentsModule,
-    SharedFormsModule
+    SharedFormsModule,
   ]
 })
 export class AnnouncementsModule { }

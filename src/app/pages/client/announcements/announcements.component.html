@@ -1,5 +1,22 @@
 <mat-card class="card">
     <div class="card-header">
         <h1> Listado de anuncios </h1>
+        <button mat-icon-button color="primary" >
+            <mat-icon>
+                add
+            </mat-icon>
+        </button>
     </div>
+    <app-table
+        [headers]="headers"
+        [config]="config"
+        [data]="displayAnnouncements"
+    ></app-table>
+    <mat-paginator 
+      [length]="announcements.length" 
+      [pageSizeOptions]="options" 
+      [pageSize]="size" 
+      (page)="changePage($event)"
+      showFirstLastButtons
+    ></mat-paginator>
 </mat-card>
