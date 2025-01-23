@@ -20,6 +20,7 @@ import { OrderCheckoutComponent } from './pages/order-checkout/order-checkout.co
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { QrScannerComponent } from './pages/qr-scanner/qr-scanner.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     OrderCheckoutComponent,
     GalleryComponent,
     CatalogComponent,
+    QrScannerComponent,
   ],
   imports: [
     CommonModule,

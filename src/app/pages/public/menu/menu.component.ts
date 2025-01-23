@@ -14,9 +14,9 @@ export class MenuComponent implements OnInit {
   cart: Array<Product> = []
 
   constructor(
-    private menuService: MenuService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private menuService: MenuService,
   ) {}
 
   ngOnInit(): void {
