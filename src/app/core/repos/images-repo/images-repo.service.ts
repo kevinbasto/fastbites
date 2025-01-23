@@ -37,6 +37,20 @@ export class ImagesRepoService {
     });
   }
 
+  async getImages() {
+    try {
+      const uid = await this.auth.getUID();
+      const docRef = doc(this.firestore, `/users/${uid}/data/gallery`);
+      const docVal = await getDoc(docRef);
+      if(docVal.exists())
+        return (docVal.data() as {images: Array<Image>}).images;
+      await setDoc(docRef, {images: []});
+      return [];
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async createImage(image: Image) {
     try {
       image.id = uuid()
@@ -50,6 +64,23 @@ export class ImagesRepoService {
         images.push(image);
         await setDoc(docRef, {images});
       }
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async updateImage(image: Image) {
+    try {
+      const uid = await this.auth.getUID();
+      const docRef = doc(this.firestore, `/users/${uid}/data/gallery`);
+      const docVal = await getDoc(docRef);
+      let images = (docVal.data() as { images : Array<Image>}).images;
+      images = images.map(img => {
+        if(img.id == image.id)
+          img = {...img, ...image};
+        return image;
+      });
+      await setDoc(docRef, {images});
     } catch (error) {
       throw error;
     }

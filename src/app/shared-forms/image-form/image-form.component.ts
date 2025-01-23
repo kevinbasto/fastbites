@@ -29,7 +29,10 @@ export class ImageFormComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    
+    if(changes['image'] && this.image){
+      const {name, description, available} = this.image;
+      this.form.setValue({name, description, available});
+    }
   }
 
   cancelForm() {
@@ -37,7 +40,7 @@ export class ImageFormComponent implements OnChanges {
   }
 
   submitForm() {
-    this.saveImage.emit(this.form.value);
+    this.saveImage.emit({...this.image, ...this.form.value});
   }
 
 }
