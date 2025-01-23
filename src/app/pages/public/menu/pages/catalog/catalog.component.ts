@@ -31,9 +31,6 @@ type CategoryProduct = {
 export class CatalogComponent {
 
   id?: string;
-  scannerMode: boolean = false;
-  activeFetch: boolean = false;
-  stop: boolean = false;
   products?: Array<Product>;
   cart: Array<Product> = []
 
@@ -43,42 +40,13 @@ export class CatalogComponent {
   personalization?: Personalization;
 
   constructor(
+    private menuService: MenuService,
     public catalogService: CatalogService,
-    private route: ActivatedRoute,
     private snackbar: SnackbarService,
-    private menuService: MenuService
   ) { }
 
   ngOnInit(): void {
-    this.route.queryParamMap.subscribe(queryParams => {
-      let id = queryParams.get("id");
-      if (id) {
-        this.id = id;
-        this.scannerMode = false;
-        this.getMenu(this.id);
-      } else {
-        this.scannerMode = true
-      }
-    });
-  }
-
-  processScan(scan: string) {
-    if (!this.activeFetch) {
-      this.activeFetch = true;
-      this.catalogService.processScan(scan)
-        .then((id) => {
-          this.id = id;
-          this.stop = true;
-          this.scannerMode = false;
-          this.getMenu(id);
-        })
-        .catch((err) => {
-          this.stop = false;
-        })
-        .finally(() => {
-          this.activeFetch = false;
-        });
-    }
+    this.getMenu(this.menuService.menuId!)
   }
 
   getMenu(id: string) {
@@ -101,8 +69,6 @@ export class CatalogComponent {
 
   setProducts(products: Array<Product>) {
     if (products.length === 0) {
-      this.scannerMode = true;
-      this.stop = false;
       return;
     }
     this.products = products;

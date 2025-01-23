@@ -1,0 +1,27 @@
+<div class="sidebar">
+    <div class="logo">
+        <img src="../../../../../../assets/bell.svg" alt="">
+        <h1>
+            {{ 'Fastbites' }}
+        </h1>
+    </div>
+    <mat-divider></mat-divider>
+    <ul>
+        <li [routerLink]="'/public/menu/'" >
+            <mat-icon class="icon" > menu_book </mat-icon>
+            <span> Menú </span>
+        </li>
+        <li [routerLink]="'/public/menu/checkout'" >
+            <mat-icon class="icon" > shopping_cart </mat-icon>
+            <span> Carrito </span>
+        </li>
+        <li [routerLink]="'/public/menu/gallery'" >
+            <mat-icon class="icon" > image </mat-icon>
+            <span> Galería </span>
+        </li>
+        <li  (click)="close.emit()" >
+            <mat-icon class="icon" > undo </mat-icon>
+            <span> Cerrar </span>
+        </li>
+    </ul>
+</div>

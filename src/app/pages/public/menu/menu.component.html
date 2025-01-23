@@ -1,21 +1,37 @@
-<mat-sidenav-container>
-    <mat-sidenav opened="{{toggle}}" [(opened)]='toggle' (opened)="toggle=true" (closed)="close()" [position]="'end'">
-        <div class="sidenav">
-            <ul>
-                <li>
-                    <a href="" [routerLink]="'/public/menu'" class="link">
-                        <mat-icon class="icon"> menu_book- </mat-icon>
+
+    <mat-sidenav-container class="container">
+        <mat-sidenav opened="{{toggle}}" [(opened)]='toggle' (opened)="toggle=true" (closed)="close()" [position]="'end'">
+            <app-sidebar (close)="close()" ></app-sidebar>
+        </mat-sidenav>
+        <mat-sidenav-content>
+        @if(!id && !scan) {
+            <app-loading-screen></app-loading-screen>
+        }@else {
+            <mat-toolbar class="toolbar">
+                <div class="left-buttonry">
+                    <div>
+                        <button mat-icon-button color="primary" [routerLink]="'/public/menu/checkout'" >
+                            <mat-icon>
+                                shopping_cart
+                            </mat-icon>
+                        </button>
+                        {{cart.length}}
+                    </div>
+                    <button mat-icon-button color="primary" (click)="shareMenu()">
+                        <mat-icon>
+                            share
+                        </mat-icon>
+                    </button>
+                </div>
+                <button mat-icon-button color="primary" (click)="toggleSidebar()">
+                    <mat-icon>
                         menu
-                    </a>
-                </li>
-                <li (click)="toggleSidebar()">
-                    <mat-icon class="icon"> close </mat-icon>
-                    Cerrar Menú
-                </li>
-            </ul>
-        </div>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        
-    </mat-sidenav-content>
-</mat-sidenav-container>
+                    </mat-icon>
+                </button>
+            </mat-toolbar>
+            <router-outlet></router-outlet>
+        }            
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+    
+

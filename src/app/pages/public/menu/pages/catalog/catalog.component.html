@@ -1,13 +1,5 @@
-@if (!scannerMode && !displayMenu) {
-<app-loading-screen></app-loading-screen>
-}
-@if (scannerMode) {
-<menu-scanner [stop]="stop" (scan)="processScan($event)"></menu-scanner>
-}
 @if (displayMenu && personalization) {
-<!-- <mat-toolbar style="display: flex; justify-content: flex-end;" >
-            
-        </mat-toolbar> -->
+
 <div id="menu">
     @if(personalization && personalization.personalization.banner) {
     <div class="banner">
@@ -63,4 +55,6 @@
     </mat-tab-group>
     }
 </div>
+}@else{
+    <app-loading-screen></app-loading-screen>
 }

@@ -21,6 +21,7 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { QrScannerComponent } from './pages/qr-scanner/qr-scanner.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { QrScannerComponent } from './pages/qr-scanner/qr-scanner.component';
     GalleryComponent,
     CatalogComponent,
     QrScannerComponent,
+    SidebarComponent,
   ],
   imports: [
     CommonModule,

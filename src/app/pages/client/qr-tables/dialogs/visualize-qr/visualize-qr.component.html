@@ -3,7 +3,9 @@
         <h1> Visualizar QR</h1>
     </div>
     <img src="{{qr}}" alt="">
-    <a href="{{url}}" class="link" target="_blank" >Ir al menu</a>
+    @if (!hideUrl) {
+        <a href="{{url}}" class="link" target="_blank" >Ir al menu</a>
+    }
     <div class="form-action-dialog">
         <button mat-raised-button color="primary" (click)="close()">
             Aceptar

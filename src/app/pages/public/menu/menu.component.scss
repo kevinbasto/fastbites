@@ -1,3 +1,17 @@
+.container{
+  height: 100vh;
+}
+
+.left-buttonry{
+  display: flex;
+  gap: 1ch;
+  div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .toolbar {
     display: flex;
     justify-content: space-between;
