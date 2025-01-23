@@ -1,0 +1,32 @@
+<form action="" [formGroup]="form" (submit)="submitForm()">
+    <mat-form-field>
+        <mat-label>
+            Nombre del anuncio
+        </mat-label>
+        <input type="text" matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>
+            Contenido del anuncio
+        </mat-label>
+        <textarea name="" id="" rows="5" matInput formControlName="message"></textarea>
+    </mat-form-field>
+    <div class="grid-container">
+        <mat-form-field>
+            <mat-label>Fecha inicial</mat-label>
+            <input matInput [matDatepicker]="start" formControlName="startDate" >
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="start" ></mat-datepicker-toggle>
+            <mat-datepicker #start></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Fecha final</mat-label>
+            <input matInput [matDatepicker]="finish" formControlName="endDate">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="finish"></mat-datepicker-toggle>
+            <mat-datepicker #finish ></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <mat-slide-toggle formControlName="available">Disponible</mat-slide-toggle>
+    <form-actions [disabled]="form.invalid" [uploading]="uploading" (cancel)="cancelForm()"></form-actions>
+</form>

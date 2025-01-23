@@ -28,7 +28,9 @@ import { ExportFormComponent } from './export-form/export-form.component';
 import { FileImporterFormComponent } from './file-importer-form/file-importer-form.component';
 import { ScheduleFormComponent } from './schedule-form/schedule-form.component';
 import { ImageFormComponent } from './image-form/image-form.component';
-
+import { AnnouncementFormComponent } from './announcement-form/announcement-form.component';
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import { ImageFormComponent } from './image-form/image-form.component';
     ExportFormComponent,
     FileImporterFormComponent,
     ScheduleFormComponent,
-    ImageFormComponent
+    ImageFormComponent,
+    AnnouncementFormComponent
   ],
   imports: [
     CommonModule,
@@ -63,7 +66,12 @@ import { ImageFormComponent } from './image-form/image-form.component';
     MatSelectModule,
     MatCheckboxModule,
     NgxMaterialTimepickerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDatepickerModule,    
+  ],
+  providers: [
+    provideNativeDateAdapter(),
+    {provide: MAT_DATE_LOCALE, useValue: 'es-MX'}
   ],
   exports: [
     ProductFormComponent,
@@ -77,7 +85,8 @@ import { ImageFormComponent } from './image-form/image-form.component';
     ExportFormComponent,
     FileImporterFormComponent,
     ScheduleFormComponent,
-    ImageFormComponent
+    ImageFormComponent,
+    AnnouncementFormComponent
   ]
 })
 export class SharedFormsModule { }
