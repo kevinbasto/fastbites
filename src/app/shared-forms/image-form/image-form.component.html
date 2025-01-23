@@ -1,0 +1,19 @@
+<form action="" [formGroup]="form" (submit)="submitForm()" >
+    <mat-form-field>
+        <mat-label>
+            Nombre de la imagen
+        </mat-label>
+        <input type="text" matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>
+            descripción
+        </mat-label>
+        <textarea name="" id="" rows="5" matInput ></textarea>
+    </mat-form-field>
+    <mat-slide-toggle formControlName="available" >Disponible</mat-slide-toggle>
+    <div style="margin-top: 1rem; margin-bottom: 1rem;">
+        <image-dropper (file)="file.emit($event)" ></image-dropper>
+    </div>
+    <form-actions [disabled]="form.invalid" [uploading]="uploading" (cancel)="cancelForm()" ></form-actions>
+</form>

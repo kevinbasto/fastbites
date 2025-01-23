@@ -27,6 +27,7 @@ import { TableFormComponent } from './table-form/table-form.component';
 import { ExportFormComponent } from './export-form/export-form.component';
 import { FileImporterFormComponent } from './file-importer-form/file-importer-form.component';
 import { ScheduleFormComponent } from './schedule-form/schedule-form.component';
+import { ImageFormComponent } from './image-form/image-form.component';
 
 
 
@@ -43,7 +44,8 @@ import { ScheduleFormComponent } from './schedule-form/schedule-form.component';
     TableFormComponent,
     ExportFormComponent,
     FileImporterFormComponent,
-    ScheduleFormComponent
+    ScheduleFormComponent,
+    ImageFormComponent
   ],
   imports: [
     CommonModule,
@@ -74,7 +76,8 @@ import { ScheduleFormComponent } from './schedule-form/schedule-form.component';
     TableFormComponent,
     ExportFormComponent,
     FileImporterFormComponent,
-    ScheduleFormComponent
+    ScheduleFormComponent,
+    ImageFormComponent
   ]
 })
 export class SharedFormsModule { }

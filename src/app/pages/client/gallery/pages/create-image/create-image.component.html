@@ -1,1 +1,24 @@
-<p>create-image works!</p>
+<mat-card class="card" >
+    <div class="grid-container">
+        <div>
+            <div class="card-header">
+                <h1> Subir imagen Nueva </h1>
+            </div>
+            <image-form
+                [uploading]="uploading"
+                (file)="uploadFile($event)"
+                (cancel)="cancel()"
+                (saveImage)="postNewImage($event)"
+            ></image-form>
+        </div>
+        @if (!image) {
+            <div class="placeholder">
+                <mat-icon class="icon">
+                    add_photo_alternate
+                </mat-icon>
+            </div>
+        } @else{
+            <img src="{{displayImage}}" alt="">
+        }
+    </div>
+</mat-card>
