@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { OrderCheckoutComponent } from './pages/order-checkout/order-checkout.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
     MatToolbarModule,
     MatInputModule,
     FormsModule,
+    MatSidenavModule
   ]
 })
 export class MenuModule { }

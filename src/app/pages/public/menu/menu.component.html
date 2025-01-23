@@ -1,83 +1,53 @@
-@if (!scannerMode && !displayMenu) {
-<app-loading-screen></app-loading-screen>
-}
-@if (scannerMode) {
-    <menu-scanner [stop]="stop" (scan)="processScan($event)" ></menu-scanner>
-}
-@if (displayMenu && personalization) {
-    <!-- <mat-toolbar style="display: flex; justify-content: flex-end;" >
-        
-    </mat-toolbar> -->
-    <div id="menu">
-        @if(personalization && personalization.personalization.banner) {
-        <div class="banner">
-            <img src="{{personalization.personalization.banner}}" alt="">
+<mat-sidenav-container>
+    <mat-sidenav opened="{{toggle}}" [(opened)]='toggle' (opened)="toggle=true" (closed)="close()" [position]="'end'" >
+        <div class="sidenav">
+            <ul>
+                <li>
+                    <a href="" [routerLink]="'/auth/login'"  class="link">
+                        <mat-icon class="icon" > login- </mat-icon>
+                        Iniciar sesión
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="link" [routerLink]="'/public/about'" >
+                        <mat-icon class="icon"> person </mat-icon>
+                        Conocenos
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="link" [routerLink]="'/public/book'" >
+                        <mat-icon class="icon"> call </mat-icon>
+                        Agendar cita
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="link" [routerLink]="'/public/documentation'" >
+                        <mat-icon class="icon"> book </mat-icon>
+                        Documentación
+                    </a>
+                </li>
+                <li (click)="toggleSidebar()">
+                    <mat-icon class="icon" > close </mat-icon>
+                    Cerrar Menú
+                </li>
+            </ul>
         </div>
-        }
-        <div class="title">
-            @if (personalization && personalization.company.logo) {
-            <img src="{{personalization!.company.logo}}" alt="" class="logo">
-            }
-            <h1 style="text-align: center;"
-                [ngStyle]="personalization? { color: personalization.personalization.titleColor} : {} ">
-                {{personalization? personalization.company.name? personalization.company.name : "Mi menú personal" : "Menú"
-                }}
-            </h1>
-        </div>
-        <mat-divider></mat-divider>
-        @if(personalization) {
-            <p style="padding: 1rem;">
-                {{personalization.company.description}}
-            </p>
-            <mat-divider></mat-divider>
-        }
-        @if(displayMenu) {
-        <mat-tab-group>
-            @for (submenu of displayMenu; track $index) {
-    
-            <mat-tab label="{{submenu.submenu.name}}"
-                [ngStyle]="personalization? { color: personalization.personalization.titleColor} : {} ">
-                @for (category of submenu.categories; track $index) {
-    
-                <mat-expansion-panel [expanded]="true" class="item-panel"
-                    [ngStyle]="personalization? { background: personalization.personalization.background } : {}">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title
-                            [ngStyle]="personalization? { color: personalization.personalization.titleColor} : {} "> {{
-                            category.category.name }} </mat-panel-title>
-    
-                    </mat-expansion-panel-header>
-                    <div class="item-container"
-                        [ngStyle]="personalization? { background: personalization.personalization.background } : {}">
-    
-                        <ordering-menu 
-                            [personalization]="personalization" 
-                            [products]="category.products"
-                            (prod)="checkProductDetail($event)" 
-                            (orderItem)="addProductToCart($event)"
-                        ></ordering-menu>
-                    </div>
-    
-                </mat-expansion-panel>
-    
-                }
-            </mat-tab>
-    
-            }
-        </mat-tab-group>
-        }
-        @if(!scannerMode && displayMenu){
-        <div class="cart-button" style="display: flex; flex-direction: column;">
-            <button mat-raised-button color="primary" (click)="goToCheckout()"
-                style="display: flex; justify-content: center; align-items: center;"
-                [ngStyle]="personalization?  { background: personalization.personalization.buttonColor, color: personalization.personalization.actionsFontColor} : {}">
-                Ir a la caja:
-                <mat-icon>
-                    shopping_cart
-                </mat-icon>
-                {{cart.length}} Items
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar class="toolbar">
+            <div>
+                <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" color="primary">
+                    <mat-icon>shopping_cart</mat-icon>
+                </button>
+                <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+                    <mat-icon>share</mat-icon>
+                </button>
+            </div>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleSidebar()">
+              <mat-icon>menu</mat-icon>
             </button>
-        </div>
-        }
-    </div>
-}
+          </mat-toolbar>
+          <router-outlet></router-outlet>
+    </mat-sidenav-content>
+    
+</mat-sidenav-container>
