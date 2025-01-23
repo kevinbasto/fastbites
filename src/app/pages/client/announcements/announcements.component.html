@@ -1,7 +1,7 @@
 <mat-card class="card">
     <div class="card-header">
         <h1> Listado de anuncios </h1>
-        <button mat-icon-button color="primary" >
+        <button mat-icon-button color="primary" (click)="createAnnouncement()" >
             <mat-icon>
                 add
             </mat-icon>
@@ -11,6 +11,9 @@
         [headers]="headers"
         [config]="config"
         [data]="displayAnnouncements"
+        (edit)="editAnnouncement($event)"
+        (toggle)="toggleAnnouncement($event)"
+        (deleteItem)="deleteAnnouncement($event)"
     ></app-table>
     <mat-paginator 
       [length]="announcements.length" 

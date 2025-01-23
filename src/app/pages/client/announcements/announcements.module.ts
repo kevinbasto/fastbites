@@ -9,11 +9,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
 import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { CreateAnnouncementComponent } from './pages/create-announcement/create-announcement.component';
+import { EditAnnouncementComponent } from './pages/edit-announcement/edit-announcement.component';
 
 
 @NgModule({
   declarations: [
-    AnnouncementsComponent
+    AnnouncementsComponent,
+    CreateAnnouncementComponent,
+    EditAnnouncementComponent
   ],
   imports: [
     CommonModule,
