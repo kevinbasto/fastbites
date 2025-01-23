@@ -86,4 +86,17 @@ export class ImagesRepoService {
     }
   }
 
+  async deleteImage(image: Image) {
+    try {
+      const uid = await this.auth.getUID();
+      const docRef = doc(this.firestore, `/users/${uid}/data/gallery`);
+      const docVal = await getDoc(docRef);
+      let images = (docVal.data() as { images : Array<Image>}).images;
+      images = images.filter(img => img.id != image.id);
+      await setDoc(docRef, {images});
+    } catch (error) {
+      throw error;
+    }
+  }
+
 }
