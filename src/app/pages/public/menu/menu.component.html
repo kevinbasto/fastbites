@@ -1,53 +1,44 @@
 <mat-sidenav-container>
-    <mat-sidenav opened="{{toggle}}" [(opened)]='toggle' (opened)="toggle=true" (closed)="close()" [position]="'end'" >
+    <mat-sidenav opened="{{toggle}}" [(opened)]='toggle' (opened)="toggle=true" (closed)="close()" [position]="'end'">
         <div class="sidenav">
             <ul>
                 <li>
-                    <a href="" [routerLink]="'/auth/login'"  class="link">
-                        <mat-icon class="icon" > login- </mat-icon>
-                        Iniciar sesión
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="link" [routerLink]="'/public/about'" >
-                        <mat-icon class="icon"> person </mat-icon>
-                        Conocenos
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="link" [routerLink]="'/public/book'" >
-                        <mat-icon class="icon"> call </mat-icon>
-                        Agendar cita
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="link" [routerLink]="'/public/documentation'" >
-                        <mat-icon class="icon"> book </mat-icon>
-                        Documentación
+                    <a href="" [routerLink]="'/public/menu'" class="link">
+                        <mat-icon class="icon"> menu_book- </mat-icon>
+                        menu
                     </a>
                 </li>
                 <li (click)="toggleSidebar()">
-                    <mat-icon class="icon" > close </mat-icon>
+                    <mat-icon class="icon"> close </mat-icon>
                     Cerrar Menú
                 </li>
             </ul>
         </div>
     </mat-sidenav>
     <mat-sidenav-content>
-        <mat-toolbar class="toolbar">
-            <div>
-                <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" color="primary">
-                    <mat-icon>shopping_cart</mat-icon>
+        <div style="width: 100vw; height: 100vh;">
+            <mat-toolbar class="toolbar">
+                <div>
+                    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" style="margin-right: 1rem;"
+                        color="primary" [routerLink]="'/public/menu/checkout'">
+                        <mat-icon>shopping_cart</mat-icon>
+                        {{cart.length}}
+                    </button>
+                    <button 
+                        mat-icon-button class="example-icon" 
+                        aria-label="Example icon-button with share icon"
+                        (click)="shareMenu()"
+                    >
+                        <mat-icon>share</mat-icon>
+                    </button>
+                </div>
+                <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+                    (click)="toggleSidebar()">
+                    <mat-icon>menu</mat-icon>
                 </button>
-                <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-                    <mat-icon>share</mat-icon>
-                </button>
-            </div>
-            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleSidebar()">
-              <mat-icon>menu</mat-icon>
-            </button>
-          </mat-toolbar>
-          <router-outlet></router-outlet>
+            </mat-toolbar>
+            <router-outlet></router-outlet>
+        </div>
     </mat-sidenav-content>
-    
+
 </mat-sidenav-container>

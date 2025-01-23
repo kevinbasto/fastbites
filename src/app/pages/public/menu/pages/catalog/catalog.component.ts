@@ -8,6 +8,7 @@ import { Submenu } from '../../../../../core/entities/submenu';
 import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.service';
 import { Personalization } from '../../../../../core/entities/personalization';
 import { CatalogService } from './catalog.service';
+import { MenuService } from '../../menu.service';
 
 
 
@@ -45,6 +46,7 @@ export class CatalogComponent {
     public catalogService: CatalogService,
     private route: ActivatedRoute,
     private snackbar: SnackbarService,
+    private menuService: MenuService
   ) { }
 
   ngOnInit(): void {
@@ -87,6 +89,7 @@ export class CatalogComponent {
       });
     this.catalogService.fetchPersonalization(id)
       .then((personalization: Personalization) => {
+        this.menuService.personalization.next(personalization);
         this.personalization = personalization;
         let menu = document.getElementById("menu")!
         if (menu)
@@ -108,6 +111,7 @@ export class CatalogComponent {
 
   addProductToCart(prod: Product) {
     this.cart.push(prod);
+    this.menuService.cart$.next(this.cart);
     this.snackbar.openMessage('Producto Agregado al carrito con éxito');
   }
 
@@ -116,8 +120,11 @@ export class CatalogComponent {
     .then((result) => {
       if(!result) return;
       const { product, quantity } = result;
-      for(let i = 0; i < quantity; i++)
+      for(let i = 0; i < quantity; i++){
         this.cart.push(product);
+        this.menuService.cart$.next(this.cart);
+      }
+      
     }).catch((err) => {
       
     });

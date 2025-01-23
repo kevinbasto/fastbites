@@ -1,5 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MenuService } from './menu.service';
+import { Product } from '../../../core/entities/product';
 
 @Component({
   selector: 'app-menu',
@@ -9,13 +11,27 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
 
   toggle: boolean = false;
+  cart: Array<Product> = []
 
   constructor(
-    private router: Router
+    private menuService: MenuService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    
+    this.menuService.personalization.subscribe(personalization => {
+
+    });
+    this.menuService.cart$.subscribe(cart => this.cart = cart);
+    this.route.queryParamMap.subscribe(params => {
+      let id = params.get('id');
+      this.menuService.id$.next(id!);
+    })
+  }
+
+  shareMenu() {
+    this.menuService.shareTheMenu()
   }
 
   goToLogin() {

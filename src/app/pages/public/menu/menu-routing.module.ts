@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from './menu.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
-import { CheckoutComponent } from '../../../shared-components/checkout/checkout.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { ProductDetailComponent } from './dialogs/product-detail/product-detail.component';
+import { OrderCheckoutComponent } from './pages/order-checkout/order-checkout.component';
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
       },
       {
         path: 'checkout',
-        component: CheckoutComponent
+        component: OrderCheckoutComponent
       },
       {
         path: 'gallery',
