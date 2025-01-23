@@ -10,7 +10,8 @@
     <app-table 
         [config]="config" 
         [headers]="headers" 
-        [data]="displayPhotos"
+        [data]="displayImages"
+        (edit)="editImage($event)"
         (toggle)="togglePhoto($event)"
         (deleteItem)="deletePhoto($event)"
     ></app-table>

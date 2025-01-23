@@ -60,6 +60,18 @@ export class ImagesService {
     }
   }
 
+  async softCompressImage(file: File) {
+    try {
+      let base64 = await this.fileToBase64(file);
+      let compressed = await this.imageCompressServ.compressFile(base64, 1);
+      let blob = (await ((await fetch(compressed)).blob()))
+      let compressedFile = new File([blob], file.name, {type: file.type});
+      return compressedFile;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   private fileToBase64(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -73,4 +85,5 @@ export class ImagesService {
         reader.readAsDataURL(file);
     });
   }
+
 }

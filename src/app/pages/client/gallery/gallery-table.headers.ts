@@ -9,6 +9,7 @@ export const gallerytableHeaders : Array<TableColumn> = [
     {
         name: 'available',
         displayName: 'Disponible',
+        toggable: true
     },
 ];
 

@@ -15,6 +15,10 @@ export class GalleryService {
     private dialog: MatDialog
   ) { }
 
+  fetchImages() {
+    return this.imagesRepo.fetchImages();
+  }
+
   togglePhoto(image: Image) { }
 
   deletePhoto(image: Image) { }

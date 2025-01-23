@@ -4,6 +4,7 @@ import { galleryTableConfig, gallerytableHeaders } from './gallery-table.headers
 import { environment } from '../../../../environments/environment';
 import { Image } from '../../../core/entities/image';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gallery',
@@ -16,16 +17,27 @@ export class GalleryComponent implements OnInit {
   config = galleryTableConfig;
   options = environment.paginationOptions;
   size = environment.defaultPageSize;
-  displayPhotos?: Array<Image>;
+  displayImages?: Array<Image>;
   photos: Array<Image> = [];
 
   constructor(
-    private galleryService: GalleryService
+    private galleryService: GalleryService,
+    private router: Router
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.galleryService.fetchImages().subscribe((images) => {
+      this.photos = images;
+      this.displayImages = images.slice(0, this.size);
+    });
+  }
 
   createPhoto() {
+    this.router.navigate(['/client/gallery/create']);
+  }
+
+  editImage(image: Image) {
+    this.router.navigate(['/client/gallery/edit', image.id]);
   }
 
   togglePhoto(image: Image) {
@@ -36,11 +48,10 @@ export class GalleryComponent implements OnInit {
     this.galleryService.deletePhoto(image);
   }
 
-
   changePage(page: PageEvent) {
     const startIndex = page.pageIndex * page.pageSize;
     const endIndex = startIndex + page.pageSize;
-    this.displayPhotos = this.photos?.slice(startIndex, endIndex) || [];
+    this.displayImages = this.photos?.slice(startIndex, endIndex) || [];
   }
 
 }
