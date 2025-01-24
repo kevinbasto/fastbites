@@ -44,6 +44,11 @@ export class OrderCheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.menuService.cart$.subscribe(cart => {
+      if(cart.length == 0){
+        this.snackbar.openMessage('¡Tu carrito está vacío!');
+        this.router.navigate(['/public/menu']);
+        return;
+      }
       this.cart = cart;
       this.buildCheckout();
       this.calculateTotal();
