@@ -15,13 +15,15 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { ProductDetailComponent } from './dialogs/product-detail/product-detail.component';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderCheckoutComponent } from './pages/order-checkout/order-checkout.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { QrScannerComponent } from './pages/qr-scanner/qr-scanner.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     MatToolbarModule,
     MatInputModule,
     FormsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatStepperModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ]
 })
 export class MenuModule { }

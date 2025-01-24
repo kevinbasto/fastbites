@@ -95,7 +95,9 @@ export class CheckoutComponent implements OnInit {
       name: this.form.value.name,
       details: this.form.value.details,
       total: this.total,
-      phone: this.form.value.phone
+      phone: this.form.value.phone,
+      type: '',
+      debitOrCredit: ''
     }
     this.dialogRef.close(order);
   }

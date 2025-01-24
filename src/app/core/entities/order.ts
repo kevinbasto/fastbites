@@ -9,5 +9,7 @@ export interface Order {
     active: boolean;
     total: number;
     phone: string;
+    type: string;
+    debitOrCredit: string;
     status: "PROCESSING" |"CANCELLED" | "COMPLETED"
 }

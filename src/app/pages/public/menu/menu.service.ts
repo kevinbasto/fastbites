@@ -50,4 +50,14 @@ export class MenuService implements OnInit {
     const dialog = this.dialog.open(VisualizeQrComponent, {data: {url, qr, hideUrl}});
   }
 
+  cleanCart() {
+    this.cart = [];
+    this.cart$.next([]);
+  }
+
+  updateCart(cart: Array<Product>) {
+    this.cart = cart;
+     this.cart$.next(cart);
+  }
+
 }
