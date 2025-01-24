@@ -99,4 +99,17 @@ export class ImagesRepoService {
     }
   }
 
+  async fetchImagesWithoutId(id : string) {
+    try {
+      const docRef = doc(this.firestore, `/users/${id}/data/gallery`);
+      const docVal = await getDoc(docRef);
+      if(docVal.exists())
+        return (docVal.data() as {images : Array<Image>}).images;
+      else
+        return [];
+    } catch (error) {
+      throw error;
+    }
+  }
+
 }
