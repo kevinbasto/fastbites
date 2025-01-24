@@ -29,7 +29,7 @@
             <h1>Horarios</h1>
             @for (schedule of schedules; track $index) {
                 @if(schedule.available){
-                    <b> de: {{schedule.openingHour}} a: {{schedule.openingHour}} </b>
+                    <b> de: {{schedule.openingHour}} a: {{schedule.closingHour}} </b>
                 }
             }
         </div>
