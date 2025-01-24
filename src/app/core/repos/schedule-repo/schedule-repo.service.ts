@@ -85,4 +85,8 @@ export class schedulesRepoService {
       throw error;
     }
   }
+
+  async fetchSchedulesWithoutid(id: string) {
+    return (await this.menuRepo.fetchMenu(id))!.schedules;
+  }
 }

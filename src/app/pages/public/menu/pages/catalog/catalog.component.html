@@ -23,6 +23,19 @@
     </p>
     <mat-divider></mat-divider>
     }
+    <div >
+        @if (schedules) {
+        <div style="margin-top: 1rem; margin-bottom: 1rem; display: flex; flex-direction: column; align-items: center;">
+            <h1>Horarios</h1>
+            @for (schedule of schedules; track $index) {
+                @if(schedule.available){
+                    <b> de: {{schedule.openingHour}} a: {{schedule.openingHour}} </b>
+                }
+            }
+        </div>
+        <mat-divider></mat-divider>
+        }        
+    </div>
     @if(displayMenu) {
     <mat-tab-group>
         @for (submenu of displayMenu; track $index) {
@@ -56,5 +69,5 @@
     }
 </div>
 }@else{
-    <app-loading-screen></app-loading-screen>
+<app-loading-screen></app-loading-screen>
 }

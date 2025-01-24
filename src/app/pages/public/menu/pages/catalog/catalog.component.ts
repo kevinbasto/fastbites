@@ -9,6 +9,8 @@ import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.
 import { Personalization } from '../../../../../core/entities/personalization';
 import { CatalogService } from './catalog.service';
 import { MenuService } from '../../menu.service';
+import { schedulesRepoService } from '../../../../../core/repos/schedule-repo/schedule-repo.service';
+import { Schedule } from '../../../../../core/entities/schedule';
 
 
 
@@ -36,6 +38,7 @@ export class CatalogComponent {
 
   menu?: Menu;
   displayMenu?: Array<SubmenuCategory>;
+  schedules?: Array<Schedule>;
 
   personalization?: Personalization;
 
@@ -43,10 +46,17 @@ export class CatalogComponent {
     private menuService: MenuService,
     public catalogService: CatalogService,
     private snackbar: SnackbarService,
+    private scheduleRepo: schedulesRepoService
   ) { }
 
   ngOnInit(): void {
     this.getMenu(this.menuService.menuId!)
+    this.scheduleRepo.fetchSchedulesWithoutid(this.menuService.menuId!)
+    .then((schedules: Array<Schedule>) => {
+      this.schedules = schedules;
+    }).catch((err) => {
+      this.snackbar.openMessage('Hubo un error obtener los horarios')
+    });
   }
 
   getMenu(id: string) {
