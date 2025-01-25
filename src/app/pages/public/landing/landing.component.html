@@ -1,39 +1,40 @@
 <mat-sidenav-container class="container" style="width: 100vw; height: 100vh;">
-    <mat-sidenav opened="{{toggle}}" [(opened)]='toggle' (opened)="toggle=true" (closed)="close()" [position]="'end'" >
+    <mat-sidenav opened="{{toggle}}" [(opened)]='toggle' (opened)="toggle=true" (closed)="close()" [position]="'end'">
         <div class="sidenav">
             <ul>
                 <li>
-                    <a href="" [routerLink]="'/auth/login'"  class="link">
-                        <mat-icon class="icon" > login- </mat-icon>
+                    <a href="" [routerLink]="'/auth/login'" class="link">
+                        <mat-icon class="icon"> login- </mat-icon>
                         Iniciar sesión
                     </a>
                 </li>
                 <li>
-                    <a href="" class="link" [routerLink]="'/public/about'" >
+                    <a href="" class="link" [routerLink]="'/public/about'">
                         <mat-icon class="icon"> person </mat-icon>
                         Conocenos
                     </a>
                 </li>
                 <li>
-                    <a href="" class="link" [routerLink]="'/public/book'" >
+                    <a href="" class="link" [routerLink]="'/public/book'">
                         <mat-icon class="icon"> call </mat-icon>
                         Agendar cita
                     </a>
                 </li>
                 <li>
-                    <a href="" class="link" [routerLink]="'/public/documentation'" >
+                    <a href="" class="link" [routerLink]="'/public/documentation'">
                         <mat-icon class="icon"> book </mat-icon>
                         Documentación
                     </a>
                 </li>
                 <li (click)="toggleSidebar()">
-                    <mat-icon class="icon" > close </mat-icon>
+                    <mat-icon class="icon"> close </mat-icon>
                     Cerrar Menú
                 </li>
             </ul>
         </div>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content style="width: 100vw;">
+
         <div class="body">
             <div class="shadow">
                 <nav>
@@ -46,7 +47,7 @@
                     <ul>
                         <ul>
                             <li>
-                                <button mat-icon-button (click)="toggleSidebar()" >
+                                <button mat-icon-button (click)="toggleSidebar()">
                                     <mat-icon>
                                         menu
                                     </mat-icon>
@@ -65,56 +66,57 @@
                             <a href="" [routerLink]="'/public/book'" class="link"> Agendar </a>
                         </li>
                         <li>
-                            <a href="" [routerLink]="'/public/documentation'" class="link"  > Documentación </a>
+                            <a href="" [routerLink]="'/public/documentation'" class="link"> Documentación </a>
                         </li>
                     </ul>
                 </nav>
                 <main>
-                    <div class="hero-info">
-                        <h1>
-                            Mas ventas, menos trabajo
-                        </h1>
-                        <h3>
-                            Alrededor del 60% de los restaurantes fracasan por falta de planeación y gestión adecuada
-                        </h3>
-                        <p>
-                            Fastbites es la solución para tener un mayor control de tu restaurante; garantiza tus
-                            ganancias sin contratar más personal, sin hacerlo todo tu solo
-                        </p>
-                        <div class="form-actions">
-                            <button mat-raised-button color="primary" [routerLink]="'/public/buy'" >
+                    <div class="grid-container hero">
+                        <div class="info">
+                            <h1>
+                                Mas ventas, menos trabajo
+                            </h1>
+                            <h3>
+                                Alrededor del 60% de los restaurantes fracasan por falta de planeación y gestión adecuada
+                            </h3>
+                            <p>
+                                Fastbites es la solución para tener un mayor control de tu restaurante; garantiza tus
+                                ganancias sin contratar más personal, sin hacerlo todo tu solo
+                            </p>
+                            <button mat-raised-button color="primary" [routerLink]="'/public/buy'">
                                 Quiero Fastbites
                             </button>
+                        </div>
+                        <div class="image">
+                            <img src="../../../../assets/waiter.jpg" alt="">
                         </div>
                     </div>
                 </main>
             </div>
         </div>
-        <div class="benefits">
-            <h1 style="color: black !important;" > ¿Por qué usar Fastbites? </h1>
-            <ul >
-                <li style="color: black !important;">
-                    Menu digital para tus clientes
-                </li>
-                <li style="color: black !important;">
-                    Reportes automatizados
-                </li>
-                <li style="color: black !important;">
-                    Interfaz sencilla de utilizar
-                </li>
-            </ul>
-        </div>
-        <div class="section grid-container">
-            <div class="info">
-                <h1> Crea un menú digital de una manera sencilla </h1>
-                <p>
-                    Con fastbites, puedes construir tu menu interactivo
-                    de manera sencilla
-                </p>
-            </div>
-            <div class="img-holder">
-
-            </div>
-        </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+<!-- <div class="info">
+    <h1>
+        Mas ventas, menos trabajo
+    </h1>
+    <h3>
+        Alrededor del 60% de los restaurantes fracasan por falta de planeación y gestión adecuada
+    </h3>
+    <p>
+        Fastbites es el software para negocios de comida que te permite cumplir mas con menos gente,
+        permitete tener estadisticas constantemente actualizadas de tu negocio y ofertar un menu digital
+        en tiempo real a tus clientes. 
+    </p>
+    <p>
+        Fastbites es la solución para tener un mayor control de tu restaurante; garantiza tus
+        ganancias sin contratar más personal, sin hacerlo todo tu solo
+    </p>
+    <button mat-raised-button color="primary" [routerLink]="'/public/buy'">
+        Quiero Fastbites
+    </button>
+</div>
+<div class="image">
+    
+</div> -->
