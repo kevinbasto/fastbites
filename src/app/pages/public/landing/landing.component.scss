@@ -74,15 +74,16 @@ main {
     .info{
       padding: 1rem;
       color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       h1{
         font-size: 3rem;
         font-weight: bold;
         font-family: "Playwrite AU SA", serif;
         line-height: 3.5rem;
       }
-      button{
-        margin: auto;
-      }
+      
     }
     .image{
       display: flex;
