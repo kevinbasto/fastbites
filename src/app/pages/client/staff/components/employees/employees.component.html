@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-header">
+        <form [formGroup]="form" >
+          <mat-form-field>
+            <mat-label> Buscar </mat-label>
+            <mat-icon matPrefix > search </mat-icon>
+            <input type="text" matInput formControlName="name" >
+          </mat-form-field>
+        </form>
+        <button mat-icon-button color="primary" (click)="createEmployee()" >
+          <mat-icon> add </mat-icon>
+        </button>
+      </div>
+    <app-table
+        [data]="displayEmployees"
+        [headers]="headers"
+        [config]="tableConfig"
+        (edit)="editEmployee($event)"
+        (deleteItem)="deleteEmployee($event)"
+    ></app-table>
+    <mat-paginator 
+      [length]="staff? staff.employees.length : 0" 
+      [pageSizeOptions]="options" 
+      [pageSize]="size" 
+      (page)="changePage($event)"
+      showFirstLastButtons
+    ></mat-paginator>
+</div>

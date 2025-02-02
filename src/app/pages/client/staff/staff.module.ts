@@ -3,15 +3,47 @@ import { CommonModule } from '@angular/common';
 
 import { StaffRoutingModule } from './staff-routing.module';
 import { StaffComponent } from './staff.component';
+import { EmployeesComponent } from './components/employees/employees.component';
+import { CreateEmployeeComponent } from './routes/create-employee/create-employee.component';
+import { EditEmployeeComponent } from './routes/edit-employee/edit-employee.component';
+import { GroupsComponent } from './components/groups/groups.component';
+import { CreateGroupComponent } from './routes/create-group/create-group.component';
+import { EditGroupComponent } from './routes/edit-group/edit-group.component';
+import { MatCardModule } from '@angular/material/card';
+import { SharedComponentsModule } from '../../../shared-components/shared-components.module';
+import { SharedFormsModule } from '../../../shared-forms/shared-forms.module';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
   declarations: [
-    StaffComponent
+    StaffComponent,
+    EmployeesComponent,
+    CreateEmployeeComponent,
+    EditEmployeeComponent,
+    GroupsComponent,
+    CreateGroupComponent,
+    EditGroupComponent
   ],
   imports: [
     CommonModule,
-    StaffRoutingModule
+    StaffRoutingModule,
+    MatCardModule,
+    SharedComponentsModule,
+    SharedFormsModule,
+    MatTabsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatPaginatorModule,
   ]
 })
 export class StaffModule { }

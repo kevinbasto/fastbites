@@ -31,6 +31,9 @@ import { ImageFormComponent } from './image-form/image-form.component';
 import { AnnouncementFormComponent } from './announcement-form/announcement-form.component';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
+import { EmployeeFormComponent } from './employee-form/employee-form.component';
+import { GroupFormComponent } from './group-form/group-form.component';
+import { ShiftFormComponent } from './shift-form/shift-form.component';
 
 
 @NgModule({
@@ -48,7 +51,12 @@ import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/cor
     FileImporterFormComponent,
     ScheduleFormComponent,
     ImageFormComponent,
-    AnnouncementFormComponent
+    AnnouncementFormComponent,
+    ScheduleFormComponent,
+    EmployeeFormComponent,
+    EmployeeFormComponent,
+    GroupFormComponent,
+    ShiftFormComponent
   ],
   imports: [
     CommonModule,
@@ -86,7 +94,9 @@ import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/cor
     FileImporterFormComponent,
     ScheduleFormComponent,
     ImageFormComponent,
-    AnnouncementFormComponent
+    AnnouncementFormComponent,
+    EmployeeFormComponent,
+    GroupFormComponent,
   ]
 })
 export class SharedFormsModule { }

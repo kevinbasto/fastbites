@@ -50,15 +50,21 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         name: 'Anuncios',
         url: 'announcements',
         icon: 'campaign',
+    },
+    {
+        name: 'Empleados',
+        url: 'staff',
+        icon: 'groups'
+    },
+    {
+        name: 'Turnos',
+        url: 'shifts',
+        icon: 'calendar_month'
     }
     // {
     //     name: 'Promociones',
     //     url: 'promos',
     //     icon: 'sell'
     // },
-    // {
-    //     name: 'Empleados',
-    //     url: 'staff',
-    //     icon: 'groups'
-    // },
+    
 ]
