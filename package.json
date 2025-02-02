@@ -10,7 +10,8 @@
     "test": "ng test",
     "electron": "electron .",
     "electron-build": "ng build && electron .",
-    "electron-package": "ng build && electron-packager ./ fastbitesdesktop --platform=win32 --overwrite"
+    "electron-package": "ng build && electron-packager ./ fastbitesdesktop --platform=win32 --overwrite",
+    "capacitor-sync": "ng build && npx cap sync && npx cap open android"
   },
   "private": true,
   "dependencies": {
