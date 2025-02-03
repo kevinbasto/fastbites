@@ -32,11 +32,6 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         icon: 'qr_code_2'
     },
     {
-        name: "Configuraciones",
-        url: "settings",
-        icon: "settings",
-    },
-    {
         name: 'Horarios',
         url: 'schedule',
         icon: 'schedule',
@@ -60,11 +55,15 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         name: 'Turnos',
         url: 'shifts',
         icon: 'calendar_month'
-    }
-    // {
-    //     name: 'Promociones',
-    //     url: 'promos',
-    //     icon: 'sell'
-    // },
-    
+    },
+    {
+        name: "Configuraciones",
+        url: "settings",
+        icon: "settings",
+    },
+    {
+        name: 'Promociones',
+        url: 'promos',
+        icon: 'sell'
+    },
 ]

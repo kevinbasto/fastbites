@@ -59,16 +59,10 @@ const routes: Routes = [
     loadChildren: () => import('./announcements/announcements.module').then(m => m.AnnouncementsModule),
     canActivateChild: [firstTimeGuard],
   },
-  // elementos de uso unico que no se pretende sean accesibles una vez cumplida su funcion
   {
-    path: "first-time",
-    loadChildren: () => import('./first-time/first-time.module').then(m => m.FirstTimeModule),
-    canActivateChild: [firstTimeGuard],
+    path: "promos",
+    loadChildren: () => import('./promotions/promotions.module').then(m => m.PromotionsModule)
   },
-  // {
-  //   path: "promos",
-  //   loadChildren: () => import('./promotions/promotions.module').then(m => m.PromotionsModule)
-  // },
   {
     path: "staff",
     loadChildren: () => import('./staff/staff.module').then(m => m.StaffModule)
@@ -76,6 +70,12 @@ const routes: Routes = [
   {
     path: 'shifts',
     loadChildren: () => import('./shifts/shifts.module').then(m => m.ShiftsModule)
+  },
+  // elementos de uso unico que no se pretende sean accesibles una vez cumplida su funcion
+  {
+    path: "first-time",
+    loadChildren: () => import('./first-time/first-time.module').then(m => m.FirstTimeModule),
+    canActivateChild: [firstTimeGuard],
   },
   {
     path: '**',
