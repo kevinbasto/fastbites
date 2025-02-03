@@ -17,94 +17,15 @@
             (cancelForm)="editPersonal = !this.editPersonal"
             (personalData)="postProfileData($event)"
         ></personal-data-form>
-        <!-- <mat-divider></mat-divider>
-        <div class="card-header">
-            <h1> Información Fiscal </h1>
-            <button mat-icon-button color="primary" >
-                <mat-icon> edit </mat-icon>
-            </button>
-        </div>
-        <fiscal-data-form></fiscal-data-form> -->
     </div>
-    <!-- <mat-divider></mat-divider> -->
-    <!-- <div class="section">
+    <mat-divider></mat-divider>
+    <div class="section">
         <div class="card-header">
-            <h1>
-                Configuraciones de subscripción
-            </h1>
-            <button mat-raised-button color="primary"  >
-                <mat-icon> card_membership </mat-icon>
-                Ver subscripción
-            </button>
+            <h1> Información fiscal </h1>
         </div>
-        <div class="responsive-info-holder">
-            <mat-card class="card">
-                <div class="field">
-                    <b>Estatus de la subscripción:</b>
-                    <span> Activa </span>
-                </div>
-                <mat-divider></mat-divider>
-                <div class="field">
-                    <b>Siguiente renovación:</b>
-                    <span> 30-dec-2024 </span>
-                </div>
-                <mat-divider></mat-divider>
-                <div class="field">
-                    <b>Siguiente cargo:</b>
-                    <span> {{ 500 | currency}} </span>
-                </div>
-            </mat-card>
+        <mat-divider></mat-divider>
+        <div style="margin-top: 1rem;">
+            <fiscal-data-form></fiscal-data-form>
         </div>
-        <div class="grid-container cards-holder" style="margin-bottom: 1rem;">
-            <div class="mat-elevation-z8">
-                <mat-card class="card">
-                    <h3>
-                        Estatus de subscripción
-                    </h3>
-                    <p>
-                        activo
-                    </p>
-                </mat-card>
-            </div>
-            <div class="mat-elevation-z8">
-                <mat-card class="card">
-                    <h3>
-                        Proxima Renovación
-                    </h3>
-                    <p>
-                        31-12-2024
-                    </p>
-                </mat-card>
-            </div>
-            <div class="mat-elevation-z8">
-                <mat-card class="card">
-                    <h3>
-                        Siguiente cargo
-                    </h3>
-                    <p>
-                        {{ 500 | currency}}
-                    </p>
-                </mat-card>
-            </div>
-        </div>
-        <div class="card-header">
-            <h1>
-                Listado de tarjetas
-            </h1>
-            <button mat-icon-button color="primary" (click)="createCard()" >
-                <mat-icon> add_card </mat-icon>
-            </button>
-        </div>
-        <div class="section">
-            <app-table
-            [title]="title"
-            [data]="cards"
-            [headers]="headers"
-            [setSize]="cards? cards.length : 0"
-            [config]="tableConfig"
-            (edit)="edit($event)"
-            (deleteItem)="deleteItem($event)"
-        ></app-table>
-        </div>
-    </div> -->
+    </div>
 </mat-card>

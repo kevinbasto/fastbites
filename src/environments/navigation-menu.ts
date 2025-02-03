@@ -57,13 +57,13 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         icon: 'calendar_month'
     },
     {
-        name: "Configuraciones",
-        url: "settings",
-        icon: "settings",
-    },
-    {
         name: 'Promociones',
         url: 'promos',
         icon: 'sell'
+    },
+    {
+        name: "Configuraciones",
+        url: "settings",
+        icon: "settings",
     },
 ]

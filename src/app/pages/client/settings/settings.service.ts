@@ -5,7 +5,6 @@ import { SnackbarService } from '../../../core/services/snackbar/snackbar.servic
 import { MatDialog } from '@angular/material/dialog';
 import { CreateCardComponent } from './dialogs/create-card/create-card.component';
 import { Card } from '../../../core/entities/card';
-import { HttpClient } from '@angular/common/http';
 import { doc, Firestore, updateDoc } from '@angular/fire/firestore';
 import { AuthService } from '../../../core/services/auth/auth.service';
 
@@ -16,11 +15,10 @@ export class SettingsService {
 
   constructor(
     private profileRepo: ProfileRepoService,
-    private snackbar: SnackbarService,
     private dialog: MatDialog,
-    private httpclient: HttpClient,
     private auth: AuthService,
-    private firestore: Firestore
+    private firestore: Firestore,
+    private snackbarService: SnackbarService
   ) { }
 
   async fetchProfile() {
@@ -41,23 +39,6 @@ export class SettingsService {
       throw error;
     }
   }
-  // async postProfile(profile: Profile) {
-  //   return new Promise<void>((resolve, reject) => {
-  //     this.profileRepo.postProfile(profile)
-  //     .then(async (result) => {
-  //       lastValueFrom(this.httpclient.post(`${environment.apiUrl}/customers`, {...profile}))
-  //       .then((result) => {
-  //         this.snackbar.openMessage("Perfil Actualizado con éxito");
-  //         resolve();
-  //       }).catch((err) => {
-  //         reject()
-  //       });
-  //     }).catch((err) => {
-  //       this.snackbar.openMessage("No se pudo actualizar el perfil");
-  //       reject();
-  //     });
-  //   })
-  // }
 
   async createCard() {
     const dialog = this.dialog.open(CreateCardComponent)
