@@ -5,7 +5,7 @@ import { nonAuthGuard } from './core/guards/non-auth/non-auth.guard';
 export const routes: Routes = [
     {
         path: "",
-        redirectTo: "public",
+        redirectTo: "client",
         pathMatch: "full"
     },
     {
@@ -18,8 +18,8 @@ export const routes: Routes = [
         loadChildren: () => import("./layouts/auth-layout/auth-layout.module").then(m => m.AuthLayoutModule),
         canActivateChild: [nonAuthGuard]
     },
-    {
-        path: "public",
-        loadChildren: () => import("./pages/public/public.module").then(m => m.PublicModule)
-    }
+    // {
+    //     path: "public",
+    //     loadChildren: () => import("./pages/public/public.module").then(m => m.PublicModule)
+    // }
 ];
