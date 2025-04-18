@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "fastbites-321c9"
-  }
+  },
+  "targets": {
+    "fastbites-321c9": {
+      "hosting": {
+        "fastbites-admin": [
+          "fastbites-admin"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

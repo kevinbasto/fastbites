@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "target": "fastbites-admin",
     "public": "dist/fastbites/browser",
     "ignore": [
       "firebase.json",
