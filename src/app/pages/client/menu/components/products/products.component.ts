@@ -12,7 +12,8 @@ import { PageEvent } from '@angular/material/paginator';
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
-})
+,
+  standalone: false})
 export class ProductsComponent implements OnInit, OnChanges {
 
   form: FormGroup

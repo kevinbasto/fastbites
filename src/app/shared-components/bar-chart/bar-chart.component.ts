@@ -6,7 +6,8 @@ import { BaseChartDirective } from 'ng2-charts';
   selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
   styleUrl: './bar-chart.component.scss'
-})
+,
+  standalone: false})
 export class BarChartComponent implements OnChanges{
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective<'bar'> | undefined;

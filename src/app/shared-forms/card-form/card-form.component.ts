@@ -6,7 +6,8 @@ import { Card } from '../../core/entities/card';
   selector: 'card-form',
   templateUrl: './card-form.component.html',
   styleUrl: './card-form.component.scss'
-})
+,
+  standalone: false})
 export class CardFormComponent implements OnInit {
 
   @Input() disablebuttons?: boolean = false;

@@ -11,7 +11,8 @@ import { PageEvent } from '@angular/material/paginator';
   selector: 'app-groups',
   templateUrl: './groups.component.html',
   styleUrl: './groups.component.scss'
-})
+,
+  standalone: false})
 export class GroupsComponent implements OnInit, OnChanges {
 
   form: FormGroup;

@@ -4,7 +4,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   templateUrl: './menu-url-displayer.component.html',
   styleUrl: './menu-url-displayer.component.scss'
-})
+,
+  standalone: false})
 export class MenuUrlDisplayerComponent {
 
   url: string;

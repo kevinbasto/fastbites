@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 @Component({
   templateUrl: './recover.component.html',
   styleUrl: './recover.component.scss'
-})
+,
+  standalone: false})
 export class RecoverComponent {
 
   public recoverForm : FormGroup;

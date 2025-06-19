@@ -4,7 +4,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   selector: 'form-actions',
   templateUrl: './form-actions.component.html',
   styleUrl: './form-actions.component.scss'
-})
+,
+  standalone: false})
 export class FormActionsComponent {
 
   @Input() disabled?: boolean;

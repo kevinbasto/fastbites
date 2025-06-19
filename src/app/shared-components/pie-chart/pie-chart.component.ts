@@ -9,7 +9,8 @@ import { Category } from '../../core/entities/category';
   selector: 'pie-chart',
   templateUrl: './pie-chart.component.html',
   styleUrl: './pie-chart.component.scss'
-})
+,
+  standalone: false})
 export class PieChartComponent implements OnChanges{
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 

@@ -6,7 +6,8 @@ import { Product } from '../../../../../core/entities/product';
   selector: 'app-view-product',
   templateUrl: './view-product.component.html',
   styleUrl: './view-product.component.scss'
-})
+,
+  standalone: false})
 export class ViewProductComponent {
 
   product: Product;

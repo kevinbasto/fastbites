@@ -9,7 +9,8 @@ import { Order } from '../../core/entities/order';
 @Component({
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss'
-})
+,
+  standalone: false})
 export class CheckoutComponent implements OnInit {
 
   orderResume: Array<CheckoutItem> = []

@@ -6,7 +6,8 @@ import { Staff } from '../../../core/entities/staff';
   selector: 'app-staff',
   templateUrl: './staff.component.html',
   styleUrl: './staff.component.scss'
-})
+,
+  standalone: false})
 export class StaffComponent implements OnInit {
 
   staff?: Staff;

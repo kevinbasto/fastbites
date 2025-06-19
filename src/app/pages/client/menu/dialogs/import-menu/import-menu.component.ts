@@ -6,7 +6,8 @@ import { ImportFormat } from '../../../../../core/entities/import-format';
   selector: 'app-import-menu',
   templateUrl: './import-menu.component.html',
   styleUrl: './import-menu.component.scss'
-})
+,
+  standalone: false})
 export class ImportMenuComponent {
 
   constructor(

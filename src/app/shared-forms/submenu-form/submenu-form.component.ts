@@ -10,7 +10,8 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
   selector: 'submenu-form',
   templateUrl: './submenu-form.component.html',
   styleUrl: './submenu-form.component.scss'
-})
+,
+  standalone: false})
 export class SubmenuFormComponent implements OnChanges {
 
   @Output() submenuForm: EventEmitter<Submenu> = new EventEmitter();

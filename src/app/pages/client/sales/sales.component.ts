@@ -17,7 +17,8 @@ import { Category } from '../../../core/entities/category';
 @Component({
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.scss'
-})
+,
+  standalone: false})
 export class SalesComponent implements OnInit {
   title: string = "Listado de ventas del Día";
   data: Array<any> = [];

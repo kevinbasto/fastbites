@@ -8,7 +8,8 @@ import { NavigationMenu } from '../../../../environments/navigation-menu';
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
-})
+,
+  standalone: false})
 export class NavbarComponent implements OnInit, AfterViewInit {
   public hide: boolean = true;
   @Output() toggle: EventEmitter<boolean> = new EventEmitter<boolean>();

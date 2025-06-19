@@ -8,7 +8,8 @@ import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.
 @Component({
   templateUrl: './edit-category.component.html',
   styleUrl: './edit-category.component.scss'
-})
+,
+  standalone: false})
 export class EditCategoryComponent implements OnInit {
 
   id!: string;

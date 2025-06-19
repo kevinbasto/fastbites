@@ -7,7 +7,8 @@ import { ExportFormat } from '../../core/entities/export-format';
   selector: 'export-form',
   templateUrl: './export-form.component.html',
   styleUrl: './export-form.component.scss'
-})
+,
+  standalone: false})
 export class ExportFormComponent {
 
   @Output() cancel = new EventEmitter<void>();

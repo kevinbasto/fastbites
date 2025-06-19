@@ -6,7 +6,8 @@ import { Profile } from '../../core/entities/profile';
   selector: 'plan-summary',
   templateUrl: './plan-summary.component.html',
   styleUrl: './plan-summary.component.scss'
-})
+,
+  standalone: false})
 export class PlanSummaryComponent {
 
   @Input() plan!: Plan;

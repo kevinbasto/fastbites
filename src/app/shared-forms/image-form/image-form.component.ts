@@ -6,7 +6,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   selector: 'image-form',
   templateUrl: './image-form.component.html',
   styleUrl: './image-form.component.scss'
-})
+,
+  standalone: false})
 export class ImageFormComponent implements OnChanges {
 
   @Input() uploading? : boolean;

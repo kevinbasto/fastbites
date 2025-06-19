@@ -46,7 +46,7 @@ export class MenuService {
         }
         await setDoc(docRef, { ...menu });
       }
-      docData(docRef).subscribe((menu: Menu) => this.menu$.next(menu));
+      docData(docRef).subscribe((menu: any) => this.menu$.next(menu));
 
     } catch (error) {
       this.snackbar.openMessage('Hubo un error al cargar el menú');

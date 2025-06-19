@@ -8,7 +8,8 @@ import { Submenu } from '../../../core/entities/submenu';
 @Component({
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
-})
+,
+  standalone: false})
 export class MenuComponent implements OnInit {
 
   menu?: Menu;

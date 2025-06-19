@@ -10,7 +10,8 @@ import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.
   selector: 'app-create-submenu',
   templateUrl: './create-submenu.component.html',
   styleUrl: './create-submenu.component.scss'
-})
+,
+  standalone: false})
 export class CreateSubmenuComponent implements OnInit {
 
   categories?: Array<Category>;

@@ -4,7 +4,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   selector: 'image-dropper',
   templateUrl: './image-dropper.component.html',
   styleUrl: './image-dropper.component.scss'
-})
+,
+  standalone: false})
 export class ImageDropperComponent {
 
   public isHovering? : boolean;

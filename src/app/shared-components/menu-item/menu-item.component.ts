@@ -6,7 +6,8 @@ import { Personalization } from '../../core/entities/personalization';
   selector: 'menu-item',
   templateUrl: './menu-item.component.html',
   styleUrl: './menu-item.component.scss'
-})
+,
+  standalone: false})
 export class MenuItemComponent {
 
   @Input() personalization?: Personalization;

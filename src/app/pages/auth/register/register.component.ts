@@ -7,7 +7,8 @@ import { checkPasswords, PasswordErrorStateMatcher } from './password-validation
 @Component({
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
-})
+,
+  standalone: false})
 export class RegisterComponent {
 
   form : FormGroup;

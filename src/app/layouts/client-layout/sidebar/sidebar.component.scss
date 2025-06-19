@@ -1,4 +1,4 @@
-@import "../../../../colors.scss";
+@use "../../../../colors.scss" as colors;
 
 .sidebar {
     display: flex;
@@ -48,7 +48,7 @@
 
             &:hover {
                 transform: scale(1.01);
-                // background: $fifth-color;
+                // background: colors.$fifth-color;
                 color: black;
 
                 .icon {
@@ -58,13 +58,13 @@
 
             .icon {
                 padding: 1rem;
-                color: $secondary-text;
+                color: colors.$secondary-text;
             }
         }
     }
 
     .selected {
-        background-color: $primary-color;
+        background-color: colors.$primary-color;
         color: white;
 
         .icon {

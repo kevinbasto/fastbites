@@ -7,7 +7,8 @@ import { v6 as uuid } from "uuid";
   selector: 'app-create-table',
   templateUrl: './create-table.component.html',
   styleUrl: './create-table.component.scss'
-})
+,
+  standalone: false})
 export class CreateTableComponent {
 
   constructor(

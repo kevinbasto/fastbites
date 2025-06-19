@@ -6,7 +6,8 @@ import { ImportFormat } from '../../core/entities/import-format';
   selector: 'file-importer-form',
   templateUrl: './file-importer-form.component.html',
   styleUrl: './file-importer-form.component.scss'
-})
+,
+  standalone: false})
 export class FileImporterFormComponent implements OnInit {
   @Output() cancel: EventEmitter<void> = new EventEmitter();
   @Output() import: EventEmitter<ImportFormat> = new EventEmitter();

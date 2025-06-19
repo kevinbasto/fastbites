@@ -6,7 +6,8 @@ import { Profile } from '../../core/entities/profile';
   selector: 'personal-data-form',
   templateUrl: './personal-data-form.component.html',
   styleUrl: './personal-data-form.component.scss'
-})
+,
+  standalone: false})
 export class PersonalDataFormComponent implements OnChanges, OnInit {
 
   @Input() enable: boolean = false;

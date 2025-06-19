@@ -6,7 +6,8 @@ import { MatDialogRef } from '@angular/material/dialog';
   selector: 'app-create-card',
   templateUrl: './create-card.component.html',
   styleUrl: './create-card.component.scss'
-})
+,
+  standalone: false})
 export class CreateCardComponent {
 
   constructor(

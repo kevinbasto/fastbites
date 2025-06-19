@@ -5,7 +5,8 @@ import { Message } from '../../core/generics/message';
   selector: 'app-info-card',
   templateUrl: './info-card.component.html',
   styleUrl: './info-card.component.scss'
-})
+,
+  standalone: false})
 export class InfoCardComponent {
   
   @Input() title!: string;

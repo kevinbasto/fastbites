@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
   selector: 'app-create-schedule',
   templateUrl: './create-schedule.component.html',
   styleUrl: './create-schedule.component.scss'
-})
+,
+  standalone: false})
 export class CreateScheduleComponent {
 
   uploading = false;

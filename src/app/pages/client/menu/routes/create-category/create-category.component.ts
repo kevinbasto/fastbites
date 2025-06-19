@@ -7,7 +7,8 @@ import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.
 @Component({
   templateUrl: './create-category.component.html',
   styleUrl: './create-category.component.scss'
-})
+,
+  standalone: false})
 export class CreateCategoryComponent {
 
   uploading: boolean = false;

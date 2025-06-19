@@ -7,7 +7,8 @@ import { Personalization } from '../../../core/entities/personalization';
 @Component({
   templateUrl: './personalization.component.html',
   styleUrl: './personalization.component.scss'
-})
+,
+  standalone: false})
 export class PersonalizationComponent implements OnInit{
 
   form: FormGroup;

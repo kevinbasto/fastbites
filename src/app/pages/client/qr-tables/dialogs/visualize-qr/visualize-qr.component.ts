@@ -5,7 +5,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   selector: 'app-visualize-qr',
   templateUrl: './visualize-qr.component.html',
   styleUrl: './visualize-qr.component.scss'
-})
+,
+  standalone: false})
 export class VisualizeQrComponent {
 
   url : string;

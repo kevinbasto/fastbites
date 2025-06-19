@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
   styleUrl: './schedule.component.scss'
-})
+,
+  standalone: false})
 export class ScheduleComponent {
 
   headers = schedulesTableHeaders;

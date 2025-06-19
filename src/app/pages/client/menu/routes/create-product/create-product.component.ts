@@ -9,7 +9,8 @@ import { Category } from '../../../../../core/entities/category';
 @Component({
   templateUrl: './create-product.component.html',
   styleUrl: './create-product.component.scss'
-})
+,
+  standalone: false})
 export class CreateProductComponent implements OnInit{
 
   uploading: boolean = false;

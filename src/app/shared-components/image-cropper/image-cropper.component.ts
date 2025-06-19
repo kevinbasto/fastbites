@@ -6,7 +6,8 @@ import { CroppedImage } from '../../core/generics/cropped-image';
   selector: 'app-image-cropper',
   templateUrl: './image-cropper.component.html',
   styleUrl: './image-cropper.component.scss'
-})
+,
+  standalone: false})
 export class AppImageCropperComponent {
 
   

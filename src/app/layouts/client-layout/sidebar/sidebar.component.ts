@@ -10,7 +10,8 @@ import { environment } from '../../../../environments/environment';
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
-})
+,
+  standalone: false})
 export class SidebarComponent {
   public routes: Array<NavigationMenuItem> = NavigationMenu;
   public currentRoute! : string;

@@ -5,7 +5,8 @@ import { Plan } from '../../core/entities/plan';
   selector: 'plan-card',
   templateUrl: './plan-card.component.html',
   styleUrl: './plan-card.component.scss'
-})
+,
+  standalone: false})
 export class PlanCardComponent {
 
   @Input() plan!: Plan;

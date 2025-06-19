@@ -9,7 +9,8 @@ import { Order } from '../../../core/entities/order';
   selector: 'app-orders',
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss'
-})
+,
+  standalone: false})
 export class OrdersComponent implements OnInit {
   title: string = "Listado de productos";
   orders?: Array<Order>;

@@ -6,7 +6,8 @@ import { Table } from '../../core/entities/table';
   selector: 'table-form',
   templateUrl: './table-form.component.html',
   styleUrl: './table-form.component.scss'
-})
+,
+  standalone: false})
 export class TableFormComponent implements OnChanges {
 
   @Input() table!: Table;

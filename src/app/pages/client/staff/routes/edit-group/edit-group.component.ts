@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-edit-group',
   templateUrl: './edit-group.component.html',
   styleUrl: './edit-group.component.scss'
-})
+,
+  standalone: false})
 export class EditGroupComponent {
 
 }

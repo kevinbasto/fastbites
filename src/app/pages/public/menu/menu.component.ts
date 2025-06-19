@@ -9,7 +9,8 @@ import { filter } from 'rxjs';
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
-})
+,
+  standalone: false})
 export class MenuComponent implements OnInit {
 
   id? : string;

@@ -10,7 +10,8 @@ import { SnackbarService } from '../../../core/services/snackbar/snackbar.servic
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss'
-})
+,
+  standalone: false})
 export class SettingsComponent implements OnInit {
 
   editPersonal : boolean = false;

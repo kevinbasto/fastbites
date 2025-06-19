@@ -12,7 +12,8 @@ import { Menu } from '../../../../../core/entities/menu';
   selector: 'app-submenus',
   templateUrl: './submenus.component.html',
   styleUrl: './submenus.component.scss'
-})
+,
+  standalone: false})
 export class SubmenusComponent implements OnInit, OnChanges {
 
   form: FormGroup;

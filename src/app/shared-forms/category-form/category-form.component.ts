@@ -6,7 +6,8 @@ import { Category } from '../../core/entities/category';
   selector: 'category-form',
   templateUrl: './category-form.component.html',
   styleUrl: './category-form.component.scss'
-})
+,
+  standalone: false})
 export class CategoryFormComponent implements OnChanges {
 
   @Input() categoryData?: Category; 

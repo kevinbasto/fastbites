@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.scss'
-})
+,
+  standalone: false})
 export class ProductDetailComponent {
 
 }

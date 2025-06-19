@@ -6,7 +6,8 @@ import { Order } from '../../core/entities/order';
   selector: 'app-order-visualizer',
   templateUrl: './order-visualizer.component.html',
   styleUrl: './order-visualizer.component.scss'
-})
+,
+  standalone: false})
 export class OrderVisualizerComponent {
 
   order: Order

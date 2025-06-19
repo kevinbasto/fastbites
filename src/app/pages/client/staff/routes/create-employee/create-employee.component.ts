@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-create-employee',
   templateUrl: './create-employee.component.html',
   styleUrl: './create-employee.component.scss'
-})
+,
+  standalone: false})
 export class CreateEmployeeComponent {
 
 }

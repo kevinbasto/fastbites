@@ -5,7 +5,8 @@ import QrScanner from 'qr-scanner';
   selector: 'qr-scanner',
   templateUrl: './qr-scanner.component.html',
   styleUrl: './qr-scanner.component.scss'
-})
+,
+  standalone: false})
 export class QrScannerComponent implements OnInit, OnChanges{
 
   qrScanner!: QrScanner;

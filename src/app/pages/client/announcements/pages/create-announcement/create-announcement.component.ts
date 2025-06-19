@@ -8,7 +8,8 @@ import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.
   selector: 'app-create-announcement',
   templateUrl: './create-announcement.component.html',
   styleUrl: './create-announcement.component.scss'
-})
+,
+  standalone: false})
 export class CreateAnnouncementComponent {
 
   uploading: boolean = false;

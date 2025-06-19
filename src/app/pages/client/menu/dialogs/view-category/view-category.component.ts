@@ -6,7 +6,8 @@ import { Category } from '../../../../../core/entities/category';
   selector: 'app-view-category',
   templateUrl: './view-category.component.html',
   styleUrl: './view-category.component.scss'
-})
+,
+  standalone: false})
 export class ViewCategoryComponent {
 
   category: Category;

@@ -8,7 +8,8 @@ import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.
   selector: 'app-edit-schedule',
   templateUrl: './edit-schedule.component.html',
   styleUrl: './edit-schedule.component.scss'
-})
+,
+  standalone: false})
 export class EditScheduleComponent implements OnInit {
 
   uploading: boolean = false;

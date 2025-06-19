@@ -7,7 +7,8 @@ import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss'
-})
+,
+  standalone: false})
 export class GalleryComponent implements OnInit {
 
   images?: Array<Image>;

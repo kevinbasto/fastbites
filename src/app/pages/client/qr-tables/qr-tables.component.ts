@@ -7,7 +7,8 @@ import { QrTablesTableConfig, QrTablesTableHeaders } from './qr-tables-table.hea
   selector: 'app-qr-tables',
   templateUrl: './qr-tables.component.html',
   styleUrl: './qr-tables.component.scss'
-})
+,
+  standalone: false})
 export class QrTablesComponent implements OnInit {
 
   headers = QrTablesTableHeaders;

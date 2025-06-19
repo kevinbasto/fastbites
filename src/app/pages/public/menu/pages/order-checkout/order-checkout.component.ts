@@ -12,7 +12,8 @@ import { Order } from '../../../../../core/entities/order';
   selector: 'app-order-checkout',
   templateUrl: './order-checkout.component.html',
   styleUrl: './order-checkout.component.scss'
-})
+,
+  standalone: false})
 export class OrderCheckoutComponent implements OnInit {
 
   uploading: boolean = false;

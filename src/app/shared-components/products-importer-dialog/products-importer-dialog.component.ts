@@ -5,7 +5,8 @@ import { MatDialogRef } from '@angular/material/dialog';
   selector: 'app-products-importer-dialog',
   templateUrl: './products-importer-dialog.component.html',
   styleUrl: './products-importer-dialog.component.scss'
-})
+,
+  standalone: false})
 export class ProductsImporterDialogComponent {
 
   file?: File

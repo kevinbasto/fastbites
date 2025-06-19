@@ -21,7 +21,8 @@ type CategoryProduct = {
   selector: 'app-menu',
   templateUrl: './order-slip.component.html',
   styleUrl: './order-slip.component.scss'
-})
+,
+  standalone: false})
 export class OrderSlipComponent implements OnInit {
 
   menu?: Menu;

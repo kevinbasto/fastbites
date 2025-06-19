@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrl: './book.component.scss'
-})
+,
+  standalone: false})
 export class BookComponent {
 
 }

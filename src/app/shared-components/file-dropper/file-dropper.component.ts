@@ -4,7 +4,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
   selector: 'file-dropper',
   templateUrl: './file-dropper.component.html',
   styleUrl: './file-dropper.component.scss'
-})
+,
+  standalone: false})
 export class FileDropperComponent {
 
   public isHovering? : boolean;

@@ -10,7 +10,8 @@ import { Category } from '../../../../../core/entities/category';
   selector: 'app-edit-submenu',
   templateUrl: './edit-submenu.component.html',
   styleUrl: './edit-submenu.component.scss'
-})
+,
+  standalone: false})
 export class EditSubmenuComponent implements OnInit {
 
   id!: string;

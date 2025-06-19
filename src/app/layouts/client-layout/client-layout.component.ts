@@ -6,7 +6,8 @@ import { MatSidenav } from '@angular/material/sidenav';
   selector: 'app-client-layout',
   templateUrl: './client-layout.component.html',
   styleUrl: './client-layout.component.scss'
-})
+,
+  standalone: false})
 export class ClientLayoutComponent implements AfterViewInit, OnInit {
   
   @ViewChild(MatSidenav) sidenav!: MatSidenav;

@@ -10,7 +10,8 @@ import { Menu } from '../../../../../core/entities/menu';
 @Component({
   templateUrl: './edit-product.component.html',
   styleUrl: './edit-product.component.scss'
-})
+,
+  standalone: false})
 export class EditProductComponent implements OnInit{
   
   id!: string;

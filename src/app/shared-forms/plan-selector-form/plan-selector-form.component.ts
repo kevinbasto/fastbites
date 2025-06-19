@@ -6,7 +6,8 @@ import { Plan } from '../../core/entities/plan';
   selector: 'plan-selector-form',
   templateUrl: './plan-selector-form.component.html',
   styleUrl: './plan-selector-form.component.scss'
-})
+,
+  standalone: false})
 export class PlanSelectorFormComponent implements OnInit{
 
   @Input() plans!: Array<Plan>;

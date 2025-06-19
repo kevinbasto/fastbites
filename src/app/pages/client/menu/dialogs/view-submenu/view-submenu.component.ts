@@ -9,7 +9,8 @@ import { weekDays } from '../../../../../shared-forms/submenu-form/picker-theme'
   selector: 'app-view-submenu',
   templateUrl: './view-submenu.component.html',
   styleUrl: './view-submenu.component.scss'
-})
+,
+  standalone: false})
 export class ViewSubmenuComponent {
 
   submenu: Submenu;

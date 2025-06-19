@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-create-group',
   templateUrl: './create-group.component.html',
   styleUrl: './create-group.component.scss'
-})
+,
+  standalone: false})
 export class CreateGroupComponent {
 
 }

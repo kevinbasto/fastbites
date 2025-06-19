@@ -11,7 +11,8 @@ import { PageEvent } from '@angular/material/paginator';
   selector: 'app-employees',
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.scss'
-})
+,
+  standalone: false})
 export class EmployeesComponent implements OnInit, OnChanges {
 
   form: FormGroup;

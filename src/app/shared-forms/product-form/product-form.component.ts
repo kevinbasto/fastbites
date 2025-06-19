@@ -7,7 +7,8 @@ import { Category } from '../../core/entities/category';
   selector: "product-form",
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.scss'
-})
+,
+  standalone: false})
 export class ProductFormComponent implements OnChanges, OnInit {
 
   @Output() cancel: EventEmitter<null> = new EventEmitter()

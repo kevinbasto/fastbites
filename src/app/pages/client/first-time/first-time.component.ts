@@ -10,7 +10,8 @@ import { Profile } from '../../../core/entities/profile';
   selector: 'app-first-time',
   templateUrl: './first-time.component.html',
   styleUrl: './first-time.component.scss'
-})
+,
+  standalone: false})
 export class FirstTimeComponent implements OnInit {
 
   form!: FormGroup;

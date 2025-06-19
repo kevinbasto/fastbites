@@ -6,7 +6,8 @@ import { TableColumn } from '../../core/generics/table-column';
   selector: 'app-orders-table',
   templateUrl: './orders-table.component.html',
   styleUrl: './orders-table.component.scss'
-})
+,
+  standalone: false})
 export class OrdersTableComponent implements OnChanges {
 
   @Input() orders!: Array<Order>;

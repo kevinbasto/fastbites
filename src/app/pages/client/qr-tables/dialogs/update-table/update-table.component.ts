@@ -7,7 +7,8 @@ import { DIALOG_DATA } from '@angular/cdk/dialog';
   selector: 'app-update-table',
   templateUrl: './update-table.component.html',
   styleUrl: './update-table.component.scss'
-})
+,
+  standalone: false})
 export class UpdateTableComponent {
 
   table: Table

@@ -6,7 +6,8 @@ import { Personalization } from '../../core/entities/personalization';
   selector: 'ordering-menu',
   templateUrl: './ordering-menu.component.html',
   styleUrl: './ordering-menu.component.scss'
-})
+,
+  standalone: false})
 export class OrderingMenuComponent {
 
   @Input() personalization?: Personalization;

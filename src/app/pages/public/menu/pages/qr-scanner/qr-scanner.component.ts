@@ -6,7 +6,8 @@ import { MenuService } from '../../menu.service';
   selector: 'app-qr-scanner',
   templateUrl: './qr-scanner.component.html',
   styleUrl: './qr-scanner.component.scss'
-})
+,
+  standalone: false})
 export class QrScannerComponent implements OnInit {
 
   stop: boolean = false;

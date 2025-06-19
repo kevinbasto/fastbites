@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-shift-form',
   templateUrl: './shift-form.component.html',
   styleUrl: './shift-form.component.scss'
-})
+,
+  standalone: false})
 export class ShiftFormComponent {
 
 }

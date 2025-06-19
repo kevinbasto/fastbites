@@ -6,7 +6,8 @@ import { ExportFormat } from '../../../../../core/entities/export-format';
   selector: 'app-export-menu',
   templateUrl: './export-menu.component.html',
   styleUrl: './export-menu.component.scss'
-})
+,
+  standalone: false})
 export class ExportMenuComponent {
 
   constructor(

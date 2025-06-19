@@ -8,7 +8,8 @@ import { Image } from '../../../../../core/entities/image';
   selector: 'app-edit-image',
   templateUrl: './edit-image.component.html',
   styleUrl: './edit-image.component.scss'
-})
+,
+  standalone: false})
 export class EditImageComponent implements OnInit {
 
   id?: string;

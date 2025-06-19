@@ -25,8 +25,8 @@ export class OrdersService {
   ) {
     this.orders$ = new Observable<Array<Order>>((observer) => {
       this.ordersRepo.find()
-      .then((result : Observable<Array<Order>>) => {
-        result.subscribe(orders => {
+      .then((result :any) => {
+        result.subscribe((orders: any) => {
           observer.next(orders)
         })
       }).catch((err) => {

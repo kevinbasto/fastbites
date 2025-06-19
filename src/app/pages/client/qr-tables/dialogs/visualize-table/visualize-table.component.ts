@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-visualize-table',
   templateUrl: './visualize-table.component.html',
   styleUrl: './visualize-table.component.scss'
-})
+,
+  standalone: false})
 export class VisualizeTableComponent {
 
 }

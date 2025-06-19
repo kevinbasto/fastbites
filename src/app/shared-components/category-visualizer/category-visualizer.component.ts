@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-category-visualizer',
   templateUrl: './category-visualizer.component.html',
   styleUrl: './category-visualizer.component.scss'
-})
+,
+  standalone: false})
 export class CategoryVisualizerComponent {
 
 }

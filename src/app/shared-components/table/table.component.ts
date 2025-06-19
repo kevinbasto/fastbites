@@ -10,7 +10,8 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
-})
+,
+  standalone: false})
 export class TableComponent implements OnInit, OnChanges{
 
   @ViewChild(MatTable) table!: MatTable<Product>;

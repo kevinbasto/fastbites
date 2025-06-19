@@ -6,7 +6,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   selector: 'announcement-form',
   templateUrl: './announcement-form.component.html',
   styleUrl: './announcement-form.component.scss'
-})
+,
+  standalone: false})
 export class AnnouncementFormComponent implements OnChanges {
 
   @Input() uploading? : boolean;

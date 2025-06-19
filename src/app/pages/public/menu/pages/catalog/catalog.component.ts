@@ -29,7 +29,8 @@ type CategoryProduct = {
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.scss'
-})
+,
+  standalone: false})
 export class CatalogComponent {
 
   id?: string;

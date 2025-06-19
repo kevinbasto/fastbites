@@ -7,7 +7,8 @@ import { Schedule } from '../../core/entities/schedule';
   selector: 'schedule-form',
   templateUrl: './schedule-form.component.html',
   styleUrl: './schedule-form.component.scss'
-})
+,
+  standalone: false})
 export class ScheduleFormComponent implements OnChanges {
 
   @Input() uploading?: boolean;

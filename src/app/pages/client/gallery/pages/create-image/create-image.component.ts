@@ -8,7 +8,8 @@ import { SnackbarService } from '../../../../../core/services/snackbar/snackbar.
   selector: 'app-create-image',
   templateUrl: './create-image.component.html',
   styleUrl: './create-image.component.scss'
-})
+,
+  standalone: false})
 export class CreateImageComponent {
 
   uploading: boolean = false;

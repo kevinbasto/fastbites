@@ -1,4 +1,4 @@
-@import '../../../colors.scss';
+@use "../../../colors.scss" as colors;
 
 .card-header {
     display: flex;
@@ -21,7 +21,7 @@ ul {
         list-style-position: inside; // Poner los puntos dentro de la lista
 
         &::marker {
-            color: $primary-color; // Poner el color de los puntos como la variable $primary-color
+            color: colors.$primary-color; // Poner el color de los puntos como la variable colors.$primary-color
             font-weight: 800; // Bolding ligero
         }
     }
@@ -39,7 +39,7 @@ ul {
 }
 
 .selected{
-    background: $primary-color;
+    background: colors.$primary-color;
     color: white;
 
     ul{

@@ -6,7 +6,8 @@ import { LoginService } from './login.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
-})
+,
+  standalone: false})
 export class LoginComponent {
 
   form: FormGroup;

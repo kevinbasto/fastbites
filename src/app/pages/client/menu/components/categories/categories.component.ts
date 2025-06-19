@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
-})
+,
+  standalone: false})
 export class CategoriesComponent implements OnInit, OnChanges {
 
   form: FormGroup;

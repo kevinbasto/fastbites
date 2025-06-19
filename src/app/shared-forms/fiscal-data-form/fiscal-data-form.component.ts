@@ -4,7 +4,8 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
   selector: 'fiscal-data-form',
   templateUrl: './fiscal-data-form.component.html',
   styleUrl: './fiscal-data-form.component.scss'
-})
+,
+  standalone: false})
 export class FiscalDataFormComponent implements OnInit, OnChanges {
 
   @Input() enable: boolean = false;
