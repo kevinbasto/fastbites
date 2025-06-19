@@ -1,78 +1,85 @@
-@import "./colors.scss";
+@use "./colors.scss" as colors;
 
-html, body { height: 100%; outline: none; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { 
+    height: 100%; 
+    outline: none; 
+}
 
-*::-webkit-scrollbar{
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+*::-webkit-scrollbar {
     width: 0.25rem;
 }
 
-*::-webkit-scrollbar-track{
-    background: $fifth-color;
+*::-webkit-scrollbar-track {
+    background: colors.$fifth-color;
 }
 
-*::-webkit-scrollbar-thumb{
-    background: $primary-color;
+*::-webkit-scrollbar-thumb {
+    background: colors.$primary-color;
 }
 
-*:focus{
+*:focus {
     outline: none;
 }
 
-.full-size-viewport{
+.full-size-viewport {
     width: 100vw;
     height: 100vh;
 }
 
-.grid-container{
+.grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1rem;
 }
 
-.actions{
+.actions {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
 }
 
-.link{
+.link {
     text-decoration: none;
     color: #1976d2;
-
-    &:hover{
+    
+    &:hover {
         filter: brightness(.7);
     }
 }
 
-.dialog{
-    h1{
+.dialog {
+    padding: 1rem;
+    
+    h1 {
         text-align: center;
         font-weight: 300;
     }
 }
 
-.message{
-    h1{
+.message {
+    h1 {
         text-align: center;
     }
-    p{
+    
+    p {
         text-align: center;
     }
 }
 
-.dialog{
-    padding: 1rem;
-}
-
-.button{
+.button {
     display: flex;
     justify-content: center;
     padding: .5rem;
-    background: $primary-color;
+    background: colors.$primary-color;
     border-radius: 5px;
     box-shadow: 0px 1px 1px 1px #0000005c;
-    label{
+    
+    label {
         color: white;
         font-weight: 500;
         width: 100%;
@@ -81,57 +88,55 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
 }
 
-.disabled{
+.disabled {
     cursor: none;
     background: rgba(0, 0, 0, 0.38);
 }
 
-.card{
-  padding: 1ch;
-
-  .card-header{
-      h1{
-          font-weight: 300;
-      }
-      display: flex;
-      justify-content: space-between;
-  }
+.card {
+    padding: 1ch;
+    
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        
+        h1 {
+            font-weight: 300;
+        }
+    }
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
+    margin-bottom: 1rem;
 }
 
-.links{
+.links {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
     align-items: center;
-    gap: 1rem
+    gap: 1rem;
 }
 
-.form-actions{
+.form-actions {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
 }
 
-.expand{
+.expand {
     transform: rotate(180deg);
     transition: 100ms;
 }
 
-.collapse{
+.collapse {
     transform: rotate(0deg);
     transition: 100ms;
 }
 
-form{
-    margin-bottom: 1rem;
-}
-
-.form-action-dialog{
+.form-action-dialog {
     display: flex;
     flex-direction: column;
     padding-top: 1rem;
