@@ -1,16 +1,24 @@
 <mat-card class="card">
-    <div class="card-header">
-        <h1>
-            Personalización
-        </h1>
-        <button mat-icon-button color="primary" (click)="isEditing = !isEditing" >
-            <mat-icon>
-                edit
-            </mat-icon>
-        </button>
-    </div>
-    <div class="grid-container">
-        <app-restaurant-form></app-restaurant-form>
-        <app-restaurant-images></app-restaurant-images>
-    </div>
+  <div class="card-header">
+    <h1>Personalización</h1>
+    <button mat-icon-button color="primary" (click)="isEditing = !isEditing">
+      <mat-icon> edit </mat-icon>
+    </button>
+  </div>
+  <div class="grid-container">
+    <app-restaurant-form></app-restaurant-form>
+    <app-restaurant-images></app-restaurant-images>
+  </div>
+  @if(isEditing){
+  <div class="form-actions">
+    <button mat-raised-button>
+      <mat-icon> cancel </mat-icon>
+      Cancelar
+    </button>
+    <button mat-raised-button color="primary">
+      <mat-icon> save </mat-icon>
+      Guardar
+    </button>
+  </div>
+  }
 </mat-card>
