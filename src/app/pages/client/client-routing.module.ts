@@ -8,56 +8,45 @@ const routes: Routes = [
     redirectTo: "menu",
     pathMatch: "full"
   },
-  // la idea principal de este enrutado es similar a navigation menu, que es: menu, personalizacion, comanda, ordenes, ventas, configuraciones,
   {
     path: "menu",
     loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule),
-    canActivateChild: [firstTimeGuard],
   },
   {
-    path: "personalization",
-    loadChildren: () => import('./personalization/personalization.module').then(m => m.PersonalizationModule),
-    canActivateChild: [firstTimeGuard],
+    path: "restaurant",
+    loadChildren: () => import('./restaurant/restaurant.module').then(m => m.RestaurantModule)
   },
   {
     path: "orderslip",
     loadChildren: () => import('./order-slip/order-slip.module').then(m => m.OrderSlipModule),
-    canActivateChild: [firstTimeGuard],
   },
   {
     path: "orders",
     loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule),
-    canActivateChild: [firstTimeGuard],
   },
   {
     path: "sales",
     loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule),
-    canActivateChild: [firstTimeGuard],
   },
   {
     path: 'qrtables',
     loadChildren: () => import('./qr-tables/qr-tables.module').then(m => m.QrTablesModule),
-    canActivateChild: [firstTimeGuard],
   },
   {
     path: "settings",
     loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule),
-    canActivateChild: [firstTimeGuard],
   },
   {
     path: 'schedule',
     loadChildren: () => import('./schedule/schedule.module').then(m => m.ScheduleModule),
-    canActivateChild: [firstTimeGuard],
   },
   {
     path: 'gallery',
     loadChildren: () => import('./gallery/gallery.module').then(m => m.GalleryModule),
-    canActivateChild: [firstTimeGuard],
   },
   {
     path: 'announcements',
     loadChildren: () => import('./announcements/announcements.module').then(m => m.AnnouncementsModule),
-    canActivateChild: [firstTimeGuard],
   },
   {
     path: "promos",
@@ -71,7 +60,6 @@ const routes: Routes = [
     path: 'shifts',
     loadChildren: () => import('./shifts/shifts.module').then(m => m.ShiftsModule)
   },
-  // elementos de uso unico que no se pretende sean accesibles una vez cumplida su funcion
   {
     path: "first-time",
     loadChildren: () => import('./first-time/first-time.module').then(m => m.FirstTimeModule),

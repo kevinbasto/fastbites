@@ -7,9 +7,9 @@ export const NavigationMenu : Array<NavigationMenuItem> = [
         icon: "menu_book",
     },
     {
-        name: "Personalizar",
-        url: "personalization",
-        icon: "palette",
+        name: "Restaurante",
+        url: "restaurant",
+        icon: "store",
     },
     {
         name: "Comanda",

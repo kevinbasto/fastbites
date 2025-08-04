@@ -7,15 +7,19 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule } from "@angular/material/menu";
-import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatStepperModule } from "@angular/material/stepper";
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatInputModule } from '@angular/material/input';
-import {provideCharts, withDefaultRegisterables, BaseChartDirective  } from "ng2-charts";
+import {
+  provideCharts,
+  withDefaultRegisterables,
+  BaseChartDirective,
+} from 'ng2-charts';
 
 import { ImageCropperComponent } from 'ngx-image-cropper';
 import { AppImageCropperComponent } from './image-cropper/image-cropper.component';
@@ -42,34 +46,37 @@ import { PlanCardComponent } from './plan-card/plan-card.component';
 import { PlanSummaryComponent } from './plan-summary/plan-summary.component';
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 import { MenuScannerComponent } from './menu-scanner/menu-scanner.component';
+import { RestaurantImagesComponent } from './restaurant-images/restaurant-images.component';
 
+const components = [
+  TableComponent,
+  AppImageCropperComponent,
+  ImageDropperComponent,
+  ConfirmDialogComponent,
+  QrScannerComponent,
+  CheckoutComponent,
+  OrdersTableComponent,
+  OrderVisualizerComponent,
+  MenuUrlDisplayerComponent,
+  OrderingMenuComponent,
+  MenuItemComponent,
+  InfoCardComponent,
+  BarChartComponent,
+  PieChartComponent,
+  ProductVisualizerComponent,
+  CategoryVisualizerComponent,
+  ResponsiveCardInfoComponent,
+  ProductsImporterDialogComponent,
+  FileDropperComponent,
+  PlanCardComponent,
+  PlanSummaryComponent,
+  LoadingScreenComponent,
+  MenuScannerComponent,
+  RestaurantImagesComponent,
+];
 
 @NgModule({
-  declarations: [
-    TableComponent,
-    AppImageCropperComponent,
-    ImageDropperComponent,
-    ConfirmDialogComponent,
-    QrScannerComponent,
-    CheckoutComponent,
-    OrdersTableComponent,
-    OrderVisualizerComponent,
-    MenuUrlDisplayerComponent,
-    OrderingMenuComponent,
-    MenuItemComponent,
-    InfoCardComponent,
-    BarChartComponent,
-    PieChartComponent,
-    ProductVisualizerComponent,
-    CategoryVisualizerComponent,
-    ResponsiveCardInfoComponent,
-    ProductsImporterDialogComponent,
-    FileDropperComponent,
-    PlanCardComponent,
-    PlanSummaryComponent,
-    LoadingScreenComponent,
-    MenuScannerComponent
-  ],
+  declarations: [...components],
   imports: [
     CommonModule,
     MatTableModule,
@@ -89,32 +96,7 @@ import { MenuScannerComponent } from './menu-scanner/menu-scanner.component';
     MatProgressSpinnerModule,
     BaseChartDirective,
   ],
-  exports: [
-    TableComponent,
-    AppImageCropperComponent,
-    ImageDropperComponent,
-    ConfirmDialogComponent,
-    QrScannerComponent,
-    CheckoutComponent,
-    OrdersTableComponent,
-    OrderVisualizerComponent,
-    OrderingMenuComponent,
-    InfoCardComponent,
-    BarChartComponent,
-    PieChartComponent,
-    ProductVisualizerComponent,
-    CategoryVisualizerComponent,
-    ResponsiveCardInfoComponent,
-    MenuItemComponent,
-    ProductsImporterDialogComponent,
-    FileDropperComponent,
-    PlanCardComponent,
-    PlanSummaryComponent,
-    LoadingScreenComponent,
-    MenuScannerComponent
-  ],
-  providers: [
-    provideCharts(withDefaultRegisterables()),
-  ]
+  exports: [...components],
+  providers: [provideCharts(withDefaultRegisterables())],
 })
-export class SharedComponentsModule { }
+export class SharedComponentsModule {}

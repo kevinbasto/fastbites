@@ -1,0 +1,16 @@
+<mat-card class="card">
+    <div class="card-header">
+        <h1>
+            Personalización
+        </h1>
+        <button mat-icon-button color="primary" (click)="isEditing = !isEditing" >
+            <mat-icon>
+                edit
+            </mat-icon>
+        </button>
+    </div>
+    <div class="grid-container">
+        <app-restaurant-form></app-restaurant-form>
+        <app-restaurant-images></app-restaurant-images>
+    </div>
+</mat-card>

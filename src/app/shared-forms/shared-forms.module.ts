@@ -4,14 +4,14 @@ import { ProductFormComponent } from './product-form/product-form.component';
 import { FormActionsComponent } from './form-actions/form-actions.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { CurrencyMaskModule } from "ng2-currency-mask";
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
-import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SharedComponentsModule } from '../shared-components/shared-components.module';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -20,7 +20,7 @@ import { FiscalDataFormComponent } from './fiscal-data-form/fiscal-data-form.com
 import { CardFormComponent } from './card-form/card-form.component';
 import { PlanSelectorFormComponent } from './plan-selector-form/plan-selector-form.component';
 import { SubmenuFormComponent } from './submenu-form/submenu-form.component';
-import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TableFormComponent } from './table-form/table-form.component';
@@ -29,40 +29,46 @@ import { FileImporterFormComponent } from './file-importer-form/file-importer-fo
 import { ScheduleFormComponent } from './schedule-form/schedule-form.component';
 import { ImageFormComponent } from './image-form/image-form.component';
 import { AnnouncementFormComponent } from './announcement-form/announcement-form.component';
-import { MatDatepickerModule } from "@angular/material/datepicker";
-import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {
+  MAT_DATE_LOCALE,
+  provideNativeDateAdapter,
+} from '@angular/material/core';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { GroupFormComponent } from './group-form/group-form.component';
 import { ShiftFormComponent } from './shift-form/shift-form.component';
+import { RestaurantFormComponent } from './restaurant-form/restaurant-form.component';
 
+const forms = [
+  FormActionsComponent,
+  ProductFormComponent,
+  CategoryFormComponent,
+  SubmenuFormComponent,
+  PersonalDataFormComponent,
+  FiscalDataFormComponent,
+  CardFormComponent,
+  PlanSelectorFormComponent,
+  TableFormComponent,
+  ExportFormComponent,
+  FileImporterFormComponent,
+  ScheduleFormComponent,
+  ImageFormComponent,
+  AnnouncementFormComponent,
+  EmployeeFormComponent,
+  GroupFormComponent,
+  ShiftFormComponent,
+  RestaurantFormComponent,
+];
 
 @NgModule({
   declarations: [
-    FormActionsComponent,
-    ProductFormComponent,
-    CategoryFormComponent,
-    SubmenuFormComponent,
-    PersonalDataFormComponent,
-    FiscalDataFormComponent,
-    CardFormComponent,
-    PlanSelectorFormComponent,
-    TableFormComponent,
-    ExportFormComponent,
-    FileImporterFormComponent,
-    ScheduleFormComponent,
-    ImageFormComponent,
-    AnnouncementFormComponent,
-    ScheduleFormComponent,
-    EmployeeFormComponent,
-    EmployeeFormComponent,
-    GroupFormComponent,
-    ShiftFormComponent
+    ...forms,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     SharedComponentsModule,
-    
+
     CurrencyMaskModule,
 
     MatInputModule,
@@ -75,28 +81,14 @@ import { ShiftFormComponent } from './shift-form/shift-form.component';
     MatCheckboxModule,
     NgxMaterialTimepickerModule,
     MatExpansionModule,
-    MatDatepickerModule,    
+    MatDatepickerModule,
   ],
   providers: [
     provideNativeDateAdapter(),
-    {provide: MAT_DATE_LOCALE, useValue: 'es-MX'}
+    { provide: MAT_DATE_LOCALE, useValue: 'es-MX' },
   ],
   exports: [
-    ProductFormComponent,
-    CategoryFormComponent,
-    SubmenuFormComponent,
-    PersonalDataFormComponent,
-    FiscalDataFormComponent,
-    CardFormComponent,
-    PlanSelectorFormComponent,
-    TableFormComponent,
-    ExportFormComponent,
-    FileImporterFormComponent,
-    ScheduleFormComponent,
-    ImageFormComponent,
-    AnnouncementFormComponent,
-    EmployeeFormComponent,
-    GroupFormComponent,
-  ]
+    ...forms,
+  ],
 })
-export class SharedFormsModule { }
+export class SharedFormsModule {}
