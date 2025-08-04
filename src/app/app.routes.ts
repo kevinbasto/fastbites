@@ -18,8 +18,4 @@ export const routes: Routes = [
         loadChildren: () => import("./layouts/auth-layout/auth-layout.module").then(m => m.AuthLayoutModule),
         canActivateChild: [nonAuthGuard]
     },
-    {
-        path: "public",
-        loadChildren: () => import("./pages/public/public.module").then(m => m.PublicModule)
-    }
 ];
