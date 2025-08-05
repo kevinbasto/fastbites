@@ -6,7 +6,8 @@ export const environment = {
     paginationOptions : [ 10, 20, 50 ],
     defaultPageSize: 10,
     version: version,
-    landingDomain: "fastbites.app",
-    adminDomain: "admin.fastbites.app",
-    menuDomain: "menu.fastbites.app",
+    landingDomain: "http://fastbites.app",
+    adminDomain: "http://admin.fastbites.app",
+    menuDomain: "http://menu.fastbites.app",
+    staffDomain: "http://localhost:4400"
 }
